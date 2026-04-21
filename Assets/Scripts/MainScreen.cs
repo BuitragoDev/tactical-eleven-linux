@@ -20,6 +20,7 @@ namespace TacticalEleven.Scripts
         private VisualElement mainContainer;
         private Button btnSeguir;
         private Label miEquipoNombre, managerNombre, fecha1, fecha2;
+        private DiaTipo diaTipoActual = DiaTipo.Continuar;
         public Label miPresupuesto;
         private Manager miManager;
         private Equipo miEquipo;
@@ -187,6 +188,9 @@ namespace TacticalEleven.Scripts
 
             // --- Botón seguir ---
             btnSeguir.clicked += () => AudioManager.Instance.PlaySFX(clickSFX);
+            btnSeguir.clicked += OnBtnSeguirClicked;
+
+            ActualizarBotonSeguir();
 
             // --- Eventos iconos menú lateral ---
             List<VisualElement> menuList = new List<VisualElement> { clubMenu, alineacionMenu, competicionMenu,
@@ -471,6 +475,82 @@ namespace TacticalEleven.Scripts
             }
 
             cabeceraManagerValoracion.style.flexDirection = FlexDirection.Row;
+        }
+
+        private void OnBtnSeguirClicked()
+        {
+            if (diaTipoActual == DiaTipo.Partido)
+            {
+                Debug.Log("Mi equipo juega hoy - Ir a pantalla de partido");
+            }
+            else if (diaTipoActual == DiaTipo.Simular)
+            {
+                Debug.Log("Hay partidos hoy - Simular");
+            }
+            else
+            {
+                Debug.Log("Avanzar un día");
+            }
+
+            if (FechaData.AvanzarUnDia())
+            {
+                ActualizarFecha();
+                ActualizarBotonSeguir();
+            }
+        }
+
+        private void ActualizarBotonSeguir()
+        {
+            Fecha fechaObjeto = FechaData.ObtenerFechaHoy();
+            DateTime fechaActual = DateTime.Parse(fechaObjeto.Hoy);
+            diaTipoActual = ObtenerDiaTipoActual(fechaActual, miEquipo.IdEquipo);
+
+            switch (diaTipoActual)
+            {
+                case DiaTipo.Partido:
+                    btnSeguir.text = "PARTIDO";
+                    btnSeguir.style.backgroundColor = new StyleColor(new Color32(0x1E, 0x72, 0x3C, 0xFF));
+                    break;
+                case DiaTipo.Simular:
+                    btnSeguir.text = "SIMULAR";
+                    btnSeguir.style.backgroundColor = new StyleColor(new Color32(0xD4, 0xA0, 0x1E, 0xFF));
+                    break;
+                default:
+                    btnSeguir.text = "CONTINUAR";
+                    btnSeguir.style.backgroundColor = new StyleColor(Color.white);
+                    break;
+            }
+        }
+
+        private DiaTipo ObtenerDiaTipoActual(DateTime fecha, int idEquipo)
+        {
+            if (PartidoData.MiEquipoJuegaEl(fecha, idEquipo))
+            {
+                return DiaTipo.Partido;
+            }
+
+            if (PartidoData.HayPartidosEl(fecha))
+            {
+                return DiaTipo.Simular;
+            }
+
+            return DiaTipo.Continuar;
+        }
+
+        private void ActualizarFecha()
+        {
+            Fecha fechaObjeto = FechaData.ObtenerFechaHoy();
+            DateTime hoy = DateTime.Parse(fechaObjeto.Hoy);
+            CultureInfo culturaEspañol = new CultureInfo("es-ES");
+
+            string dia = hoy.ToString("dd", culturaEspañol);
+            string mes = hoy.ToString("MMM", culturaEspañol).ToUpper();
+            string año = hoy.ToString("yyyy", culturaEspañol);
+            fecha1.text = $"{dia} {mes} {año}";
+
+            string diaSemana = hoy.ToString("dddd", culturaEspañol);
+            diaSemana = char.ToUpper(diaSemana[0]) + diaSemana.Substring(1);
+            fecha2.text = diaSemana;
         }
 
         private void CargarPortada()

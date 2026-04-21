@@ -1669,5 +1669,86 @@ namespace TacticalEleven.Scripts
 
             return partidos;
         }
+
+        // ----------------------------------------------------------------- MÉTODO QUE VERIFICA SI MI EQUIPO JUEGA EL DÍA ESPECIFICADO
+        public static bool MiEquipoJuegaEl(DateTime fecha, int idEquipo)
+        {
+            var dbPath = GetDBPath();
+            string fechaStr = fecha.ToString("yyyy-MM-dd");
+
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return false;
+            }
+
+            using (var conexion = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+            {
+                conexion.Open();
+                using (var comando = conexion.CreateCommand())
+                {
+                    comando.CommandText = @"SELECT COUNT(*) FROM (
+                                         SELECT id_partido FROM partidos WHERE DATE(fecha) = DATE(@Fecha) AND (id_equipo_local = @IdEquipo OR id_equipo_visitante = @IdEquipo)
+                                         UNION ALL
+                                         SELECT id_partido FROM partidos_copaNacional WHERE DATE(fecha) = DATE(@Fecha) AND (id_equipo_local = @IdEquipo OR id_equipo_visitante = @IdEquipo)
+                                         UNION ALL
+                                         SELECT id_partido FROM partidos_copaEuropa1 WHERE DATE(fecha) = DATE(@Fecha) AND (id_equipo_local = @IdEquipo OR id_equipo_visitante = @IdEquipo)
+                                         UNION ALL
+                                         SELECT id_partido FROM partidos_copaEuropa2 WHERE DATE(fecha) = DATE(@Fecha) AND (id_equipo_local = @IdEquipo OR id_equipo_visitante = @IdEquipo)
+                                     )";
+
+                    comando.Parameters.AddWithValue("@Fecha", fechaStr);
+                    comando.Parameters.AddWithValue("@IdEquipo", idEquipo);
+
+                    var result = comando.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result) > 0;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        // ----------------------------------------------------------------- MÉTODO QUE VERIFICA SI HAY PARTIDOS EL DÍA ESPECIFICADO
+        public static bool HayPartidosEl(DateTime fecha)
+        {
+            var dbPath = GetDBPath();
+            string fechaStr = fecha.ToString("yyyy-MM-dd");
+
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return false;
+            }
+
+            using (var conexion = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+            {
+                conexion.Open();
+                using (var comando = conexion.CreateCommand())
+                {
+                    comando.CommandText = @"SELECT COUNT(*) FROM (
+                                         SELECT id_partido FROM partidos WHERE DATE(fecha) = DATE(@Fecha)
+                                         UNION ALL
+                                         SELECT id_partido FROM partidos_copaNacional WHERE DATE(fecha) = DATE(@Fecha)
+                                         UNION ALL
+                                         SELECT id_partido FROM partidos_copaEuropa1 WHERE DATE(fecha) = DATE(@Fecha)
+                                         UNION ALL
+                                         SELECT id_partido FROM partidos_copaEuropa2 WHERE DATE(fecha) = DATE(@Fecha)
+                                     )";
+
+                    comando.Parameters.AddWithValue("@Fecha", fechaStr);
+
+                    var result = comando.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result) > 0;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }

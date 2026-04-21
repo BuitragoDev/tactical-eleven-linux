@@ -58,7 +58,7 @@
 }
 
 .miEquipoNombre {
-    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
     color: rgb(255, 255, 255);
     font-size: 24px;
     padding-left: 40px;
@@ -74,7 +74,7 @@
 }
 
 .miPresupuesto {
-    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    -unity-font-definition: resource("Fonts/Poppins-Regular");
     color: rgb(255, 255, 255);
     font-size: 24px;
     padding-left: 40px;
@@ -101,7 +101,7 @@
 }
 
 .managerNombre {
-    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
     color: rgb(255, 255, 255);
     font-size: 28px;
 }
@@ -147,13 +147,13 @@
 }
 
 .fecha1 {
-    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
     color: rgb(255, 255, 255);
     font-size: 22px;
 }
 
 .fecha2 {
-    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
     color: rgb(255, 255, 255);
     font-size: 24px;
 }
@@ -179,10 +179,18 @@
     align-items: center;
     justify-content: space-evenly;
     display: flex;
-    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    -unity-font-definition: resource("Fonts/Poppins-Bold");
     font-size: 32px;
     background-image: none;
     padding-top: 15px;
+}
+
+.btnSeguir:hover {
+    background-color: rgb(180, 180, 180);
+}
+
+.btnSeguir:active {
+    background-color: rgb(120, 120, 120);
 }
 
 .center-area {
@@ -259,4 +267,48 @@
     align-items: center;
     align-self: center;
     background-color: rgb(30, 30, 30);
+}
+
+/* Estilos pantalla Resumen Partido*/
+.background-resumen-partidos {
+    width: 1920px;
+    height: 1080px;
+    flex-grow: 1;
+    position: absolute;
+    background-color: rgb(180, 180, 180);
+}
+
+.resumen-partido-cabecera-area {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.resumen-partido-titulo-area {
+    height: 100%;
+    width: auto;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgb(24, 58, 39);
+    padding-left: 20px;
+}
+
+.resumen-partidos-titulo {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(204, 201, 201);
+    font-size: 48px;
+}
+
+.resumen-partido-boton-area {
+    height: 100%;
+    width: 20%;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(180, 180, 180);
 }

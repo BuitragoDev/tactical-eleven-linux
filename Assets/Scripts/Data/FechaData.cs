@@ -80,5 +80,62 @@ namespace TacticalEleven.Scripts
 
             return fecha;
         }
+
+        // ----------------------------------------------------------------------- Método que avanza un día en la BD
+        public static bool AvanzarUnDia()
+        {
+            var dbPath = GetDBPath();
+
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return false;
+            }
+
+            try
+            {
+                using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+                {
+                    connection.Open();
+
+                    using (var command = new SQLiteCommand("SELECT hoy FROM fechas WHERE id_fecha = 1", connection))
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string fechaActual = reader.GetString(0);
+                            DateTime fecha = DateTime.Parse(fechaActual);
+                            fecha = fecha.AddDays(1);
+
+                            using (var updateCommand = connection.CreateCommand())
+                            {
+                                updateCommand.CommandText = "UPDATE fechas SET hoy = @NuevaFecha, anio = @Anio WHERE id_fecha = 1";
+                                updateCommand.Parameters.AddWithValue("@NuevaFecha", fecha.ToString("yyyy-MM-dd"));
+                                updateCommand.Parameters.AddWithValue("@Anio", fecha.Year);
+                                updateCommand.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al avanzar un día: {ex.Message}");
+                return false;
+            }
+        }
+
+        // ----------------------------------------------------------------------- Método que devuelve la fecha de mañana
+        public static DateTime ObtenerFechaManana()
+        {
+            var fechaHoy = ObtenerFechaHoy();
+            if (fechaHoy != null)
+            {
+                return DateTime.Parse(fechaHoy.Hoy).AddDays(1);
+            }
+            return DateTime.Now.AddDays(1);
+        }
     }
 }
