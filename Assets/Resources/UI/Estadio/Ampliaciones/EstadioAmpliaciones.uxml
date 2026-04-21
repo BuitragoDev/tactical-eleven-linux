@@ -1,0 +1,69 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Estadio/Ampliaciones/EstadioAmpliaciones.uss?fileID=7433441132597879392&amp;guid=ad2239b68c92a8c4a988e44f5ff89649&amp;type=3#EstadioAmpliaciones" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: row; background-image: resource(&apos;Backgrounds/backgroundEstadio_img&apos;);">
+        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: flex-start; width: 50%; height: auto; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgb(229, 229, 229); margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;">
+            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 80px; background-color: rgb(38, 38, 38); align-items: flex-start; justify-content: center; padding-left: 30px;">
+                <ui:Label text="Nombre Estadio" name="nombre-estadio" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 30px; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="semanasRestantesFondo" style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(56, 78, 63); align-items: flex-start; justify-content: center; padding-left: 30px;">
+                <ui:Label text="AUMENTAR CAPACIDAD EN ..." name="aumentarCapacidad" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 25%;">
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 33%; align-items: center; justify-content: center; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="seleccionado-uno" style="flex-grow: 0; background-image: resource(&apos;Icons/noSeleccionado_icon&apos;); width: 64px; height: 64px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 70%; height: 100%; align-items: center; justify-content: space-around; flex-direction: row;">
+                        <ui:Label text="500 asientos" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px;" />
+                        <ui:Label text="5.000.000 €" name="precioRemodelacion1" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px; color: rgb(147, 13, 13);" />
+                        <ui:Label text="20 semanas" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="imgExcavadora1" style="flex-grow: 0; width: 64px; height: 64px; background-image: resource(&apos;Icons/excavadora_icon&apos;); visibility: hidden;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 33%; align-items: center; justify-content: center; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="seleccionado-dos" style="flex-grow: 0; background-image: resource(&apos;Icons/noSeleccionado_icon&apos;); width: 64px; height: 64px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 70%; height: 100%; align-items: center; justify-content: space-around; flex-direction: row;">
+                        <ui:Label text="1000 asientos" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px;" />
+                        <ui:Label text="15.000.000 €" name="precioRemodelacion2" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px; color: rgb(147, 13, 13);" />
+                        <ui:Label text="35 semanas" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="imgExcavadora2" style="flex-grow: 0; width: 64px; height: 64px; background-image: resource(&apos;Icons/excavadora_icon&apos;); visibility: hidden;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 33%; align-items: center; justify-content: center; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="seleccionado-tres" style="flex-grow: 0; background-image: resource(&apos;Icons/noSeleccionado_icon&apos;); width: 64px; height: 64px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 70%; height: 100%; align-items: center; justify-content: space-around; flex-direction: row;">
+                        <ui:Label text="1500 asientos" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px;" />
+                        <ui:Label text="30.000.000 €" name="precioRemodelacion3" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px; color: rgb(147, 13, 13);" />
+                        <ui:Label text="50 semanas" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 18px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="imgExcavadora3" style="flex-grow: 0; width: 64px; height: 64px; background-image: resource(&apos;Icons/excavadora_icon&apos;); visibility: hidden;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 7%;">
+                <ui:Button text="Empezar Obras" name="btnEmpezarObras" style="width: 100%; height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgb(118, 32, 32); -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(250, 250, 250); visibility: hidden; display: flex;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="imagen-estadio" style="flex-grow: 1; width: 100%; height: 60%; background-image: resource(&apos;Estadios/large&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 50%; height: 100%;">
+            <ui:VisualElement name="escudo-equipo" class="escudo" style="flex-grow: 0;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="popup-container" class="popup-container" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none; justify-content: center; align-items: center;">
+        <ui:VisualElement name="popup" class="popup" style="width: 650px; height: 200px; background-color: rgb(34, 34, 34); border-radius: 8px; padding: 20px; flex-direction: column; align-items: center; justify-content: space-between;">
+            <ui:Label name="popup-text" text="¿Deseas borrar esta partida?" style="color: white; font-size: 18px; text-align: center;" />
+            <ui:VisualElement style="flex-direction: row; justify-content: space-evenly; width: 100%; margin-top: 20px;">
+                <ui:Button text="CERRAR" name="btnCerrar" class="popup-button-yes" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

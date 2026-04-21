@@ -1,0 +1,12 @@
+.escudos {
+    width: 80px;
+    height: 80px;
+    flex-grow: 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.escudo-seleccionado {
+    background-color: rgba(117, 158, 131, 1);
+}

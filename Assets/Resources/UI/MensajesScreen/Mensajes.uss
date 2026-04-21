@@ -1,0 +1,73 @@
+.fechaMensaje {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.mensaje-logo {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.correo-logoEquipo {
+    width: 100px;
+    height: 100px;
+    flex-grow: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.correo-fecha {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    font-size: 18px;
+}
+
+.correo-autor {
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    font-size: 22px;
+    color: rgb(32, 56, 39);
+}
+
+.correo-asunto {
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    font-size: 16px;
+}
+
+.btnMarcarLeido {
+    width: 300px;
+    height: 30px;
+    background-color: rgb(153, 153, 153);
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    color: rgb(30, 30, 30);
+    font-size: 18px;
+    border-width: 0;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.papelera {
+    flex-grow: 0;
+    background-size: 32px 32px;
+    background-image: resource('Icons/papelera-black');
+    width: 32px;
+    height: 32px;
+}
+
+.mensaje-leido {
+    background-color: rgba(213, 240, 212, 1);
+}
+
+.mensaje-no-leido {
+    background-color: rgb(229, 229, 229);
+}
+

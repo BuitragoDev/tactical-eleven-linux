@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Intro%20Screen/Intro.uss?fileID=7433441132597879392&amp;guid=0bf046e66f6650741b1b9d4d33fba483&amp;type=3#Intro" />
+    <ui:VisualElement name="background" style="flex-grow: 1; background-color: rgb(0, 0, 0); flex-direction: column;">
+        <ui:VisualElement name="logo-area" class="logo-area">
+            <ui:VisualElement name="tactical-eleven-title" class="title" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="text-area" class="text-area">
+            <ui:Label text="Cargando..." name="loading-sentence" class="loading-sentence" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Light&apos;);" />
+            <ui:ProgressBar value="22" name="progress-bar" class="progress-bar" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

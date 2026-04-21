@@ -1,0 +1,22 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Fichajes/ListaTraspasos/FichajesListaTraspasos.uss?fileID=7433441132597879392&amp;guid=c6c522e41a80e4644ab0eb5931be0e94&amp;type=3#FichajesListaTraspasos" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: column; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+            <ui:Label text="LISTA DE TRASPASOS" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="lista-container" style="flex-grow: 1; background-color: rgb(229, 229, 229); width: 100%;" />
+        <ui:VisualElement style="flex-grow: 0; background-color: rgb(229, 229, 229); width: 100%; height: 57px;">
+            <ui:VisualElement style="flex-grow: 1; height: 8%; width: 100%; background-color: rgb(30, 30, 30); flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 1; width: 40%; height: 100%; align-items: flex-end; justify-content: center;">
+                    <ui:VisualElement name="btnPaginaAnterior" style="flex-grow: 0; width: 32px; height: 32px; background-image: resource(&apos;Icons/izquierda_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                    <ui:Label text="1" name="numPagina" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; -unity-text-align: middle-center; color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 40%; height: 100%; align-items: flex-start; justify-content: center;">
+                    <ui:VisualElement name="btnPaginaSiguiente" style="flex-grow: 0; background-image: resource(&apos;Icons/derecha_icon&apos;); width: 32px; height: 32px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

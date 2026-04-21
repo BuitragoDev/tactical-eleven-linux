@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Fichajes/Cartera/FichajesCartera.uss?fileID=7433441132597879392&amp;guid=76c7e7d09a6199248b485eaa19899925&amp;type=3#FichajesCartera" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: column; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(24, 58, 39);" />
+        <ui:VisualElement name="cartera-container" style="flex-grow: 1; background-color: rgb(229, 229, 229); width: 100%;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="popup-container" class="popup-container" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none; justify-content: center; align-items: center;">
+        <ui:VisualElement name="popup" class="popup" style="width: 650px; height: 200px; background-color: rgb(34, 34, 34); border-radius: 8px; padding: 20px; flex-direction: column; align-items: center; justify-content: space-between;">
+            <ui:Label name="popup-text" style="color: white; font-size: 18px; text-align: center; white-space: normal;" />
+            <ui:VisualElement style="flex-direction: row; justify-content: space-evenly; width: 100%; margin-top: 20px;">
+                <ui:Button text="SI" name="btnYes" class="popup-button-yes" />
+                <ui:Button text="CANCELAR" name="btnCancel" class="popup-button-cancel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

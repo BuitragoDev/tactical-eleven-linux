@@ -1,0 +1,31 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Competiciones/Resultados/CompeticionesResultados.uss?fileID=7433441132597879392&amp;guid=d856bb1b8cc0f5349918d951ca6388f6&amp;type=3#CompeticionesResultados" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: column; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 50px; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+            <ui:Label text="RESULTADOS (DIVISIÓN 1)" name="titulo-ventana" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(250, 250, 250); -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 100%; background-color: rgb(229, 229, 229); flex-direction: column;">
+            <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: space-evenly; width: 100%; height: 14%; flex-direction: row;">
+                <ui:VisualElement name="liga1-logo" class="logosCompeticiones" style="flex-grow: 0; background-image: resource(&apos;LogosCompeticiones/80x80/1&apos;);" />
+                <ui:VisualElement name="copa-logo" class="logosCompeticiones" style="flex-grow: 0; background-image: resource(&apos;LogosCompeticiones/80x80/copa80&apos;);" />
+                <ui:VisualElement name="europa1-logo" class="logosCompeticiones" style="flex-grow: 0; background-image: resource(&apos;LogosCompeticiones/80x80/5&apos;);" />
+                <ui:VisualElement name="europa2-logo" class="logosCompeticiones" style="flex-grow: 0; background-image: resource(&apos;LogosCompeticiones/80x80/6&apos;);" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: center; width: 100%; height: 50px; background-color: rgb(56, 78, 63); flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; height: 100%; align-items: flex-end; justify-content: center; flex-shrink: 0; width: 33%;">
+                    <ui:VisualElement name="btnMenos" class="botones" style="flex-grow: 0; background-image: resource(&apos;Icons/izquierda_icon&apos;); align-items: center; justify-content: center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; height: 100%; align-items: center; justify-content: center; flex-shrink: 0; width: 33%;">
+                    <ui:Label text="Jornada 1" name="jornada" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; height: 100%; justify-content: center; align-items: flex-start; flex-shrink: 0; width: 33%;">
+                    <ui:VisualElement name="btnMas" class="botones" style="flex-grow: 0; background-image: resource(&apos;Icons/derecha_icon&apos;); align-items: center; justify-content: center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:ScrollView name="resultados-container" vertical-scrolling-enabled="true" horizontal-scrolling-enabled="false" class="partidos-container" style="flex-grow: 1; width: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+                <ui:VisualElement name="ColumnaIzq" class="columna" style="align-items: center; justify-content: flex-start; flex-grow: 0; width: 50%; height: 100%; flex-shrink: 0;" />
+                <ui:VisualElement name="ColumnaDer" class="columna" style="align-items: center; justify-content: flex-start; width: 50%; height: 100%; flex-grow: 0; flex-shrink: 0;" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,241 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/PortadaScreen/Portada.uss?fileID=7433441132597879392&amp;guid=62788ef85678fff428448e120db805d3&amp;type=3#Portada" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%;">
+        <ui:VisualElement name="top" class="top" style="flex-grow: 1;">
+            <ui:VisualElement name="lastGame-container" class="lastGame-container" style="flex-grow: 1;">
+                <ui:VisualElement class="header-corto" style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement name="lugar-ultimoPartido-container" style="flex-grow: 1; width: 15%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="lugar-ultimoPartido-icon" class="lugar-partido-icon" style="flex-grow: 1; align-self: center; align-content: center; align-items: center; justify-content: center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 85%; height: 100%;">
+                        <ui:Label text="ÚLTIMO PARTIDO" name="lastGame-label" class="header-texts" style="justify-content: center; align-items: center; align-self: flex-start; align-content: center; padding-top: 6px; -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="contenedor-corto" style="flex-grow: 1;">
+                    <ui:VisualElement name="local-ultimoPartido-container" class="local-ultimoPartido-container" style="flex-direction: row;">
+                        <ui:VisualElement name="local-ultimoPartido-left" class="local-ultimoPartido-left">
+                            <ui:VisualElement name="ultimoPartido-escudo-local" class="ultimoPartido-escudos" style="flex-grow: 1;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="local-ultimoPartido-center" class="local-ultimoPartido-center">
+                            <ui:Label text="-" name="ultimoPartido-nombreEquipo-local" class="ultimoPartidoNombreEquipo-labels" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="local-ultimoPartido-right" class="local-ultimoPartido-right">
+                            <ui:Label text="-" name="ultimoPartido-goles-local" class="golesUltimoPartido-labels" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="visitante-ultimoPartido-container" class="visitante-ultimoPartido-container" style="flex-direction: row;">
+                        <ui:VisualElement name="visitante-ultimoPartido-left" class="visitante-ultimoPartido-left">
+                            <ui:VisualElement name="ultimoPartido-escudo-visitante" class="ultimoPartido-escudos" style="flex-grow: 1;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="visitante-ultimoPartido-center" class="visitante-ultimoPartido-center">
+                            <ui:Label text="-" name="ultimoPartido-nombreEquipo-visitante" class="ultimoPartidoNombreEquipo-labels" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="visitante-ultimoPartido-right" class="visitante-ultimoPartido-right">
+                            <ui:Label text="-" name="ultimoPartido-goles-visitante" class="golesUltimoPartido-labels" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="nextGame-container" class="nextGame-container" style="flex-grow: 1;">
+                <ui:VisualElement class="header-corto" style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement name="lugar-proximoPartido-container" style="flex-grow: 1; width: 15%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="lugar-proximoPartido-icon" class="lugar-partido-icon" style="flex-grow: 1; align-self: center; align-content: center; align-items: center; justify-content: center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 85%; height: 100%;">
+                        <ui:Label text="PRÓXIMO PARTIDO" name="nextGame-label" class="header-texts" style="justify-content: center; align-items: center; align-self: flex-start; align-content: center; padding-top: 6px; -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="contenedor-corto" style="flex-grow: 1;">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 75%; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="proximoPartido-escudo-local" class="proximoPartido-escudos" style="flex-grow: 1;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%;">
+                            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 50%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="proximoPartido-equipos" class="proximoPartido-equipos-labels" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 50%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="proximoPartido-estadio" class="proximoPartido-estadio-labels" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="proximoPartido-escudo-visitante" class="proximoPartido-escudos" style="flex-grow: 1;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                        <ui:Label text="No hay fecha" name="fecha-proximoPartido" class="fecha-proximoPartido" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom" class="bottom" style="flex-grow: 1;">
+            <ui:VisualElement name="clasificacion-container" class="clasificacion-container" style="flex-grow: 1;">
+                <ui:VisualElement class="header-largo" style="flex-grow: 1; flex-direction: row; align-self: center;">
+                    <ui:VisualElement style="flex-grow: 1; width: 85%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center; -unity-text-align: upper-center;">
+                        <ui:Label text="CLASIFICACIÓN" class="header-texts" style="justify-content: center; align-items: center; align-self: center; align-content: center; padding-top: 6px; -unity-text-align: middle-center; flex-grow: 1; flex-shrink: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 15%; height: 100%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="abrir-clasificacion" class="abrir-icon" style="flex-grow: 0; width: 32px; height: 32px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="clasificacionTabla-container" class="contenedor-largo" style="flex-grow: 0; flex-shrink: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="estadisticasJugador-container" class="estadisticasJugador-container" style="flex-grow: 1;">
+                <ui:VisualElement class="header-largo" style="flex-grow: 1;">
+                    <ui:Label text="ESTADÍSTICAS DE LOS JUGADORES" class="header-texts" style="-unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement class="contenedor-largo" style="flex-grow: 1;">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-color: rgb(215, 215, 215); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:VisualElement name="maximo-goleador" class="foto-jugador" style="background-image: none;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 60%; height: 100%; justify-content: center; align-items: center; align-content: center; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; align-self: center; flex-shrink: 0;">
+                            <ui:Label text="GOLES" name="Label" class="estadisticas-equipo-label-green" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; align-items: center; -unity-text-align: middle-left; justify-content: center; align-self: flex-start; align-content: center; width: 100%;" />
+                            <ui:Label text="-" name="maximo-goleador-nombre" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; width: 100%;" />
+                            <ui:Label text="Partidos jugados: 0" name="maximo-goleador-pj" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px; width: 100%;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 15%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:Label text="00" name="goles-value" class="estadisticaJugadorValor" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:VisualElement name="maximo-asistente" class="foto-jugador" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%; justify-content: center; align-items: flex-start;">
+                            <ui:Label text="ASISTENCIAS" name="Label" class="estadisticas-equipo-label-green" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                            <ui:Label text="-" name="maximo-asistente-nombre" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px;" />
+                            <ui:Label text="Partidos jugados: 0" name="maximo-asistente-pj" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 15%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:Label text="00" name="asistencias-value" class="estadisticaJugadorValor" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-color: rgb(215, 215, 215);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:VisualElement name="maximo-ta" class="foto-jugador" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%; justify-content: center; align-items: flex-start;">
+                            <ui:Label text="TARJETAS AMARILLAS" name="Label" class="estadisticas-equipo-label-green" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                            <ui:Label text="-" name="maximo-ta-nombre" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px;" />
+                            <ui:Label text="Partidos jugados: 0" name="maximo-ta-pj" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 15%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:Label text="00" name="ta-value" class="estadisticaJugadorValor" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:VisualElement name="maximo-tr" class="foto-jugador" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%; justify-content: center; align-items: flex-start;">
+                            <ui:Label text="TARJETAS ROJAS" name="Label" class="estadisticas-equipo-label-green" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                            <ui:Label text="-" name="maximo-tr-nombre" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px;" />
+                            <ui:Label text="Partidos jugados: 0" name="maximo-tr-pj" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 15%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:Label text="00" name="tr-value" class="estadisticaJugadorValor" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-color: rgb(215, 215, 215);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:VisualElement name="maximo-mvp" class="foto-jugador" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%; justify-content: center; align-items: flex-start;">
+                            <ui:Label text="MVP DEL PARTIDO" name="Label" class="estadisticas-equipo-label-green" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                            <ui:Label text="-" name="maximo-mvp-nombre" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px;" />
+                            <ui:Label text="Partidos jugados: 0" name="maximo-mvp-pj" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 15%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                            <ui:Label text="00" name="mvp-value" class="estadisticaJugadorValor" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="resumen-container" class="resumen-container" style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 65%;">
+                    <ui:VisualElement class="header-medio" style="flex-grow: 1;">
+                        <ui:Label text="ESTADÍSTICAS DE EQUIPO" class="header-texts" style="-unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="contenedor-medio" style="flex-grow: 1;">
+                        <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; align-items: center; justify-content: center;">
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:VisualElement style="flex-grow: 1; width: 64px; height: 64px; background-image: resource(&apos;Icons/objetivo-icon&apos;); background-size: 64px 64px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%; align-items: flex-start; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="Objetivo de la Temporada" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px;" />
+                                <ui:Label text="-" name="objetivo-temporada" class="estadisticas-equipo-label-red" style="font-size: 20px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:VisualElement name="objetivo-resultado" style="flex-grow: 1; width: 32px; height: 32px; background-image: none; background-size: 32px 32px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; align-items: center; justify-content: center; background-color: rgb(216, 215, 215);">
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:VisualElement name="logo-competicion" style="flex-grow: 1; width: 64px; height: 64px; background-image: none; background-size: 64px 64px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%; align-items: flex-start; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="-" name="nombre-competicion" class="estadisticas-equipo-label-black" style="color: rgb(0, 0, 0); font-size: 20px;" />
+                                <ui:Label text="Racha" name="Label" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="0" name="racha-value" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 48px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; align-items: center; justify-content: center;">
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:VisualElement name="escudo-equipo-media" style="flex-grow: 1; width: 64px; height: 64px; background-image: none; background-size: 64px 64px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%; align-items: flex-start; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="Media Equipo" name="Label" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="0" name="mediaEquipo-value" class="estadisticas-equipo-label-black" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 48px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; align-items: center; justify-content: center; background-color: rgb(216, 216, 216);">
+                            <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:VisualElement style="flex-grow: 1; width: 64px; height: 64px; background-image: resource(&apos;Icons/estadioNegro_icon&apos;); background-size: 64px 64px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 80%; height: 100%; align-items: flex-start; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="-" name="nombre-estadio" class="estadisticas-nombreEstadio-label-black" />
+                                <ui:Label text="-" name="aforo-estadio" class="estadisticas-aforoEstadio-label-black" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 35%;">
+                    <ui:VisualElement class="header-medio" style="flex-grow: 1;">
+                        <ui:Label text="RELACIONES" class="header-texts" style="-unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="contenedor-medio" style="flex-grow: 1; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 1; width: 33.3%; height: 100%;">
+                            <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 40%; align-items: center; justify-content: center;">
+                                <ui:Label text="Confianza de&#10;la Directiva" name="lblDirectiva" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="confianza-directiva-container" style="flex-grow: 1; width: 100%; height: 60%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="00" name="confianza-directiva" class="confianza-labels" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 33.3%; height: 100%;">
+                            <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 40%; align-items: center; justify-content: center;">
+                                <ui:Label text="Confianza de&#10;los Fans" name="lblFans" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="confianza-fans-container" style="flex-grow: 1; width: 100%; height: 60%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="00" name="confianza-fans" class="confianza-labels" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 33.3%; height: 100%;">
+                            <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 40%; align-items: center; justify-content: center;">
+                                <ui:Label text="Confianza de&#10;los Jugadores" name="lblJugadores" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="confianza-jugadores-container" style="flex-grow: 1; width: 100%; height: 60%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                                <ui:Label text="00" name="confianza-jugadores" class="confianza-labels" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

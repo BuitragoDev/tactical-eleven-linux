@@ -1,0 +1,177 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Entrenador/Alineacion/EntrenadorAlineacion.uss?fileID=7433441132597879392&amp;guid=233ffc2ce491bbb41ab12ef0f0b30c4d&amp;type=3#EntrenadorAlineacion" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: column; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 5%; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+            <ui:Label text="ALINEACIÓN" name="lblTituloVentana" style="-unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 95%; background-color: rgb(229, 229, 229); flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; width: 65%; height: 100%;">
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                    <ui:Label text="TITULARES" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; background-color: rgb(30, 30, 30); width: 100%; height: 30px; flex-direction: row; align-items: center;">
+                    <ui:VisualElement style="width: 5%; height: 100%; flex-grow: 0; flex-shrink: 0; justify-content: center; align-items: center;">
+                        <ui:Label text="Nº" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="width: 8%; height: 100%; flex-grow: 0; flex-shrink: 0;" />
+                    <ui:VisualElement style="width: 32%; height: 100%; flex-grow: 0; flex-shrink: 0; align-items: flex-start; justify-content: center;">
+                        <ui:Label text="JUGADOR" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="width: 15%; height: 100%; flex-grow: 0; flex-shrink: 0; justify-content: center; align-items: center;">
+                        <ui:Label text="DEM" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="width: 8%; height: 100%; flex-grow: 0; flex-shrink: 0; justify-content: center; align-items: center;">
+                        <ui:Label text="MED" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="width: 8%; height: 100%; flex-grow: 0; flex-shrink: 0; justify-content: center; align-items: center;">
+                        <ui:Label text="MO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="width: 8%; height: 100%; flex-grow: 0; flex-shrink: 0; justify-content: center; align-items: center;">
+                        <ui:Label text="EF" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="width: 8%; height: 100%; flex-grow: 0; flex-shrink: 0; justify-content: center; align-items: center;">
+                        <ui:Label text="LES" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="width: 8%; height: 100%; flex-grow: 0; flex-shrink: 0; justify-content: center; align-items: center;">
+                        <ui:Label text="SAN" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="titulares-container" style="flex-grow: 0; width: 100%; height: 330px;" />
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                    <ui:Label text="RESERVAS" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="reservas-container" style="flex-grow: 1; width: 100%; height: 100%;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 35%; height: 100%; margin-left: 20px;">
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 100px;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(106, 20, 20); align-items: center; justify-content: center;">
+                        <ui:Label text="TÁCTICA PREDEFINIDA" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: row; justify-content: space-around; align-items: center; background-color: rgb(204, 204, 204);">
+                        <ui:Button text="5-4-1" name="btnTactica1" class="botones" />
+                        <ui:Button text="5-3-2" name="btnTactica2" class="botones" />
+                        <ui:Button text="4-5-1" name="btnTactica3" class="botones" />
+                        <ui:Button text="4-4-2" name="btnTactica4" class="botones" />
+                        <ui:Button text="4-3-3" name="btnTactica5" class="botones" />
+                        <ui:Button text="3-5-2" name="btnTactica6" class="botones" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: auto;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                        <ui:Label text="ATRIBUTOS DEL JUGADOR" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: column; justify-content: space-around; align-items: flex-start; background-color: rgb(204, 204, 204);">
+                        <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: center; width: 100%; height: 120px; flex-direction: row;">
+                            <ui:VisualElement style="flex-grow: 0; width: 200px; height: 100%; align-items: center; justify-content: center;">
+                                <ui:VisualElement name="foto-jugador" class="caras" style="flex-grow: 0;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: auto; height: 100%;">
+                                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 50%; align-items: flex-start; justify-content: center;">
+                                    <ui:Label text="-" name="nombre-jugador" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; -unity-text-align: middle-center;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 50%; align-items: flex-start; justify-content: center;">
+                                    <ui:Label text="-" name="demarcacion-jugador" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 22px; -unity-text-align: middle-center;" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+                            <ui:VisualElement style="flex-grow: 1; width: auto; height: 50%; align-items: center; justify-content: center; flex-direction: row; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="POR" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="portero-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 32px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="PAS" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="pase-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 32px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="REG" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="regate-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 32px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: auto; height: 50%; align-items: center; justify-content: center; flex-direction: row; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="REM" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="remate-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 32px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="ENT" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="entradas-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 32px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="TIRO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="tiro-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 32px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 200px; flex-direction: column;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(56, 78, 63); flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="POSICIÓN IDEAL" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="POSICIÓN ACTUAL" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 22px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: auto; background-color: rgb(205, 205, 205); flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="posicion-ideal" class="posiciones" style="flex-grow: 0; background-image: none;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="posicion-actual" class="posiciones" style="flex-grow: 0;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 250px;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                        <ui:Label text="CAMBIOS" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); align-items: center; justify-content: center; -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: column; justify-content: space-around; align-items: center; background-color: rgb(204, 204, 204);">
+                        <ui:VisualElement name="cambio1-container" style="flex-grow: 1; width: 100%; height: 50%; align-items: center; justify-content: center; flex-direction: row;">
+                            <ui:VisualElement style="flex-grow: 0; width: 150px; height: 100%; align-items: center; justify-content: center;">
+                                <ui:VisualElement name="foto-cambio1" class="caras" style="flex-grow: 1;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; align-items: flex-start; justify-content: center; height: 100%;">
+                                <ui:Label text="-" name="jugador-cambio1" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="cambio2-container" style="flex-grow: 1; width: 100%; height: 50%; align-items: center; justify-content: center; flex-direction: row;">
+                            <ui:VisualElement style="flex-grow: 0; width: 150px; height: 100%; align-items: center; justify-content: center;">
+                                <ui:VisualElement name="foto-cambio2" class="caras" style="flex-grow: 1;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; align-items: flex-start; justify-content: center; height: 100%;">
+                                <ui:Label text="-" name="jugador-cambio2" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

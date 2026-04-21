@@ -1,0 +1,44 @@
+.popup-container {
+    background-color: rgba(0,0,0,0.6);
+}
+
+.popup {
+    background-color: #222;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.popup Label {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+}
+
+.popup-button-yes {
+    width: 290px;
+    height: 60px;
+    background-color: rgb(24, 58, 39);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
+.popup-button-cancel {
+    width: 290px;
+    height: 60px;
+    background-color: rgba(102, 8, 8, 1);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}

@@ -1,0 +1,45 @@
+.btnMes {
+    width: 70px;
+    height: 40px;
+    background-color: rgb(229, 229, 229);
+    color: rgb(30, 30, 30);
+    font-size: 24px;
+    border-width: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    font-size: 32px;
+    background-image: none;
+    padding-top: 15px;
+}
+
+.logo-competicion {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lugar-partido {
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.escudos {
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.label-equipos {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    font-size: 24px;
+    -unity-text-align: middle-center;
+}

@@ -1,0 +1,28 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Estadio/EstadioInformacion/EstadioInformacion.uss?fileID=7433441132597879392&amp;guid=35cfa934038dc46448a4aa07576e608f&amp;type=3#EstadioInformacion" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: row; background-image: resource(&apos;Backgrounds/backgroundEstadio_img&apos;);">
+        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 50%; height: auto; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgb(229, 229, 229); margin-top: 50px; margin-right: 50px; margin-bottom: 50px; margin-left: 50px;">
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 10%; background-color: rgb(43, 43, 43); align-items: flex-start; justify-content: center; padding-left: 30px;">
+                <ui:Label text="Nombre del Estadio" name="nombre-estadio" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 32px; -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(56, 78, 63); align-items: flex-start; justify-content: center; padding-left: 30px;">
+                <ui:Label text="CAPACIDAD" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); color: rgb(255, 255, 255); font-size: 24px; -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 10%; align-items: flex-start; justify-content: center; padding-left: 30px; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 1; width: 15%; height: 100%; align-items: flex-start; justify-content: center;">
+                    <ui:VisualElement style="flex-grow: 0; background-image: resource(&apos;Icons/estadioNegro_icon&apos;); width: 64px; height: 64px;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 85%; height: 100%; align-items: flex-start; justify-content: center;">
+                    <ui:Label text="0 asientos" name="aforo" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); color: rgb(0, 0, 0); font-size: 24px; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(56, 78, 63); align-items: flex-start; justify-content: center; padding-left: 30px;">
+                <ui:Label text="INTERIOR DEL ESTADIO" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); color: rgb(255, 255, 255); font-size: 24px; -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="foto-estadio" style="flex-grow: 1; width: 100%; height: 70%; align-items: center; justify-content: center;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 50%; height: 100%;">
+            <ui:VisualElement name="escudo-equipo" class="escudo" style="flex-grow: 0;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

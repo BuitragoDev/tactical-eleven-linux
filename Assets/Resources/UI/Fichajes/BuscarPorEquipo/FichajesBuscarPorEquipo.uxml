@@ -1,0 +1,33 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Fichajes/BuscarPorEquipo/FichajesBuscarPorEquipo.uss?fileID=7433441132597879392&amp;guid=57f6d5e825f711e46af3771df0247691&amp;type=3#FichajesBuscarPorEquipo" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: row; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; margin-right: 10px;">
+            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(24, 58, 39); align-items: center; justify-content: center; flex-direction: column;">
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 100%; align-items: center; justify-content: center;">
+                    <ui:Label text="SELECCIONA UNA LIGA" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 100%; background-color: rgb(229, 229, 229); height: 150px; flex-direction: row; align-items: center; justify-content: space-around; padding-left: 10px; padding-right: 10px;">
+                <ui:VisualElement name="logo-liga1" class="escudos" />
+                <ui:VisualElement name="logo-liga2" class="escudos" />
+                <ui:VisualElement name="logo-reservas" class="escudos" />
+                <ui:VisualElement name="logo-europa" class="escudos" />
+                <ui:VisualElement name="logo-sinEquipo" class="escudos" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(24, 58, 39); align-items: center; justify-content: center; flex-direction: column;">
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 100%; align-items: center; justify-content: center;">
+                    <ui:Label text="SELECCIONA UN EQUIPO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="equipos-container" style="flex-grow: 1; width: 100%; background-color: rgb(229, 229, 229); align-items: center; justify-content: flex-start; padding-top: 15px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; margin-right: 0; margin-left: 10px;">
+            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(24, 58, 39); align-items: center; justify-content: center; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 100%; align-items: center; justify-content: center;">
+                    <ui:Label text="LISTADO DE JUGADORES" name="txtListadoJugadores" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="jugadores-container" style="flex-grow: 1; width: 100%; background-color: rgb(229, 229, 229);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

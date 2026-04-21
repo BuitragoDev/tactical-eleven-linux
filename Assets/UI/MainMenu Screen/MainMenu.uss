@@ -1,0 +1,254 @@
+VisualElement {
+}
+
+.background-image {
+    width: 1920px;
+    height: 1080px;
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Resources/Backgrounds/mainBackground.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.top-area {
+    display: flex;
+    height: 20%;
+    width: 100%;
+    justify-content: center;
+    align-self: flex-start;
+    margin-left: 50px;
+}
+
+.title-logo {
+    width: 520px;
+    height: 168px;
+    background-image: url("project://database/Assets/Resources/Titles/tactical-eleven-black.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.center-area {
+    display: flex;
+    flex-direction: row;
+    height: 60%;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.center-left-area {
+    display: flex;
+    flex-grow: 1;
+    width: 73%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-right-area {
+    display: flex;
+    flex-grow: 1;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.manager-mode {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(221, 221, 221); 
+    border-top-left-radius: 25px; 
+    border-top-right-radius: 25px; 
+    border-bottom-right-radius: 25px; 
+    border-bottom-left-radius: 25px; 
+    margin-top: 10px; 
+    margin-right: 50px; 
+    margin-bottom: 10px; 
+}
+
+.menu-labels {
+    width: 70%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 36px;
+    -unity-text-align: middle-right;
+    padding-right: 80px;
+}
+
+.manager-mode-icon {
+    width: 64px;
+    height: 64px;
+    background-image: url("project://database/Assets/Resources/Icons/manager-icon.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 50px;
+}
+
+.career-mode {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(221, 221, 221); 
+    border-top-left-radius: 25px; 
+    border-top-right-radius: 25px; 
+    border-bottom-right-radius: 25px; 
+    border-bottom-left-radius: 25px; 
+    margin-top: 10px; 
+    margin-right: 50px; 
+    margin-bottom: 10px; 
+}
+
+.career-mode-icon {
+    width: 64px;
+    height: 64px;
+    background-image: url("project://database/Assets/Resources/Icons/career-icon.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 50px;
+}
+
+.settings-mode {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(221, 221, 221); 
+    border-top-left-radius: 25px; 
+    border-top-right-radius: 25px; 
+    border-bottom-right-radius: 25px; 
+    border-bottom-left-radius: 25px; 
+    margin-top: 10px; 
+    margin-right: 50px; 
+    margin-bottom: 10px; 
+}
+
+.settings-icon {
+    width: 64px;
+    height: 64px;
+    background-image: url("project://database/Assets/Resources/Icons/settings-icon.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 50px;
+}
+
+.editor-mode {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(221, 221, 221); 
+    border-top-left-radius: 25px; 
+    border-top-right-radius: 25px; 
+    border-bottom-right-radius: 25px; 
+    border-bottom-left-radius: 25px; 
+    margin-top: 10px; 
+    margin-right: 50px; 
+    margin-bottom: 10px; 
+}
+
+.editor-icon {
+    width: 64px;
+    height: 64px;
+    background-image: url("project://database/Assets/Resources/Icons/editor-icon.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 50px;
+}
+
+.cargar-mode {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(221, 221, 221); 
+    border-top-left-radius: 25px; 
+    border-top-right-radius: 25px; 
+    border-bottom-right-radius: 25px; 
+    border-bottom-left-radius: 25px; 
+    margin-top: 10px; 
+    margin-right: 50px; 
+    margin-bottom: 10px; 
+}
+
+.cargar-icon {
+    width: 64px;
+    height: 64px;
+    background-image: url("project://database/Assets/Resources/Icons/cargarPartida-icon.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 50px;
+}
+
+.bottom-area {
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    align-self: flex-end;
+    padding-right: 50px;
+}
+
+.web-icon {
+    width: 128px;
+    height: 128px;
+    background-image: url("project://database/Assets/Resources/Icons/sitio-web.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.credits-icon {
+    width: 128px;
+    height: 128px;
+    background-image: url("project://database/Assets/Resources/Icons/creditos-autor.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.exit-icon {
+    width: 128px;
+    height: 128px;
+    background-image: url("project://database/Assets/Resources/Icons/cerrar-juego.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bottom-area > .credits-icon {
+    margin-left: 100px;
+}
+
+.bottom-area > .exit-icon {
+    margin-left: 100px;
+}

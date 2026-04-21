@@ -1,0 +1,46 @@
+.dpTipo {
+    width: 300px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 0;
+    background-color: rgb(229, 229, 229);
+    color: rgb(30, 30, 30);
+    font-size: 18px;
+    -unity-text-align: middle-left;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dpTipo:hover {
+    border-color: rgb(153, 153, 153);
+}
+
+.dpTipo > .unity-base-field__input {
+    color: rgb(30, 30, 30);
+    background-color: transparent;
+}
+
+.dpTipo > .unity-base-popup-field__arrow {
+    background-color: rgb(30, 30, 30);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    -unity-background-image-tint-color: rgb(229, 229, 229);
+    width: 28px;
+}
+
+.dpTipo:hover > .unity-base-popup-field__arrow {
+    background-color: rgb(26, 26, 26);
+    -unity-background-image-tint-color: rgb(240, 240, 240);
+}
+
+.unity-popup-field__dropdown {
+    background-color: rgb(30, 30, 30);
+}
+
+.unity-popup-field__dropdown .unity-list-view__item {
+    color: rgb(30, 30, 30);
+}
+
+.unity-popup-field__dropdown .unity-list-view__item--selected {
+    background-color: rgb(30, 30, 30);
+    color: rgb(229, 229, 229);
+}

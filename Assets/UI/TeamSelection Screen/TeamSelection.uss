@@ -1,0 +1,287 @@
+.background-image {
+    width: 1920px;
+    height: 1080px;
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Resources/Backgrounds/mainBackground.png?fileID=21300000&guid=68bacede3fe51c34f9d14839f9e880fc&type=3#mainBackground");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.top-area {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+}
+
+.window-title {
+    font-size: 48px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+}
+
+.center-area {
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.area-competiciones {
+    flex-grow: 1;
+    background-color: rgb(229, 229, 229);
+    width: 100%;
+    height: 30%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    align-content: auto;
+    align-self: center;
+}
+
+.logo-competicion1 {
+    flex-grow: 1;
+    background-image: resource('LogosCompeticiones/1off');
+    background-size: 150px 150px;
+}
+
+.logo-competicion2 {
+    flex-grow: 1;
+    background-image: resource('LogosCompeticiones/2');
+    background-size: 150px 150px;
+}
+
+.area-escudos {
+    flex-grow: 1;
+    background-color: rgb(229, 229, 229);
+    width: 100%;
+    height: 70%;
+    margin-top: 50px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow: scroll;
+}
+
+.escudo {
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-right: 50px;
+}
+
+.details-button {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(24, 58, 39);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition-property: background-color, transform, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.details-button:hover {
+    background-color: rgb(66, 99, 82);
+}
+
+.details-button:active {
+    background-color: rgb(17, 17, 17);
+}
+
+.bottom-area {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    align-self: flex-end;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.back-button {
+    width: 300px;
+    height: 60px;
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition-property: background-color, transform, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.back-button:hover {
+    background-color: rgb(51, 51, 51);
+}
+
+.back-button:active {
+    background-color: rgb(17, 17, 17);
+}
+
+/* ------------------------------------------------------ VENTANA DE DETALLES ------------------------------------------------ */
+.ventana-detalles {
+    position: absolute;
+    width: 70%;
+    height: 50%;
+    background-color: rgb(229, 229, 229);
+    border-color: rgb(135, 135, 135);
+    border-width: 2px;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+}
+
+.detalles-top-area {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 58, 39);
+}
+
+.detalles-center-area {
+    display: flex;
+    flex-direction: row;
+    height: 70%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.detalles-bottom-area {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.ventana-detalles-title {
+    color: rgb(255, 255, 255);
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    font-size: 24px;
+    -unity-text-align: middle-center;
+}
+
+.left {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+}
+
+.escudo-equipo {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.right {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
+
+.fila {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.fila-label {
+    flex-grow: 1;
+    width: 35%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.detalle-equipo-labels {
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    font-size: 22px;
+}
+
+.fila-contenido {
+    flex-grow: 1;
+    width: 65%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.detalle-equipo-contenido {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    font-size: 22px;
+}
+
+.close-button {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(30, 30, 30);
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-width: 0;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    transition-property: background-color, transform, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.close-button:hover {
+    background-color: rgb(51, 51, 51);
+}
+
+.close-button:active {
+    background-color: rgb(17, 17, 17);
+}
+
+.escudo {
+    background-size: cover;
+}
+
+.escudo-seleccionado {
+    background-color: rgba(117, 158, 131, 1);
+}

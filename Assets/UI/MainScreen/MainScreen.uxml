@@ -1,0 +1,132 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainScreen/MainScreen.uss?fileID=7433441132597879392&amp;guid=aa224e0d95405cd49b10b39927619caa&amp;type=3#MainScreen" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:VisualElement name="cabecera-escudo-area" class="cabecera-escudo-area" style="flex-grow: 1;">
+                <ui:VisualElement name="cabecera-escudo" class="cabecera-escudo" />
+            </ui:VisualElement>
+            <ui:VisualElement name="cabecera-equipo-area" class="cabecera-equipo-area" style="flex-grow: 1;">
+                <ui:VisualElement name="cabecera-equipo-nombre" class="cabecera-equipo-nombre" style="flex-grow: 1;">
+                    <ui:Label name="miEquipoNombre" class="miEquipoNombre" />
+                </ui:VisualElement>
+                <ui:VisualElement name="cabecera-presupuesto" class="cabecera-presupuesto" style="flex-grow: 1;">
+                    <ui:Label name="miPresupuesto" class="miPresupuesto" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="cabecera-manager-area" class="cabecera-manager-area" style="flex-grow: 1;">
+                <ui:VisualElement name="cabecera-manager-nombre" class="cabecera-manager-nombre" style="flex-grow: 1;">
+                    <ui:Label name="managerNombre" class="managerNombre" />
+                </ui:VisualElement>
+                <ui:VisualElement name="cabecera-manager-valoracion" class="cabecera-manager-valoracion" style="flex-grow: 1;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="cabecera-fecha-area" class="cabecera-fecha-area" style="flex-grow: 1;">
+                <ui:VisualElement name="fecha1-area" class="fecha1-area" style="flex-grow: 1;">
+                    <ui:Label name="fecha1" class="fecha1" />
+                </ui:VisualElement>
+                <ui:VisualElement name="fecha2-area" class="fecha2-area" style="flex-grow: 1;">
+                    <ui:Label name="fecha2" class="fecha2" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="cabecera-boton-area" class="cabecera-boton-area" style="flex-grow: 1;">
+                <ui:Button name="btnSeguir" text="CONTINUAR" icon-image="project://database/Assets/Resources/Icons/avanzar.png?fileID=2800000&amp;guid=a6028fb24b29fe443bb23067d1943788&amp;type=3#avanzar" class="btnSeguir" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:VisualElement name="center-left" class="center-left" style="flex-grow: 1;">
+                <ui:VisualElement name="home" class="home" style="flex-grow: 0; height: 5%;">
+                    <ui:VisualElement name="home-icon" class="home-icon" style="flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="club" class="club" style="flex-grow: 1;">
+                    <ui:VisualElement name="club-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/club_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="alineacion" style="flex-grow: 1;">
+                    <ui:VisualElement name="alineacion-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/entrenador_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="competiciones" style="flex-grow: 1;">
+                    <ui:VisualElement name="competiciones-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/competiciones_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="calendario" style="flex-grow: 1;">
+                    <ui:VisualElement name="calendario-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/calendario_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="fichajes" style="flex-grow: 1;">
+                    <ui:VisualElement name="fichajes-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/transferencias_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="finanzas" style="flex-grow: 1;">
+                    <ui:VisualElement name="finanzas-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/finanzas_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="estadio" style="flex-grow: 1;">
+                    <ui:VisualElement name="estadio-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/estadioBlanco_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="manager" style="flex-grow: 1;">
+                    <ui:VisualElement name="manager-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/manager_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="mensajes" style="flex-grow: 1;">
+                    <ui:VisualElement name="mensajes-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/correo_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ajustes" style="flex-grow: 1;">
+                    <ui:VisualElement name="ajustes-icon" class="bar-menu-icons" style="flex-grow: 1; background-image: resource(&apos;Icons/ajustes-blanco-icon&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="center-right" class="center-right" style="flex-grow: 1;">
+                <ui:VisualElement name="top-menu" class="top-menu" style="flex-grow: 1;">
+                    <ui:VisualElement name="clubMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="EQUIPO" name="lblEquipo" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 200px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Información" name="lblInformacion" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 265px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Plantilla" name="lblPlantilla" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 210px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Empleados" name="lblEmpleados" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 240px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Lesionados" name="lblLesionados" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 200px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="entrenadorMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="ENTRENADOR" name="lblEntrenador" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 265px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Alineación" name="lblAlineacion" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 215px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Entrenamiento" name="lblEntrenamiento" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 250px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Ver Rival" name="lblRival" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 240px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="competicionMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="COMPETICIÓN" name="lblCompeticion" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 265px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Clasificación" name="lblClasificacion" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 225px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Resultados" name="lblResultados" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 205px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Estadísticas" name="lblEstadisticas" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 210px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Palmarés Equipos" name="lblPalmaresE" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 260px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Palmarés Jugadores" name="lblPalmaresJ" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 240px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="calendarioMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="CALENDARIO" name="lblCalendario" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 265px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="fichajesMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="FICHAJES" name="lblFichajes" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 240px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Mercado" name="lblMercado" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 200px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Buscar por Equipo" name="lblBusqueda" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 280px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Cartera" name="lblCartera" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 190px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Estado Ofertas" name="lblEstadoOfertas" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 260px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Lista de Traspasos" name="lblListaTraspasos" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 240px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="finanzasMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="FINANZAS" name="lblFinanzas" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 240px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Ingresos" name="lblIngresos" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 200px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Gastos" name="lblGastos" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 190px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Patrocinadores" name="lblPatrocinadores" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 260px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Televisión" name="lblTelevision" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 220px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Préstamos Bancarios" name="lblPrestamos" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 240px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="estadioMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="ESTADIO" name="lblEstadio" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 240px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Información" name="lblInformacionEstadio" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 250px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Entradas" name="lblEntradas" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 210px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Ampliaciones" name="lblAmpliaciones" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 260px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="managerMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="MANAGER" name="lblManager" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 250px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Ficha" name="lblFicha" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 200px; -unity-text-align: middle-left;" />
+                        <ui:Label text="Palmarés" name="lblPalmaresManager" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); color: rgb(255, 255, 255); font-size: 20px; width: 210px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="mensajesMenu" style="display: none; flex-grow: 1; width: 100%; height: 100%; flex-direction: row; justify-content: flex-start; align-items: center; align-self: center; align-content: center;">
+                        <ui:Label text="MENSAJES" name="lblMensajes" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(255, 255, 255); font-size: 24px; width: 265px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="main-container" class="main-container" style="flex-grow: 1;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,31 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Club/Lesionados/ClubLesionados.uss?fileID=7433441132597879392&amp;guid=ee90090fecb61e44193e2c96905e74da&amp;type=3#ClubLesionados" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: column; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 30%; background-color: rgb(229, 229, 229);">
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 20%; background-color: rgb(99, 34, 34); align-items: center; justify-content: center;">
+                <ui:Label text="JEFE DE LOS SERVICIOS MÉDIOS" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(243, 237, 237); font-size: 24px; -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 80%; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 1; width: 30%; height: 100%; align-items: center; justify-content: center;">
+                    <ui:VisualElement class="logoEnfermeria" style="flex-grow: 0; background-image: resource(&apos;Icons/enfermeria_icon&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 70%; height: 100%;">
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: 50%;">
+                        <ui:Label text="No tienes ningún equipo médico contratado" name="medico-nombre" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                        <ui:Label text="-" name="tiempo-recuperacion" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="estrellas-contenedor" style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: 50%;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; height: 60%; margin-top: 20px; margin-bottom: 20px; background-color: rgb(229, 229, 229);">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 10%; background-color: rgb(99, 34, 34); align-items: center; justify-content: center;">
+                <ui:Label text="JUGADORES LESIONADOS" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(243, 237, 237); font-size: 24px; -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:ScrollView name="lesionados-contenedor" vertical-scrolling-enabled="true" horizontal-scrolling-enabled="false" style="flex-grow: 1; width: 100%; height: 90%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 10%; background-color: rgb(229, 229, 229);">
+            <ui:Button text="        TRATAR LESIÓN" icon-image="project://database/Assets/Resources/Icons/cruzblanca_icon.png?fileID=2800000&amp;guid=60305ecd82fa823459355a524f0bc2ac&amp;type=3#cruzblanca_icon" name="btnTratarLesion" class="btnTratarLesion" style="justify-content: center; align-self: center; align-content: center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

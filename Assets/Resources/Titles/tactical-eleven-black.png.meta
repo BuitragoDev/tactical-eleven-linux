@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: a9dd50e728499e747b4adeb4a4c42961
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3320239828588236764
+    second: tactical-eleven-black_0
+  - first:
+      213: 1315007549019418364
+    second: tactical-eleven-black_1
+  - first:
+      213: -5917329968992284172
+    second: tactical-eleven-black_2
+  - first:
+      213: -7665681138520953036
+    second: tactical-eleven-black_3
+  - first:
+      213: 2118498746317074679
+    second: tactical-eleven-black_4
+  - first:
+      213: 926471714112607794
+    second: tactical-eleven-black_5
+  - first:
+      213: 2736680709997003423
+    second: tactical-eleven-black_6
+  - first:
+      213: -9054156859244800579
+    second: tactical-eleven-black_7
+  - first:
+      213: 5658265089946051665
+    second: tactical-eleven-black_8
+  - first:
+      213: -2143206898526885368
+    second: tactical-eleven-black_9
+  - first:
+      213: -8027586716912530772
+    second: tactical-eleven-black_10
+  - first:
+      213: 2524749219223555849
+    second: tactical-eleven-black_11
+  - first:
+      213: -6604296997052249425
+    second: tactical-eleven-black_12
+  - first:
+      213: 4102079392590218057
+    second: tactical-eleven-black_13
+  - first:
+      213: 1823374383719573142
+    second: tactical-eleven-black_14
+  - first:
+      213: 9109252654982130035
+    second: tactical-eleven-black_15
+  - first:
+      213: -1289940319304244212
+    second: tactical-eleven-black_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tactical-eleven-black_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 85
+        width: 62
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdf0b10688cd31e20800000000000000
+      internalID: 3320239828588236764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 85
+        width: 78
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe624c0668df3210800000000000000
+      internalID: 1315007549019418364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_2
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 69
+        width: 57
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f1117b9ebb61eda0800000000000000
+      internalID: -5917329968992284172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_3
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 85
+        width: 66
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43feb097e970e9590800000000000000
+      internalID: -7665681138520953036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_4
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 12
+        width: 54
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0f65fa26b666d10800000000000000
+      internalID: 2118498746317074679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_5
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 85
+        width: 62
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23611268d1d7bdc00800000000000000
+      internalID: 926471714112607794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_6
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 69
+        width: 57
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f92090f2b94aaf520800000000000000
+      internalID: 2736680709997003423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_7
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 85
+        width: 19
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db51c08be4c295280800000000000000
+      internalID: -9054156859244800579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_8
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 12
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1546a3bde12368e40800000000000000
+      internalID: 5658265089946051665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_9
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 85
+        width: 66
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80a63255eacc142e0800000000000000
+      internalID: -2143206898526885368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_10
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 85
+        width: 78
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caac8c6b968489090800000000000000
+      internalID: -8027586716912530772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_11
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 69
+        width: 57
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90fc3c6c906b90320800000000000000
+      internalID: 2524749219223555849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_12
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 12
+        width: 66
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa858b4fd2d854a0800000000000000
+      internalID: -6604296997052249425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_13
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 85
+        width: 54
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9434acb49738de830800000000000000
+      internalID: 4102079392590218057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_14
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 12
+        width: 57
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 696e622675ded4910800000000000000
+      internalID: 1823374383719573142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_15
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 12
+        width: 57
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3796e7dd6019a6e70800000000000000
+      internalID: 9109252654982130035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tactical-eleven-black_16
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 12
+        width: 57
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c04aa6e2d16391ee0800000000000000
+      internalID: -1289940319304244212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tactical-eleven-black_0: 3320239828588236764
+      tactical-eleven-black_1: 1315007549019418364
+      tactical-eleven-black_10: -8027586716912530772
+      tactical-eleven-black_11: 2524749219223555849
+      tactical-eleven-black_12: -6604296997052249425
+      tactical-eleven-black_13: 4102079392590218057
+      tactical-eleven-black_14: 1823374383719573142
+      tactical-eleven-black_15: 9109252654982130035
+      tactical-eleven-black_16: -1289940319304244212
+      tactical-eleven-black_2: -5917329968992284172
+      tactical-eleven-black_3: -7665681138520953036
+      tactical-eleven-black_4: 2118498746317074679
+      tactical-eleven-black_5: 926471714112607794
+      tactical-eleven-black_6: 2736680709997003423
+      tactical-eleven-black_7: -9054156859244800579
+      tactical-eleven-black_8: 5658265089946051665
+      tactical-eleven-black_9: -2143206898526885368
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

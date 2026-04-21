@@ -1,0 +1,23 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Club/Plantilla/ClubPlantilla.uss?fileID=7433441132597879392&amp;guid=1d22aff132d46e8489defb265b7930d8&amp;type=3#ClubPlantilla" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: column; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 5%; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+            <ui:Label text="JUGADORES EN PLANTILLA" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); color: rgb(253, 253, 253); font-size: 24px; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 95%; background-color: rgb(229, 229, 229); flex-direction: row;">
+            <ui:ScrollView name="plantilla-contenedor" vertical-scrolling-enabled="true" horizontal-scrolling-enabled="false" 
+                           style="width: 95%; height: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" />
+            <ui:VisualElement style="flex-grow: 1; width: 5%; height: 100%; background-color: rgb(30, 30, 30); align-items: flex-start; justify-content: flex-start;">
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="puntuacion-icon" class="iconos" style="background-image: resource(&apos;Icons/plantilla_puntuacion&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="datos-icon" class="iconos" style="background-image: resource(&apos;Icons/plantilla_datos&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="estadisticas-icon" class="iconos" style="background-image: resource(&apos;Icons/plantilla_estadisticas&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

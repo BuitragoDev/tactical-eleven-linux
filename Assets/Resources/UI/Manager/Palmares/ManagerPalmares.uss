@@ -1,0 +1,7 @@
+.trofeos {
+    width: 128px;
+    height: 128px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

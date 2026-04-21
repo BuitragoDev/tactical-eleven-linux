@@ -1,0 +1,297 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Club/Empleados/ClubEmpleados.uss?fileID=7433441132597879392&amp;guid=f0ef7eeea08ca5d4b95c5cd140cf1b46&amp;type=3#ClubEmpleados" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: row; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 1; width: 65%; height: 100%;">
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 5%; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+                <ui:Label text="EMPLEADOS" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 95%;">
+                <ui:VisualElement name="empleados" style="flex-grow: 1; background-size: 100% 100%; width: 100%; height: 65%; background-color: rgb(229, 229, 229); margin-bottom: 20px; align-items: center; justify-content: center; flex-direction: column;">
+                    <ui:VisualElement name="empleados-cabecera" style="flex-grow: 1; width: 100%; height: 4%; flex-direction: row; align-items: center; justify-content: center; background-color: rgb(53, 53, 53);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="EMPLEADO" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 16px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="PUESTO" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 16px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="CATEGORIA" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 16px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="SALARIO" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 16px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="segundoEntrenador-fila" style="flex-grow: 1; width: 100%; height: 12%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblSegundoEntrenador-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="Segundo Entrenador" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label name="lblSegundoEntrenador-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblSegundoEntrenador-salario" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Button text="CONTRATAR" name="btnContratar1" class="btnContratar" />
+                            <ui:Button text="DESPEDIR" name="btnDespedir1" class="btnDespedir" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="delegado-fila" style="flex-grow: 1; width: 100%; height: 12%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblDelegado-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="Delegado" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label name="lblDelegado-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblDelegado-salario" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Button text="CONTRATAR" name="btnContratar2" class="btnContratar" />
+                            <ui:Button text="DESPEDIR" name="btnDespedir2" class="btnDespedir" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="directorTecnico-fila" style="flex-grow: 1; width: 100%; height: 12%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblDirectorTecnico-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="Director Técnico" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label name="lblDirectorTecnico-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblDirectorTecnico-salario" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Button text="CONTRATAR" name="btnContratar3" class="btnContratar" />
+                            <ui:Button text="DESPEDIR" name="btnDespedir3" class="btnDespedir" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="preparadorFisico-fila" style="flex-grow: 1; width: 100%; height: 12%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblPreparadorFisico-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="Preparador Físico" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label name="lblPreparadorFisico-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblPreparadorFisico-salario" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Button text="CONTRATAR" name="btnContratar4" class="btnContratar" />
+                            <ui:Button text="DESPEDIR" name="btnDespedir4" class="btnDespedir" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="psicologo-fila" style="flex-grow: 1; width: 100%; height: 12%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblPsicologo-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="Psicólogo" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label name="lblPsicologo-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblPsicologo-salario" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Button text="CONTRATAR" name="btnContratar5" class="btnContratar" />
+                            <ui:Button text="DESPEDIR" name="btnDespedir5" class="btnDespedir" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="financiero-fila" style="flex-grow: 1; width: 100%; height: 12%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblFinanciero-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="Financiero" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label name="lblFinanciero-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblFinanciero-salario" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Button text="CONTRATAR" name="btnContratar6" class="btnContratar" />
+                            <ui:Button text="DESPEDIR" name="btnDespedir6" class="btnDespedir" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="equipoMedico-fila" style="flex-grow: 1; width: 100%; height: 12%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblEquipoMedico-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="Equipo Médico" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label name="lblEquipoMedico-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblEquipoMedico-salario" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Button text="CONTRATAR" name="btnContratar7" class="btnContratar" />
+                            <ui:Button text="DESPEDIR" name="btnDespedir7" class="btnDespedir" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="encargadoCampo-fila" style="flex-grow: 1; width: 100%; height: 12%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblEncargadoCampo-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="Encargado Campo" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label name="lblEncargadoCampo-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="lblEncargadoCampo-salario" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:Button text="CONTRATAR" name="btnContratar8" class="btnContratar" />
+                            <ui:Button text="DESPEDIR" name="btnDespedir8" class="btnDespedir" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; background-size: 100% 100%; width: 100%; height: 35%; background-color: rgb(229, 229, 229);">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 15%; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+                        <ui:Label text="EMPLEADOS DISPONIBLES" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 85%;">
+                        <ui:VisualElement name="empleadoDisponible1" style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible1-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible1-puesto" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label name="lblEncargadoDisponible1-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible1-salario" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Button text="FIRMAR" name="btnFirmar1" class="btnFirmar" style="flex-grow: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px; display: none;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="empleadoDisponible2" style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible2-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible2-puesto" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label name="lblEncargadoDisponible2-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible2-salario" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Button text="FIRMAR" name="btnFirmar2" class="btnFirmar" style="flex-grow: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px; display: none;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="empleadoDisponible3" style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible3-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible3-puesto" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label name="lblEncargadoDisponible3-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible3-salario" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Button text="FIRMAR" name="btnFirmar3" class="btnFirmar" style="flex-grow: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px; display: none;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="empleadoDisponible4" style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible4-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible4-puesto" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label name="lblEncargadoDisponible4-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible4-salario" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Button text="FIRMAR" name="btnFirmar4" class="btnFirmar" style="flex-grow: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px; display: none;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="empleadoDisponible5" style="flex-grow: 1; width: 100%; height: 20%; flex-direction: row; align-items: center; justify-content: center; background-color: rgba(229, 229, 229, 0);">
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible5-nombre" style="-unity-text-align: middle-center; font-size: 18px; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible5-puesto" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label name="lblEncargadoDisponible5-categoria" style="-unity-font-definition: resource(&apos;Fonts/BebasNeue-Regular&apos;); font-size: 32px; -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Label text="-" name="lblEncargadoDisponible5-salario" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                                <ui:Button text="FIRMAR" name="btnFirmar5" class="btnFirmar" style="flex-grow: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px; display: none;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 35%; height: 100%; margin-left: 20px;">
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 5%; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+                <ui:Label text="FICHA" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 95%; background-color: rgb(229, 229, 229); align-items: center; justify-content: center;">
+                <ui:VisualElement style="flex-grow: 1; height: 5%; width: 100%; background-color: rgb(53, 53, 53); align-items: center; justify-content: center;">
+                    <ui:Label text="FICHA DE EMPLEADO" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; height: 10%; width: 100%; align-items: center; justify-content: center;">
+                    <ui:Label text="-" name="lblNombreEmpleado-ficha" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="estrellasContenedor-ficha" style="flex-grow: 1; height: 10%; width: 100%; background-color: rgb(216, 215, 215); align-items: center; justify-content: center;" />
+                <ui:VisualElement style="flex-grow: 1; height: 10%; width: 100%; align-items: center; justify-content: center;">
+                    <ui:Label text="-" name="salarioEmpleado-ficha" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 18px; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; height: 5%; width: 100%; background-color: rgb(53, 53, 53); align-items: center; justify-content: center;">
+                    <ui:Label text="INFO" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(245, 244, 244); -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; height: 60%; width: 100%; background-size: 100% 100%; align-items: flex-start; justify-content: flex-start; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; -unity-text-align: middle-center;">
+                    <ui:Label text="-" name="info" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;); font-size: 18px; -unity-text-align: upper-left; white-space: normal;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="popup-container" class="popup-container" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none; justify-content: center; align-items: center;">
+        <ui:VisualElement name="popup" class="popup" style="width: 650px; height: 200px; background-color: rgb(34, 34, 34); border-radius: 8px; padding: 20px; flex-direction: column; align-items: center; justify-content: space-between;">
+            <ui:Label name="popup-text" text="¿Estás seguro de que deseas salir al Escritorio?" style="color: white; font-size: 18px; text-align: center;" />
+            <ui:VisualElement style="flex-direction: row; justify-content: space-evenly; width: 100%; margin-top: 20px;">
+                <ui:Button text="SI" name="btnYes" class="popup-button-yes" />
+                <ui:Button text="CANCELAR" name="btnCancel" class="popup-button-cancel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

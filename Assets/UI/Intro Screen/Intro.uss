@@ -1,0 +1,54 @@
+VisualElement {
+}
+
+.logo-area {
+    display: flex;
+    flex-grow: 1;
+    height: 75%;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-area {
+    display: flex;
+    flex-grow: 1;
+    height: 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-sentence {
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    font-size: 24px;
+}
+
+.title {
+    width: 520px;
+    height: 168px;
+    background-image: url("project://database/Assets/Resources/Titles/tactical-eleven-white.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.progress-bar{
+    width: 75%;
+    height: 20px;
+}
+
+/* Background of the progress bar */
+.progress-bar > .unity-progress-bar__background {
+    background-color: white;          /* Fondo blanco */
+    border-radius: 10px;              /* Esquinas redondeadas */
+    border-width: 1px;                /* Ancho del borde */
+    border-color: #6E6E6E;            /* Color del borde */
+}
+
+
+/* Filled part of the progress bar */
+.progress-bar > .unity-progress-bar__fill {
+    background-color: #6e6e6e;        /* Color de la barra de carga */
+    border-radius: 10px;           /* Coincide con el fondo para esquinas redondeadas */
+    transition: width 0.3s ease;
+}

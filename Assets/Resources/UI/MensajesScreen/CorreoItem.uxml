@@ -1,0 +1,22 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/MensajesScreen/Mensajes.uss?fileID=7433441132597879392&amp;guid=068200918c414d64990af985bdd845e9&amp;type=3#Mensajes" />
+    <ui:VisualElement name="correo-item" class="correo-item" style="align-items: center; justify-content: center; height: 117px; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(53, 53, 53); border-right-color: rgb(53, 53, 53); border-top-color: rgb(53, 53, 53); border-bottom-color: rgb(53, 53, 53); flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center;">
+            <ui:VisualElement name="correo-logo" class="mensaje-logo" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 65%; height: 100%;">
+            <ui:VisualElement style="flex-grow: 1; height: 30%; align-items: flex-start; justify-content: center;">
+                <ui:Label name="correo-fecha" class="correo-fecha" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; height: 35%; align-items: flex-start; justify-content: center;">
+                <ui:Label name="correo-autor" class="correo-autor" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; height: 35%; align-items: flex-start; justify-content: center;">
+                <ui:Label name="correo-asunto" class="correo-asunto" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 10%; height: 100%; align-items: center; justify-content: center;">
+            <ui:VisualElement name="btnBorrar" class="papelera" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

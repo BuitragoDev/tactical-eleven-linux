@@ -1,0 +1,189 @@
+.background-image {
+    width: 1920px;
+    height: 1080px;
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Resources/Backgrounds/mainBackground.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-area {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 58, 39);
+}
+
+.window-title {
+    font-size: 48px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+}
+
+.center-area {
+    height: 75%;
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 50px;
+}
+
+.bottom-area {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    align-self: flex-end;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.back-button {
+    width: 300px;
+    height: 60px;
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition-property: background-color, transform, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.back-button:hover {
+    background-color: rgb(51, 51, 51);
+}
+
+.back-button:active {
+    background-color: rgb(17, 17, 17);
+}
+
+.cargar-button {
+    width: 300px;
+    height: 60px;
+    background-color: rgb(24, 58, 39);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition-property: background-color, transform, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.cargar-button:hover {
+    background-color: rgba(3, 27, 10, 1);
+}
+
+.cargar-button:active {
+    background-color: rgb(17, 17, 17);
+}
+
+.borrar-button {
+    width: 300px;
+    height: 60px;
+    background-color: rgba(85, 7, 7, 1);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition-property: background-color, transform, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.borrar-button:hover {
+    background-color: rgba(59, 28, 28, 1);
+}
+
+.borrar-button:active {
+    background-color: rgb(17, 17, 17);
+}
+
+.celda-cabecera {
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    -unity-text-align: middle-left;
+    padding-left: 5px;
+    flex-grow: 1;
+}
+
+.celda-fila {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    -unity-text-align: middle-left;
+    padding-left: 5px;
+    flex-grow: 1;
+}
+
+.saves-scrollview {
+    flex-grow: 1;
+    overflow-y: auto;
+    width: 100%;  
+    max-height: 100%;
+    align-self: center;
+}
+
+.popup-container {
+    background-color: rgba(0,0,0,0.6);
+}
+
+.popup {
+    background-color: #222;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.popup Label {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+}
+
+.popup-button-yes {
+    width: 290px;
+    height: 60px;
+    background-color: rgb(24, 58, 39);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
+.popup-button-cancel {
+    width: 290px;
+    height: 60px;
+    background-color: rgba(102, 8, 8, 1);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+

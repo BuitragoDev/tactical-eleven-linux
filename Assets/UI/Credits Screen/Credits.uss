@@ -1,0 +1,143 @@
+.background-image {
+    width: 1920px;
+    height: 1080px;
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Resources/Backgrounds/mainBackground.png?fileID=21300000&guid=68bacede3fe51c34f9d14839f9e880fc&type=3#mainBackground");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.top-area {
+    display: flex;
+    flex-direction: column;
+    height: 20%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-text {
+    font-size: 48px;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.center-area {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.text-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(229, 229, 229);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.bottom-area {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    align-self: flex-end;
+    padding-right: 50px;
+}
+
+.back-button {
+    width: 300px;
+    height: 60px;
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-family: "Poppins-Bold";
+    border-radius: 12px;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition-property: background-color, transform, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.back-button:hover {
+    background-color: rgb(51, 51, 51);
+}
+
+.back-button:active {
+    background-color: rgb(17, 17, 17);
+}
+
+.informacion-juego {
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.description {
+    flex-shrink: 0;
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.informacion-contacto {
+    flex-shrink: 0;
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.informacion-juego-title {
+    flex-grow: 1;
+    width: 30%;
+    background-color: rgb(34, 31, 31);
+}
+
+.descripcion-title {
+    flex-grow: 1;
+    width: 30%;
+    background-color: rgb(10, 18, 53);
+}
+
+.informacion-contacto-title {
+    flex-grow: 1; 
+    width: 30%; 
+    background-color: rgb(3, 29, 12);
+}
+
+.textos-titulos {
+    color: rgb(255, 255, 255);
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    font-size: 32px;
+    -unity-text-align: middle-center;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    flex-grow: 1;
+    align-content: center;
+}
+
+.descripciones {
+    flex-grow: 1;
+    justify-content: flex-start;
+    -unity-text-align: middle-left;
+    margin-left: 20px;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    font-size: 24px;
+}
+
+.secciones-textos {
+    flex-grow: 1;
+    width: 70%;
+    background-color: rgb(197, 196, 196);
+}
+
+

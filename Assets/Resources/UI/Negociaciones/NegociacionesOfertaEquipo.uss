@@ -1,0 +1,137 @@
+.escudos {
+    width: 120px;
+    height: 120px;
+    flex-grow: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.fotos {
+    width: 100px;
+    height: 100px;
+    flex-grow: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.caja-texto {
+    width: 100%;
+    font-size: 32px;
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    -unity-text-align: middle-center;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.botones-cantidad {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(36, 36, 36);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
+.boton-cancelar-oferta {
+    width: 48%;
+    height: 60px;
+    background-color: rgb(102, 8, 8);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
+.boton-enviar-oferta {
+    width: 35%;
+    height: 60px;
+    background-color: rgb(24, 58, 39);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
+.boton-volver {
+    width: 15%;
+    height: 60px;
+    background-color: rgb(36, 36, 36);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
+.boton-cesion {
+    width: 400px;
+    height: 60px;
+    background-color: rgb(36, 36, 36);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-width: 0;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
+.popup-container {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.popup {
+    background-color: rgb(34, 34, 34);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.popup Label {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+}
+
+.popup-button-yes {
+    width: 290px;
+    height: 60px;
+    background-color: rgb(24, 58, 39);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
+.popup-button-cancel {
+    width: 290px;
+    height: 60px;
+    background-color: rgb(102, 8, 8);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}

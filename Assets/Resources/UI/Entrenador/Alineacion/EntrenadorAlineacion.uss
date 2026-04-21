@@ -1,0 +1,28 @@
+.botones {
+    width: 90px;
+    height: 40px;
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.posiciones {
+    width: 232;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.caras {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

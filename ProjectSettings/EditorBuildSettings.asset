@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 20fb0fcdce1285c4782c15d87b178ba0
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 07c8cdb52eb62ea40b8efd5de738785b
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 1d94e91b8f3d38b45a012bf331b83ffb
+  - enabled: 1
+    path: Assets/Scenes/CargarPartida.unity
+    guid: d28d1029f64888c429aa600446a8311f
+  - enabled: 1
+    path: Assets/Scenes/CreateManager.unity
+    guid: 582db73ad0dbb68498f70fc61625e330
+  - enabled: 1
+    path: Assets/Scenes/TeamSelection.unity
+    guid: 4d03b39c8745de84791953fd4bd84365
+  - enabled: 1
+    path: Assets/Scenes/PreSeason.unity
+    guid: dd2037dc205dd944cace1cb488b4e4e0
+  - enabled: 1
+    path: Assets/Scenes/TeamObjectives.unity
+    guid: e6230348a1dd581468ea37b83ceaa4d0
+  - enabled: 1
+    path: Assets/Scenes/MainScreen.unity
+    guid: be4edb580a453604e87f306ec6d549f0
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 2dd231377728d7040a7bf530e94e203f
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_UseUCBPForAssetBundles: 0

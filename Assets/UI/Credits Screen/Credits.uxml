@@ -1,0 +1,43 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Credits%20Screen/Credits.uss?fileID=7433441132597879392&amp;guid=a8f8916b998d1154686e186595af2485&amp;type=3#Credits" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:Label text="CRÉDITOS" name="creditos" class="title-text" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:VisualElement name="text-container" class="text-container" style="flex-grow: 1; flex-shrink: 0;">
+                <ui:VisualElement name="informacion-juego" class="informacion-juego">
+                    <ui:VisualElement name="informacion-juego-title" class="informacion-juego-title">
+                        <ui:Label text="Información &#10;del &#10;Juego" name="lblInformacionJuegoTitle" class="textos-titulos" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="informacion-juego-text" class="secciones-textos">
+                        <ui:Label text="Juego desarrollado por ANTONIO BUITRAGO" name="desarrollador" class="descripciones" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        <ui:Label text="Versión 1.0.0" name="version" class="descripciones" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        <ui:Label text="Creado en 2026" name="anio" class="descripciones" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="descripcion" class="description">
+                    <ui:VisualElement name="descripcion-title" class="descripcion-title">
+                        <ui:Label text="Descripción &#10;del &#10;Juego" name="lblDescripcionTitle" class="textos-titulos" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="descripcion-text" class="secciones-textos" style="flex-grow: 1; width: 70%;">
+                        <ui:Label text="Tactical Eleven es un juego de gestión y simulación de fútbol que combina estrategia y decisiones tácticas." name="breve-descripcion" class="descripciones" style="white-space: normal; -unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="informacion-contacto" class="informacion-contacto">
+                    <ui:VisualElement name="informacion-contacto-title" class="informacion-contacto-title">
+                        <ui:Label text="Información &#10;de &#10;contacto" name="lblInformacionContactoTitle" class="textos-titulos" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="informacion-contacto-text" class="secciones-textos" style="flex-grow: 1; width: 70%;">
+                        <ui:Label text="Correo electrónico: buitragodev@gmail.com" name="email" class="descripciones" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        <ui:Label text="Sitio Web: www.antoniobuitrago.es" name="web" class="descripciones" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                        <ui:Label text="@tacticaleleven" name="redesSociales" class="descripciones" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area">
+            <ui:Button text="VOLVER" name="btnVolver" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

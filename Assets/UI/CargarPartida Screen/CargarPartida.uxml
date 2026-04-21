@@ -1,0 +1,25 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/CargarPartida%20Screen/CargarPartida.uss?fileID=7433441132597879392&amp;guid=bc14783db643a064fa7c2099004ebb9f&amp;type=3#CargarPartida" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:Label text="CARGAR PARTIDA" name="window-title" class="window-title" style="-unity-font-definition: resource(&apos;Fonts/Poppins-ExtraBold&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:ScrollView name="saves-scrollview" class="saves-scrollview" />
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area">
+            <ui:Button text="VOLVER" name="btnVolver" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+            <ui:Button text="BORRAR PARTIDA" name="btnBorrar" class="borrar-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+            <ui:Button text="CARGAR PARTIDA" name="btnCargar" class="cargar-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="popup-container" class="popup-container" style="position:absolute; top:0; left:0; right:0; bottom:0; display:none; justify-content:center; align-items:center;">
+        <ui:VisualElement name="popup" class="popup" style="width:650px; height:200px; background-color:#222; border-radius:8px; padding:20px; flex-direction:column; align-items:center; justify-content:space-between;">
+            <ui:Label name="popup-text" text="¿Deseas borrar esta partida?" style="color:white; font-size:18px; text-align:center;" />
+            <ui:VisualElement style="flex-direction:row; justify-content:space-evenly; width:100%; margin-top:20px;">
+                <ui:Button text="SI" name="btnYes" class="popup-button-yes" />
+                <ui:Button text="CANCELAR" name="btnCancel" class="popup-button-cancel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

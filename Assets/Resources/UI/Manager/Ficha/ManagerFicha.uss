@@ -1,0 +1,16 @@
+.fotoManager {
+    width: 128px;
+    height: 128px;
+    background-image: resource('Managers/default');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bandera {
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

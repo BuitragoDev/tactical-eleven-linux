@@ -1,0 +1,262 @@
+.background-image {
+    width: 1920px;
+    height: 1080px;
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Resources/Backgrounds/mainBackground.png?fileID=21300000&guid=68bacede3fe51c34f9d14839f9e880fc&type=3#mainBackground");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.top-area {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(229, 229, 229);
+    border-bottom-width: 1px;
+}
+
+.cabecera-escudo-area {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100%;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecera-escudo {
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.cabecera-equipo-area {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100%;
+    width: 23%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 58, 39);
+}
+
+.cabecera-equipo-nombre {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.miEquipoNombre {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    padding-left: 40px;
+}
+
+.cabecera-presupuesto {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.miPresupuesto {
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    padding-left: 40px;
+}
+
+.cabecera-manager-area {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100%;
+    width: 23%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 58, 39);
+}
+
+.cabecera-manager-nombre {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.managerNombre {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    color: rgb(255, 255, 255);
+    font-size: 28px;
+}
+
+.cabecera-manager-valoracion {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cabecera-fecha-area {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100%;
+    width: 23%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 58, 39);
+}
+
+.fecha1-area {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.fecha2-area {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.fecha1 {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+}
+
+.fecha2 {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+}
+
+.cabecera-boton-area {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100%;
+    width: 21%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+}
+
+.btnSeguir {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(229, 229, 229);
+    color: rgb(30, 30, 30);
+    font-size: 24px;
+    border-width: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    font-size: 32px;
+    background-image: none;
+    padding-top: 15px;
+}
+
+.center-area {
+    height: 89%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-left {
+    height: 100%;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+}
+
+.home-icon {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: resource("Icons/casa_icon");
+}
+
+.bar-menu-icons {
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.center-right {
+    height: 100%;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-menu {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+    padding-left: 50px;
+}
+
+.main-container {
+    height: 95%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-area {
+    display: flex;
+    flex-direction: row;
+    height: 1%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: rgb(30, 30, 30);
+}

@@ -1,0 +1,32 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/TeamObjectives%20Screen/TeamObjectives.uss?fileID=7433441132597879392&amp;guid=de572ce09ca539243beaa0d78d658cd4&amp;type=3#TeamObjectives" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:Label text="OBJETIVOS DE TEMPORADA" name="window-title" class="window-title" style="-unity-font-definition: resource(&apos;Fonts/Poppins-ExtraBold&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:VisualElement name="left" class="left" style="flex-grow: 1;" />
+            <ui:VisualElement name="right" class="right" style="flex-grow: 1;">
+                <ui:VisualElement name="competiciones-container" class="competiciones-container" style="flex-grow: 1;">
+                    <ui:VisualElement name="division1-logo" class="logo-competicion1" />
+                    <ui:VisualElement name="division2-logo" class="logo-competicion2" />
+                </ui:VisualElement>
+                <ui:VisualElement name="manager-container" class="manager-container" style="flex-grow: 1;">
+                    <ui:VisualElement name="miEquipo-escudo-container" class="miEquipo-escudo-container" style="flex-grow: 1;">
+                        <ui:VisualElement name="miEquipo-escudo" class="escudo-equipo" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="miEquipo-nombre-container" class="miEquipo-nombre-container" style="flex-grow: 1;">
+                        <ui:Label name="miEquipo-nombre" class="left-labels-bold" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="miObjetivo-container" class="miObjetivo miObjetivo-container" style="flex-grow: 1;">
+                        <ui:Label name="miObjetivo" class="left-labels-regular" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area">
+            <ui:ProgressBar value="22" title="Generando..." name="loading" class="progress-bar" />
+            <ui:Button text="SEGUIR" name="btnSeguir" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

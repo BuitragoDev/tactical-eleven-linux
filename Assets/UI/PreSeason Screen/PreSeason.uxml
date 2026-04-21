@@ -1,0 +1,201 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PreSeason%20Screen/PreSeason.uss?fileID=7433441132597879392&amp;guid=ad2d93d7b32d22a48bd6d34eb786ebe9&amp;type=3#PreSeason" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:Label text="PRETEMPORADA" name="window-title" class="window-title" style="-unity-font-definition: resource(&apos;Fonts/Poppins-ExtraBold&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:VisualElement name="fila1" class="fila" style="flex-grow: 1;">
+                <ui:VisualElement name="left" class="left" style="flex-grow: 1;">
+                    <ui:VisualElement name="left-content" class="left-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="escudo-equipo1" class="escudo-equipo" style="flex-grow: 1; background-image: none;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="center-content" class="center-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="center-top-content" class="center-top-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="fecha-container" class="fecha-container" style="flex-grow: 1;">
+                                <ui:Label name="fecha1" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="estadio-container" class="estadio-container" style="flex-grow: 1;">
+                                <ui:Label name="estadio1" class="texto-blanco" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-center-content" class="center-center-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="text" class="text" style="flex-grow: 1;">
+                                <ui:Label text="ELIGE UN EQUIPO" double-click-selects-word="false" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="arrow" class="arrow" style="flex-grow: 1;">
+                                <ui:VisualElement name="arrow-icon1" class="arrow-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/derecha_icon&apos;);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-bottom-content" class="center-bottom-content" style="flex-grow: 1;">
+                            <ui:Label name="nombre-equipo1" class="nombre-equipo" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="right-content" class="right-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="amistoso-icon" class="amistoso-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/amistoso-trophy&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="right" class="right" style="flex-grow: 1;">
+                    <ui:VisualElement name="borrar1" class="papelera" style="flex-grow: 1; background-image: resource(&apos;Icons/papelera-black&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="fila2" class="fila" style="flex-grow: 1;">
+                <ui:VisualElement name="left" class="left" style="flex-grow: 1;">
+                    <ui:VisualElement name="left-content" class="left-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="escudo-equipo2" class="escudo-equipo" style="flex-grow: 1; background-image: none;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="center-content" class="center-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="center-top-content" class="center-top-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="fecha-container" class="fecha-container" style="flex-grow: 1;">
+                                <ui:Label name="fecha2" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="estadio-container" class="estadio-container" style="flex-grow: 1;">
+                                <ui:Label name="estadio2" class="texto-blanco" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-center-content" class="center-center-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="text" class="text" style="flex-grow: 1;">
+                                <ui:Label text="ELIGE UN EQUIPO" double-click-selects-word="false" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="arrow" class="arrow" style="flex-grow: 1;">
+                                <ui:VisualElement name="arrow-icon2" class="arrow-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/derecha_icon&apos;);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-bottom-content" class="center-bottom-content" style="flex-grow: 1;">
+                            <ui:Label name="nombre-equipo2" class="nombre-equipo" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="right-content" class="right-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="amistoso-icon" class="amistoso-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/amistoso-trophy&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="right" class="right" style="flex-grow: 1;">
+                    <ui:VisualElement name="borrar2" class="papelera" style="flex-grow: 1; background-image: resource(&apos;Icons/papelera-black&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="fila3" class="fila" style="flex-grow: 1;">
+                <ui:VisualElement name="left" class="left" style="flex-grow: 1;">
+                    <ui:VisualElement name="left-content" class="left-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="escudo-equipo3" class="escudo-equipo" style="flex-grow: 1; background-image: none;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="center-content" class="center-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="center-top-content" class="center-top-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="fecha-container" class="fecha-container" style="flex-grow: 1;">
+                                <ui:Label name="fecha3" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="estadio-container" class="estadio-container" style="flex-grow: 1;">
+                                <ui:Label name="estadio3" class="texto-blanco" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-center-content" class="center-center-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="text" class="text" style="flex-grow: 1;">
+                                <ui:Label text="ELIGE UN EQUIPO" double-click-selects-word="false" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="arrow" class="arrow" style="flex-grow: 1;">
+                                <ui:VisualElement name="arrow-icon3" class="arrow-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/derecha_icon&apos;);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-bottom-content" class="center-bottom-content" style="flex-grow: 1;">
+                            <ui:Label name="nombre-equipo3" class="nombre-equipo" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="right-content" class="right-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="amistoso-icon" class="amistoso-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/amistoso-trophy&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="right" class="right" style="flex-grow: 1;">
+                    <ui:VisualElement name="borrar3" class="papelera" style="flex-grow: 1; background-image: resource(&apos;Icons/papelera-black&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="fila4" class="fila" style="flex-grow: 1;">
+                <ui:VisualElement name="left" class="left" style="flex-grow: 1;">
+                    <ui:VisualElement name="left-content" class="left-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="escudo-equipo4" class="escudo-equipo" style="flex-grow: 1; background-image: none;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="center-content" class="center-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="center-top-content" class="center-top-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="fecha-container" class="fecha-container" style="flex-grow: 1;">
+                                <ui:Label name="fecha4" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="estadio-container" class="estadio-container" style="flex-grow: 1;">
+                                <ui:Label name="estadio4" class="texto-blanco" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-center-content" class="center-center-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="text" class="text" style="flex-grow: 1;">
+                                <ui:Label text="ELIGE UN EQUIPO" double-click-selects-word="false" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="arrow" class="arrow" style="flex-grow: 1;">
+                                <ui:VisualElement name="arrow-icon4" class="arrow-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/derecha_icon&apos;);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-bottom-content" class="center-bottom-content" style="flex-grow: 1;">
+                            <ui:Label name="nombre-equipo4" class="nombre-equipo" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="right-content" class="right-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="amistoso-icon" class="amistoso-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/amistoso-trophy&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="right" class="right" style="flex-grow: 1;">
+                    <ui:VisualElement name="borrar4" class="papelera" style="flex-grow: 1; background-image: resource(&apos;Icons/papelera-black&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="fila5" class="fila" style="flex-grow: 1;">
+                <ui:VisualElement name="left" class="left" style="flex-grow: 1;">
+                    <ui:VisualElement name="left-content" class="left-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="escudo-equipo5" class="escudo-equipo" style="flex-grow: 1; background-image: none;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="center-content" class="center-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="center-top-content" class="center-top-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="fecha-container" class="fecha-container" style="flex-grow: 1;">
+                                <ui:Label name="fecha5" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="estadio-container" class="estadio-container" style="flex-grow: 1;">
+                                <ui:Label name="estadio5" class="texto-blanco" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-center-content" class="center-center-content" style="flex-grow: 1;">
+                            <ui:VisualElement name="text" class="text" style="flex-grow: 1;">
+                                <ui:Label text="ELIGE UN EQUIPO" double-click-selects-word="false" class="texto-blanco" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="arrow" class="arrow" style="flex-grow: 1;">
+                                <ui:VisualElement name="arrow-icon5" class="arrow-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/derecha_icon&apos;);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="center-bottom-content" class="center-bottom-content" style="flex-grow: 1;">
+                            <ui:Label name="nombre-equipo5" class="nombre-equipo" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="right-content" class="right-content" style="flex-grow: 1;">
+                        <ui:VisualElement name="amistoso-icon" class="amistoso-icon" style="flex-grow: 1; background-image: resource(&apos;Icons/amistoso-trophy&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="right" class="right" style="flex-grow: 1;">
+                    <ui:VisualElement name="borrar5" class="papelera" style="flex-grow: 1; background-image: resource(&apos;Icons/papelera-black&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area">
+            <ui:Button text="VOLVER" name="btnVolver" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+            <ui:Button text="SEGUIR" name="btnSeguir" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="map-container" class="map-container" style="flex-grow: 1;">
+        <ui:VisualElement name="map-area" class="map-area" style="flex-grow: 1;">
+            <ui:VisualElement name="map" class="map" />
+        </ui:VisualElement>
+        <ui:VisualElement name="equipos-area" class="equipos-area" style="flex-grow: 1;">
+            <ui:VisualElement name="cabecera" class="cabecera" style="flex-grow: 1;">
+                <ui:Label text="SELECCIONA UN EQUIPO" name="cabecera-text" class="texto-blanco" />
+            </ui:VisualElement>
+            <ui:VisualElement name="nombre-equipo" class="equipo-seleccionado" style="flex-grow: 1;">
+                <ui:Label name="equipo-seleccionado" class="texto-blanco" />
+            </ui:VisualElement>
+            <ui:VisualElement name="lista-equipos" class="lista-equipos" style="flex-grow: 1;" />
+            <ui:VisualElement name="closing-area" class="closing-area" style="flex-grow: 1;">
+                <ui:Button text="SELECCIONAR EQUIPO" name="btnCerrar" class="closing-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

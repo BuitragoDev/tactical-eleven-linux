@@ -1,0 +1,24 @@
+.botones {
+    width: 32px;
+    height: 32px;
+}
+
+.logosCompeticiones {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.partidos-container {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.columna {
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 10px;
+}

@@ -1,0 +1,75 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/TeamSelection%20Screen/TeamSelection.uss?fileID=7433441132597879392&amp;guid=9b5f942e05be7f94da053a5bc36d9165&amp;type=3#TeamSelection" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:Label text="SELECCIÓN DE EQUIPO" name="window-title" class="window-title" style="-unity-font-definition: resource(&apos;Fonts/Poppins-ExtraBold&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:VisualElement name="area-competiciones" class="area-competiciones">
+                <ui:VisualElement name="division1-logo" class="logo-competicion1" />
+                <ui:VisualElement name="division2-logo" class="logo-competicion2" />
+            </ui:VisualElement>
+            <ui:VisualElement name="area-escudos" class="area-escudos" />
+            <ui:Button text="VER DETALLES" name="btnDetalles" class="details-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area">
+            <ui:Button text="VOLVER" name="btnVolver" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+            <ui:Button text="SEGUIR" name="btnSeguir" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="ventanaDetalles" class="ventana-detalles" style="display: none;">
+        <ui:VisualElement name="detalles-top-area" class="detalles-top-area" style="flex-grow: 1;">
+            <ui:Label text="DETALLES DEL EQUIPO" class="ventana-detalles-title" />
+        </ui:VisualElement>
+        <ui:VisualElement name="detalles-center-area" class="detalles-center-area" style="flex-grow: 1;">
+            <ui:VisualElement name="left" class="left" style="flex-grow: 1;">
+                <ui:VisualElement name="escudo-equipo" class="escudo-equipo" style="flex-grow: 1;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="right" class="right" style="flex-grow: 1;">
+                <ui:VisualElement name="fila1" class="fila">
+                    <ui:VisualElement name="fila1-label" class="fila-label" style="flex-grow: 1;">
+                        <ui:Label text="Nombre:" class="detalle-equipo-labels" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="fila1-contenido" class="fila-contenido" style="flex-grow: 1;">
+                        <ui:Label text="-" name="nombre-equipo" class="detalle-equipo-contenido" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="fila2" class="fila">
+                    <ui:VisualElement name="fila2-label" class="fila-label" style="flex-grow: 1;">
+                        <ui:Label text="Presidente:" class="detalle-equipo-labels" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="fila2-contenido" class="fila-contenido" style="flex-grow: 1;">
+                        <ui:Label text="-" name="presidente" class="detalle-equipo-contenido" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="fila3" class="fila">
+                    <ui:VisualElement name="fila3-label" class="fila-label" style="flex-grow: 1;">
+                        <ui:Label text="Presupuesto:" class="detalle-equipo-labels" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="fila3-contenido" class="fila-contenido" style="flex-grow: 1;">
+                        <ui:Label text="-" name="presupuesto" class="detalle-equipo-contenido" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="fila4" class="fila">
+                    <ui:VisualElement name="fila4-label" class="fila-label" style="flex-grow: 1;">
+                        <ui:Label text="Estadio:" class="detalle-equipo-labels" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="fila4-contenido" class="fila-contenido" style="flex-grow: 1;">
+                        <ui:Label text="-" name="estadio" class="detalle-equipo-contenido" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="fila5" class="fila">
+                    <ui:VisualElement name="fila5-label" class="fila-label" style="flex-grow: 1;">
+                        <ui:Label text="Objetivo:" class="detalle-equipo-labels" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="fila5-contenido" class="fila-contenido" style="flex-grow: 1;">
+                        <ui:Label text="-" name="objetivo" class="detalle-equipo-contenido" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="detalles-bottom-area" class="detalles-bottom-area" style="flex-grow: 1;">
+            <ui:Button text="CERRAR" name="btnCerrar" class="close-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

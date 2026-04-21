@@ -1,0 +1,332 @@
+.root {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.header-corto {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 58, 39);
+}
+
+.header-medio {
+    display: flex;
+    flex-direction: column;
+    height: 16%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 58, 39);
+}
+
+.header-largo {
+    display: flex;
+    flex-direction: column;
+    height: 8%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 58, 39);
+}
+
+.contenedor-medio {
+    display: flex;
+    flex-direction: column;
+    height: 84%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-corto {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-largo {
+    display: flex;
+    flex-direction: column;
+    height: 92%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-texts {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+}
+
+.lugar-partido-icon {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.lastGame-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    background-color: rgb(229, 229, 229);
+}
+
+.local-ultimoPartido-container {
+    flex-grow: 1;
+    width: 100%;
+    height: 50%;
+}
+
+.visitante-ultimoPartido-container {
+    flex-grow: 1;
+    width: 100%;
+    height: 50%;
+}
+
+.local-ultimoPartido-left {
+    flex-grow: 1;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.local-ultimoPartido-center {
+    flex-grow: 1;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.local-ultimoPartido-right {
+    width: 20%;
+    height: 100%;
+    background-color: rgb(56, 78, 63);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visitante-ultimoPartido-left {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visitante-ultimoPartido-center {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.visitante-ultimoPartido-right {
+    width: 20%;
+    height: 100%;
+    background-color: rgb(56, 78, 63);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.golesUltimoPartido-labels {
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+}
+
+.ultimoPartidoNombreEquipo-labels {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    font-size: 28px;
+    color: rgb(26, 26, 26);
+}
+
+.ultimoPartido-escudos {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nextGame-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: rgb(229, 229, 229);
+}
+
+.fecha-proximoPartido {
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    -unity-text-align: middle-center;
+}
+
+.proximoPartido-escudos {
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.proximoPartido-equipos-labels {
+    -unity-text-align: middle-center;
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    color: rgb(17, 17, 17);
+    font-size: 22px;
+}
+
+.proximoPartido-estadio-labels {
+    -unity-text-align: middle-center;
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    color: rgb(17, 17, 17);
+    font-size: 18px;
+}
+
+.clasificacion-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 34%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(229, 229, 229);
+    margin-right: 10px;
+}
+
+.estadisticasJugador-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 33%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(229, 229, 229);
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.resumen-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 33%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(229, 229, 229);
+    margin-left: 10px;
+}
+
+.abrir-icon {
+    flex-grow: 1;
+    background-image: resource('Icons/sumar-icon');
+    width: 24px;
+    height: 24px;
+}
+
+.confianza-labels {
+    -unity-font-definition: resource('Fonts/BebasNeue-Regular');
+    font-size: 120px;
+    -unity-text-align: middle-center;
+}
+
+.estadisticas-equipo-label-red {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    font-size: 18px;
+    color: rgb(137, 21, 21);
+}
+
+.estadisticas-equipo-label-black {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    font-size: 18px;
+    color: rgb(17, 17, 17);
+    margin: 0px;
+    padding: 0px;
+}
+
+.estadisticas-equipo-label-green {
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    font-size: 18px;
+    color: rgb(56, 78, 63);
+    margin: 0px;
+    padding: 0px;
+}
+
+.estadisticas-nombreEstadio-label-black {
+    -unity-font-definition: resource('Fonts/Poppins-SemiBold');
+    font-size: 18px;
+    color: rgb(17, 17, 17);
+}
+
+.estadisticas-aforoEstadio-label-black {
+    -unity-font-definition: resource('Fonts/Poppins-Regular');
+    font-size: 16px;
+    color: rgb(17, 17, 17);
+}
+
+.estadisticaJugadorValor {
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    color: rgb(255, 255, 255);
+    font-size: 48px;
+    -unity-text-align: middle-center;
+}
+
+.foto-jugador {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

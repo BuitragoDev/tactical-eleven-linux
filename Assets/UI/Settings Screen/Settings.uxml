@@ -1,0 +1,74 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Settings%20Screen/Settings.uss?fileID=7433441132597879392&amp;guid=ed1ee356dce5c04408bc1a522b8637f9&amp;type=3#Settings" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:Label text="AJUSTES DEL JUEGO" name="window-title" class="window-title" style="-unity-font-definition: resource(&apos;Fonts/Poppins-ExtraBold&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                <ui:VisualElement name="graficos-area" style="flex-grow: 1; width: 100%; height: 50%; align-items: center; justify-content: center; align-self: center; align-content: center; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 15%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                        <ui:Label text="CALIDAD DE LOS GRÁFICOS" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 28px; -unity-text-align: middle-center; color: rgb(238, 238, 238);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 85%; background-color: rgb(214, 214, 214); flex-direction: row; align-items: center; justify-content: space-evenly; align-self: center; align-content: center;">
+                        <ui:Button text="ALTA" name="btnCalidadAlta" class="btnCalidad-seleccionada" />
+                        <ui:Button text="MEDIA" name="btnCalidadMedia" class="btnCalidad-deseleccionada" />
+                        <ui:Button text="BAJA" name="btnCalidadBaja" class="btnCalidad-deseleccionada" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="moneda-area" style="flex-grow: 1; width: 100%; height: 50%; align-items: center; justify-content: center; align-self: center; align-content: center; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 15%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                        <ui:Label text="MONEDA ASIGNADA" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 28px; -unity-text-align: middle-center; color: rgb(238, 238, 238);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 85%; background-color: rgb(214, 214, 214); flex-direction: row; justify-content: space-evenly; align-items: center; align-self: center; align-content: center;">
+                        <ui:Button text="€" name="btnEuro" class="btnMoneda-seleccionada" />
+                        <ui:Button text="£" name="btnPound" class="btnMoneda-deseleccionada" />
+                        <ui:Button text="$" name="btnDollar" class="btnMoneda-deseleccionada" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; align-items: center; justify-content: center; align-self: center; align-content: center;">
+                <ui:VisualElement name="sonido-area" style="flex-grow: 1; width: 100%; height: 50%; align-items: center; justify-content: center; align-self: center; align-content: center; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 15%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                        <ui:Label text="VOLUMEN DE LOS SONIDOS" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 28px; -unity-text-align: middle-center; color: rgb(238, 238, 238);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 85%; background-color: rgb(214, 214, 214);">
+                        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; align-items: center; justify-content: center;">
+                            <ui:Label text="MÚSICA" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="slider-musica" style="flex-grow: 1; width: 50%; height: 100%; align-items: center; justify-content: center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; align-items: center; justify-content: center;">
+                            <ui:Label text="SFX" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="slider-sfx" style="flex-grow: 1; width: 50%; height: 100%; align-items: center; justify-content: center;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="salir-area" style="flex-grow: 1; width: 100%; height: 50%; align-items: center; justify-content: center; align-self: center; align-content: center; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 15%; background-color: rgb(56, 78, 63); align-items: center; justify-content: center; align-self: center; align-content: center;">
+                        <ui:Label text="ABANDONAR JUEGO" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 28px; -unity-text-align: middle-center; color: rgb(238, 238, 238);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 85%; background-color: rgb(214, 214, 214); align-items: center; justify-content: space-evenly; align-self: center; align-content: center;">
+                        <ui:Button text="IR AL MENÚ PRINCIPAL" name="btnSalirMenu" class="btnSalir" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 28px;" />
+                        <ui:Button text="SALIR AL ESCRITORIO" name="btnSalirEscritorio" class="btnSalir" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 28px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area">
+            <ui:Button text="VOLVER" name="btnVolver" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="popup-container" class="popup-container" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none; justify-content: center; align-items: center;">
+        <ui:VisualElement name="popup" class="popup" style="width: 650px; height: 200px; background-color: rgb(34, 34, 34); border-radius: 8px; padding: 20px; flex-direction: column; align-items: center; justify-content: space-between;">
+            <ui:Label name="popup-text" text="¿Estás seguro de que deseas salir al Escritorio?" style="color: white; font-size: 18px; text-align: center;" />
+            <ui:VisualElement style="flex-direction: row; justify-content: space-evenly; width: 100%; margin-top: 20px;">
+                <ui:Button text="SI" name="btnYes" class="popup-button-yes" />
+                <ui:Button text="CANCELAR" name="btnCancel" class="popup-button-cancel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

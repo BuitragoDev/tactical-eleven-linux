@@ -1,0 +1,133 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Competiciones/Clasificacion/CompeticionesClasificacion.uss?fileID=7433441132597879392&amp;guid=5d4768ac91ec33d40acf75f43b4f308e&amp;type=3#CompeticionesClasificacion" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: column; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 50px; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+            <ui:Label text="CLASIFICACIÓN DIVISION 1" name="titulo-ventana" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 24px; color: rgb(250, 250, 250); -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 100%; background-color: rgb(229, 229, 229); flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%;">
+                <ui:ScrollView name="clasificacion-container" vertical-scrolling-enabled="true" horizontal-scrolling-enabled="false" style="flex-grow: 1; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 40%; height: 100%;">
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 15%; flex-direction: row; align-items: center; justify-content: space-around;">
+                    <ui:VisualElement name="liga1-logo" class="escudos" style="flex-grow: 0; background-image: resource(&apos;LogosCompeticiones/80x80/1&apos;);" />
+                    <ui:VisualElement name="liga2-logo" class="escudos" style="flex-grow: 0; background-image: resource(&apos;LogosCompeticiones/80x80/2&apos;);" />
+                    <ui:VisualElement name="europa1-logo" class="escudos" style="flex-grow: 0; background-image: resource(&apos;LogosCompeticiones/80x80/5&apos;);" />
+                    <ui:VisualElement name="europa2-logo" class="escudos" style="flex-grow: 0; background-image: resource(&apos;LogosCompeticiones/80x80/6&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 85%;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+                        <ui:Label text="MEJORES EQUIPO DE LA TEMPORADA" name="mejoresEquipo" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(250, 250, 250); -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%;">
+                        <ui:VisualElement name="fila1" style="flex-grow: 1; width: 100%; height: 20%; background-color: rgb(204, 204, 204);">
+                            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(48, 48, 48); align-items: center; justify-content: center;">
+                                <ui:Label text="MEJOR ATAQUE" name="fila1-titulo" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(250, 250, 250); -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; background-color: rgb(255, 255, 255);">
+                                    <ui:VisualElement name="mejorAtaque-escudo" class="escudos" style="flex-grow: 0;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 75%; height: 100%;">
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorAtaque-nombre" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="Goles Marcados" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(248, 248, 248); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorAtaque-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 32px;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="fila2" style="flex-grow: 1; width: 100%; height: 20%;">
+                            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(49, 49, 49); align-items: center; justify-content: center;">
+                                <ui:Label text="MEJOR DEFENSA" name="fila2-titulo" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(250, 250, 250); -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; background-color: rgb(255, 255, 255);">
+                                    <ui:VisualElement name="mejorDefensa-escudo" class="escudos" style="flex-grow: 0;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 75%; height: 100%;">
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorDefensa-nombre" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="Goles Encajados" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(248, 248, 248); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorDefensa-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 32px;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="fila3" style="flex-grow: 1; width: 100%; height: 20%; background-color: rgb(205, 205, 205);">
+                            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(49, 49, 49); align-items: center; justify-content: center;">
+                                <ui:Label text="MEJOR RACHA" name="fila3-titulo" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(250, 250, 250); -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; background-color: rgb(255, 255, 255);">
+                                    <ui:VisualElement name="mejorRacha-escudo" class="escudos" style="flex-grow: 0;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 75%; height: 100%;">
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorRacha-nombre" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="Racha Partidos Ganados" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(248, 248, 248); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorRacha-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 32px;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="fila4" style="flex-grow: 1; width: 100%; height: 20%;">
+                            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(49, 49, 49); align-items: center; justify-content: center;">
+                                <ui:Label text="MEJOR EQUIPO LOCAL" name="fila4-titulo" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(250, 250, 250); -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; background-color: rgb(255, 255, 255);">
+                                    <ui:VisualElement name="mejorLocal-escudo" class="escudos" style="flex-grow: 0;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 75%; height: 100%;">
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorLocal-nombre" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="Partidos ganados como Local" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(248, 248, 248); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorLocal-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 32px;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="fila5" style="flex-grow: 1; width: 100%; height: 20%; background-color: rgb(205, 205, 205);">
+                            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(49, 49, 49); align-items: center; justify-content: center;">
+                                <ui:Label text="MEJOR EQUIPO VISITANTE" name="fila5-titulo" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(250, 250, 250); -unity-text-align: middle-center;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; width: 25%; height: 100%; align-items: center; justify-content: center; background-color: rgb(255, 255, 255);">
+                                    <ui:VisualElement name="mejorVisitante-escudo" class="escudos" style="flex-grow: 0;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; width: 75%; height: 100%;">
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorVisitante-nombre" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                                        <ui:Label text="Partidos ganados como Visitante" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(248, 248, 248); font-size: 18px;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                                        <ui:Label text="-" name="mejorVisitante-value" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 32px;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

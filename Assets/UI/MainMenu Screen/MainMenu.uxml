@@ -1,0 +1,38 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu%20Screen/MainMenu.uss?fileID=7433441132597879392&amp;guid=482f1575d39fa034583967aa1d9f5436&amp;type=3#MainMenu" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:VisualElement name="title-logo" class="title-logo" />
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:VisualElement name="center-left-area" class="center-left-area" />
+            <ui:VisualElement name="center-right-area" class="center-right-area" style="height: 627px; justify-content: center;">
+                <ui:VisualElement name="manager-mode" class="manager-mode">
+                    <ui:Label text="Modo Manager" name="lblManagerMode" class="menu-labels" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+                    <ui:VisualElement name="iconManagerMode" class="manager-mode-icon" style="flex-shrink: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="career-mode" class="career-mode">
+                    <ui:Label text="Modo Carrera" name="lblCareerMode" class="menu-labels" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+                    <ui:VisualElement name="iconCareerMode" class="career-mode-icon" style="flex-shrink: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="settings" class="settings-mode">
+                    <ui:Label text="Ajustes" name="lblSettings" class="menu-labels" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+                    <ui:VisualElement name="iconSettings" class="settings-icon" style="flex-shrink: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="editor" class="editor-mode">
+                    <ui:Label text="Editor del Juego" name="lblEditor" class="menu-labels" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+                    <ui:VisualElement name="iconEditor" class="editor-icon" style="flex-shrink: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="cargar-partida" class="cargar-mode">
+                    <ui:Label text="Cargar Partida" name="lblCargarPartida" class="menu-labels" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+                    <ui:VisualElement name="iconCargarPartida" class="cargar-icon" style="flex-shrink: 0;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area">
+            <ui:VisualElement name="web-icon" class="web-icon" />
+            <ui:VisualElement name="credits-icon" class="credits-icon" />
+            <ui:VisualElement name="exit-icon" class="exit-icon" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,43 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/CreateManager/CreateManager.uss?fileID=7433441132597879392&amp;guid=c3118da668c4aec41bfc998ba7e9eca7&amp;type=3#CreateManager" />
+    <ui:VisualElement name="background-image" class="background-image">
+        <ui:VisualElement name="top-area" class="top-area">
+            <ui:Label text="CREAR MÁNAGER" name="window-title" class="window-title" style="-unity-font-definition: resource(&apos;Fonts/Poppins-ExtraBold&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="center-area" class="center-area">
+            <ui:VisualElement name="nombre-apellido-area" class="nombre-apellido-area" style="flex-grow: 1;">
+                <ui:VisualElement name="nombre-apellido-area-title" class="nombre-apellido-area-title" style="flex-grow: 1; justify-content: center;">
+                    <ui:Label text="NOMBRE Y APELLIDO" class="label-general" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="nombre-apellido-area-components" class="nombre-apellido-area-components">
+                    <ui:TextField name="txtNombre" max-length="20" class="caja-texto-nombre" />
+                    <ui:TextField name="txtApellido" max-length="20" class="caja-texto-nombre" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="nacionalidad-area" class="nacionalidad-area" style="flex-grow: 1;">
+                <ui:VisualElement name="nacionalidad-area-title" class="nacionalidad-area-title" style="flex-grow: 1; justify-content: center;">
+                    <ui:Label text="NACIONALIDAD" class="label-general" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="nacionalidad-area-components" class="nacionalidad-area-components">
+                    <ui:DropdownField name="dpNacionalidad" class="dpNacionalidad" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Regular&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="fecha-nacimiento-area" class="fecha-nacimiento-area" style="flex-grow: 1;">
+                <ui:VisualElement name="fecha-nacimiento-area-title" class="nacionalidad-area-title" style="flex-grow: 1; justify-content: center;">
+                    <ui:Label text="FECHA DE NACIMIENTO" class="label-general" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="fecha-nacimiento-area-components" class="fecha-nacimiento-area-components" style="flex-grow: 1;">
+                    <ui:TextField name="txtDia" max-length="2" class="caja-texto-fechas-corto" />
+                    <ui:Label text="/" name="Label" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 32px;" />
+                    <ui:TextField name="txtMes" max-length="2" class="caja-texto-fechas-corto" />
+                    <ui:Label text="/" name="Label" style="-unity-font-definition: resource(&apos;Fonts/Poppins-Bold&apos;); font-size: 32px;" />
+                    <ui:TextField name="txtAnio" max-length="4" class="caja-texto-fechas-largo" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-area" class="bottom-area">
+            <ui:Button text="VOLVER" name="btnVolver" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+            <ui:Button text="SEGUIR" name="btnSeguir" class="back-button" style="-unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

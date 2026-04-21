@@ -1,0 +1,143 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Finanzas/Television/FinanzasTelevision.uss?fileID=7433441132597879392&amp;guid=917fd1b2d14ad774189c26efa461d441&amp;type=3#FinanzasTelevision" />
+    <ui:VisualElement name="root" class="root" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: row; background-image: resource(&apos;Backgrounds/background_negociaciones&apos;);">
+        <ui:VisualElement style="flex-grow: 1; width: 50%; height: auto; flex-direction: column; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;">
+            <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: flex-start; width: 100%; height: auto; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgb(229, 229, 229); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; flex-direction: column;">
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(24, 58, 39); align-items: center; justify-content: center;">
+                    <ui:Label text="DERECHOS  TELEVISIVOS" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1; width: 40%; height: 100%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="escudo-equipo" class="escudos" style="flex-grow: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 60%; height: 100%; background-color: rgb(217, 213, 213);">
+                        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                            <ui:Label text="CADENA DE TV" name="nombre-cadenatv" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 350px; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="logo-cadenatv" class="logos" style="flex-grow: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                            <ui:Label text="PAGO INICIAL" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 100%; height: auto; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="pago-inicial" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                            <ui:Label text="PAGO MENSUAL" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 100%; height: auto; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="pago-mensual" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                            <ui:Label text="DURACIÓN DEL CONTRATO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 100%; height: auto; align-items: center; justify-content: center;">
+                            <ui:Label text="-" name="duracion-contrato" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 100%; height: 10%; align-items: flex-start; justify-content: center;">
+                <ui:Button text="OFERTAS TV" name="btnOfertasTelevision" class="botones" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 50%; height: auto; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;">
+            <ui:VisualElement name="popup-container" style="flex-grow: 1; align-items: center; justify-content: flex-start; width: 100%; height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-color: rgb(229, 229, 229); display: flex;">
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 40px; background-color: rgb(56, 78, 63); align-items: center; justify-content: center;">
+                    <ui:Label text="OFERTAS POR LOS DERECHOS TELEVISIVOS" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 100%; height: 50px; background-color: rgb(30, 30, 30);">
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 26%; height: 100%;">
+                        <ui:Label text="CADENA TV" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 43%; height: 100%;">
+                        <ui:Label text="INVERSIÓN" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 20%; height: 100%;">
+                        <ui:Label text="DURACIÓN" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 10%; height: 100%;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 100%; height: 250px; background-color: rgb(195, 195, 195);">
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 26%; height: 100%;">
+                        <ui:VisualElement name="logo-cadenatv1" class="logos" style="flex-grow: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 43%; height: 100%;">
+                        <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: center; width: 100%; height: 40px; background-color: rgb(56, 78, 63);">
+                            <ui:Label text="PAGO ANTICIPADO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: auto;">
+                            <ui:Label text="-" name="pago-anticipado1" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: center; width: 100%; height: 40px; background-color: rgb(56, 78, 63);">
+                            <ui:Label text="PAGO MENSUAL" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: auto;">
+                            <ui:Label text="-" name="pago-mensual1" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 20%; height: 100%;">
+                        <ui:Label text="-" name="duracion1" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 10%; height: 100%;">
+                        <ui:VisualElement name="seleccionado1" style="flex-grow: 0; background-image: resource(&apos;Icons/noSeleccionado_icon&apos;); width: 64px; height: 64px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 100%; height: 250px; background-color: rgb(229, 229, 229);">
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 26%; height: 100%;">
+                        <ui:VisualElement name="logo-cadenatv2" class="logos" style="flex-grow: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 43%; height: 100%;">
+                        <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: center; width: 100%; height: 40px; background-color: rgb(56, 78, 63);">
+                            <ui:Label text="PAGO ANTICIPADO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: auto;">
+                            <ui:Label text="-" name="pago-anticipado2" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: center; width: 100%; height: 40px; background-color: rgb(56, 78, 63);">
+                            <ui:Label text="PAGO MENSUAL" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: auto;">
+                            <ui:Label text="-" name="pago-mensual2" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 20%; height: 100%;">
+                        <ui:Label text="-" name="duracion2" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 10%; height: 100%;">
+                        <ui:VisualElement name="seleccionado2" style="flex-grow: 0; background-image: resource(&apos;Icons/noSeleccionado_icon&apos;); width: 64px; height: 64px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 100%; height: 250px; background-color: rgb(195, 195, 195);">
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 26%; height: 100%;">
+                        <ui:VisualElement name="logo-cadenatv3" class="logos" style="flex-grow: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 43%; height: 100%;">
+                        <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: center; width: 100%; height: 40px; background-color: rgb(56, 78, 63);">
+                            <ui:Label text="PAGO ANTICIPADO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: auto;">
+                            <ui:Label text="-" name="pago-anticipado3" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; align-items: center; justify-content: center; width: 100%; height: 40px; background-color: rgb(56, 78, 63);">
+                            <ui:Label text="PAGO MENSUAL" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 20px; color: rgb(255, 255, 255); -unity-text-align: middle-center; align-items: center; justify-content: center;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: auto;">
+                            <ui:Label text="-" name="pago-mensual3" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 20%; height: 100%;">
+                        <ui:Label text="-" name="duracion3" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&apos;Fonts/Poppins-SemiBold&apos;); font-size: 24px; color: rgb(7, 7, 7); -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 10%; height: 100%;">
+                        <ui:VisualElement name="seleccionado3" style="flex-grow: 0; background-image: resource(&apos;Icons/noSeleccionado_icon&apos;); width: 64px; height: 64px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; align-items: center; justify-content: center; height: 80px;">
+                    <ui:Button text="CONFIRMAR OFERTA TV" name="btnConfirmarOfertaTV" class="botones_largos" style="display: none;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
