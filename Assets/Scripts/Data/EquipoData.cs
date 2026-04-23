@@ -8,6 +8,8 @@ namespace TacticalEleven.Scripts
 {
     public static class EquipoData
     {
+        private static readonly System.Random _rand = new System.Random();
+
         private static string GetDBPath()
         {
             string path = DatabaseManager.GetActiveDatabasePath();
@@ -503,6 +505,66 @@ namespace TacticalEleven.Scripts
             {
                 Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
             }
+        }
+
+        // --------------------------------------------------------- MÉTODO QUE DEVUELVE LA ASISTENCIA A UN PARTIDO
+        public static int CalcularAsistencia(int idEquipoLocal)
+        {
+            var dbPath = GetDBPath();
+            int asistencia = 0;
+
+            try
+            {
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return 0;
+                }
+
+                string conexionString = $"Data Source={dbPath};Version=3;";
+                using (var conexion = new SQLiteConnection(conexionString))
+                {
+                    conexion.Open();
+
+                    string query = @"SELECT aforo, reputacion 
+                                    FROM equipos 
+                                    WHERE id_equipo = @idEquipo";
+
+                    using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@idEquipo", idEquipoLocal);
+
+                        using (var reader = comando.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int aforo = reader.GetInt32(0);
+                                int reputacion = reader.GetInt32(1);
+
+                                double asistenciaBase = aforo * (reputacion / 100.0);
+
+                                double maxVariacion = 0.10;
+                                double variacion = _rand.NextDouble() * maxVariacion;
+
+                                double asistenciaFinal = asistenciaBase * (1 + variacion);
+
+                                if (asistenciaFinal > aforo)
+                                    asistenciaFinal = aforo;
+
+                                asistencia = (int)Math.Round(asistenciaFinal);
+                            }
+                        }
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al consultar la base de datos: {ex.Message}");
+            }
+
+            return asistencia;
         }
     }
 }

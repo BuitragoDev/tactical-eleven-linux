@@ -1194,5 +1194,347 @@ namespace TacticalEleven.Scripts
                 Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
             }
         }
+
+        // ------------------------------------------- MÉTODO PARA CREAR LOS 16 JUGADORES QUE JUGARAN EL PARTIDO DE MI EQUIPO
+        public static List<Jugador> JugadoresMiEquipoJueganPartido(int id)
+        {
+            List<Jugador> listaJugadores = new List<Jugador>();
+
+            try
+            {
+                var dbPath = GetDBPath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                }
+
+                string conexionString = $"Data Source={dbPath};Version=3;";
+                using (var conexion = new SQLiteConnection(conexionString))
+                {
+                    conexion.Open();
+
+                    string query = @"SELECT j.*, 
+                                            (j.velocidad + j.resistencia + j.agresividad + j.calidad + j.estado_forma + j.moral) / 6.0 AS media,
+                                            a.posicion
+                                     FROM alineacion a
+                                     JOIN jugadores j ON a.id_jugador = j.id_jugador
+                                     WHERE j.id_equipo = @equipo
+                                        AND j.lesion = 0
+                                        AND j.sancionado = 0
+                                     ORDER BY a.posicion
+                                     LIMIT 16";
+
+                    using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@equipo", id);
+                        using (SQLiteDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                // Crear un objeto Jugador y asignar los valores de la base de datos
+                                Jugador jugador = new Jugador
+                                {
+                                    IdJugador = dr.GetInt32(dr.GetOrdinal("id_jugador")),
+                                    Nombre = dr.GetString(dr.GetOrdinal("nombre")),
+                                    Apellido = dr.GetString(dr.GetOrdinal("apellido")),
+                                    IdEquipo = dr.GetInt32(dr.GetOrdinal("id_equipo")),
+                                    Dorsal = dr.GetInt32(dr.GetOrdinal("dorsal")),
+                                    Rol = dr.GetString(dr.GetOrdinal("rol")),
+                                    RolId = dr.GetInt32(dr.GetOrdinal("rol_id")),
+                                    Velocidad = dr.GetInt32(dr.GetOrdinal("velocidad")),
+                                    Resistencia = dr.GetInt32(dr.GetOrdinal("resistencia")),
+                                    Agresividad = dr.GetInt32(dr.GetOrdinal("agresividad")),
+                                    Calidad = dr.GetInt32(dr.GetOrdinal("calidad")),
+                                    EstadoForma = dr.GetInt32(dr.GetOrdinal("estado_forma")),
+                                    Moral = dr.GetInt32(dr.GetOrdinal("moral")),
+                                    Potencial = dr.GetInt32(dr.GetOrdinal("potencial")),
+                                    Portero = dr.GetInt32(dr.GetOrdinal("portero")),
+                                    Pase = dr.GetInt32(dr.GetOrdinal("pase")),
+                                    Regate = dr.GetInt32(dr.GetOrdinal("regate")),
+                                    Remate = dr.GetInt32(dr.GetOrdinal("remate")),
+                                    Entradas = dr.GetInt32(dr.GetOrdinal("entradas")),
+                                    Tiro = dr.GetInt32(dr.GetOrdinal("tiro")),
+                                    FechaNacimiento = DateTime.Parse(dr.GetString(dr.GetOrdinal("fecha_nacimiento"))),
+                                    Peso = dr.GetInt32(dr.GetOrdinal("peso")),
+                                    Altura = dr.GetInt32(dr.GetOrdinal("altura")),
+                                    Lesion = dr.GetInt32(dr.GetOrdinal("lesion")),
+                                    TipoLesion = dr.IsDBNull(dr.GetOrdinal("tipo_lesion")) ? null : dr.GetString(dr.GetOrdinal("tipo_lesion")),
+                                    LesionTratada = dr.GetInt32(dr.GetOrdinal("lesion_tratada")),
+                                    Sancionado = dr.GetInt32(dr.GetOrdinal("sancionado")),
+                                    Nacionalidad = dr.GetString(dr.GetOrdinal("nacionalidad")),
+                                    Status = dr.GetInt32(dr.GetOrdinal("status")),
+                                    PosicionAlineacion = dr.GetInt32(dr.GetOrdinal("posicion")),
+                                    RutaImagen = dr.GetString(dr.GetOrdinal("ruta_imagen"))
+                                };
+
+                                // Agregar el jugador a la lista
+                                listaJugadores.Add(jugador);
+                            }
+                        }
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+
+            return listaJugadores;
+        }
+
+        // ------------------------------------------- MÉTODO PARA CREAR LOS 16 JUGADORES QUE JUGARAN EL PARTIDO
+        public static List<Jugador> JugadoresJueganPartido(int id)
+        {
+            List<Jugador> listaJugadores = new List<Jugador>();
+
+            try
+            {
+                var dbPath = GetDBPath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                }
+
+                string conexionString = $"Data Source={dbPath};Version=3;";
+                using (var conexion = new SQLiteConnection(conexionString))
+                {
+                    conexion.Open();
+
+                    string query = @"SELECT * FROM (
+                                        SELECT *, 
+                                            (velocidad + resistencia + agresividad + calidad + estado_forma + moral) / 6.0 AS media
+                                        FROM jugadores 
+                                        WHERE id_equipo = @equipo AND lesion = 0 AND sancionado = 0 AND rol_id = 1
+                                        ORDER BY media DESC 
+                                        LIMIT 1
+                                     )
+                                     UNION ALL
+                                     SELECT * FROM (
+                                        SELECT *, 
+                                            (velocidad + resistencia + agresividad + calidad + estado_forma + moral) / 6.0 AS media
+                                        FROM jugadores 
+                                        WHERE id_equipo = @equipo AND lesion = 0 AND sancionado = 0 AND rol_id BETWEEN 2 AND 10
+                                        ORDER BY media DESC 
+                                        LIMIT 16
+                                     )";
+
+                    using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@equipo", id);
+                        using (SQLiteDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                // Crear un objeto Jugador y asignar los valores de la base de datos
+                                Jugador jugador = new Jugador
+                                {
+                                    IdJugador = dr.GetInt32(dr.GetOrdinal("id_jugador")),
+                                    Nombre = dr.GetString(dr.GetOrdinal("nombre")),
+                                    Apellido = dr.GetString(dr.GetOrdinal("apellido")),
+                                    IdEquipo = dr.GetInt32(dr.GetOrdinal("id_equipo")),
+                                    Dorsal = dr.GetInt32(dr.GetOrdinal("dorsal")),
+                                    Rol = dr.GetString(dr.GetOrdinal("rol")),
+                                    RolId = dr.GetInt32(dr.GetOrdinal("rol_id")),
+                                    Velocidad = dr.GetInt32(dr.GetOrdinal("velocidad")),
+                                    Resistencia = dr.GetInt32(dr.GetOrdinal("resistencia")),
+                                    Agresividad = dr.GetInt32(dr.GetOrdinal("agresividad")),
+                                    Calidad = dr.GetInt32(dr.GetOrdinal("calidad")),
+                                    EstadoForma = dr.GetInt32(dr.GetOrdinal("estado_forma")),
+                                    Moral = dr.GetInt32(dr.GetOrdinal("moral")),
+                                    Potencial = dr.GetInt32(dr.GetOrdinal("potencial")),
+                                    Portero = dr.GetInt32(dr.GetOrdinal("portero")),
+                                    Pase = dr.GetInt32(dr.GetOrdinal("pase")),
+                                    Regate = dr.GetInt32(dr.GetOrdinal("regate")),
+                                    Remate = dr.GetInt32(dr.GetOrdinal("remate")),
+                                    Entradas = dr.GetInt32(dr.GetOrdinal("entradas")),
+                                    Tiro = dr.GetInt32(dr.GetOrdinal("tiro")),
+                                    FechaNacimiento = DateTime.Parse(dr.GetString(dr.GetOrdinal("fecha_nacimiento"))),
+                                    Peso = dr.GetInt32(dr.GetOrdinal("peso")),
+                                    Altura = dr.GetInt32(dr.GetOrdinal("altura")),
+                                    Lesion = dr.GetInt32(dr.GetOrdinal("lesion")),
+                                    TipoLesion = dr.IsDBNull(dr.GetOrdinal("tipo_lesion")) ? null : dr.GetString(dr.GetOrdinal("tipo_lesion")),
+                                    LesionTratada = dr.GetInt32(dr.GetOrdinal("lesion_tratada")),
+                                    Sancionado = dr.GetInt32(dr.GetOrdinal("sancionado")),
+                                    Nacionalidad = dr.GetString(dr.GetOrdinal("nacionalidad")),
+                                    Status = dr.GetInt32(dr.GetOrdinal("status")),
+                                    RutaImagen = dr.GetString(dr.GetOrdinal("ruta_imagen"))
+                                };
+
+                                // Agregar el jugador a la lista
+                                listaJugadores.Add(jugador);
+                            }
+                        }
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+
+            return listaJugadores;
+        }
+
+        // ------------------------------------------------------------------ MÉTODO PARA DECIR SI TENGO PORTERO EN LA ALINEACIÓN TITULAR
+        public static bool TengoPortero(int equipo)
+        {
+            bool encontrado = false;
+
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"SELECT COUNT(*) 
+                                     FROM alineacion a
+                                     JOIN jugadores j ON a.id_jugador = j.id_jugador
+                                     WHERE a.posicion BETWEEN 1 AND 11
+                                            AND j.rol_id = 1
+                                            AND j.id_equipo = @equipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@equipo", equipo);
+
+                        // Ejecutamos la consulta y obtenemos el número de coincidencias
+                        int count = Convert.ToInt32(comando.ExecuteScalar());
+
+                        // Si el count es mayor que 0, significa que encontramos un empleado
+                        if (count > 0)
+                        {
+                            encontrado = true;
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+
+            return encontrado;
+        }
+
+        // ------------------------------------------------------------------ MÉTODO PARA DECIR SI TENGO 4 DEFENSAS EN LA ALINEACIÓN TITULAR
+        public static bool TengoDefensas(int equipo)
+        {
+            bool encontrado = false;
+
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"SELECT COUNT(*) 
+                                     FROM alineacion a
+                                     JOIN jugadores j ON a.id_jugador = j.id_jugador
+                                     WHERE a.posicion BETWEEN 1 AND 11
+                                        AND j.rol_id BETWEEN 2 AND 4
+                                        AND j.id_equipo = @equipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@equipo", equipo);
+
+                        // Ejecutamos la consulta y obtenemos el número de coincidencias
+                        int count = Convert.ToInt32(comando.ExecuteScalar());
+
+                        // Si el count es mayor que 0, significa que encontramos un empleado
+                        if (count > 0)
+                        {
+                            encontrado = true;
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+
+            return encontrado;
+        }
+
+        // ------------------------------------------------------------------ MÉTODO PARA DECIR SI TENGO 1 DELANTERO EN LA ALINEACIÓN TITULAR
+        public static bool TengoDelanteros(int equipo)
+        {
+            bool encontrado = false;
+
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"SELECT COUNT(*) 
+                                     FROM alineacion a
+                                     JOIN jugadores j ON a.id_jugador = j.id_jugador
+                                     WHERE a.posicion BETWEEN 1 AND 11
+                                        AND j.rol_id = 10
+                                        AND j.id_equipo = @equipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@equipo", equipo);
+
+                        // Ejecutamos la consulta y obtenemos el número de coincidencias
+                        int count = Convert.ToInt32(comando.ExecuteScalar());
+
+                        // Si el count es mayor que 0, significa que encontramos un empleado
+                        if (count > 0)
+                        {
+                            encontrado = true;
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+
+            return encontrado;
+        }
     }
 }

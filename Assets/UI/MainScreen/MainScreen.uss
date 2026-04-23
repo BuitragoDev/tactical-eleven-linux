@@ -185,14 +185,6 @@
     padding-top: 15px;
 }
 
-.btnSeguir:hover {
-    background-color: rgb(180, 180, 180);
-}
-
-.btnSeguir:active {
-    background-color: rgb(120, 120, 120);
-}
-
 .center-area {
     height: 89%;
     width: 100%;
@@ -269,6 +261,21 @@
     background-color: rgb(30, 30, 30);
 }
 
+/* Estilo de la ventana PopUp */
+.popup-button-cerrar {
+    width: 290px;
+    height: 60px;
+    background-color: rgb(24, 58, 39);
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -unity-font-definition: resource('Fonts/Poppins-Bold');
+}
+
 /* Estilos pantalla Resumen Partido*/
 .background-resumen-partidos {
     width: 1920px;
@@ -280,7 +287,7 @@
 
 .resumen-partido-cabecera-area {
     display: flex;
-    flex-grow: 1;
+    flex-grow: 0;
     flex-direction: row;
     height: 10%;
     width: 100%;
@@ -311,4 +318,161 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(180, 180, 180);
+}
+
+.resumen-partido-contenido-area {
+    height: 90%;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.jornada-area {
+    height: 6%;
+    width: 100%;
+    flex-grow: 0;
+    align-items: center; 
+    justify-content: center;
+}
+
+.marcador-area {
+    height: 29%;
+    width: 100%;
+    flex-grow: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.estadisticas-area {
+    height: auto;
+    width: 100%;
+    flex-grow: 1;
+    background-color: rgb(255, 255, 255);
+}
+
+.asistencia-area {
+    height: 6%;
+    width: 100%;
+    flex-grow: 0;
+    align-items: center; 
+    justify-content: center;
+}
+
+.mvp-area {
+    height: 15%;
+    width: 100%;
+    flex-grow: 0;
+    background-color: rgb(24, 58, 39);
+    align-items: center; 
+    justify-content: center;
+}
+
+.lblNombreJornada {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(30, 30, 30);
+    font-size: 32px;
+}
+
+.marcador-local-area {
+    flex-grow: 1; 
+    width: 40%; 
+    height: 100%; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.marcador-visitante-area {
+    flex-grow: 1; 
+    width: 40%; 
+    height: 100%; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.resultado-area {
+    flex-grow: 0; 
+    width: 20%; 
+    height: 100%; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.texto-goles {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(255, 255, 255);
+    font-size: 96px;
+}
+
+.escudo-local-area {
+    flex-grow: 1; 
+    width: 100%; 
+    height: 80%;
+    align-items: center; 
+    justify-content: center;
+}
+
+.nombre-local-area {
+    flex-grow: 1; 
+    width: 100%; 
+    height: 20%;
+    align-items: center; 
+    justify-content: center;
+}
+
+.escudo-visitante-area {
+    flex-grow: 1; 
+    width: 100%; 
+    height: 80%;
+    align-items: center; 
+    justify-content: center;
+}
+
+.nombre-visitante-area {
+    flex-grow: 1; 
+    width: 100%; 
+    height: 20%;
+    align-items: center; 
+    justify-content: center;
+}
+
+.lblNombreEquipo {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(30, 30, 30);
+    font-size: 24;
+}
+
+.escudoEquipos {
+    flex-grow: 0; 
+    width: 120px; 
+    height: 120px;
+    align-items: center; 
+    justify-content: center;
+}
+
+.lblAsistenciaPartido {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(30, 30, 30);
+    font-size: 24;
+}
+
+.mvp-demarcacion {
+    -unity-font-definition: resource("Fonts/Poppins-Bold");
+    color: rgb(207, 156, 13);
+    font-size: 24px;
+}
+
+.mvp-nombre {
+    -unity-font-definition: resource("Fonts/Poppins-Bold");
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+}
+
+.mvp-estadisticas {
+    -unity-font-definition: resource("Fonts/Poppins-Regular");
+    color: rgb(207, 156, 13);
+    font-size: 24px;
+}
+
+.titulos-estadisticas {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(24, 58, 39);
+    font-size: 18;
 }
