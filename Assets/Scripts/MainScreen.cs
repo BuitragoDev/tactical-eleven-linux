@@ -243,7 +243,14 @@ private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
 
                 if (listaPartidos != null && listaPartidos.Count > 0)
                 {
-                    // Cargar Ventana de Simulacion de partidos
+                    // Simular todos los partidos y guardar en BD
+                    foreach (var partido in listaPartidos)
+                    {
+                        SimularPartidoYGuardar(partido, false);
+                    }
+                    
+                    // Pintar resumen jornada
+                    SimularJornada(listaPartidos);
                     resumenJornada.style.display = DisplayStyle.Flex;
                 }
                 else
@@ -591,15 +598,14 @@ private void OnBtnSeguirClicked()
                 }
                 else
                 {
-                    // Simular Mi Partido
-                    SimularPartido(proximoPartido);
+                    // Simular Mi Partido y guardar en BD
+                    DatosSimulacion datosMiPartido = SimularPartidoYGuardar(proximoPartido, true);
+
+                    // Pintar resumen de mi partido
+                    PintarResumenMiPartido(proximoPartido, datosMiPartido);
 
                     // Mostrar pantalla resumen de partido
                     resumenPartido.style.display = DisplayStyle.Flex;
-
-                    // Otros partidos de hoy
-                    List<Partido> listaPartidos = PartidoData.PartidosHoy(miEquipo.IdEquipo);
-                    SimularJornada(listaPartidos);
                 }
             }
             else if (diaTipoActual == DiaTipo.Simular)
@@ -2532,6 +2538,198 @@ private void OnBtnSeguirClicked()
                 int jornada = partido.Jornada ?? 0; // Jornada de Liga
                 lblTituloJornada.text = $"{nombreCompeticion.ToUpper()} (JORNADA {jornada})";
             }
+        }
+
+        // -------------------------------------- MÉTODO SIMULAR PARTIDO Y GUARDAR (SIN PINTAR)
+        private DatosSimulacion SimularPartidoYGuardar(Partido partido, bool esMiEquipo)
+        {
+            List<Jugador> jugadoresLocal = JugadorData.JugadoresJueganPartido(partido.IdEquipoLocal);
+            List<Jugador> jugadoresVisitante = JugadorData.JugadoresJueganPartido(partido.IdEquipoVisitante);
+
+            // Penalizaciones si es mi equipo
+            bool soyLocal = esMiEquipo && miEquipo != null && partido.IdEquipoLocal == miEquipo.IdEquipo;
+            
+            bool penalizarAtaqueLocal = soyLocal && !JugadorData.TengoDelantero(partido.IdEquipoLocal);
+            bool penalizarDefensaLocal = soyLocal && (!JugadorData.Tengo portero(partido.IdEquipoLocal) || !JugadorData.TengoDefensas(partido.IdEquipoLocal));
+
+            bool penalizarAtaqueVisitante = !soyLocal && esMiEquipo && !JugadorData.TengoDelantero(partido.IdEquipoVisitante);
+            bool penalizarDefensaVisitante = !soyLocal && esMiEquipo && (!JugadorData.TengoPortero(partido.IdEquipoVisitante) || !JugadorData.TengoDefensas(partido.IdEquipoVisitante));
+
+            // Simular goles
+            int golesLocal = CalcularGoles(jugadoresLocal, jugadoresVisitante, penalizarAtaqueLocal, penalizarDefensaVisitante);
+            int golesVisitante = CalcularGoles(jugadoresVisitante, jugadoresLocal, penalizarAtaqueVisitante, penalizarDefensaLocal);
+
+            partido.GolesLocal = golesLocal;
+            partido.GolesVisitante = golesVisitante;
+
+            // Asignar goleadores y asistentes
+            List<(Jugador, Jugador?)> goleadoresLocal = AsignarGolesYAsistencias(golesLocal, jugadoresLocal, random);
+            List<(Jugador, Jugador?)> goleadoresVisitante = AsignarGolesYAsistencias(golesVisitante, jugadoresVisitante, random);
+
+            // Asignar tarjetas
+            var (tarjetasLocal, tarjetasVisitante) = AsignarTarjetas(jugadoresLocal, jugadoresVisitante, random);
+
+            // Calcular asistencia
+            int asistencia = EquipoData.CalcularAsistencia(partido.IdEquipoLocal);
+int asistencia = EquipoData.CalcularAsistencia(partido.IdEquipoLocal);
+            partido.Asistencia = asistencia;
+
+            // Calcular recaudación
+            int recaudacion = 0;
+            if (partido.IdEquipoLocal == miEquipo?.IdEquipo)
+            {
+                Taquilla电影院 = TaquillaData.RecuperarPreciosTaquilla(miEquipo.IdEquipo);
+                double? rec =电影院.PrecioEntradaGeneral * (asistencia * 0.50) + 
+                           电影院.PrecioEntradaTribuna * (asistencia * 0.40) + 
+                           电影院.PrecioEntradaVip * (asistencia * 0.10);
+                recauda = (int)Math.Round(rec ?? 0);
+            }
+
+            // Crear datos de simulación
+            DatosSimulacion datos = new DatosSimulacion
+            {
+                GolesLocal = goleLocal,
+                GolesVisitante = goleVisitante,
+                goleadoresLocal = goleadoresLocal,
+                goleadoresVisitante = goleadoresVisitante,
+                tarjetasLocal = tarjetasLocal,
+                tarjetasVisitante = tarjetasVisitante,
+                Asistencia = asistencia,
+                Recaudacion = recauda,
+                JugadoresLocal = jugadoresLocal,
+                JugadoresVisitante = jugadoresVisitante
+            };
+
+            // Determinar MVP
+            var todosGoles = goleadoresLocal.Concat(goleadoresVisitante).ToList();
+            datos.MVP = DeterminarMVP(todosGoles, jugadoresLocal, jugadoresVisitante);
+            datos.GolesMVP = todosGoles.Count(ga => ga.Item1.IdJugador == datos.MVP.IdJugador);
+            datos.AsistenciasMVP = todosGoles.Count(ga => ga.Item2 != null && ga.Item2.IdJugador == datos.MVP.IdJugador);
+
+            // --------------------- GUARDAR EN BASE DE DATOS SEGÚN COMPETICIÓN
+            // Amistosos: solo resultado
+            if (partido.IdCompeticion == 10)
+            {
+                PartidoData.ActualizarPartido(partido);
+            }
+            // Liga (competiciones 1 y 2)
+            else if (partido.IdCompeticion >= 1 && partido.IdCompeticion <= 2)
+            {
+                PartidoData.ActualizarPartido(partido);
+                GuardarClasificacion(partido, goleLocal, goleVisitante);
+                GuardarEstadisticas(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
+            }
+            // Copa Nacional (4)
+            else if (partido.IdCompeticion == 4)
+            {
+                PartidoData.ActualizarPartidoCopaNacional(partido);
+                GuardarClasificacionCopaEuropa(partido, goleLocal, goleVisitante);
+            }
+            // Copa Europa 1 (5)
+            else if (partido.IdCompeticion == 5)
+            {
+                PartidoData.ActualizarPartidoCopaEuropa1(partido);
+                GuardarClasificacionCopaEuropa(partido, goleLocal, goleVisitante);
+                GuardarEstadisticasEuropa(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
+            }
+            // Copa Europa 2 (6)
+            else if (partido.IdCompeticion == 6)
+            {
+                PartidoData.ActualizarPartidoCopaEuropa2(partido);
+                GuardarClasificacionCopaEuropa(partido, goleLocal, goleVisitante);
+                GuardarEstadisticasEuropa(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
+            }
+
+            return datos;
+        }
+
+        // -------------------------------------- GUARDAR CLASIFICACIÓN LIGA
+        private void GuardarClasificacion(Partido partido, List<(Jugador, Jugador?)> goleLocal, List<(Jugador, Jugador?)> goleVisitante)
+        {
+            int gf = goleLocal.Sum(g => g.Item1 != null ? 1 : 0);
+            int gc = goleVisitante.Sum(g => g.Item1 != null ? 1 : 0);
+            
+            Clasificacion cla_local = CrearClasificacion(partido.IdEquipoLocal, gf, gc);
+            Clasificacion cla_visitante = CrearClasificacion(partido.IdEquipoVisitante, gc, gf);
+
+            if (partido.IdCompeticion == 1)
+            {
+                ClasificacionData.ActualizarClasificacion(cla_local);
+                ClasificacionData.ActualizarClasificacion(cla_visitante);
+            }
+            else
+            {
+                ClasificacionData.ActualizarClasificacion2(cla_local);
+                ClasificacionData.ActualizarClasificacion2(cla_visitante);
+            }
+        }
+
+        // -------------------------------------- GUARDAR CLASIFICACIÓN COPA EUROPA
+        private void GuardarClasificacionCopaEuropa(Partido partido, List<(Jugador, Jugador?)> goleLocal, List<(Jugador, Jugador?)> goleVisitante)
+        {
+            int gf = goleLocal.Sum(g => g.Item1 != null ? 1 : 0);
+            int gc = goleVisitante.Sum(g => g.Item1 != null ? 1 : 0);
+            
+            Clasificacion cla_local = CrearClasificacion(partido.IdEquipoLocal, gf, gc);
+            Clasificacion cla_visitante = CrearClasificacion(partido.IdEquipoVisitante, gc, gf);
+
+            if (partido.IdCompeticion == 5)
+            {
+                ClasificacionData.ActualizarClasificacionEuropa1(cla_local);
+                ClasificacionData.ActualizarClasificacionEuropa1(cla_visitante);
+            }
+            else if (partido.IdCompeticion == 6)
+            {
+                ClasificacionData.ActualizarClasificacionEuropa2(cla_local);
+                ClasificacionData.ActualizarClasificacionEuropa2(cla_visitante);
+            }
+        }
+
+        // -------------------------------------- CREAR OBJETO CLASIFICACIÓN
+        private Clasificacion CrearClasificacion(int idEquipo, int gf, int gc)
+        {
+            int resultado = gf.CompareTo(gc);
+            
+            return new Clasificacion
+            {
+                IdEquipo = idEquipo,
+                Jugados = 1,
+                Ganados = resultado > 0 ? 1 : 0,
+                Empatados = resultado == 0 ? 1 : 0,
+                Perdidos = resultado < 0 ? 1 : 0,
+                Puntos = resultado > 0 ? 3 : (resultado == 0 ? 1 : 0),
+                LocalVictorias = resultado > 0 ? 1 : 0,
+                LocalDerrotas = resultado < 0 ? 1 : 0,
+                VisitanteVictorias = 0,
+                VisitanteDerrotas = 0,
+                GolesFavor = gf,
+                GolesContra = gc,
+                Racha = resultado
+            };
+        }
+
+        // -------------------------------------- GUARDAR ESTADÍSTICAS JUGADORES LIGA
+        private void GuardarEstadisticas(List<Jugador> jugLocal, List<Jugador> jugVisit,
+                               List<(Jugador, Jugador?)> golLocal, List<(Jugador, Jugador?)> golVisit,
+                               List<(Jugador, string)> tarjLocal, List<(Jugador, string)> tarjVisit,
+                               Jugador mvp, bool esMiEquipo)
+        {
+            var tarjetas = tarjLocal.Concat(tarjVisit).ToList();
+            var todosGoles = golLocal.Concat(golVisit).ToList();
+            ActualizarEstadisticasPartido(jugLocal, jugVisit, todosGoles, tarjetas, mvp);
+            ActualizarJugadoresSancionados(tarjLocal, tarjVisit);
+        }
+
+        // -------------------------------------- GUARDAR ESTADÍSTICAS JUGADORES EUROPA
+        private void GuardarEstadisticasEuropa(List<Jugador> jugLocal, List<Jugador> jugVisit,
+                                          List<(Jugador, Jugador?)> golLocal, List<(Jugador, Jugador?)> golVisit,
+                                          List<(Jugador, string)> tarjLocal, List<(Jugador, string)> tarjVisit,
+                                          Jugador mvp, bool esMiEquipo)
+        {
+            var tarjetas = tarjLocal.Concat(tarjVisit).ToList();
+            var todosGoles = golLocal.Concat(golVisit).ToList();
+            ActualizarEstadisticasPartidoEuropa(jugLocal, jugVisit, todosGoles, tarjetas, mvp);
+            ActualizarJugadoresSancionados(tarjLocal, tarjVisit);
         }
     }
 }
