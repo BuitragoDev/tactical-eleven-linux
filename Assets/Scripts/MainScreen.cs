@@ -1344,42 +1344,42 @@ private VisualElement CrearFilaPartido(Partido p)
             fila.style.width = Length.Percent(100);
             fila.style.minHeight = 50;
             fila.style.maxHeight = 50;
-            fila.style.marginBottom = 5;
+            fila.style.marginBottom = 3;
             fila.style.alignItems = Align.Center;
 
             // ESCUDO LOCAL (fondo blanco)
             var escudoLocal = CrearEscudo(p.IdEquipoLocal);
-            escudoLocal.style.backgroundColor = new StyleColor(new Color32(255, 255, 255, 255));
+            escudoLocal.style.backgroundColor = new StyleColor(new Color32(222, 222, 222, 255));
             fila.Add(escudoLocal);
 
             // NOMBRE LOCAL (fondo gris oscuro, texto blanco)
             var nombreLocal = CrearTexto(
                 EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 
-                35, TextAnchor.MiddleLeft, 
+                25, TextAnchor.MiddleLeft, 
                 p.IdEquipoLocal == miEquipo.IdEquipo, Color.white);
             nombreLocal.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
             fila.Add(nombreLocal);
 
-            // GOLES LOCAL (fondo verde, texto blanco)
-            var golesLocal = CrearTexto(p.GolesLocal.ToString(), 5, TextAnchor.MiddleCenter, true, Color.white);
+// GOLES LOCAL (fondo verde, texto blanco)
+            var golesLocal = CrearTexto(p.GolesLocal.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true);
             golesLocal.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
             fila.Add(golesLocal);
 
             // ESCUDO VISITANTE (fondo blanco)
             var escudoVisitante = CrearEscudo(p.IdEquipoVisitante);
-            escudoVisitante.style.backgroundColor = new StyleColor(new Color32(255, 255, 255, 255));
+            escudoVisitante.style.backgroundColor = new StyleColor(new Color32(222, 222, 222, 255));
             fila.Add(escudoVisitante);
 
             // NOMBRE VISITANTE (fondo gris oscuro, texto blanco)
             var nombreVisitante = CrearTexto(
                 EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 
-                30, TextAnchor.MiddleLeft, 
+                25, TextAnchor.MiddleLeft, 
                 p.IdEquipoVisitante == miEquipo.IdEquipo, Color.white);
             nombreVisitante.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
             fila.Add(nombreVisitante);
 
-            // GOLES VISITANTE (fondo verde, texto blanco)
-            var golesVisitante = CrearTexto(p.GolesVisitante.ToString(), 5, TextAnchor.MiddleCenter, true, Color.white);
+// GOLES VISITANTE (fondo verde, texto blanco)
+            var golesVisitante = CrearTexto(p.GolesVisitante.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true);
             golesVisitante.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
             fila.Add(golesVisitante);
 
@@ -1390,7 +1390,7 @@ private VisualElement CrearFilaPartido(Partido p)
         {
             var escudo = new VisualElement();
             escudo.style.width = Length.Percent(10);
-            escudo.style.height = 32;
+            escudo.style.height = 39;
 
             var sprite = Resources.Load<Sprite>($"EscudosEquipos/32x32/{idEquipo}");
             if (sprite != null)
@@ -1402,7 +1402,7 @@ private VisualElement CrearFilaPartido(Partido p)
             return escudo;
         }
 
-        private VisualElement CrearTexto(string contenido, float widthPercent, TextAnchor anchor, bool negrita, Color color)
+        private VisualElement CrearTexto(string contenido, float widthPercent, TextAnchor anchor, bool negrita, Color color, bool centrarHorizontal = false)
         {
             // Fuente Poppins-Bold
             var fontPath = negrita
@@ -1414,6 +1414,8 @@ private VisualElement CrearFilaPartido(Partido p)
             container.style.width = Length.Percent(widthPercent);
             container.style.flexDirection = FlexDirection.Row;
             container.style.alignItems = Align.Center;
+            if (centrarHorizontal)
+                container.style.justifyContent = Justify.Center;
 
             var label = new Label(contenido);
             label.style.unityTextAlign = anchor;
