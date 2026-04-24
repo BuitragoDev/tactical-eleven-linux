@@ -1337,7 +1337,7 @@ private void OnBtnSeguirClicked()
             }
         }
 
-private VisualElement CrearFilaPartido(Partido p)
+        private VisualElement CrearFilaPartido(Partido p)
         {
             var fila = new VisualElement();
             fila.style.flexDirection = FlexDirection.Row;
@@ -1355,13 +1355,14 @@ private VisualElement CrearFilaPartido(Partido p)
             // NOMBRE LOCAL (fondo gris oscuro, texto blanco)
             var nombreLocal = CrearTexto(
                 EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 
-                25, TextAnchor.MiddleLeft, 
+                35, TextAnchor.MiddleLeft, 
                 p.IdEquipoLocal == miEquipo.IdEquipo, Color.white);
             nombreLocal.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
+            nombreLocal.style.paddingLeft = 10;
             fila.Add(nombreLocal);
 
-// GOLES LOCAL (fondo verde, texto blanco)
-            var golesLocal = CrearTexto(p.GolesLocal.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true);
+// GOLES LOCAL (fondo verde, texto blanco, fontSize 22)
+            var golesLocal = CrearTexto(p.GolesLocal.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true, 22);
             golesLocal.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
             fila.Add(golesLocal);
 
@@ -1370,16 +1371,17 @@ private VisualElement CrearFilaPartido(Partido p)
             escudoVisitante.style.backgroundColor = new StyleColor(new Color32(222, 222, 222, 255));
             fila.Add(escudoVisitante);
 
-            // NOMBRE VISITANTE (fondo gris oscuro, texto blanco)
+// NOMBRE VISITANTE (fondo gris oscuro, texto blanco)
             var nombreVisitante = CrearTexto(
                 EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 
-                25, TextAnchor.MiddleLeft, 
+                30, TextAnchor.MiddleLeft, 
                 p.IdEquipoVisitante == miEquipo.IdEquipo, Color.white);
             nombreVisitante.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
+            nombreVisitante.style.paddingLeft = 10;
             fila.Add(nombreVisitante);
 
-// GOLES VISITANTE (fondo verde, texto blanco)
-            var golesVisitante = CrearTexto(p.GolesVisitante.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true);
+// GOLES VISITANTE (fondo verde, texto blanco, fontSize 22)
+            var golesVisitante = CrearTexto(p.GolesVisitante.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true, 22);
             golesVisitante.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
             fila.Add(golesVisitante);
 
@@ -1390,7 +1392,7 @@ private VisualElement CrearFilaPartido(Partido p)
         {
             var escudo = new VisualElement();
             escudo.style.width = Length.Percent(10);
-            escudo.style.height = 39;
+            escudo.style.height = 38;
 
             var sprite = Resources.Load<Sprite>($"EscudosEquipos/32x32/{idEquipo}");
             if (sprite != null)
@@ -1402,7 +1404,7 @@ private VisualElement CrearFilaPartido(Partido p)
             return escudo;
         }
 
-        private VisualElement CrearTexto(string contenido, float widthPercent, TextAnchor anchor, bool negrita, Color color, bool centrarHorizontal = false)
+        private VisualElement CrearTexto(string contenido, float widthPercent, TextAnchor anchor, bool negrita, Color color, bool centrarHorizontal = false, int fontSize = 18)
         {
             // Fuente Poppins-Bold
             var fontPath = negrita
@@ -1419,7 +1421,7 @@ private VisualElement CrearFilaPartido(Partido p)
 
             var label = new Label(contenido);
             label.style.unityTextAlign = anchor;
-            label.style.fontSize = 18;
+            label.style.fontSize = fontSize;
             label.style.color = color;
             var fontAsset = Resources.Load<UnityEngine.TextCore.Text.FontAsset>(fontPath);
             label.style.unityFontDefinition = new StyleFontDefinition(fontAsset);
