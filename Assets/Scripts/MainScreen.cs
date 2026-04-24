@@ -31,6 +31,7 @@ private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
         public Label miPresupuesto;
         private Manager miManager;
         private Equipo miEquipo;
+        private PortadaManager portadaManager;
         private static Random random = new Random(); //Random global
 
         // Elementos Top Menu
@@ -252,6 +253,9 @@ private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
                     // Pintar resumen jornada
                     SimularJornada(listaPartidos);
                     resumenJornada.style.display = DisplayStyle.Flex;
+
+                    // Actualizar confianzas en portada
+                    portadaManager?.ActualizarConfianzas();
                 }
                 else
                 {
@@ -604,6 +608,9 @@ private void OnBtnSeguirClicked()
                     // Pintar resumen de mi partido
                     PintarResumenMiPartido(proximoPartido, datosMiPartido);
 
+                    // Actualizar confianzas en portada
+                    portadaManager?.ActualizarConfianzas();
+
                     // Mostrar pantalla resumen de partido
                     resumenPartido.style.display = DisplayStyle.Flex;
                 }
@@ -626,6 +633,9 @@ private void OnBtnSeguirClicked()
                     // Pintar resumen jornada
                     SimularJornada(listaPartidos);
                     resumenJornada.style.display = DisplayStyle.Flex;
+
+                    // Actualizar confianzas en portada
+                    portadaManager?.ActualizarConfianzas();
                 }
                 else
                 {
@@ -1238,6 +1248,7 @@ private void OnBtnSeguirClicked()
             ComprobarJugadoresLesionados(jugadoresLocal, jugadoresVisitante);
 
             // Actualizar las confianzas
+            Debug.Log($"[MainScreen] miManager.IdManager = {miManager.IdManager}");
             ActualizarConfianzaManager(partido, golesLocal, golesVisitante);
 
             // Actualizar atributos de los jugadores
@@ -1792,7 +1803,7 @@ private void OnBtnSeguirClicked()
         {
             UIManager.Instance.CargarPantalla("UI/PortadaScreen/Portada", instancia =>
             {
-                new PortadaManager(instancia, miEquipo, miManager);
+                portadaManager = new PortadaManager(instancia, miEquipo, miManager);
             });
         }
 
@@ -2543,7 +2554,9 @@ private void OnBtnSeguirClicked()
             cambioFans = Math.Clamp(cambioFans, -8, 8);
             cambioJugadores = Math.Clamp(cambioJugadores, -6, 6);
 
-            ManagerData.ActualizarConfianza(cambioDirectiva, cambioFans, cambioJugadores);
+            Debug.Log($"[ActualizarConfianzaManager] Cambio directiva={cambioDirectiva}, fans={cambioFans}, jugadores={cambioJugadores}");
+            Debug.Log($"[ActualizarConfianzaManager] Llamando ActualizarConfianza con idManager={miManager.IdManager}");
+            ManagerData.ActualizarConfianza(miManager.IdManager, cambioDirectiva, cambioFans, cambioJugadores);
         }
 
         public void ActualizacionAtributos(List<Jugador> jugadoresLocal, List<Jugador> jugadoresVisitante, int idEquipolocal, int idEquipoVisitante,
@@ -2702,6 +2715,13 @@ private void OnBtnSeguirClicked()
                 PartidoData.ActualizarPartidoCopaEuropa2(partido);
                 GuardarClasificacionCopaEuropa(partido, goleadoresLocal, goleadoresVisitante);
                 GuardarEstadisticasEuropa(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
+            }
+
+            // Actualizar confianzas si es mi equipo
+            if (esMiEquipo)
+            {
+                Debug.Log($"[SimularPartidoYGuardar] Actualizando confianzas para mi partido. IdManager={miManager.IdManager}");
+                ActualizarConfianzaManager(partido, golesLocal, golesVisitante);
             }
 
             return datos;

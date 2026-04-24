@@ -198,11 +198,10 @@ namespace TacticalEleven.Scripts
         }
 
         // ------------------------------------------------------------------ MÉTODO QUE ACTUALIZA LA CONFIANZA EN EL MÁNAGER
-        public static void ActualizarConfianza(int directiva, int fans, int jugadores)
+        public static void ActualizarConfianza(int idManager, int directiva, int fans, int jugadores)
         {
             try
             {
-                // Usa la base activa (temporal si existe)
                 string dbPath = DatabaseManager.GetActiveDatabasePath();
 
                 if (!File.Exists(dbPath))
@@ -216,18 +215,53 @@ namespace TacticalEleven.Scripts
                 {
                     connection.Open();
 
+                    // Primero ver valores actuales
+                    string selectQuery = "SELECT cDirectiva, cFans, cJugadores FROM managers WHERE id_manager = @IdManager;";
+                    using (var selectCmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        selectCmd.Parameters.AddWithValue("@IdManager", idManager);
+                        using (var reader = selectCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int cDir = reader.GetInt32(0);
+                                int cFans = reader.GetInt32(1);
+                                int cJug = reader.GetInt32(2);
+                                Debug.Log($"[ManagerData] Valores actuales ANTES de actualizar: cDirectiva={cDir}, cFans={cFans}, cJugadores={cJug}");
+                            }
+                        }
+                    }
+
                     string query = @"UPDATE managers SET " +
-                                   "cDirectiva = MIN(MAX(cDirectiva + @Directiva, 0), 100), " +
-                                   "cFans = MIN(MAX(cFans + @Fans, 0), 100), " +
-                                   "cJugadores = MIN(MAX(cJugadores + @Jugadores, 0), 100) " +
-                                   "WHERE id_manager = 1;";
+                                   "cDirectiva = CASE WHEN cDirectiva + @Directiva < 0 THEN 0 WHEN cDirectiva + @Directiva > 100 THEN 100 ELSE cDirectiva + @Directiva END, " +
+                                   "cFans = CASE WHEN cFans + @Fans < 0 THEN 0 WHEN cFans + @Fans > 100 THEN 100 ELSE cFans + @Fans END, " +
+                                   "cJugadores = CASE WHEN cJugadores + @Jugadores < 0 THEN 0 WHEN cJugadores + @Jugadores > 100 THEN 100 ELSE cJugadores + @Jugadores END " +
+                                   "WHERE id_manager = @IdManager;";
 
                     using (var cmd = new SQLiteCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@Directiva", directiva); // Parámetro para el cDirectiva
-                        cmd.Parameters.AddWithValue("@Fans", fans); // Parámetro para el cFans
-                        cmd.Parameters.AddWithValue("@Jugadores", jugadores); // Parámetro para el cJugadores
-                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@IdManager", idManager);
+                        cmd.Parameters.AddWithValue("@Directiva", directiva);
+                        cmd.Parameters.AddWithValue("@Fans", fans);
+                        cmd.Parameters.AddWithValue("@Jugadores", jugadores);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        Debug.Log($"[ManagerData] Filas actualizadas: {rowsAffected}");
+                    }
+
+                    // Ver valores después
+                    using (var selectCmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        selectCmd.Parameters.AddWithValue("@IdManager", idManager);
+                        using (var reader = selectCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int cDir = reader.GetInt32(0);
+                                int cFans = reader.GetInt32(1);
+                                int cJug = reader.GetInt32(2);
+                                Debug.Log($"[ManagerData] Valores DESPUÉS de actualizar: cDirectiva={cDir}, cFans={cFans}, cJugadores={cJug}");
+                            }
+                        }
                     }
 
                     connection.Close();

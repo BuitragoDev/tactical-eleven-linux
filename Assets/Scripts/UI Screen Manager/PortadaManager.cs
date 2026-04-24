@@ -456,11 +456,15 @@ namespace TacticalEleven.Scripts
 
         private void CargarRelaciones()
         {
+            ActualizarConfianzas();
+        }
+
+        public void ActualizarConfianzas()
+        {
             int cDirectiva = ManagerData.MostrarManager().CDirectiva;
             int cFans = ManagerData.MostrarManager().CFans;
             int cJugadores = ManagerData.MostrarManager().CJugadores;
 
-            // Asignar texto y color
             confianzaDirectiva.text = cDirectiva.ToString();
             confianzaDirectiva.style.color = DeterminarColor(cDirectiva);
 
