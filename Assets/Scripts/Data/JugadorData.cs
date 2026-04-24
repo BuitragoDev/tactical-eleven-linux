@@ -1285,7 +1285,7 @@ namespace TacticalEleven.Scripts
             return listaJugadores;
         }
 
-        // ------------------------------------------- MÉTODO PARA CREAR LOS 16 JUGADORES QUE JUGARAN EL PARTIDO
+// ------------------------------------------- MÉTODO PARA CREAR LOS 16 JUGADORES QUE JUGARAN EL PARTIDO
         public static List<Jugador> JugadoresJueganPartido(int id)
         {
             List<Jugador> listaJugadores = new List<Jugador>();
@@ -1304,7 +1304,62 @@ namespace TacticalEleven.Scripts
                 {
                     conexion.Open();
 
-                    string query = @"SELECT * FROM (
+                    // Primero intentar usar la tabla alineacion (posicion 1-16)
+                    string query = @"SELECT j.*, 
+                                            (j.velocidad + j.resistencia + j.agresividad + j.calidad + j.estado_forma + j.moral) / 6.0 AS media,
+                                            a.posicion
+                                     FROM alineacion a
+                                     JOIN jugadores j ON a.id_jugador = j.id_jugador
+                                     WHERE j.id_equipo = @equipo
+                                     ORDER BY a.posicion
+                                     LIMIT 16";
+
+                    using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@equipo", id);
+                        using (SQLiteDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Jugador jugador = new Jugador
+                                {
+                                    IdJugador = dr.GetInt32(dr.GetOrdinal("id_jugador")),
+                                    Nombre = dr.GetString(dr.GetOrdinal("nombre")),
+                                    Apellido = dr.GetString(dr.GetOrdinal("apellido")),
+                                    IdEquipo = dr.GetInt32(dr.GetOrdinal("id_equipo")),
+                                    Dorsal = dr.GetInt32(dr.GetOrdinal("dorsal")),
+                                    Rol = dr.GetString(dr.GetOrdinal("rol")),
+                                    RolId = dr.GetInt32(dr.GetOrdinal("rol_id")),
+                                    Velocidad = dr.GetInt32(dr.GetOrdinal("velocidad")),
+                                    Resistencia = dr.GetInt32(dr.GetOrdinal("resistencia")),
+                                    Agresividad = dr.GetInt32(dr.GetOrdinal("agresividad")),
+                                    Calidad = dr.GetInt32(dr.GetOrdinal("calidad")),
+                                    EstadoForma = dr.GetInt32(dr.GetOrdinal("estado_forma")),
+                                    Moral = dr.GetInt32(dr.GetOrdinal("moral")),
+                                    Potencial = dr.GetInt32(dr.GetOrdinal("potencial")),
+                                    Portero = dr.GetInt32(dr.GetOrdinal("portero")),
+                                    Pase = dr.GetInt32(dr.GetOrdinal("pase")),
+                                    Regate = dr.GetInt32(dr.GetOrdinal("regate")),
+                                    Tiro = dr.GetInt32(dr.GetOrdinal("tiro")),
+                                    Entradas = dr.GetInt32(dr.GetOrdinal("entradas")),
+                                    Remate = dr.GetInt32(dr.GetOrdinal("remate")),
+                                    Lesion = dr.GetInt32(dr.GetOrdinal("lesion")),
+                                    LesionTratada = dr.GetInt32(dr.GetOrdinal("lesion_tratada")),
+                                    Sancionado = dr.GetInt32(dr.GetOrdinal("sancionado")),
+                                    Nacionalidad = dr.GetString(dr.GetOrdinal("nacionalidad")),
+                                    Status = dr.GetInt32(dr.GetOrdinal("status")),
+                                    PosicionAlineacion = dr.GetInt32(dr.GetOrdinal("posicion")),
+                                    RutaImagen = dr.GetString(dr.GetOrdinal("ruta_imagen"))
+                                };
+                                listaJugadores.Add(jugador);
+                            }
+                        }
+                    }
+
+                    // Si no hay alineacion, usar lógica por atributos
+                    if (listaJugadores.Count == 0)
+                    {
+                        query = @"SELECT * FROM (
                                         SELECT *, 
                                             (velocidad + resistencia + agresividad + calidad + estado_forma + moral) / 6.0 AS media
                                         FROM jugadores 
@@ -1320,7 +1375,61 @@ namespace TacticalEleven.Scripts
                                         WHERE id_equipo = @equipo AND lesion = 0 AND sancionado = 0 AND rol_id BETWEEN 2 AND 10
                                         ORDER BY media DESC 
                                         LIMIT 16
-                                     )";
+                                      )";
+
+                        using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
+                        {
+                            comando.Parameters.AddWithValue("@equipo", id);
+                            using (SQLiteDataReader dr = comando.ExecuteReader())
+                            {
+                                while (dr.Read())
+                                {
+                                    Jugador jugador = new Jugador
+                                    {
+                                        IdJugador = dr.GetInt32(dr.GetOrdinal("id_jugador")),
+                                        Nombre = dr.GetString(dr.GetOrdinal("nombre")),
+                                        Apellido = dr.GetString(dr.GetOrdinal("apellido")),
+                                        IdEquipo = dr.GetInt32(dr.GetOrdinal("id_equipo")),
+                                        Dorsal = dr.GetInt32(dr.GetOrdinal("dorsal")),
+                                        Rol = dr.GetString(dr.GetOrdinal("rol")),
+                                        RolId = dr.GetInt32(dr.GetOrdinal("rol_id")),
+                                        Velocidad = dr.GetInt32(dr.GetOrdinal("velocidad")),
+                                        Resistencia = dr.GetInt32(dr.GetOrdinal("resistencia")),
+                                        Agresividad = dr.GetInt32(dr.GetOrdinal("agresividad")),
+                                        Calidad = dr.GetInt32(dr.GetOrdinal("calidad")),
+                                        EstadoForma = dr.GetInt32(dr.GetOrdinal("estado_forma")),
+                                        Moral = dr.GetInt32(dr.GetOrdinal("moral")),
+                                        Potencial = dr.GetInt32(dr.GetOrdinal("potencial")),
+                                        Portero = dr.GetInt32(dr.GetOrdinal("portero")),
+                                        Pase = dr.GetInt32(dr.GetOrdinal("pase")),
+                                        Regate = dr.GetInt32(dr.GetOrdinal("regate")),
+                                        Tiro = dr.GetInt32(dr.GetOrdinal("tiro")),
+                                        Entradas = dr.GetInt32(dr.GetOrdinal("entradas")),
+                                        Remate = dr.GetInt32(dr.GetOrdinal("remate")),
+                                        Lesion = dr.GetInt32(dr.GetOrdinal("lesion")),
+                                        LesionTratada = dr.GetInt32(dr.GetOrdinal("lesion_tratada")),
+                                        Sancionado = dr.GetInt32(dr.GetOrdinal("sancionado")),
+                                        Nacionalidad = dr.GetString(dr.GetOrdinal("nacionalidad")),
+                                        Status = dr.GetInt32(dr.GetOrdinal("status")),
+                                        PosicionAlineacion = 0,
+                                        RutaImagen = dr.GetString(dr.GetOrdinal("ruta_imagen"))
+                                    };
+                                    listaJugadores.Add(jugador);
+                                }
+                            }
+                        }
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al obtener jugadores: {ex.Message}");
+            }
+
+            return listaJugadores;
+        }
 
                     using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
                     {
