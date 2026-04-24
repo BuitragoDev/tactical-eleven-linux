@@ -1344,35 +1344,51 @@ private void OnBtnSeguirClicked()
             fila.style.width = Length.Percent(100);
             fila.style.minHeight = 50;
             fila.style.maxHeight = 50;
-
+            fila.style.marginBottom = 5;
             fila.style.alignItems = Align.Center;
 
-            Color bg = new Color32(255, 255, 255, 255);
-            fila.style.backgroundColor = bg;
+            // COLUMNA ESCUDOS (fondo blanco)
+            var colEscudos = new VisualElement();
+            colEscudos.style.width = Length.Percent(10);
+            colEscudos.style.height = Length.Percent(100);
+            colEscudos.style.backgroundColor = new Color32(255, 255, 255, 255);
+            colEscudos.style.justifyContent = Justify.Center;
+            colEscudos.style.alignItems = Align.Center;
+            colEscudos.Add(CrearEscudo(p.IdEquipoLocal));
+            colEscudos.Add(CrearEscudo(p.IdEquipoVisitante));
+            fila.Add(colEscudos);
 
-            // ESCUDO LOCAL
-            fila.Add(CrearEscudo(p.IdEquipoLocal));
+            // COLUMNA NOMBRES (fondo gris oscuro, texto blanco)
+            var colNombres = new VisualElement();
+            colNombres.style.width = Length.Percent(50);
+            colNombres.style.height = Length.Percent(100);
+            colNombres.style.backgroundColor = new Color32(50, 50, 50, 255);
+            colNombres.style.justifyContent = Justify.SpaceBetween;
+            colNombres.style.alignItems = Align.Center;
+            colNombres.style.paddingLeft = 10;
+            colNombres.style.paddingRight = 10;
 
-            // NOMBRE LOCAL
             if (p.IdEquipoLocal == miEquipo.IdEquipo)
-                fila.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 35, TextAnchor.MiddleLeft, true));
+                colNombres.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 50, TextAnchor.MiddleLeft, true, Color.white));
             else
-                fila.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 35, TextAnchor.MiddleLeft, false));
+                colNombres.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 50, TextAnchor.MiddleLeft, false, Color.white));
 
-            // GOLES LOCAL
-            fila.Add(CrearTexto(p.GolesLocal.ToString(), 5, TextAnchor.MiddleCenter, true));
-
-            // ESCUDO VISITANTE
-            fila.Add(CrearEscudo(p.IdEquipoVisitante));
-
-            // NOMBRE VISITANTE
             if (p.IdEquipoVisitante == miEquipo.IdEquipo)
-                fila.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 30, TextAnchor.MiddleLeft, true));
+                colNombres.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 50, TextAnchor.MiddleRight, true, Color.white));
             else
-                fila.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 30, TextAnchor.MiddleLeft, false));
+                colNombres.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 50, TextAnchor.MiddleRight, false, Color.white));
+            fila.Add(colNombres);
 
-            // GOLES VISITANTE
-            fila.Add(CrearTexto(p.GolesVisitante.ToString(), 5, TextAnchor.MiddleCenter, true));
+            // COLUMNA GOLES (fondo verde, texto blanco)
+            var colGoles = new VisualElement();
+            colGoles.style.width = Length.Percent(40);
+            colGoles.style.height = Length.Percent(100);
+            colGoles.style.backgroundColor = new Color32(0, 170, 0, 255);
+            colGoles.style.justifyContent = Justify.SpaceEvenly;
+            colGoles.style.alignItems = Align.Center;
+            colGoles.Add(CrearTexto(p.GolesLocal.ToString(), 50, TextAnchor.MiddleCenter, true, Color.white));
+            colGoles.Add(CrearTexto(p.GolesVisitante.ToString(), 50, TextAnchor.MiddleCenter, true, Color.white));
+            fila.Add(colGoles);
 
             return fila;
         }
@@ -1393,7 +1409,7 @@ private void OnBtnSeguirClicked()
             return escudo;
         }
 
-        private VisualElement CrearTexto(string contenido, float widthPercent, TextAnchor anchor, bool negrita)
+        private VisualElement CrearTexto(string contenido, float widthPercent, TextAnchor anchor, bool negrita, Color color)
         {
             // Fuente Poppins-Bold
             var fontPath = negrita
@@ -1409,6 +1425,7 @@ private void OnBtnSeguirClicked()
             var label = new Label(contenido);
             label.style.unityTextAlign = anchor;
             label.style.fontSize = 18;
+            label.style.color = color;
             var fontAsset = Resources.Load<UnityEngine.TextCore.Text.FontAsset>(fontPath);
             label.style.unityFontDefinition = new StyleFontDefinition(fontAsset);
 
