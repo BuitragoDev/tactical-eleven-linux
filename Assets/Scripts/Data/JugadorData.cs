@@ -1428,66 +1428,7 @@ namespace TacticalEleven.Scripts
                 Debug.LogError($"Error al obtener jugadores: {ex.Message}");
             }
 
-            return listaJugadores;
-        }
-
-                    using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
-                    {
-                        comando.Parameters.AddWithValue("@equipo", id);
-                        using (SQLiteDataReader dr = comando.ExecuteReader())
-                        {
-                            while (dr.Read())
-                            {
-                                // Crear un objeto Jugador y asignar los valores de la base de datos
-                                Jugador jugador = new Jugador
-                                {
-                                    IdJugador = dr.GetInt32(dr.GetOrdinal("id_jugador")),
-                                    Nombre = dr.GetString(dr.GetOrdinal("nombre")),
-                                    Apellido = dr.GetString(dr.GetOrdinal("apellido")),
-                                    IdEquipo = dr.GetInt32(dr.GetOrdinal("id_equipo")),
-                                    Dorsal = dr.GetInt32(dr.GetOrdinal("dorsal")),
-                                    Rol = dr.GetString(dr.GetOrdinal("rol")),
-                                    RolId = dr.GetInt32(dr.GetOrdinal("rol_id")),
-                                    Velocidad = dr.GetInt32(dr.GetOrdinal("velocidad")),
-                                    Resistencia = dr.GetInt32(dr.GetOrdinal("resistencia")),
-                                    Agresividad = dr.GetInt32(dr.GetOrdinal("agresividad")),
-                                    Calidad = dr.GetInt32(dr.GetOrdinal("calidad")),
-                                    EstadoForma = dr.GetInt32(dr.GetOrdinal("estado_forma")),
-                                    Moral = dr.GetInt32(dr.GetOrdinal("moral")),
-                                    Potencial = dr.GetInt32(dr.GetOrdinal("potencial")),
-                                    Portero = dr.GetInt32(dr.GetOrdinal("portero")),
-                                    Pase = dr.GetInt32(dr.GetOrdinal("pase")),
-                                    Regate = dr.GetInt32(dr.GetOrdinal("regate")),
-                                    Remate = dr.GetInt32(dr.GetOrdinal("remate")),
-                                    Entradas = dr.GetInt32(dr.GetOrdinal("entradas")),
-                                    Tiro = dr.GetInt32(dr.GetOrdinal("tiro")),
-                                    FechaNacimiento = DateTime.Parse(dr.GetString(dr.GetOrdinal("fecha_nacimiento"))),
-                                    Peso = dr.GetInt32(dr.GetOrdinal("peso")),
-                                    Altura = dr.GetInt32(dr.GetOrdinal("altura")),
-                                    Lesion = dr.GetInt32(dr.GetOrdinal("lesion")),
-                                    TipoLesion = dr.IsDBNull(dr.GetOrdinal("tipo_lesion")) ? null : dr.GetString(dr.GetOrdinal("tipo_lesion")),
-                                    LesionTratada = dr.GetInt32(dr.GetOrdinal("lesion_tratada")),
-                                    Sancionado = dr.GetInt32(dr.GetOrdinal("sancionado")),
-                                    Nacionalidad = dr.GetString(dr.GetOrdinal("nacionalidad")),
-                                    Status = dr.GetInt32(dr.GetOrdinal("status")),
-                                    RutaImagen = dr.GetString(dr.GetOrdinal("ruta_imagen"))
-                                };
-
-                                // Agregar el jugador a la lista
-                                listaJugadores.Add(jugador);
-                            }
-                        }
-                    }
-
-                    conexion.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
-            }
-
-            return listaJugadores;
+return listaJugadores;
         }
 
         // ------------------------------------------------------------------ MÉTODO PARA DECIR SI TENGO PORTERO EN LA ALINEACIÓN TITULAR
