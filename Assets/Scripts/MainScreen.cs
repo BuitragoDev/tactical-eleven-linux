@@ -2787,10 +2787,18 @@ private void OnBtnSeguirClicked()
             if (imagenMVP != null)
                 fotoMvp.style.backgroundImage = new StyleBackground(imagenMVP);
 
-            // Asistencia y recaudación
-            lblAsistenciaPartido.text = $"{EquipoData.ObtenerDetallesEquipo(partido.IdEquipoLocal).Estadio} " +
-                                        $" 🏟️  {partido.Asistencia?.ToString("N0") ?? "0"} espectadores " +
-                                        $" 💰  {datos.Recaudacion.ToString("N0")} €";
+            // Asistencia y recaudación (solo si mi equipo es local)
+            if (partido.IdEquipoLocal == miEquipo.IdEquipo && datos.Recaudacion > 0)
+            {
+                lblAsistenciaPartido.text = $"{EquipoData.ObtenerDetallesEquipo(partido.IdEquipoLocal).Estadio} " +
+                                            $" 🏟️  {partido.Asistencia?.ToString("N0") ?? "0"} espectadores " +
+                                            $" 💰  {datos.Recaudacion.ToString("N0")} €";
+            }
+            else
+            {
+                lblAsistenciaPartido.text = $"{EquipoData.ObtenerDetallesEquipo(partido.IdEquipoLocal).Estadio} " +
+                                            $" 🏟️  {partido.Asistencia?.ToString("N0") ?? "0"} espectadores";
+            }
         }
     }
 }
