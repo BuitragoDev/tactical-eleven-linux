@@ -2550,10 +2550,10 @@ private void OnBtnSeguirClicked()
             // Penalizaciones si es mi equipo
             bool soyLocal = esMiEquipo && miEquipo != null && partido.IdEquipoLocal == miEquipo.IdEquipo;
             
-            bool penalizarAtaqueLocal = soyLocal && !JugadorData.TengoDelaneros(partido.IdEquipoLocal);
+            bool penalizarAtaqueLocal = soyLocal && !JugadorData.TengoDelanteros(partido.IdEquipoLocal);
             bool penalizarDefensaLocal = soyLocal && (!JugadorData.TengoPortero(partido.IdEquipoLocal) || !JugadorData.TengoDefensas(partido.IdEquipoLocal));
 
-            bool penalizarAtaqueVisitante = !soyLocal && esMiEquipo && !JugadorData.TengoDelaneros(partido.IdEquipoVisitante);
+            bool penalizarAtaqueVisitante = !soyLocal && esMiEquipo && !JugadorData.TengoDelanteros(partido.IdEquipoVisitante);
             bool penalizarDefensaVisitante = !soyLocal && esMiEquipo && (!JugadorData.TengoPortero(partido.IdEquipoVisitante) || !JugadorData.TengoDefensas(partido.IdEquipoVisitante));
 
             // Simular goles
@@ -2567,15 +2567,14 @@ private void OnBtnSeguirClicked()
             List<(Jugador, Jugador?)> goleadoresLocal = AsignarGolesYAsistencias(golesLocal, jugadoresLocal, random);
             List<(Jugador, Jugador?)> goleadoresVisitante = AsignarGolesYAsistencias(golesVisitante, jugadoresVisitante, random);
 
-            // Asignar tarjetas
+// Asignar tarjetas
             var (tarjetasLocal, tarjetasVisitante) = AsignarTarjetas(jugadoresLocal, jugadoresVisitante, random);
 
             // Calcular asistencia
             int asistencia = EquipoData.CalcularAsistencia(partido.IdEquipoLocal);
-int asistencia = EquipoData.CalcularAsistencia(partido.IdEquipoLocal);
             partido.Asistencia = asistencia;
 
-// Calcular órgan arrecadação
+            // Calcular recaudación
             int recauda = 0;
             if (partido.IdEquipoLocal == miEquipo?.IdEquipo)
             {
@@ -2589,8 +2588,8 @@ int asistencia = EquipoData.CalcularAsistencia(partido.IdEquipoLocal);
             // Crear datos de simulación
             DatosSimulacion datos = new DatosSimulacion
             {
-                GolesLocal = goleLocal,
-                GolesVisitante = goleVisitante,
+                GolesLocal = golesLocal,
+                GolesVisitante = golesVisitante,
                 goleadoresLocal = goleadoresLocal,
                 goleadoresVisitante = goleadoresVisitante,
                 tarjetasLocal = tarjetasLocal,
@@ -2617,27 +2616,27 @@ int asistencia = EquipoData.CalcularAsistencia(partido.IdEquipoLocal);
             else if (partido.IdCompeticion >= 1 && partido.IdCompeticion <= 2)
             {
                 PartidoData.ActualizarPartido(partido);
-                GuardarClasificacion(partido, goleLocal, goleVisitante);
+                GuardarClasificacion(partido, golesLocal, golesVisitante);
                 GuardarEstadisticas(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
             }
             // Copa Nacional (4)
             else if (partido.IdCompeticion == 4)
             {
                 PartidoData.ActualizarPartidoCopaNacional(partido);
-                GuardarClasificacionCopaEuropa(partido, goleLocal, goleVisitante);
+                GuardarClasificacionCopaEuropa(partido, golesLocal, golesVisitante);
             }
             // Copa Europa 1 (5)
             else if (partido.IdCompeticion == 5)
             {
                 PartidoData.ActualizarPartidoCopaEuropa1(partido);
-                GuardarClasificacionCopaEuropa(partido, goleLocal, goleVisitante);
+                GuardarClasificacionCopaEuropa(partido, golesLocal, golesVisitante);
                 GuardarEstadisticasEuropa(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
             }
             // Copa Europa 2 (6)
             else if (partido.IdCompeticion == 6)
             {
                 PartidoData.ActualizarPartidoCopaEuropa2(partido);
-                GuardarClasificacionCopaEuropa(partido, goleLocal, goleVisitante);
+                GuardarClasificacionCopaEuropa(partido, golesLocal, golesVisitante);
                 GuardarEstadisticasEuropa(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
             }
 
