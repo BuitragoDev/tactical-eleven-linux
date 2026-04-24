@@ -1351,7 +1351,7 @@ private void OnBtnSeguirClicked()
             var colEscudos = new VisualElement();
             colEscudos.style.width = Length.Percent(10);
             colEscudos.style.height = Length.Percent(100);
-            colEscudos.style.backgroundColor = new Color32(255, 255, 255, 255);
+            colEscudos.style.backgroundColor = new StyleColor(new Color32(255, 255, 255, 255));
             colEscudos.style.justifyContent = Justify.Center;
             colEscudos.style.alignItems = Align.Center;
             colEscudos.Add(CrearEscudo(p.IdEquipoLocal));
@@ -1362,7 +1362,7 @@ private void OnBtnSeguirClicked()
             var colNombres = new VisualElement();
             colNombres.style.width = Length.Percent(50);
             colNombres.style.height = Length.Percent(100);
-            colNombres.style.backgroundColor = new Color32(50, 50, 50, 255);
+            colNombres.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
             colNombres.style.justifyContent = Justify.SpaceBetween;
             colNombres.style.alignItems = Align.Center;
             colNombres.style.paddingLeft = 10;
@@ -1383,7 +1383,7 @@ private void OnBtnSeguirClicked()
             var colGoles = new VisualElement();
             colGoles.style.width = Length.Percent(40);
             colGoles.style.height = Length.Percent(100);
-            colGoles.style.backgroundColor = new Color32(0, 170, 0, 255);
+            colGoles.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
             colGoles.style.justifyContent = Justify.SpaceEvenly;
             colGoles.style.alignItems = Align.Center;
             colGoles.Add(CrearTexto(p.GolesLocal.ToString(), 50, TextAnchor.MiddleCenter, true, Color.white));
