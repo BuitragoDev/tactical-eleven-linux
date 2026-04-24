@@ -612,12 +612,31 @@ private void OnBtnSeguirClicked()
             {
                 Debug.Log("Hay partidos hoy - Simular");
 
-                if (FechaData.AvanzarUnDia())
+                // Obtener todos los partidos de hoy (sin mi equipo)
+                List<Partido> listaPartidos = PartidoData.PartidosHoy(miEquipo.IdEquipo);
+                
+                if (listaPartidos != null && listaPartidos.Count > 0)
                 {
-                    ActualizarFecha();
-                    ActualizarBotonSeguir();
-                    CargarPortada();
-                    diaAvanzado = true;
+                    // Simular todos los partidos y guardar en BD
+                    foreach (var partido in listaPartidos)
+                    {
+                        SimularPartidoYGuardar(partido, false);
+                    }
+
+                    // Pintar resumen jornada
+                    SimularJornada(listaPartidos);
+                    resumenJornada.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    // No hay partidos, avanzar el día
+                    if (FechaData.AvanzarUnDia())
+                    {
+                        ActualizarFecha();
+                        ActualizarBotonSeguir();
+                        CargarPortada();
+                        diaAvanzado = true;
+                    }
                 }
             }
             else
@@ -2566,7 +2585,7 @@ private void OnBtnSeguirClicked()
             List<(Jugador, Jugador?)> goleadoresLocal = AsignarGolesYAsistencias(golesLocal, jugadoresLocal, random);
             List<(Jugador, Jugador?)> goleadoresVisitante = AsignarGolesYAsistencias(golesVisitante, jugadoresVisitante, random);
 
-// Asignar tarjetas
+            // Asignar tarjetas
             var (tarjetasLocal, tarjetasVisitante) = AsignarTarjetas(jugadoresLocal, jugadoresVisitante, random);
 
             // Calcular asistencia
@@ -2605,7 +2624,7 @@ private void OnBtnSeguirClicked()
             datos.GolesMVP = todosGoles.Count(ga => ga.Item1.IdJugador == datos.MVP.IdJugador);
             datos.AsistenciasMVP = todosGoles.Count(ga => ga.Item2 != null && ga.Item2.IdJugador == datos.MVP.IdJugador);
 
-// --------------------- GUARDAR EN BASE DE DATOS SEGÚN COMPETICIÓN
+            // --------------------- GUARDAR EN BASE DE DATOS SEGÚN COMPETICIÓN
             // Amistosos: solo resultado
             if (partido.IdCompeticion == 10)
             {
@@ -2770,8 +2789,8 @@ private void OnBtnSeguirClicked()
 
             // Asistencia y recaudación
             lblAsistenciaPartido.text = $"{EquipoData.ObtenerDetallesEquipo(partido.IdEquipoLocal).Estadio} " +
-                                       $" {datos.Asistencia.ToString("N0")} espectadores " +
-                                       $" {datos.Recaudacion.ToString("N0")} €";
+                                        $" 🏟️  {partido.Asistencia?.ToString("N0") ?? "0"} espectadores " +
+                                        $" 💰  {datos.Recaudacion.ToString("N0")} €";
         }
     }
 }
