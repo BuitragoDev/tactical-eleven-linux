@@ -2606,7 +2606,7 @@ private void OnBtnSeguirClicked()
             datos.GolesMVP = todosGoles.Count(ga => ga.Item1.IdJugador == datos.MVP.IdJugador);
             datos.AsistenciasMVP = todosGoles.Count(ga => ga.Item2 != null && ga.Item2.IdJugador == datos.MVP.IdJugador);
 
-            // --------------------- GUARDAR EN BASE DE DATOS SEGÚN COMPETICIÓN
+// --------------------- GUARDAR EN BASE DE DATOS SEGÚN COMPETICIÓN
             // Amistosos: solo resultado
             if (partido.IdCompeticion == 10)
             {
@@ -2616,27 +2616,27 @@ private void OnBtnSeguirClicked()
             else if (partido.IdCompeticion >= 1 && partido.IdCompeticion <= 2)
             {
                 PartidoData.ActualizarPartido(partido);
-                GuardarClasificacion(partido, golesLocal, golesVisitante);
+                GuardarClasificacion(partido, goleadoresLocal, goleadoresVisitante);
                 GuardarEstadisticas(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
             }
             // Copa Nacional (4)
             else if (partido.IdCompeticion == 4)
             {
                 PartidoData.ActualizarPartidoCopaNacional(partido);
-                GuardarClasificacionCopaEuropa(partido, golesLocal, golesVisitante);
+                GuardarClasificacionCopaEuropa(partido, goleadoresLocal, goleadoresVisitante);
             }
             // Copa Europa 1 (5)
             else if (partido.IdCompeticion == 5)
             {
                 PartidoData.ActualizarPartidoCopaEuropa1(partido);
-                GuardarClasificacionCopaEuropa(partido, golesLocal, golesVisitante);
+                GuardarClasificacionCopaEuropa(partido, goleadoresLocal, goleadoresVisitante);
                 GuardarEstadisticasEuropa(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
             }
             // Copa Europa 2 (6)
             else if (partido.IdCompeticion == 6)
             {
                 PartidoData.ActualizarPartidoCopaEuropa2(partido);
-                GuardarClasificacionCopaEuropa(partido, golesLocal, golesVisitante);
+                GuardarClasificacionCopaEuropa(partido, goleadoresLocal, goleadoresVisitante);
                 GuardarEstadisticasEuropa(jugadoresLocal, jugadoresVisitante, goleadoresLocal, goleadoresVisitante, tarjetasLocal, tarjetasVisitante, datos.MVP, esMiEquipo);
             }
 
