@@ -1359,11 +1359,13 @@ private void OnBtnSeguirClicked()
                 p.IdEquipoLocal == miEquipo.IdEquipo, Color.white);
             nombreLocal.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
             nombreLocal.style.paddingLeft = 10;
+            nombreLocal.style.height = 50;
             fila.Add(nombreLocal);
 
 // GOLES LOCAL (fondo verde, texto blanco, fontSize 22)
             var golesLocal = CrearTexto(p.GolesLocal.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true, 22);
             golesLocal.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+            golesLocal.style.height = 50;
             fila.Add(golesLocal);
 
             // ESCUDO VISITANTE (fondo blanco)
@@ -1378,11 +1380,13 @@ private void OnBtnSeguirClicked()
                 p.IdEquipoVisitante == miEquipo.IdEquipo, Color.white);
             nombreVisitante.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
             nombreVisitante.style.paddingLeft = 10;
+            nombreVisitante.style.height = 50;
             fila.Add(nombreVisitante);
 
 // GOLES VISITANTE (fondo verde, texto blanco, fontSize 22)
             var golesVisitante = CrearTexto(p.GolesVisitante.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true, 22);
             golesVisitante.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+            golesVisitante.style.height = 50;
             fila.Add(golesVisitante);
 
             return fila;
