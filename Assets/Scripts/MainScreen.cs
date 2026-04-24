@@ -601,9 +601,8 @@ private void OnBtnSeguirClicked()
                     // Simular Mi Partido y guardar en BD
                     DatosSimulacion datosMiPartido = SimularPartidoYGuardar(proximoPartido, true);
 
-                    // TODO: Implementar método PintarResumenMiPartido
-                    // Por ahora usamos el método original SimularPartido
-                    SimularPartido(proximoPartido);
+                    // Pintar resumen de mi partido
+                    PintarResumenMiPartido(proximoPartido, datosMiPartido);
 
                     // Mostrar pantalla resumen de partido
                     resumenPartido.style.display = DisplayStyle.Flex;
@@ -2730,6 +2729,49 @@ private void OnBtnSeguirClicked()
             var todosGoles = golLocal.Concat(golVisit).ToList();
             ActualizarEstadisticasPartidoEuropa(jugLocal, jugVisit, todosGoles, tarjetas, mvp);
             ActualizarJugadoresSancionados(tarjLocal, tarjVisit);
+        }
+
+        // -------------------------------------- PINTAR RESUMEN DE MI PARTIDO
+        private void PintarResumenMiPartido(Partido partido, DatosSimulacion datos)
+        {
+            MostrarCompeticionRonda(partido);
+
+            // Nombre de los equipos
+            lblNombreLocal.text = EquipoData.ObtenerDetallesEquipo(partido.IdEquipoLocal).Nombre;
+            lblNombreVisitante.text = EquipoData.ObtenerDetallesEquipo(partido.IdEquipoVisitante).Nombre;
+
+            // Escudos
+            var escudoLocal = Resources.Load<Sprite>($"EscudosEquipos/{partido.IdEquipoLocal}");
+            if (escudoLocal != null)
+                imgEscudoLocal.style.backgroundImage = new StyleBackground(escudoLocal);
+
+            var escudoVisitante = Resources.Load<Sprite>($"EscudosEquipos/{partido.IdEquipoVisitante}");
+            if (escudoVisitante != null)
+                imgEscudoVisitante.style.backgroundImage = new StyleBackground(escudoVisitante);
+
+            // Marcador
+            lblGolesLocal.text = datos.GolesLocal.ToString();
+            lblGolesVisitante.text = datos.GolesVisitante.ToString();
+
+            // Goleadores y tarjetas
+            MostrarGoleadoresYAsistentes(goleadoresLocalContainer, datos.goleadoresLocal);
+            MostrarGoleadoresYAsistentes(goleadoresVisitanteContainer, datos.goleadoresVisitante);
+            MostrarTarjetas(tarjetasLocalContainer, datos.tarjetasLocal);
+            MostrarTarjetas(tarjetasVisitanteContainer, datos.tarjetasVisitante);
+
+            // MVP
+            lblMvpDemarcacion.text = $"{JugadorData.MostrarDatosJugador(datos.MVP.IdJugador).Rol}";
+            lblMvpNombre.text = $"{JugadorData.MostrarDatosJugador(datos.MVP.IdJugador).NombreCompleto}";
+            lblMvpEstadisticas.text = $"({datos.GolesMVP} {(datos.GolesMVP == 1 ? "gol" : "goles")} / " +
+                                       $"{datos.AsistenciasMVP} {(datos.AsistenciasMVP == 1 ? "asistencia" : "asistencias")})";
+            var imagenMVP = Resources.Load<Sprite>($"{datos.MVP.RutaImagen}");
+            if (imagenMVP != null)
+                fotoMvp.style.backgroundImage = new StyleBackground(imagenMVP);
+
+            // Asistencia y recaudación
+            lblAsistenciaPartido.text = $"{EquipoData.ObtenerDetallesEquipo(partido.IdEquipoLocal).Estadio} " +
+                                       $" {datos.Asistencia.ToString("N0")} espectadores " +
+                                       $" {datos.Recaudacion.ToString("N0")} €";
         }
     }
 }
