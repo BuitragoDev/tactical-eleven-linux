@@ -1337,7 +1337,7 @@ private void OnBtnSeguirClicked()
             }
         }
 
-        private VisualElement CrearFilaPartido(Partido p)
+private VisualElement CrearFilaPartido(Partido p)
         {
             var fila = new VisualElement();
             fila.style.flexDirection = FlexDirection.Row;
@@ -1347,48 +1347,41 @@ private void OnBtnSeguirClicked()
             fila.style.marginBottom = 5;
             fila.style.alignItems = Align.Center;
 
-            // COLUMNA ESCUDOS (fondo blanco)
-            var colEscudos = new VisualElement();
-            colEscudos.style.width = Length.Percent(10);
-            colEscudos.style.height = Length.Percent(100);
-            colEscudos.style.backgroundColor = new StyleColor(new Color32(255, 255, 255, 255));
-            colEscudos.style.justifyContent = Justify.Center;
-            colEscudos.style.alignItems = Align.Center;
-            colEscudos.Add(CrearEscudo(p.IdEquipoLocal));
-            colEscudos.Add(CrearEscudo(p.IdEquipoVisitante));
-            fila.Add(colEscudos);
+            // ESCUDO LOCAL (fondo blanco)
+            var escudoLocal = CrearEscudo(p.IdEquipoLocal);
+            escudoLocal.style.backgroundColor = new StyleColor(new Color32(255, 255, 255, 255));
+            fila.Add(escudoLocal);
 
-            // COLUMNA NOMBRES (fondo gris oscuro, texto blanco)
-            var colNombres = new VisualElement();
-            colNombres.style.width = Length.Percent(50);
-            colNombres.style.height = Length.Percent(100);
-            colNombres.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
-            colNombres.style.justifyContent = Justify.SpaceBetween;
-            colNombres.style.alignItems = Align.Center;
-            colNombres.style.paddingLeft = 10;
-            colNombres.style.paddingRight = 10;
+            // NOMBRE LOCAL (fondo gris oscuro, texto blanco)
+            var nombreLocal = CrearTexto(
+                EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 
+                35, TextAnchor.MiddleLeft, 
+                p.IdEquipoLocal == miEquipo.IdEquipo, Color.white);
+            nombreLocal.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
+            fila.Add(nombreLocal);
 
-            if (p.IdEquipoLocal == miEquipo.IdEquipo)
-                colNombres.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 50, TextAnchor.MiddleLeft, true, Color.white));
-            else
-                colNombres.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 50, TextAnchor.MiddleLeft, false, Color.white));
+            // GOLES LOCAL (fondo verde, texto blanco)
+            var golesLocal = CrearTexto(p.GolesLocal.ToString(), 5, TextAnchor.MiddleCenter, true, Color.white);
+            golesLocal.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+            fila.Add(golesLocal);
 
-            if (p.IdEquipoVisitante == miEquipo.IdEquipo)
-                colNombres.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 50, TextAnchor.MiddleRight, true, Color.white));
-            else
-                colNombres.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 50, TextAnchor.MiddleRight, false, Color.white));
-            fila.Add(colNombres);
+            // ESCUDO VISITANTE (fondo blanco)
+            var escudoVisitante = CrearEscudo(p.IdEquipoVisitante);
+            escudoVisitante.style.backgroundColor = new StyleColor(new Color32(255, 255, 255, 255));
+            fila.Add(escudoVisitante);
 
-            // COLUMNA GOLES (fondo verde, texto blanco)
-            var colGoles = new VisualElement();
-            colGoles.style.width = Length.Percent(40);
-            colGoles.style.height = Length.Percent(100);
-            colGoles.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
-            colGoles.style.justifyContent = Justify.SpaceEvenly;
-            colGoles.style.alignItems = Align.Center;
-            colGoles.Add(CrearTexto(p.GolesLocal.ToString(), 50, TextAnchor.MiddleCenter, true, Color.white));
-            colGoles.Add(CrearTexto(p.GolesVisitante.ToString(), 50, TextAnchor.MiddleCenter, true, Color.white));
-            fila.Add(colGoles);
+            // NOMBRE VISITANTE (fondo gris oscuro, texto blanco)
+            var nombreVisitante = CrearTexto(
+                EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 
+                30, TextAnchor.MiddleLeft, 
+                p.IdEquipoVisitante == miEquipo.IdEquipo, Color.white);
+            nombreVisitante.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
+            fila.Add(nombreVisitante);
+
+            // GOLES VISITANTE (fondo verde, texto blanco)
+            var golesVisitante = CrearTexto(p.GolesVisitante.ToString(), 5, TextAnchor.MiddleCenter, true, Color.white);
+            golesVisitante.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+            fila.Add(golesVisitante);
 
             return fila;
         }
