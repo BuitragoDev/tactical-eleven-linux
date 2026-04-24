@@ -1425,11 +1425,11 @@ private void OnBtnSeguirClicked()
             factor = Math.Clamp(factor, 0.2, 1.2); // para evitar resultados extremos
 
             // Cálculo de goles esperados con un poco de aleatoriedad
-            double golesEsperados = factor * 2.0;
-            double variacion = (random.NextDouble() * 2.0) - 1.0;
+            double golesEsperados = factor * 3.5;
+            double variacion = (random.NextDouble() * 3.0) - 1.0;
             int goles = (int)Math.Round(golesEsperados + variacion);
 
-            return Math.Clamp(goles, 0, 7);
+            return Math.Clamp(goles, 0, 10);
         }
 
         private List<(Jugador, Jugador?)> AsignarGolesYAsistencias(int goles, List<Jugador> jugadores, Random random)
