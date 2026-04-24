@@ -1395,8 +1395,10 @@ private void OnBtnSeguirClicked()
         private VisualElement CrearEscudo(int idEquipo)
         {
             var escudo = new VisualElement();
-            escudo.style.width = Length.Percent(10);
-            escudo.style.height = 38;
+            escudo.style.width = 32;
+            escudo.style.height = 32;
+            escudo.style.justifyContent = Justify.Center;
+            escudo.style.alignItems = Align.Center;
 
             var sprite = Resources.Load<Sprite>($"EscudosEquipos/32x32/{idEquipo}");
             if (sprite != null)
