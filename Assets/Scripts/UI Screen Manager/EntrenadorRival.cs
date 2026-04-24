@@ -103,8 +103,17 @@ namespace TacticalEleven.Scripts
             else
                 fila.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoLocal).Nombre, 35, TextAnchor.MiddleLeft, false));
 
-            // GOLES LOCAL
-            fila.Add(CrearTexto(p.GolesLocal.ToString(), 5, TextAnchor.MiddleCenter, true));
+            // GOLES LOCAL (con color según resultado)
+            var containerGolesLocal = new VisualElement();
+            containerGolesLocal.style.width = Length.Percent(5);
+            containerGolesLocal.style.height = 50;
+            containerGolesLocal.style.alignItems = Align.Center;
+            containerGolesLocal.style.justifyContent = Justify.Center;
+            var labelGolesLocal = new Label(p.GolesLocal.ToString());
+            labelGolesLocal.style.fontSize = 20;
+            labelGolesLocal.style.color = Color.white;
+            containerGolesLocal.Add(labelGolesLocal);
+            fila.Add(containerGolesLocal);
 
             // ESCUDO VISITANTE
             fila.Add(CrearEscudo(p.IdEquipoVisitante));
@@ -115,8 +124,33 @@ namespace TacticalEleven.Scripts
             else
                 fila.Add(CrearTexto(EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 30, TextAnchor.MiddleLeft, false));
 
-            // GOLES VISITANTE
-            fila.Add(CrearTexto(p.GolesVisitante.ToString(), 5, TextAnchor.MiddleCenter, true));
+            // GOLES VISITANTE (con color según resultado)
+            var containerGolesVisitante = new VisualElement();
+            containerGolesVisitante.style.width = Length.Percent(5);
+            containerGolesVisitante.style.height = 50;
+            containerGolesVisitante.style.alignItems = Align.Center;
+            containerGolesVisitante.style.justifyContent = Justify.Center;
+            var labelGolesVisitante = new Label(p.GolesVisitante.ToString());
+            labelGolesVisitante.style.fontSize = 20;
+            labelGolesVisitante.style.color = Color.white;
+            containerGolesVisitante.Add(labelGolesVisitante);
+            fila.Add(containerGolesVisitante);
+
+            if (p.GolesLocal == p.GolesVisitante)
+            {
+                containerGolesLocal.style.backgroundColor = new StyleColor(new Color32(128, 128, 128, 255));
+                containerGolesVisitante.style.backgroundColor = new StyleColor(new Color32(128, 128, 128, 255));
+            }
+            else if (p.GolesLocal > p.GolesVisitante)
+            {
+                containerGolesLocal.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+                containerGolesVisitante.style.backgroundColor = new StyleColor(new Color32(128, 0, 0, 255));
+            }
+            else
+            {
+                containerGolesLocal.style.backgroundColor = new StyleColor(new Color32(128, 0, 0, 255));
+                containerGolesVisitante.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+            }
 
             return fila;
         }

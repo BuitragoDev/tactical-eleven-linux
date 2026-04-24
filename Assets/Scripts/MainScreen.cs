@@ -1347,10 +1347,15 @@ private void OnBtnSeguirClicked()
             fila.style.marginBottom = 3;
             fila.style.alignItems = Align.Center;
 
-            // ESCUDO LOCAL (fondo blanco)
+            // ESCUDO LOCAL (fondo blanco) - contenedor 10%
+            var colEscudoLocal = new VisualElement();
+            colEscudoLocal.style.width = Length.Percent(10);
+            colEscudoLocal.style.justifyContent = Justify.Center;
+            colEscudoLocal.style.alignItems = Align.Center;
+            colEscudoLocal.style.backgroundColor = new StyleColor(new Color32(222, 222, 222, 255));
             var escudoLocal = CrearEscudo(p.IdEquipoLocal);
-            escudoLocal.style.backgroundColor = new StyleColor(new Color32(222, 222, 222, 255));
-            fila.Add(escudoLocal);
+            colEscudoLocal.Add(escudoLocal);
+            fila.Add(colEscudoLocal);
 
             // NOMBRE LOCAL (fondo gris oscuro, texto blanco)
             var nombreLocal = CrearTexto(
@@ -1362,31 +1367,52 @@ private void OnBtnSeguirClicked()
             nombreLocal.style.height = 50;
             fila.Add(nombreLocal);
 
-// GOLES LOCAL (fondo verde, texto blanco, fontSize 22)
-            var golesLocal = CrearTexto(p.GolesLocal.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true, 22);
-            golesLocal.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+            // GOLES LOCAL (fondo verde, texto blanco, fontSize 22)
+            var golesLocal = CrearTexto(p.GolesLocal.ToString(), 5, TextAnchor.MiddleCenter, true, Color.white, true, 24);
+            golesLocal.style.backgroundColor = new StyleColor(new Color32(24, 58, 39, 255));
             golesLocal.style.height = 50;
             fila.Add(golesLocal);
 
-            // ESCUDO VISITANTE (fondo blanco)
+            // ESCUDO VISITANTE (fondo blanco) - contenedor 10%
+            var colEscudoVisitante = new VisualElement();
+            colEscudoVisitante.style.width = Length.Percent(10);
+            colEscudoVisitante.style.justifyContent = Justify.Center;
+            colEscudoVisitante.style.alignItems = Align.Center;
+            colEscudoVisitante.style.backgroundColor = new StyleColor(new Color32(222, 222, 222, 255));
             var escudoVisitante = CrearEscudo(p.IdEquipoVisitante);
-            escudoVisitante.style.backgroundColor = new StyleColor(new Color32(222, 222, 222, 255));
-            fila.Add(escudoVisitante);
+            colEscudoVisitante.Add(escudoVisitante);
+            fila.Add(colEscudoVisitante);
 
-// NOMBRE VISITANTE (fondo gris oscuro, texto blanco)
+            // NOMBRE VISITANTE (fondo gris oscuro, texto blanco)
             var nombreVisitante = CrearTexto(
                 EquipoData.ObtenerDetallesEquipo(p.IdEquipoVisitante).Nombre, 
-                30, TextAnchor.MiddleLeft, 
+                35, TextAnchor.MiddleLeft, 
                 p.IdEquipoVisitante == miEquipo.IdEquipo, Color.white);
             nombreVisitante.style.backgroundColor = new StyleColor(new Color32(50, 50, 50, 255));
             nombreVisitante.style.paddingLeft = 10;
             nombreVisitante.style.height = 50;
             fila.Add(nombreVisitante);
 
-// GOLES VISITANTE (fondo verde, texto blanco, fontSize 22)
-            var golesVisitante = CrearTexto(p.GolesVisitante.ToString(), 15, TextAnchor.MiddleCenter, true, Color.white, true, 22);
-            golesVisitante.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+            // GOLES VISITANTE (fondo según resultado)
+            var golesVisitante = CrearTexto(p.GolesVisitante.ToString(), 5, TextAnchor.MiddleCenter, true, Color.white, true, 24);
             golesVisitante.style.height = 50;
+
+            if (p.GolesLocal == p.GolesVisitante)
+            {
+                golesLocal.style.backgroundColor = new StyleColor(new Color32(128, 128, 128, 255));
+                golesVisitante.style.backgroundColor = new StyleColor(new Color32(128, 128, 128, 255));
+            }
+            else if (p.GolesLocal > p.GolesVisitante)
+            {
+                golesLocal.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+                golesVisitante.style.backgroundColor = new StyleColor(new Color32(128, 0, 0, 255));
+            }
+            else
+            {
+                golesLocal.style.backgroundColor = new StyleColor(new Color32(128, 0, 0, 255));
+                golesVisitante.style.backgroundColor = new StyleColor(new Color32(0, 170, 0, 255));
+            }
+
             fila.Add(golesVisitante);
 
             return fila;
@@ -1395,12 +1421,12 @@ private void OnBtnSeguirClicked()
         private VisualElement CrearEscudo(int idEquipo)
         {
             var escudo = new VisualElement();
-            escudo.style.width = 32;
-            escudo.style.height = 32;
+            escudo.style.width = 50;
+            escudo.style.height = 50;
             escudo.style.justifyContent = Justify.Center;
             escudo.style.alignItems = Align.Center;
 
-            var sprite = Resources.Load<Sprite>($"EscudosEquipos/32x32/{idEquipo}");
+            var sprite = Resources.Load<Sprite>($"EscudosEquipos/64x64/{idEquipo}");
             if (sprite != null)
             {
                 escudo.style.backgroundImage = new StyleBackground(sprite);
