@@ -1647,7 +1647,7 @@ namespace TacticalEleven.Scripts
 
                     comando.Parameters.AddWithValue("@IdEquipo", equipo);
                     Fecha f = FechaData.ObtenerFechaHoy();
-                    comando.Parameters.AddWithValue("@Hoy", f.ToDateTime());
+                    comando.Parameters.AddWithValue("@Hoy", f?.Hoy ?? "");
 
                     using (SQLiteDataReader reader = comando.ExecuteReader())
                     {
@@ -1749,6 +1749,311 @@ namespace TacticalEleven.Scripts
             }
 
             return false;
+        }
+
+        // ------------------------------------------------------- MÉTODO QUE ACTUALIZA CON EL RESULTADO DE UN PARTIDO
+        public static void ActualizarPartido(Partido partido)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE partidos 
+                                     SET goles_local = @GolesLocal, goles_visitante = @GolesVisitante, asistencia = @Asistencia, estado = @Estado
+                                     WHERE id_partido = @IdPartido";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@GolesLocal", partido.GolesLocal); 
+                        comando.Parameters.AddWithValue("@GolesVisitante", partido.GolesVisitante);
+                        comando.Parameters.AddWithValue("@Asistencia", partido.Asistencia);
+                        comando.Parameters.AddWithValue("@Estado", "Finalizado");
+                        comando.Parameters.AddWithValue("@IdPartido", partido.IdPartido);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE ACTUALIZA CON EL RESULTADO DE UN PARTIDO DE COPA
+        public static void ActualizarPartidoCopaNacional(Partido partido)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE partidos_copaNacional 
+                                     SET goles_local = @GolesLocal, goles_visitante = @GolesVisitante, asistencia = @Asistencia, estado = @Estado
+                                     WHERE id_partido = @IdPartido";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@GolesLocal", partido.GolesLocal); 
+                        comando.Parameters.AddWithValue("@GolesVisitante", partido.GolesVisitante);
+                        comando.Parameters.AddWithValue("@Asistencia", partido.Asistencia);
+                        comando.Parameters.AddWithValue("@Estado", "Finalizado");
+                        comando.Parameters.AddWithValue("@IdPartido", partido.IdPartido);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ------------------------------------- MÉTODO QUE ACTUALIZA CON EL RESULTADO DE UN PARTIDO DE COPA EUROPA 1
+        public static void ActualizarPartidoCopaEuropa1(Partido partido)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE partidos_copaEuropa1 
+                                     SET goles_local = @GolesLocal, goles_visitante = @GolesVisitante, asistencia = @Asistencia, estado = @Estado
+                                     WHERE id_partido = @IdPartido";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@GolesLocal", partido.GolesLocal); 
+                        comando.Parameters.AddWithValue("@GolesVisitante", partido.GolesVisitante);
+                        comando.Parameters.AddWithValue("@Asistencia", partido.Asistencia);
+                        comando.Parameters.AddWithValue("@Estado", "Finalizado");
+                        comando.Parameters.AddWithValue("@IdPartido", partido.IdPartido);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ------------------------------------- MÉTODO QUE ACTUALIZA CON EL RESULTADO DE UN PARTIDO DE COPA EUROPA 2
+        public static void ActualizarPartidoCopaEuropa2(Partido partido)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE partidos_copaEuropa2 
+                                     SET goles_local = @GolesLocal, goles_visitante = @GolesVisitante, asistencia = @Asistencia, estado = @Estado
+                                     WHERE id_partido = @IdPartido";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@GolesLocal", partido.GolesLocal); 
+                        comando.Parameters.AddWithValue("@GolesVisitante", partido.GolesVisitante);
+                        comando.Parameters.AddWithValue("@Asistencia", partido.Asistencia);
+                        comando.Parameters.AddWithValue("@Estado", "Finalizado");
+                        comando.Parameters.AddWithValue("@IdPartido", partido.IdPartido);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ------------------------------------------ MÉTODO QUE DEVUELVE LOS PARTIDOS DE HOY QUE NO JUEGA MI EQUIPO
+        public static List<Partido> PartidosHoy(int miEquipo)
+        {
+            string dbPath = GetDBPath();
+            List<Partido> partidos = new List<Partido>();
+
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return partidos;
+            }
+
+            Fecha f = FechaData.ObtenerFechaHoy();
+            string fechaHoy = f?.Hoy ?? "";       
+
+            using (var conexion = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+            {
+                conexion.Open();
+                using (var comando = conexion.CreateCommand())
+                {
+                    comando.CommandText = @"SELECT * FROM (
+                                                SELECT 
+                                                    p.id_partido,
+                                                    p.fecha, 
+                                                    NULL AS id_ronda, 
+                                                    NULL AS partido_vuelta, 
+                                                    p.jornada,
+                                                    el.nombre AS nombreEquipoLocal, 
+                                                    ev.nombre AS nombreEquipoVisitante, 
+                                                    p.id_equipo_local, 
+                                                    p.id_equipo_visitante,
+                                                    p.goles_local,
+                                                    p.goles_visitante,
+                                                    p.id_competicion
+                                                FROM partidos p
+                                                JOIN equipos el ON p.id_equipo_local = el.id_equipo
+                                                JOIN equipos ev ON p.id_equipo_visitante = ev.id_equipo
+                                                WHERE p.fecha = @Hoy
+                                                AND (p.id_equipo_local <> @IdEquipo AND p.id_equipo_visitante <> @IdEquipo)
+
+                                                UNION ALL
+
+                                                SELECT 
+                                                    pc.id_partido,
+                                                    pc.fecha, 
+                                                    pc.id_ronda,
+                                                    pc.partido_vuelta,
+                                                    NULL AS jornada,
+                                                    el.nombre AS nombreEquipoLocal, 
+                                                    ev.nombre AS nombreEquipoVisitante, 
+                                                    pc.id_equipo_local, 
+                                                    pc.id_equipo_visitante,
+                                                    pc.goles_local,
+                                                    pc.goles_visitante,
+                                                    pc.id_competicion
+                                                FROM partidos_copaNacional pc
+                                                JOIN equipos el ON pc.id_equipo_local = el.id_equipo
+                                                JOIN equipos ev ON pc.id_equipo_visitante = ev.id_equipo
+                                                WHERE pc.fecha = @Hoy
+                                                AND (pc.id_equipo_local <> @IdEquipo AND pc.id_equipo_visitante <> @IdEquipo)
+
+                                                UNION ALL
+
+                                                SELECT 
+                                                    pe1.id_partido,
+                                                    pe1.fecha, 
+                                                    pe1.id_ronda,
+                                                    pe1.partido_vuelta,
+                                                    pe1.jornada,
+                                                    el.nombre AS nombreEquipoLocal, 
+                                                    ev.nombre AS nombreEquipoVisitante, 
+                                                    pe1.id_equipo_local, 
+                                                    pe1.id_equipo_visitante,
+                                                    pe1.goles_local,
+                                                    pe1.goles_visitante,
+                                                    pe1.id_competicion
+                                                FROM partidos_copaEuropa1 pe1
+                                                JOIN equipos el ON pe1.id_equipo_local = el.id_equipo
+                                                JOIN equipos ev ON pe1.id_equipo_visitante = ev.id_equipo
+                                                WHERE pe1.fecha = @Hoy
+                                                AND (pe1.id_equipo_local <> @IdEquipo AND pe1.id_equipo_visitante <> @IdEquipo)
+
+                                                UNION ALL
+
+                                                SELECT 
+                                                    pe2.id_partido,
+                                                    pe2.fecha, 
+                                                    pe2.id_ronda,
+                                                    pe2.partido_vuelta,
+                                                    pe2.jornada,
+                                                    el.nombre AS nombreEquipoLocal, 
+                                                    ev.nombre AS nombreEquipoVisitante, 
+                                                    pe2.id_equipo_local, 
+                                                    pe2.id_equipo_visitante,
+                                                    pe2.goles_local,
+                                                    pe2.goles_visitante,
+                                                    pe2.id_competicion
+                                                FROM partidos_copaEuropa2 pe2
+                                                JOIN equipos el ON pe2.id_equipo_local = el.id_equipo
+                                                JOIN equipos ev ON pe2.id_equipo_visitante = ev.id_equipo
+                                                WHERE pe2.fecha = @Hoy
+                                                AND (pe2.id_equipo_local <> @IdEquipo AND pe2.id_equipo_visitante <> @IdEquipo)
+                                            )
+                                            ORDER BY fecha DESC, id_partido ASC";
+
+                    comando.Parameters.AddWithValue("@IdEquipo", miEquipo);
+                    comando.Parameters.AddWithValue("@Hoy", fechaHoy);
+
+                    using (SQLiteDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            partidos.Add(new Partido()
+                            {
+                                IdPartido = Convert.ToInt32(reader["id_partido"]),
+                                Jornada = reader["jornada"] != DBNull.Value ? Convert.ToInt32(reader["jornada"]) : 0,
+                                Ronda = reader["id_ronda"] != DBNull.Value ? Convert.ToInt32(reader["id_ronda"]) : 0,
+                                PartidoVuelta = reader["partido_vuelta"] != DBNull.Value ? Convert.ToInt32(reader["partido_vuelta"]) : 0,
+                                FechaPartido = reader["fecha"] != DBNull.Value && DateTime.TryParse(reader["fecha"].ToString(), out DateTime fecha)
+                                                ? fecha
+                                                : DateTime.Parse("2000-01-01"),
+                                IdEquipoLocal = Convert.ToInt32(reader["id_equipo_local"]),
+                                IdEquipoVisitante = Convert.ToInt32(reader["id_equipo_visitante"]),
+                                GolesLocal = reader["goles_local"] != DBNull.Value ? Convert.ToInt32(reader["goles_local"]) : 0,
+                                GolesVisitante = reader["goles_visitante"] != DBNull.Value ? Convert.ToInt32(reader["goles_visitante"]) : 0,
+                                IdCompeticion = reader["id_competicion"] != DBNull.Value ? Convert.ToInt32(reader["id_competicion"]) : 0,
+                                NombreEquipoLocal = reader.GetString(reader.GetOrdinal("nombreEquipoLocal")),
+                                NombreEquipoVisitante = reader.GetString(reader.GetOrdinal("nombreEquipoVisitante"))
+                            });
+                        }
+                    }
+                }
+            }
+
+            return partidos;
         }
     }
 }

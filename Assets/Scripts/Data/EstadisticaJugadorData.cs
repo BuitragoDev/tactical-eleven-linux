@@ -676,5 +676,103 @@ namespace TacticalEleven.Scripts
 
             return null;
         }
+
+        // ---------------------------------------------- MÉTODO PARA ACTUALIZAR LAS ESTADÍSTICAS DE LOS JUGADORES
+        public static void ActualizarEstadisticas(Estadistica estadistica)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE estadisticas_jugadores 
+                                     SET partidosJugados = partidosJugados + @PartidosJugados,
+                                         goles = goles + @Goles,
+                                         asistencias = asistencias + @Asistencias,
+                                         tarjetasAmarillas = tarjetasAmarillas + @TarjetasAmarillas,
+                                         tarjetasRojas = tarjetasRojas + @TarjetasRojas,
+                                         mvp = mvp + @MVPs
+                                     WHERE id_jugador = @IdJugador";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdJugador", estadistica.IdJugador);
+                        comando.Parameters.AddWithValue("@Goles", estadistica.Goles);
+                        comando.Parameters.AddWithValue("@Asistencias", estadistica.Asistencias);
+                        comando.Parameters.AddWithValue("@TarjetasAmarillas", estadistica.TarjetasAmarillas);
+                        comando.Parameters.AddWithValue("@TarjetasRojas", estadistica.TarjetasRojas);
+                        comando.Parameters.AddWithValue("@MVPs", estadistica.MVP);
+                        comando.Parameters.AddWithValue("@PartidosJugados", estadistica.PartidosJugados);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO PARA ACTUALIZAR LAS ESTADÍSTICAS DE LOS JUGADORES EN EUROPA
+        public static void ActualizarEstadisticasEuropa(Estadistica estadistica)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE estadisticas_jugadores_europa 
+                                     SET partidosJugados = partidosJugados + @PartidosJugados,
+                                         goles = goles + @Goles,
+                                         asistencias = asistencias + @Asistencias,
+                                         tarjetasAmarillas = tarjetasAmarillas + @TarjetasAmarillas,
+                                         tarjetasRojas = tarjetasRojas + @TarjetasRojas,
+                                         mvp = mvp + @MVPs
+                                     WHERE id_jugador = @IdJugador";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdJugador", estadistica.IdJugador);
+                        comando.Parameters.AddWithValue("@Goles", estadistica.Goles);
+                        comando.Parameters.AddWithValue("@Asistencias", estadistica.Asistencias);
+                        comando.Parameters.AddWithValue("@TarjetasAmarillas", estadistica.TarjetasAmarillas);
+                        comando.Parameters.AddWithValue("@TarjetasRojas", estadistica.TarjetasRojas);
+                        comando.Parameters.AddWithValue("@MVPs", estadistica.MVP);
+                        comando.Parameters.AddWithValue("@PartidosJugados", estadistica.PartidosJugados);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
     }
 }

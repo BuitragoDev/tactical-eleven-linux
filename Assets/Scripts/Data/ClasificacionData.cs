@@ -834,5 +834,265 @@ namespace TacticalEleven.Scripts
 
             return clasificacionEquipo;
         }
+
+        // ---------------------------------------------- MÉTODO PARA ACTUALIZAR LA CLASIFICACIÓN DE LA DIVISIÓN 1
+        public static void ActualizarClasificacion(Clasificacion clasificacion)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE clasificacion 
+                                    SET jugados = jugados + @Jugados,
+                                        ganados = ganados + @Ganados,
+                                        empatados = empatados + @Empatados,
+                                        perdidos = perdidos + @Perdidos,
+                                        puntos = puntos + @Puntos,
+                                        local_victorias = local_victorias + @LocalVictorias,
+                                        local_derrotas = local_derrotas + @LocalDerrotas,
+                                        visitante_victorias = visitante_victorias + @VisitanteVictorias,
+                                        visitante_derrotas = visitante_derrotas + @VisitanteDerrotas,
+                                        goles_favor = goles_favor + @GolesFavor,
+                                        goles_contra = goles_contra + @GolesContra,
+                                        racha = CASE
+                                                    WHEN @Racha = 0 THEN 0
+                                                    WHEN (racha > 0 AND @Racha > 0) OR (racha < 0 AND @Racha < 0) THEN racha + @Racha
+                                                    ELSE @Racha
+                                                END
+                                    WHERE id_equipo = @IdEquipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@Jugados", clasificacion.Jugados);
+                        comando.Parameters.AddWithValue("@Ganados", clasificacion.Ganados);
+                        comando.Parameters.AddWithValue("@Empatados", clasificacion.Empatados);
+                        comando.Parameters.AddWithValue("@Perdidos", clasificacion.Perdidos);
+                        comando.Parameters.AddWithValue("@Puntos", clasificacion.Puntos);
+                        comando.Parameters.AddWithValue("@LocalVictorias", clasificacion.LocalVictorias);
+                        comando.Parameters.AddWithValue("@LocalDerrotas", clasificacion.LocalDerrotas);
+                        comando.Parameters.AddWithValue("@VisitanteVictorias", clasificacion.VisitanteVictorias);
+                        comando.Parameters.AddWithValue("@VisitanteDerrotas", clasificacion.VisitanteDerrotas);
+                        comando.Parameters.AddWithValue("@GolesFavor", clasificacion.GolesFavor);
+                        comando.Parameters.AddWithValue("@GolesContra", clasificacion.GolesContra);
+                        comando.Parameters.AddWithValue("@Racha", clasificacion.Racha);
+                        comando.Parameters.AddWithValue("@IdEquipo", clasificacion.IdEquipo);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO PARA ACTUALIZAR LA CLASIFICACIÓN DE LA DIVISIÓN 2
+        public static void ActualizarClasificacion2(Clasificacion clasificacion)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE clasificacion2 
+                                     SET jugados = jugados + @Jugados,
+                                        ganados = ganados + @Ganados,
+                                        empatados = empatados + @Empatados,
+                                        perdidos = perdidos + @Perdidos,
+                                        puntos = puntos + @Puntos,
+                                        local_victorias = local_victorias + @LocalVictorias,
+                                        local_derrotas = local_derrotas + @LocalDerrotas,
+                                        visitante_victorias = visitante_victorias + @VisitanteVictorias,
+                                        visitante_derrotas = visitante_derrotas + @VisitanteDerrotas,
+                                        goles_favor = goles_favor + @GolesFavor,
+                                        goles_contra = goles_contra + @GolesContra,
+                                        racha = CASE
+                                                    WHEN @Racha = 0 THEN 0
+                                                    WHEN (racha > 0 AND @Racha > 0) OR (racha < 0 AND @Racha < 0) THEN racha + @Racha
+                                                    ELSE @Racha
+                                                END
+                                    WHERE id_equipo = @IdEquipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@Jugados", clasificacion.Jugados);
+                        comando.Parameters.AddWithValue("@Ganados", clasificacion.Ganados);
+                        comando.Parameters.AddWithValue("@Empatados", clasificacion.Empatados);
+                        comando.Parameters.AddWithValue("@Perdidos", clasificacion.Perdidos);
+                        comando.Parameters.AddWithValue("@Puntos", clasificacion.Puntos);
+                        comando.Parameters.AddWithValue("@LocalVictorias", clasificacion.LocalVictorias);
+                        comando.Parameters.AddWithValue("@LocalDerrotas", clasificacion.LocalDerrotas);
+                        comando.Parameters.AddWithValue("@VisitanteVictorias", clasificacion.VisitanteVictorias);
+                        comando.Parameters.AddWithValue("@VisitanteDerrotas", clasificacion.VisitanteDerrotas);
+                        comando.Parameters.AddWithValue("@GolesFavor", clasificacion.GolesFavor);
+                        comando.Parameters.AddWithValue("@GolesContra", clasificacion.GolesContra);
+                        comando.Parameters.AddWithValue("@Racha", clasificacion.Racha);
+                        comando.Parameters.AddWithValue("@IdEquipo", clasificacion.IdEquipo);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO PARA ACTUALIZAR LA CLASIFICACIÓN DE LA COPA EUROPA 1
+        public static void ActualizarClasificacionEuropa1(Clasificacion clasificacion)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE clasificacion_europa1 
+                                     SET jugados = jugados + @Jugados,
+                                        ganados = ganados + @Ganados,
+                                        empatados = empatados + @Empatados,
+                                        perdidos = perdidos + @Perdidos,
+                                        puntos = puntos + @Puntos,
+                                        local_victorias = local_victorias + @LocalVictorias,
+                                        local_derrotas = local_derrotas + @LocalDerrotas,
+                                        visitante_victorias = visitante_victorias + @VisitanteVictorias,
+                                        visitante_derrotas = visitante_derrotas + @VisitanteDerrotas,
+                                        goles_favor = goles_favor + @GolesFavor,
+                                        goles_contra = goles_contra + @GolesContra,
+                                        racha = CASE
+                                                    WHEN @Racha = 0 THEN 0
+                                                    WHEN (racha > 0 AND @Racha > 0) OR (racha < 0 AND @Racha < 0) THEN racha + @Racha
+                                                    ELSE @Racha
+                                                END
+                                    WHERE id_equipo = @IdEquipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@Jugados", clasificacion.Jugados);
+                        comando.Parameters.AddWithValue("@Ganados", clasificacion.Ganados);
+                        comando.Parameters.AddWithValue("@Empatados", clasificacion.Empatados);
+                        comando.Parameters.AddWithValue("@Perdidos", clasificacion.Perdidos);
+                        comando.Parameters.AddWithValue("@Puntos", clasificacion.Puntos);
+                        comando.Parameters.AddWithValue("@LocalVictorias", clasificacion.LocalVictorias);
+                        comando.Parameters.AddWithValue("@LocalDerrotas", clasificacion.LocalDerrotas);
+                        comando.Parameters.AddWithValue("@VisitanteVictorias", clasificacion.VisitanteVictorias);
+                        comando.Parameters.AddWithValue("@VisitanteDerrotas", clasificacion.VisitanteDerrotas);
+                        comando.Parameters.AddWithValue("@GolesFavor", clasificacion.GolesFavor);
+                        comando.Parameters.AddWithValue("@GolesContra", clasificacion.GolesContra);
+                        comando.Parameters.AddWithValue("@Racha", clasificacion.Racha);
+                        comando.Parameters.AddWithValue("@IdEquipo", clasificacion.IdEquipo);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO PARA ACTUALIZAR LA CLASIFICACIÓN DE LA COPA EUROPA 2
+        public static void ActualizarClasificacionEuropa2(Clasificacion clasificacion)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE clasificacion_europa2 
+                                     SET jugados = jugados + @Jugados,
+                                        ganados = ganados + @Ganados,
+                                        empatados = empatados + @Empatados,
+                                        perdidos = perdidos + @Perdidos,
+                                        puntos = puntos + @Puntos,
+                                        local_victorias = local_victorias + @LocalVictorias,
+                                        local_derrotas = local_derrotas + @LocalDerrotas,
+                                        visitante_victorias = visitante_victorias + @VisitanteVictorias,
+                                        visitante_derrotas = visitante_derrotas + @VisitanteDerrotas,
+                                        goles_favor = goles_favor + @GolesFavor,
+                                        goles_contra = goles_contra + @GolesContra,
+                                        racha = CASE
+                                                    WHEN @Racha = 0 THEN 0
+                                                    WHEN (racha > 0 AND @Racha > 0) OR (racha < 0 AND @Racha < 0) THEN racha + @Racha
+                                                    ELSE @Racha
+                                                END
+                                    WHERE id_equipo = @IdEquipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@Jugados", clasificacion.Jugados);
+                        comando.Parameters.AddWithValue("@Ganados", clasificacion.Ganados);
+                        comando.Parameters.AddWithValue("@Empatados", clasificacion.Empatados);
+                        comando.Parameters.AddWithValue("@Perdidos", clasificacion.Perdidos);
+                        comando.Parameters.AddWithValue("@Puntos", clasificacion.Puntos);
+                        comando.Parameters.AddWithValue("@LocalVictorias", clasificacion.LocalVictorias);
+                        comando.Parameters.AddWithValue("@LocalDerrotas", clasificacion.LocalDerrotas);
+                        comando.Parameters.AddWithValue("@VisitanteVictorias", clasificacion.VisitanteVictorias);
+                        comando.Parameters.AddWithValue("@VisitanteDerrotas", clasificacion.VisitanteDerrotas);
+                        comando.Parameters.AddWithValue("@GolesFavor", clasificacion.GolesFavor);
+                        comando.Parameters.AddWithValue("@GolesContra", clasificacion.GolesContra);
+                        comando.Parameters.AddWithValue("@Racha", clasificacion.Racha);
+                        comando.Parameters.AddWithValue("@IdEquipo", clasificacion.IdEquipo);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
     }
 }

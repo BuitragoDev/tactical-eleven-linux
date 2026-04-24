@@ -261,7 +261,6 @@
     background-color: rgb(30, 30, 30);
 }
 
-/* Estilo de la ventana PopUp */
 .popup-button-cerrar {
     width: 290px;
     height: 60px;
@@ -273,16 +272,17 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    -unity-font-definition: resource('Fonts/Poppins-Bold');
+    -unity-font-definition: resource("Fonts/Poppins-Bold");
 }
 
-/* Estilos pantalla Resumen Partido*/
+/* ------------------- RESUMEN PARTIDO ------------------- */
+
 .background-resumen-partidos {
-    width: 1920px;
-    height: 1080px;
     flex-grow: 1;
-    position: absolute;
+    width: 100%;
+    height: 100%;
     background-color: rgb(180, 180, 180);
+    position: absolute;
 }
 
 .resumen-partido-cabecera-area {
@@ -330,7 +330,7 @@
     height: 6%;
     width: 100%;
     flex-grow: 0;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
@@ -352,7 +352,7 @@
     height: 6%;
     width: 100%;
     flex-grow: 0;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
@@ -361,89 +361,89 @@
     width: 100%;
     flex-grow: 0;
     background-color: rgb(24, 58, 39);
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
 .lblNombreJornada {
     -unity-font-definition: resource("Fonts/Poppins-SemiBold");
     color: rgb(30, 30, 30);
-    font-size: 32px;
+    font-size: 24px;
 }
 
 .marcador-local-area {
-    flex-grow: 1; 
-    width: 40%; 
-    height: 100%; 
-    align-items: center; 
+    flex-grow: 1;
+    width: 40%;
+    height: 100%;
+    align-items: center;
     justify-content: center;
 }
 
 .marcador-visitante-area {
-    flex-grow: 1; 
-    width: 40%; 
-    height: 100%; 
-    align-items: center; 
+    flex-grow: 1;
+    width: 40%;
+    height: 100%;
+    align-items: center;
     justify-content: center;
 }
 
 .resultado-area {
-    flex-grow: 0; 
-    width: 20%; 
-    height: 100%; 
-    align-items: center; 
+    flex-grow: 0;
+    width: 20%;
+    height: 100%;
+    align-items: center;
     justify-content: center;
 }
 
 .texto-goles {
     -unity-font-definition: resource("Fonts/Poppins-SemiBold");
     color: rgb(255, 255, 255);
-    font-size: 96px;
+    font-size: 124px;
 }
 
 .escudo-local-area {
-    flex-grow: 1; 
-    width: 100%; 
+    flex-grow: 1;
+    width: 100%;
     height: 80%;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
 .nombre-local-area {
-    flex-grow: 1; 
-    width: 100%; 
+    flex-grow: 1;
+    width: 100%;
     height: 20%;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
 .escudo-visitante-area {
-    flex-grow: 1; 
-    width: 100%; 
+    flex-grow: 1;
+    width: 100%;
     height: 80%;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
 .nombre-visitante-area {
-    flex-grow: 1; 
-    width: 100%; 
+    flex-grow: 1;
+    width: 100%;
     height: 20%;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
 .lblNombreEquipo {
     -unity-font-definition: resource("Fonts/Poppins-SemiBold");
-    color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
     font-size: 24;
 }
 
 .escudoEquipos {
-    flex-grow: 0; 
-    width: 120px; 
-    height: 120px;
-    align-items: center; 
+    flex-grow: 0;
+    width: 200px;
+    height: 200px;
+    align-items: center;
     justify-content: center;
 }
 
@@ -454,15 +454,15 @@
 }
 
 .mvp-demarcacion {
-    -unity-font-definition: resource("Fonts/Poppins-Bold");
+    -unity-font-definition: resource("Fonts/Poppins-Regular");
     color: rgb(207, 156, 13);
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .mvp-nombre {
     -unity-font-definition: resource("Fonts/Poppins-Bold");
     color: rgb(255, 255, 255);
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .mvp-estadisticas {
@@ -475,4 +475,68 @@
     -unity-font-definition: resource("Fonts/Poppins-SemiBold");
     color: rgb(24, 58, 39);
     font-size: 18;
+}
+
+/* ------------------- RESUMEN JORNADA ------------------- */
+
+.background-resumen-jornada {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(180, 180, 180);
+    position: absolute;
+}
+
+.resumen-jornada-cabecera-area {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.resumen-jornada-titulo-area {
+    height: 100%;
+    width: auto;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgb(24, 58, 39);
+    padding-left: 20px;
+}
+
+.resumen-jornada-titulo {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(204, 201, 201);
+    font-size: 48px;
+}
+
+.resumen-jornada-boton-area {
+    height: 100%;
+    width: 20%;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(180, 180, 180);
+}
+
+.lista-partidos-area {
+    height: 94%;
+    width: 100%;
+    flex-grow: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.lista-partidos-left-area {
+    height: 100%;
+    width: 50%;
+    flex-grow: 0;
+}
+
+.lista-partidos-right-area {
+    height: 100%;
+    width: 50%;
+    flex-grow: 0;
 }

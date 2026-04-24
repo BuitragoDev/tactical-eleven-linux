@@ -130,14 +130,14 @@
         <ui:VisualElement name="bottom-area" class="bottom-area"/>
     </ui:VisualElement>
     <ui:VisualElement name="popup-container" class="popup-container" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none; justify-content: center; align-items: center;">
-        <ui:VisualElement name="popup" class="popup" style="width: 650px; height: 200px; background-color: rgb(34, 34, 34); border-radius: 8px; padding: 20px; flex-direction: column; align-items: center; justify-content: space-between;">
-            <ui:Label name="popup-text" text="¿Deseas borrar esta partida?" style="color: white; font-size: 18px; text-align: center;"/>
+        <ui:VisualElement name="popup" class="popup" style="width: 650px; height: 230px; background-color: rgb(34, 34, 34); border-radius: 8px; padding: 20px; flex-direction: column; align-items: center; justify-content: space-between;">
+            <ui:Label name="popup-text" text="" style="color: white; font-size: 18px; text-align: center; white-space: normal; width: 100%; flex-shrink: 1;"/>
             <ui:VisualElement style="flex-direction: row; justify-content: space-evenly; width: 100%; margin-top: 20px;">
                 <ui:Button text="CERRAR" name="btnCerrar" class="popup-button-cerrar"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="resumen-partido" class="background-resumen-partidos" style="display: flex;">
+    <ui:VisualElement name="resumen-partido" class="background-resumen-partidos" style="display: none;">
         <ui:VisualElement name="resumen-partido-cabecera-area" class="resumen-partido-cabecera-area">
             <ui:VisualElement name="resumen-partido-titulo-area" class="resumen-partido-titulo-area">
                 <ui:Label name="resumen-partidos-titulo" text="RESUMEN DE PARTIDO" class="resumen-partidos-titulo"/>
@@ -146,7 +146,7 @@
                 <ui:Button name="btnContinuar" text="CONTINUAR" icon-image="project://database/Assets/Resources/Icons/avanzar.png?fileID=2800000&amp;guid=a6028fb24b29fe443bb23067d1943788&amp;type=3#avanzar" class="btnSeguir"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="resumen-partido-contenido-area" class="resumen-partido-contenido-area">
+        <ui:VisualElement name="resumen-partido-contenido-area" class="resumen-partido-contenido-area" style="background-size: 100% 100%;">
             <ui:VisualElement name="jornada-area" class="jornada-area">
                 <ui:Label name="lblTituloJornada" text="Jornada" class="lblNombreJornada"/>
             </ui:VisualElement>
@@ -155,15 +155,15 @@
                     <ui:VisualElement name="escudo-local-area" class="escudo-local-area">
                         <ui:VisualElement name="escudo-local" class="escudoEquipos"/>
                     </ui:VisualElement>
-                    <ui:VisualElement name="nombre-local-area" class="nombre-local-area">
+                    <ui:VisualElement name="nombre-local-area" class="nombre-local-area" style="background-color: rgb(24, 58, 39); margin-left: 10px;">
                         <ui:Label text="Equipo Local" name="lblNombreLocal" class="lblNombreEquipo"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="resultado-area" class="resultado-area" style="flex-direction: row; align-items: flex-end;">
-                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 50%; height: 80%; background-color: rgb(24, 58, 39); padding-top: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 50%; height: 98%; background-color: rgb(24, 58, 39); padding-top: 0; margin-top: 0; margin-right: 10px; margin-bottom: 0; margin-left: 10px;">
                         <ui:Label text="0" name="goles-local" class="texto-goles"/>
                     </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 50%; height: 80%; background-color: rgb(24, 58, 39); padding-top: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; width: 50%; height: 98%; background-color: rgb(24, 58, 39); padding-top: 0; margin-top: 0; margin-right: 10px; margin-bottom: 0; margin-left: 10px;">
                         <ui:Label text="0" name="goles-visitante" class="texto-goles"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -171,33 +171,33 @@
                     <ui:VisualElement name="escudo-visitante-area" class="escudo-visitante-area">
                         <ui:VisualElement name="escudo-visitante" class="escudoEquipos"/>
                     </ui:VisualElement>
-                    <ui:VisualElement name="nombre-visitante-area" class="nombre-visitante-area">
+                    <ui:VisualElement name="nombre-visitante-area" class="nombre-visitante-area" style="background-color: rgb(24, 58, 39); margin-right: 0;">
                         <ui:Label text="Equipo Visitante" name="lblNombreVisitante" class="lblNombreEquipo"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="estadisticas-area" class="estadisticas-area" style="flex-direction: row;">
-                <ui:VisualElement style="flex-grow: 1;">
-                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: flex-start; justify-content: center; padding-left: 20px;">
-                        <ui:Label text="GOLEADORES" class="titulos-estadisticas"/>
+                <ui:VisualElement style="flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; background-color: rgb(223, 223, 223); width: 25%;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: flex-start; justify-content: center; padding-left: 20px; background-color: rgb(51, 51, 51);">
+                        <ui:Label text="GOLEADORES" class="titulos-estadisticas" style="color: rgb(204, 204, 204);"/>
                     </ui:VisualElement>
                     <ui:VisualElement name="goleadores-local-area" style="flex-grow: 0; width: 100%; height: 85%; align-items: flex-start; padding-left: 20px;"/>
                 </ui:VisualElement>
-                <ui:VisualElement style="flex-grow: 1;">
-                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: flex-start; justify-content: center; padding-left: 20px;">
-                        <ui:Label text="TARJETAS" class="titulos-estadisticas"/>
+                <ui:VisualElement style="flex-grow: 0; background-color: rgb(223, 223, 223); margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; width: 25%;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: flex-start; justify-content: center; padding-left: 20px; background-color: rgb(51, 51, 51);">
+                        <ui:Label text="TARJETAS" class="titulos-estadisticas" style="color: rgb(204, 204, 204);"/>
                     </ui:VisualElement>
                     <ui:VisualElement name="tarjetas-local-area" style="flex-grow: 0; width: 100%; height: 85%; align-items: flex-start; padding-left: 20px;"/>
                 </ui:VisualElement>
-                <ui:VisualElement style="flex-grow: 1;">
-                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: flex-start; justify-content: center; padding-left: 20px;">
-                        <ui:Label text="GOLEADORES" class="titulos-estadisticas"/>
+                <ui:VisualElement style="flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; background-color: rgb(223, 223, 223); width: 25%;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: flex-start; justify-content: center; padding-left: 20px; background-color: rgb(51, 51, 51);">
+                        <ui:Label text="GOLEADORES" class="titulos-estadisticas" style="color: rgb(204, 204, 204);"/>
                     </ui:VisualElement>
                     <ui:VisualElement name="goleadores-visitante-area" style="flex-grow: 0; width: 100%; height: 85%; align-items: flex-start; padding-left: 20px;"/>
                 </ui:VisualElement>
-                <ui:VisualElement style="flex-grow: 1;">
-                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: flex-start; justify-content: center; padding-left: 20px;">
-                        <ui:Label text="TARJETAS" class="titulos-estadisticas"/>
+                <ui:VisualElement style="flex-grow: 0; background-color: rgb(223, 223, 223); margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; width: 25%;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%; align-items: flex-start; justify-content: center; padding-left: 20px; background-color: rgb(51, 51, 51);">
+                        <ui:Label text="TARJETAS" class="titulos-estadisticas" style="color: rgb(204, 204, 204);"/>
                     </ui:VisualElement>
                     <ui:VisualElement name="tarjetas-visitante-area" style="flex-grow: 0; width: 100%; height: 85%; align-items: flex-start; padding-left: 20px;"/>
                 </ui:VisualElement>
@@ -206,18 +206,39 @@
                 <ui:Label text="Asistencia al partido" name="lblAsistenciaPartido" class="lblAsistenciaPartido"/>
             </ui:VisualElement>
             <ui:VisualElement name="mvp-area" class="mvp-area" style="flex-direction: row;">
-                <ui:VisualElement style="flex-grow: 0; height: 100%; width: 10%;"/>
+                <ui:VisualElement style="flex-grow: 0; height: 100%; width: 20%; align-items: center; justify-content: center;">
+                    <ui:Label text="Jugador del&#10;partido" style="-unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 32px; color: rgb(229, 229, 229); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center;"/>
+                </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 1; height: 100%; align-items: center; justify-content: center; flex-direction: row;">
                     <ui:VisualElement style="flex-grow: 1; width: 30%; height: 100%; align-items: flex-end; justify-content: center;">
                         <ui:VisualElement name="foto-mvp" style="flex-grow: 0; align-items: center; justify-content: center; width: 100px; height: 100px;"/>
                     </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1; width: 70%; height: 100%; align-items: center; justify-content: flex-start; flex-direction: row; padding-left: 20px;">
+                    <ui:VisualElement style="flex-grow: 1; width: 70%; height: 100%; align-items: center; justify-content: flex-start; flex-direction: row; padding-left: 20px; padding-top: 40px;">
                         <ui:Label text="Demarcación" name="lblMvpDemarcacion" class="mvp-demarcacion" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;"/>
                         <ui:Label text="Nombre jugador" name="lblMvpNombre" class="mvp-nombre" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;"/>
                         <ui:Label text="(0 goles / 0 asistencias)" name="lblMvpEstadisticas" class="mvp-estadisticas" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 0; height: 100%; width: 10%;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="resumen-jornada" class="background-resumen-jornada" style="display: none;">
+        <ui:VisualElement name="resumen-jornada-cabecera-area" class="resumen-jornada-cabecera-area">
+            <ui:VisualElement name="resumen-jornada-titulo-area" class="resumen-jornada-titulo-area">
+                <ui:Label name="resumen-jornada-titulo" text="RESULTADOS DEL DÍA" class="resumen-jornada-titulo"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="resumen-jornada-boton-area" class="resumen-jornada-boton-area">
+                <ui:Button name="btnContinuarJornada" text="CONTINUAR" icon-image="project://database/Assets/Resources/Icons/avanzar.png?fileID=2800000&amp;guid=a6028fb24b29fe443bb23067d1943788&amp;type=3#avanzar" class="btnSeguir"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="resumen-jornada-contenido-area" class="resumen-jornada-contenido-area" style="background-size: 100%; width: 100%; height: 100%;">
+            <ui:VisualElement name="jornada-area2" class="jornada-area">
+                <ui:Label name="lblTituloJornada2" text="Jornada" class="lblNombreJornada"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="lista-partidos-area" class="lista-partidos-area" style="flex-direction: row;">
+                <ui:VisualElement name="lista-partidos-left-area" class="lista-partidos-left-area" style="padding-top: 25px; padding-right: 25px; padding-bottom: 25px; padding-left: 25px;"/>
+                <ui:VisualElement name="lista-partidos-right-area" class="lista-partidos-right-area" style="padding-top: 25px; padding-right: 25px; padding-bottom: 25px; padding-left: 25px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

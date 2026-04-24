@@ -113,7 +113,7 @@ namespace TacticalEleven.Scripts
                 };
                 FinanzaData.CrearIngreso(nuevoIngresoPatrocinio);
 
-                // Restar la indemnización al Presupuesto
+                // Sumar la indemnización al Presupuesto
                 EquipoData.SumarCantidadAPresupuesto(miEquipo.IdEquipo, pagoPatrocinador);
 
                 popupContainer.style.display = DisplayStyle.None;

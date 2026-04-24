@@ -1536,5 +1536,114 @@ namespace TacticalEleven.Scripts
 
             return encontrado;
         }
+
+        // ---------------------------------------------- MÉTODO QUE PONE UN JUGADOR COMO SANCIONADO
+        public static void PonerJugadorSancionado(int jugador, int duracion)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE jugadores SET sancionado = @Duracion
+                                     WHERE id_jugador = @IdJugador";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdJugador", jugador);
+                        comando.Parameters.AddWithValue("@Duracion", duracion);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE PONE UN JUGADOR COMO LESIONADO
+        public static void PonerJugadorLesionado(int jugador, int duracion, string tipo)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE jugadores SET lesion = @Duracion, tipo_lesion = @Descripcion
+                                     WHERE id_jugador = @IdJugador";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdJugador", jugador);
+                        comando.Parameters.AddWithValue("@Duracion", duracion);
+                        comando.Parameters.AddWithValue("@Descripcion", tipo);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE DICE SI UN JUGADOR PERTENECE A MI EQUIPO
+        public static bool EsDeMiEquipo(int jugador, int equipo)
+        {
+            var dbPath = GetDBPath();
+
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return false;
+            }
+
+            using (var conexion = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+            {
+                conexion.Open();
+                using (var comando = conexion.CreateCommand())
+                {
+                    comando.CommandText = @"SELECT COUNT(*) FROM jugadores WHERE id_jugador = @IdJugador AND id_equipo = @IdEquipo";
+
+                    comando.Parameters.AddWithValue("@IdJugador", jugador);
+                    comando.Parameters.AddWithValue("@IdEquipo", equipo);
+
+                    var result = comando.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result) > 0;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }
