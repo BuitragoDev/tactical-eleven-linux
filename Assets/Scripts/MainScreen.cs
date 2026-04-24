@@ -601,8 +601,9 @@ private void OnBtnSeguirClicked()
                     // Simular Mi Partido y guardar en BD
                     DatosSimulacion datosMiPartido = SimularPartidoYGuardar(proximoPartido, true);
 
-                    // Pintar resumen de mi partido
-                    PintarResumenMiPartido(proximoPartido, datosMiPartido);
+                    // TODO: Implementar método PintarResumenMiPartido
+                    // Por ahora usamos el método original SimularPartido
+                    SimularPartido(proximoPartido);
 
                     // Mostrar pantalla resumen de partido
                     resumenPartido.style.display = DisplayStyle.Flex;
@@ -2549,10 +2550,10 @@ private void OnBtnSeguirClicked()
             // Penalizaciones si es mi equipo
             bool soyLocal = esMiEquipo && miEquipo != null && partido.IdEquipoLocal == miEquipo.IdEquipo;
             
-            bool penalizarAtaqueLocal = soyLocal && !JugadorData.TengoDelantero(partido.IdEquipoLocal);
-            bool penalizarDefensaLocal = soyLocal && (!JugadorData.Tengo portero(partido.IdEquipoLocal) || !JugadorData.TengoDefensas(partido.IdEquipoLocal));
+            bool penalizarAtaqueLocal = soyLocal && !JugadorData.TengoDelaneros(partido.IdEquipoLocal);
+            bool penalizarDefensaLocal = soyLocal && (!JugadorData.TengoPortero(partido.IdEquipoLocal) || !JugadorData.TengoDefensas(partido.IdEquipoLocal));
 
-            bool penalizarAtaqueVisitante = !soyLocal && esMiEquipo && !JugadorData.TengoDelantero(partido.IdEquipoVisitante);
+            bool penalizarAtaqueVisitante = !soyLocal && esMiEquipo && !JugadorData.TengoDelaneros(partido.IdEquipoVisitante);
             bool penalizarDefensaVisitante = !soyLocal && esMiEquipo && (!JugadorData.TengoPortero(partido.IdEquipoVisitante) || !JugadorData.TengoDefensas(partido.IdEquipoVisitante));
 
             // Simular goles
@@ -2574,14 +2575,14 @@ private void OnBtnSeguirClicked()
 int asistencia = EquipoData.CalcularAsistencia(partido.IdEquipoLocal);
             partido.Asistencia = asistencia;
 
-            // Calcular recaudación
-            int recaudacion = 0;
+// Calcular órgan arrecadação
+            int recauda = 0;
             if (partido.IdEquipoLocal == miEquipo?.IdEquipo)
             {
-                Taquilla电影院 = TaquillaData.RecuperarPreciosTaquilla(miEquipo.IdEquipo);
-                double? rec =电影院.PrecioEntradaGeneral * (asistencia * 0.50) + 
-                           电影院.PrecioEntradaTribuna * (asistencia * 0.40) + 
-                           电影院.PrecioEntradaVip * (asistencia * 0.10);
+                Taquilla taq = TaquillaData.RecuperarPreciosTaquilla(miEquipo.IdEquipo);
+                double? rec = taq.PrecioEntradaGeneral * (asistencia * 0.50) + 
+                           taq.PrecioEntradaTribuna * (asistencia * 0.40) + 
+                           taq.PrecioEntradaVip * (asistencia * 0.10);
                 recauda = (int)Math.Round(rec ?? 0);
             }
 
