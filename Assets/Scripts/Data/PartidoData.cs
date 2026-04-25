@@ -2055,5 +2055,275 @@ namespace TacticalEleven.Scripts
 
             return partidos;
         }
+
+        // ------------------------------------------------------------------ OBTENER EQUIPOS CLASIFICADOS DE UNA RONDA DE COPA
+        public static List<Equipo> ObtenerEquiposClasificados(int idRonda, int idCompeticion)
+        {
+            List<Equipo> clasificados = new List<Equipo>();
+
+            var dbPath = GetDBPath();
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return clasificados;
+            }
+
+            string nombreTabla = idCompeticion == 4 ? "partidos_CopaNacional" :
+                                 idCompeticion == 5 ? "partidos_copaEuropa1" :
+                                 "partidos_copaEuropa2";
+
+            string connString = $"Data Source={dbPath};Version=3;";
+            using (var connection = new SQLiteConnection(connString))
+            {
+                connection.Open();
+
+                string query = $@"SELECT 
+                                    ida.id_equipo_local AS equipo_ida_local,
+                                    ida.id_equipo_visitante AS equipo_ida_visitante,
+                                    ida.goles_local AS goles_ida_local,
+                                    ida.goles_visitante AS goles_ida_visitante,
+                                    vuelta.goles_local AS goles_vuelta_local,
+                                    vuelta.goles_visitante AS goles_vuelta_visitante
+                                  FROM {nombreTabla} ida
+                                  JOIN {nombreTabla} vuelta
+                                     ON ida.id_ronda = vuelta.id_ronda 
+                                  AND ida.id_competicion = vuelta.id_competicion
+                                  AND ida.partido_vuelta = 0
+                                  AND vuelta.partido_vuelta = 1
+                                  AND ida.id_equipo_local = vuelta.id_equipo_visitante
+                                  AND ida.id_equipo_visitante = vuelta.id_equipo_local
+                                  WHERE ida.id_ronda = @IdRonda AND ida.id_competicion = @IdCompeticion";
+
+                using (var cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IdRonda", idRonda);
+                    cmd.Parameters.AddWithValue("@IdCompeticion", idCompeticion);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int idaLocal = Convert.ToInt32(reader["goles_ida_local"]);
+                            int idaVisitante = Convert.ToInt32(reader["goles_ida_visitante"]);
+                            int vueltaVisitante = Convert.ToInt32(reader["goles_vuelta_visitante"]);
+
+                            int equipoA = Convert.ToInt32(reader["equipo_ida_local"]);
+                            int equipoB = Convert.ToInt32(reader["equipo_ida_visitante"]);
+
+                            int globalA = idaLocal + vueltaVisitante;
+                            int globalB = idaVisitante + Convert.ToInt32(reader["goles_vuelta_local"]);
+
+                            int clasificadoId;
+                            if (globalA > globalB)
+                                clasificadoId = equipoA;
+                            else if (globalB > globalA)
+                                clasificadoId = equipoB;
+                            else
+                                clasificadoId = new Random().Next(0, 2) == 0 ? equipoA : equipoB;
+
+                            Equipo equipoClasificado = EquipoData.ObtenerDetallesEquipo(clasificadoId);
+                            if (equipoClasificado != null && !clasificados.Any(e => e.IdEquipo == equipoClasificado.IdEquipo))
+                            {
+                                clasificados.Add(equipoClasificado);
+                            }
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return clasificados;
+        }
+
+        // ------------------------------------------------------------------ OBTENER EQUIPOS CLASIFICADOS EUROPA 1 (devuelve IDs)
+        public static List<int> ObtenerEquiposClasificadosEuropa1(int idRonda, int idCompeticion)
+        {
+            List<int> clasificados = new List<int>();
+
+            var dbPath = GetDBPath();
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return clasificados;
+            }
+
+            string connString = $"Data Source={dbPath};Version=3;";
+            using (var connection = new SQLiteConnection(connString))
+            {
+                connection.Open();
+
+                string query = $@"SELECT
+                                    ida.id_equipo_local AS equipo_ida_local,
+                                    ida.id_equipo_visitante AS equipo_ida_visitante,
+                                    ida.goles_local AS goles_ida_local,
+                                    ida.goles_visitante AS goles_ida_visitante,
+                                    vuelta.goles_local AS goles_vuelta_local,
+                                    vuelta.goles_visitante AS goles_vuelta_visitante
+                                 FROM partidos_copaEuropa1 ida
+                                 JOIN partidos_copaEuropa1 vuelta
+                                    ON ida.id_ronda = vuelta.id_ronda
+                                 AND ida.id_competicion = vuelta.id_competicion
+                                 AND ida.partido_vuelta = 0
+                                 AND vuelta.partido_vuelta = 1
+                                 AND ida.id_equipo_local = vuelta.id_equipo_visitante
+                                 AND ida.id_equipo_visitante = vuelta.id_equipo_local
+                                 WHERE ida.id_ronda = @IdRonda AND ida.id_competicion = @IdCompeticion";
+
+                using (var cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IdRonda", idRonda);
+                    cmd.Parameters.AddWithValue("@IdCompeticion", idCompeticion);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int idaLocal = Convert.ToInt32(reader["goles_ida_local"]);
+                            int idaVisitante = Convert.ToInt32(reader["goles_ida_visitante"]);
+                            int vueltaVisitante = Convert.ToInt32(reader["goles_vuelta_visitante"]);
+
+                            int equipoA = Convert.ToInt32(reader["equipo_ida_local"]);
+                            int equipoB = Convert.ToInt32(reader["equipo_ida_visitante"]);
+
+                            int globalA = idaLocal + vueltaVisitante;
+                            int globalB = idaVisitante + Convert.ToInt32(reader["goles_vuelta_local"]);
+
+                            int clasificadoId;
+                            if (globalA > globalB)
+                                clasificadoId = equipoA;
+                            else if (globalB > globalA)
+                                clasificadoId = equipoB;
+                            else
+                                clasificadoId = new Random().Next(0, 2) == 0 ? equipoA : equipoB;
+
+                            if (!clasificados.Contains(clasificadoId))
+                            {
+                                clasificados.Add(clasificadoId);
+                            }
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return clasificados;
+        }
+
+        // ------------------------------------------------------------------ OBTENER EQUIPOS CLASIFICADOS EUROPA 2 (devuelve IDs)
+        public static List<int> ObtenerEquiposClasificadosEuropa2(int idRonda, int idCompeticion)
+        {
+            List<int> clasificados = new List<int>();
+
+            var dbPath = GetDBPath();
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return clasificados;
+            }
+
+            string connString = $"Data Source={dbPath};Version=3;";
+            using (var connection = new SQLiteConnection(connString))
+            {
+                connection.Open();
+
+                string query = $@"SELECT
+                                    ida.id_equipo_local AS equipo_ida_local,
+                                    ida.id_equipo_visitante AS equipo_ida_visitante,
+                                    ida.goles_local AS goles_ida_local,
+                                    ida.goles_visitante AS goles_ida_visitante,
+                                    vuelta.goles_local AS goles_vuelta_local,
+                                    vuelta.goles_visitante AS goles_vuelta_visitante
+                                 FROM partidos_copaEuropa2 ida
+                                 JOIN partidos_copaEuropa2 vuelta
+                                    ON ida.id_ronda = vuelta.id_ronda
+                                 AND ida.id_competicion = vuelta.id_competicion
+                                 AND ida.partido_vuelta = 0
+                                 AND vuelta.partido_vuelta = 1
+                                 AND ida.id_equipo_local = vuelta.id_equipo_visitante
+                                 AND ida.id_equipo_visitante = vuelta.id_equipo_local
+                                 WHERE ida.id_ronda = @IdRonda AND ida.id_competicion = @IdCompeticion";
+
+                using (var cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IdRonda", idRonda);
+                    cmd.Parameters.AddWithValue("@IdCompeticion", idCompeticion);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int idaLocal = Convert.ToInt32(reader["goles_ida_local"]);
+                            int idaVisitante = Convert.ToInt32(reader["goles_ida_visitante"]);
+                            int vueltaVisitante = Convert.ToInt32(reader["goles_vuelta_visitante"]);
+
+                            int equipoA = Convert.ToInt32(reader["equipo_ida_local"]);
+                            int equipoB = Convert.ToInt32(reader["equipo_ida_visitante"]);
+
+                            int globalA = idaLocal + vueltaVisitante;
+                            int globalB = idaVisitante + Convert.ToInt32(reader["goles_vuelta_local"]);
+
+                            int clasificadoId;
+                            if (globalA > globalB)
+                                clasificadoId = equipoA;
+                            else if (globalB > globalA)
+                                clasificadoId = equipoB;
+                            else
+                                clasificadoId = new Random().Next(0, 2) == 0 ? equipoA : equipoB;
+
+                            if (!clasificados.Contains(clasificadoId))
+                            {
+                                clasificados.Add(clasificadoId);
+                            }
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return clasificados;
+        }
+
+        // ------------------------------------------------------------------ OBTENER ÚLTIMA RONDA JUGADA POR UN EQUIPO EN COPA
+        public static int ObtenerUltimaRondaJugadaMiEquipo(int idEquipo, int idCompeticion)
+        {
+            var dbPath = GetDBPath();
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return 0;
+            }
+
+            string nombreTabla = idCompeticion == 4 ? "partidos_CopaNacional" :
+                                 idCompeticion == 5 ? "partidos_copaEuropa1" :
+                                 "partidos_copaEuropa2";
+
+            string connString = $"Data Source={dbPath};Version=3;";
+            using (var connection = new SQLiteConnection(connString))
+            {
+                connection.Open();
+
+                string query = $@"SELECT MAX(id_ronda) as max_ronda FROM {nombreTabla}
+                                 WHERE (id_equipo_local = @IdEquipo OR id_equipo_visitante = @IdEquipo)
+                                 AND goles_local IS NOT NULL AND goles_visitante IS NOT NULL";
+
+                using (var cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IdEquipo", idEquipo);
+
+                    var result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return 0;
+        }
     }
 }

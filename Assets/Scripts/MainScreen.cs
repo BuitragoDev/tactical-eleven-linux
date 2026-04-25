@@ -14,7 +14,7 @@ namespace TacticalEleven.Scripts
         [SerializeField] private AudioClip clickSFX;
 
         // UI Elements
-private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
+        private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
         private VisualElement homeIcon, clubIcon, alineacionIcon, competicionesIcon, calendarioIcon,
                               fichajesIcon, finanzasIcon, estadioIcon, managerIcon, mensajesIcon, ajustesIcon;
         private VisualElement goleadoresLocalArea, tarjetasLocalArea, goleadoresVisitanteArea, tarjetasVisitanteArea;
@@ -32,6 +32,7 @@ private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
         private Manager miManager;
         private Equipo miEquipo;
         private PortadaManager portadaManager;
+        private List<Partido> listaPartidosActual;
         private static Random random = new Random(); //Random global
 
         // Elementos Top Menu
@@ -251,6 +252,7 @@ private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
                     }
                     
                     // Pintar resumen jornada
+                    listaPartidosActual = listaPartidos;
                     SimularJornada(listaPartidos);
                     resumenJornada.style.display = DisplayStyle.Flex;
 
@@ -274,6 +276,9 @@ private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
             {
                 AudioManager.Instance.PlaySFX(clickSFX);
                 resumenJornada.style.display = DisplayStyle.None;
+
+                // Comprobar si hay que generar siguiente ronda de Copa
+                ComprobarGenerarSiguienteRondaCopa();
 
                 // Avanzar el día después de ver los partidos
                 if (FechaData.AvanzarUnDia())
@@ -571,7 +576,7 @@ private VisualElement miEquipoEscudo, cabeceraManagerValoracion;
             cabeceraManagerValoracion.style.flexDirection = FlexDirection.Row;
         }
 
-private void OnBtnSeguirClicked()
+        private void OnBtnSeguirClicked()
         {
             Fecha f = FechaData.ObtenerFechaHoy();
             bool diaAvanzado = false;
@@ -631,6 +636,7 @@ private void OnBtnSeguirClicked()
                     }
 
                     // Pintar resumen jornada
+                    listaPartidosActual = listaPartidos;
                     SimularJornada(listaPartidos);
                     resumenJornada.style.display = DisplayStyle.Flex;
 
@@ -665,7 +671,7 @@ private void OnBtnSeguirClicked()
 
         private int ComprobarLesionadosSancionados(Partido miPartido)
         {
-            List<Jugador> alineacion = JugadorData.MostrarAlineacion(1, 11);
+            List<Jugador> alineacion = JugadorData.MostrarAlineacion(1, 16);
             int cont = 0;
             if (miPartido.IdCompeticion >= 1 && miPartido.IdCompeticion >= 2)
             {
@@ -2865,6 +2871,289 @@ private void OnBtnSeguirClicked()
                 lblAsistenciaPartido.text = $"{EquipoData.ObtenerDetallesEquipo(partido.IdEquipoLocal).Estadio} " +
                                             $" 🏟️  {partido.Asistencia?.ToString("N0") ?? "0"} espectadores";
             }
+        }
+
+        // -------------------------------------- GENERAR SIGUIENTE RONDA DE COPA
+        private void ComprobarGenerarSiguienteRondaCopa()
+        {
+            if (listaPartidosActual == null || listaPartidosActual.Count == 0)
+                return;
+
+            int comp = listaPartidosActual[0].IdCompeticion;
+            int ronda = listaPartidosActual[0].Ronda ?? 0;
+            int jornada = listaPartidosActual[0].Jornada ?? 0;
+            int partidoVuelta = listaPartidosActual[0].PartidoVuelta ?? 0;
+
+            Debug.Log($"[Copa] Competicion={comp}, Ronda={ronda}, Jornada={jornada}, PartidoVuelta={partidoVuelta}");
+
+            // ======================== COPA NACIONAL (comp = 4) ========================
+            if (comp == 4)
+            {
+                if (partidoVuelta == 1)
+                {
+                    List<Equipo> clasificados = PartidoData.ObtenerEquiposClasificados(ronda, 4);
+
+                    if (clasificados != null && clasificados.Count >= 2)
+                    {
+                        GeneralCalendarioCopa(clasificados, ronda);
+
+                        bool miEquipoClasificado = clasificados.Any(e => e.IdEquipo == miEquipo.IdEquipo);
+                        if (miEquipoClasificado)
+                        {
+                            Debug.Log($"[Copa] {miEquipo.Nombre} ha pasado a la siguiente ronda");
+                            ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
+                        }
+                        else
+                        {
+                            int miUltimaRonda = PartidoData.ObtenerUltimaRondaJugadaMiEquipo(miEquipo.IdEquipo, 4);
+                            if (miUltimaRonda >= ronda)
+                            {
+                                int reputacion = miEquipo.Reputacion;
+                                string mensaje = reputacion > 89 ? "El equipo ha quedado eliminado de la Copa, un resultado que est�� por debajo de las expectativas."
+                                            : reputacion > 74 ? "Tras una eliminatoria muy igualada, el equipo ha quedado eliminado de la Copa."
+                                            : " Pese a la eliminación, queremos reconocer el esfuerzo del equipo en esta edición de la Copa.";
+                                Debug.Log($"[Copa] {miEquipo.Nombre} eliminado. Mensaje: {mensaje}");
+                                ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
+                            }
+                        }
+                    }
+                }
+
+                if (ronda > 5)
+                {
+                    Debug.Log("[Copa] Copa Nacional finalizada");
+                }
+            }
+
+            // ======================== COPA EUROPA 1 (comp = 5) ========================
+            if (comp == 5)
+            {
+                int miCompeticionEuropea = miEquipo.CompeticionEuropea;
+
+                if (jornada == 8)
+                {
+                    List<Clasificacion> clasificacionEuropa1 = ClasificacionData.MostrarClasificacion(5);
+                    List<int> clasificadosEuropa1 = clasificacionEuropa1.Take(16).Select(c => c.IdEquipo).ToList();
+
+                    if (clasificadosEuropa1.Count >= 2)
+                    {
+                        GenerarCalendarioEuropa1(clasificadosEuropa1, jornada, ronda);
+
+                        if (miCompeticionEuropea == 5)
+                        {
+                            bool miEquipoClasificado = clasificadosEuropa1.Contains(miEquipo.IdEquipo);
+                            if (miEquipoClasificado)
+                            {
+                                Debug.Log($"[Copa Europa 1] {miEquipo.Nombre} ha pasado a octavos");
+                                ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
+                            }
+                            else
+                            {
+                                Debug.Log($"[Copa Europa 1] {miEquipo.Nombre} no se clasificó para octavos");
+                                ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
+                            }
+                        }
+                    }
+                }
+                else if (jornada > 8)
+                {
+                    if (partidoVuelta == 1)
+                    {
+                        List<int> clasificadosEuropa1 = PartidoData.ObtenerEquiposClasificadosEuropa1(ronda, 5);
+
+                        if (clasificadosEuropa1.Count >= 2)
+                        {
+                            GenerarCalendarioEuropa1(clasificadosEuropa1, jornada, ronda);
+
+                            if (miCompeticionEuropea == 5)
+                            {
+                                bool miEquipoClasificado = clasificadosEuropa1.Contains(miEquipo.IdEquipo);
+                                if (miEquipoClasificado)
+                                {
+                                    Debug.Log($"[Copa Europa 1] {miEquipo.Nombre} ha pasado a la siguiente ronda");
+                                    ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
+                                }
+                                else
+                                {
+                                    int miUltimaRonda = PartidoData.ObtenerUltimaRondaJugadaMiEquipo(miEquipo.IdEquipo, 5);
+                                    if (miUltimaRonda >= ronda)
+                                    {
+                                        Debug.Log($"[Copa Europa 1] {miEquipo.Nombre} eliminado");
+                                        ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (ronda > 5)
+                {
+                    Debug.Log("[Copa Europa 1] Competición finalizada");
+                }
+            }
+
+            // ======================== COPA EUROPA 2 (comp = 6) ========================
+            if (comp == 6)
+            {
+                int miCompeticionEuropea = miEquipo.CompeticionEuropea;
+
+                if (jornada == 8)
+                {
+                    List<Clasificacion> clasificacionEuropa2 = ClasificacionData.MostrarClasificacion(6);
+                    List<int> clasificadosEuropa2 = clasificacionEuropa2.Take(16).Select(c => c.IdEquipo).ToList();
+
+                    if (clasificadosEuropa2.Count >= 2)
+                    {
+                        GenerarCalendarioEuropa2(clasificadosEuropa2, jornada, ronda);
+
+                        if (miCompeticionEuropea == 6)
+                        {
+                            bool miEquipoClasificado = clasificadosEuropa2.Contains(miEquipo.IdEquipo);
+                            if (miEquipoClasificado)
+                            {
+                                Debug.Log($"[Copa Europa 2] {miEquipo.Nombre} ha pasado a octavos");
+                                ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
+                            }
+                            else
+                            {
+                                Debug.Log($"[Copa Europa 2] {miEquipo.Nombre} no se clasificó para octavos");
+                                ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
+                            }
+                        }
+                    }
+                }
+                else if (jornada > 8)
+                {
+                    if (partidoVuelta == 1)
+                    {
+                        List<int> clasificadosEuropa2 = PartidoData.ObtenerEquiposClasificadosEuropa2(ronda, 6);
+
+                        if (clasificadosEuropa2.Count >= 2)
+                        {
+                            GenerarCalendarioEuropa2(clasificadosEuropa2, jornada, ronda);
+
+                            if (miCompeticionEuropea == 6)
+                            {
+                                bool miEquipoClasificado = clasificadosEuropa2.Contains(miEquipo.IdEquipo);
+                                if (miEquipoClasificado)
+                                {
+                                    Debug.Log($"[Copa Europa 2] {miEquipo.Nombre} ha pasado a la siguiente ronda");
+                                    ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
+                                }
+                                else
+                                {
+                                    int miUltimaRonda = PartidoData.ObtenerUltimaRondaJugadaMiEquipo(miEquipo.IdEquipo, 6);
+                                    if (miUltimaRonda >= ronda)
+                                    {
+                                        Debug.Log($"[Copa Europa 2] {miEquipo.Nombre} eliminado");
+                                        ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (ronda > 5)
+                {
+                    Debug.Log("[Copa Europa 2] Competición finalizada");
+                }
+            }
+        }
+
+        // -------------------------------------- GENERAL CALENDARIO COPA
+        private void GeneralCalendarioCopa(List<Equipo> equiposCopa, int ronda)
+        {
+            var equiposMezclados = equiposCopa.OrderBy(e => random.Next()).ToList();
+
+            Fecha fecha = FechaData.ObtenerFechaHoy();
+            DateTime fechaIda = fecha.ToDateTime().AddDays(21);
+            DateTime fechaVuelta = fechaIda.AddDays(14);
+
+            for (int i = 0; i < equiposMezclados.Count; i += 2)
+            {
+                int idLocal = equiposMezclados[i].IdEquipo;
+                int idVisitante = equiposMezclados[i + 1].IdEquipo;
+
+                if (ronda < 5)
+                {
+                    PartidoData.CrearPartidoCopa(idLocal, idVisitante, fechaIda.ToString("yyyy-MM-dd"), 4, ronda + 1, 0);
+                    PartidoData.CrearPartidoCopa(idVisitante, idLocal, fechaVuelta.ToString("yyyy-MM-dd"), 4, ronda + 1, 1);
+                }
+                else
+                {
+                    PartidoData.CrearPartidoCopa(idLocal, idVisitante, fechaIda.ToString("yyyy-MM-dd"), 4, ronda + 1, 0);
+                }
+
+                Debug.Log($"[Copa] Emparejamiento: {equiposMezclados[i].Nombre} vs {equiposMezclados[i + 1].Nombre}");
+            }
+
+            Debug.Log($"[Copa] Ronda {ronda + 1} generada con {equiposMezclados.Count} equipos");
+        }
+
+        // -------------------------------------- GENERAR CALENDARIO EUROPA 1
+        private void GenerarCalendarioEuropa1(List<int> equipos, int jornada, int ronda)
+        {
+            var equiposMezclados = equipos.OrderBy(e => random.Next()).ToList();
+
+            Fecha fecha = FechaData.ObtenerFechaHoy();
+            DateTime fechaIda = fecha.ToDateTime().AddDays(14);
+            DateTime fechaVuelta = fechaIda.AddDays(14);
+
+            int nuevaRonda = ronda != 0 ? ronda + 1 : 3;
+
+            for (int i = 0; i < equiposMezclados.Count; i += 2)
+            {
+                int idLocal = equiposMezclados[i];
+                int idVisitante = equiposMezclados[i + 1];
+
+                if (ronda < 5)
+                {
+                    PartidoData.CrearPartidoCopaEuropa(idLocal, idVisitante, fechaIda.ToString("yyyy-MM-dd"), 5, jornada + 1, nuevaRonda, 0);
+                    PartidoData.CrearPartidoCopaEuropa(idVisitante, idLocal, fechaVuelta.ToString("yyyy-MM-dd"), 5, jornada + 1, nuevaRonda, 1);
+                }
+                else
+                {
+                    PartidoData.CrearPartidoCopaEuropa(idLocal, idVisitante, fechaIda.ToString("yyyy-MM-dd"), 5, jornada + 1, nuevaRonda, 0);
+                }
+
+                Debug.Log($"[Copa Europa 1] Emparejamiento: {idLocal} vs {idVisitante}");
+            }
+
+            Debug.Log($"[Copa Europa 1] Ronda {nuevaRonda} generada");
+        }
+
+        // -------------------------------------- GENERAR CALENDARIO EUROPA 2
+        private void GenerarCalendarioEuropa2(List<int> equipos, int jornada, int ronda)
+        {
+            var equiposMezclados = equipos.OrderBy(e => random.Next()).ToList();
+
+            Fecha fecha = FechaData.ObtenerFechaHoy();
+            DateTime fechaIda = fecha.ToDateTime().AddDays(14);
+            DateTime fechaVuelta = fechaIda.AddDays(14);
+
+            int nuevaRonda = ronda != 0 ? ronda + 1 : 3;
+
+            for (int i = 0; i < equiposMezclados.Count; i += 2)
+            {
+                int idLocal = equiposMezclados[i];
+                int idVisitante = equiposMezclados[i + 1];
+
+                if (ronda < 5)
+                {
+                    PartidoData.CrearPartidoCopaEuropa2(idLocal, idVisitante, fechaIda.ToString("yyyy-MM-dd"), 6, jornada + 1, nuevaRonda, 0);
+                    PartidoData.CrearPartidoCopaEuropa2(idVisitante, idLocal, fechaVuelta.ToString("yyyy-MM-dd"), 6, jornada + 1, nuevaRonda, 1);
+                }
+                else
+                {
+                    PartidoData.CrearPartidoCopaEuropa2(idLocal, idVisitante, fechaIda.ToString("yyyy-MM-dd"), 6, jornada + 1, nuevaRonda, 0);
+                }
+
+                Debug.Log($"[Copa Europa 2] Emparejamiento: {idLocal} vs {idVisitante}");
+            }
+
+            Debug.Log($"[Copa Europa 2] Ronda {nuevaRonda} generada");
         }
     }
 }
