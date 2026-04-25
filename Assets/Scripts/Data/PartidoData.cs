@@ -2325,5 +2325,167 @@ namespace TacticalEleven.Scripts
 
             return 0;
         }
+
+        // ------------------------------------------------------------------ OBTENER FINAL DE COPA NACIONAL
+        public static Partido ObtenerFinalCopa()
+        {
+            Partido partido = null;
+            var dbPath = GetDBPath();
+
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return partido;
+            }
+
+            try
+            {
+                using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+                {
+                    connection.Open();
+
+                    string query = @"SELECT id_partido, fecha, id_ronda, partido_vuelta, id_equipo_local, id_equipo_visitante, goles_local, goles_visitante, id_competicion
+                                     FROM partidos_copaNacional WHERE id_ronda = 6";
+
+                    using (var cmd = new SQLiteCommand(query, connection))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                partido = new Partido
+                                {
+                                    IdPartido = Convert.ToInt32(reader["id_partido"]),
+                                    FechaPartido = reader["fecha"] != DBNull.Value && DateTime.TryParse(reader["fecha"].ToString(), out DateTime fecha) ? fecha : DateTime.Parse("2000-01-01"),
+                                    Ronda = reader["id_ronda"] != DBNull.Value ? Convert.ToInt32(reader["id_ronda"]) : 0,
+                                    PartidoVuelta = reader["partido_vuelta"] != DBNull.Value ? Convert.ToInt32(reader["partido_vuelta"]) : 0,
+                                    IdEquipoLocal = Convert.ToInt32(reader["id_equipo_local"]),
+                                    IdEquipoVisitante = Convert.ToInt32(reader["id_equipo_visitante"]),
+                                    GolesLocal = reader["goles_local"] != DBNull.Value ? Convert.ToInt32(reader["goles_local"]) : 0,
+                                    GolesVisitante = reader["goles_visitante"] != DBNull.Value ? Convert.ToInt32(reader["goles_visitante"]) : 0,
+                                    IdCompeticion = reader["id_competicion"] != DBNull.Value ? Convert.ToInt32(reader["id_competicion"]) : 0
+                                };
+                            }
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al obtener la final de Copa: {ex.Message}");
+            }
+
+            return partido;
+        }
+
+        // ------------------------------------------------------------------ OBTENER FINAL DE COPA EUROPA 1
+        public static Partido ObtenerFinalCopaEuropa1()
+        {
+            Partido partido = null;
+            var dbPath = GetDBPath();
+
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return partido;
+            }
+
+            try
+            {
+                using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+                {
+                    connection.Open();
+
+                    string query = @"SELECT id_partido, fecha, id_ronda, partido_vuelta, id_equipo_local, id_equipo_visitante, goles_local, goles_visitante, id_competicion
+                                     FROM partidos_copaEuropa1 WHERE id_ronda = 6";
+
+                    using (var cmd = new SQLiteCommand(query, connection))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                partido = new Partido
+                                {
+                                    IdPartido = Convert.ToInt32(reader["id_partido"]),
+                                    FechaPartido = reader["fecha"] != DBNull.Value && DateTime.TryParse(reader["fecha"].ToString(), out DateTime fecha) ? fecha : DateTime.Parse("2000-01-01"),
+                                    Ronda = reader["id_ronda"] != DBNull.Value ? Convert.ToInt32(reader["id_ronda"]) : 0,
+                                    PartidoVuelta = reader["partido_vuelta"] != DBNull.Value ? Convert.ToInt32(reader["partido_vuelta"]) : 0,
+                                    IdEquipoLocal = Convert.ToInt32(reader["id_equipo_local"]),
+                                    IdEquipoVisitante = Convert.ToInt32(reader["id_equipo_visitante"]),
+                                    GolesLocal = reader["goles_local"] != DBNull.Value ? Convert.ToInt32(reader["goles_local"]) : 0,
+                                    GolesVisitante = reader["goles_visitante"] != DBNull.Value ? Convert.ToInt32(reader["goles_visitante"]) : 0,
+                                    IdCompeticion = reader["id_competicion"] != DBNull.Value ? Convert.ToInt32(reader["id_competicion"]) : 0
+                                };
+                            }
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al obtener la final de Copa Europa 1: {ex.Message}");
+            }
+
+            return partido;
+        }
+
+        // ------------------------------------------------------------------ OBTENER FINAL DE COPA EUROPA 2
+        public static Partido ObtenerFinalCopaEuropa2()
+        {
+            Partido partido = null;
+            var dbPath = GetDBPath();
+
+            if (!File.Exists(dbPath))
+            {
+                Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                return partido;
+            }
+
+            try
+            {
+                using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+                {
+                    connection.Open();
+
+                    string query = @"SELECT id_partido, fecha, id_ronda, partido_vuelta, id_equipo_local, id_equipo_visitante, goles_local, goles_visitante, id_competicion
+                                     FROM partidos_copaEuropa2 WHERE id_ronda = 6";
+
+                    using (var cmd = new SQLiteCommand(query, connection))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                partido = new Partido
+                                {
+                                    IdPartido = Convert.ToInt32(reader["id_partido"]),
+                                    FechaPartido = reader["fecha"] != DBNull.Value && DateTime.TryParse(reader["fecha"].ToString(), out DateTime fecha) ? fecha : DateTime.Parse("2000-01-01"),
+                                    Ronda = reader["id_ronda"] != DBNull.Value ? Convert.ToInt32(reader["id_ronda"]) : 0,
+                                    PartidoVuelta = reader["partido_vuelta"] != DBNull.Value ? Convert.ToInt32(reader["partido_vuelta"]) : 0,
+                                    IdEquipoLocal = Convert.ToInt32(reader["id_equipo_local"]),
+                                    IdEquipoVisitante = Convert.ToInt32(reader["id_equipo_visitante"]),
+                                    GolesLocal = reader["goles_local"] != DBNull.Value ? Convert.ToInt32(reader["goles_local"]) : 0,
+                                    GolesVisitante = reader["goles_visitante"] != DBNull.Value ? Convert.ToInt32(reader["goles_visitante"]) : 0,
+                                    IdCompeticion = reader["id_competicion"] != DBNull.Value ? Convert.ToInt32(reader["id_competicion"]) : 0
+                                };
+                            }
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al obtener la final de Copa Europa 2: {ex.Message}");
+            }
+
+            return partido;
+        }
     }
 }

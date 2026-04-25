@@ -134,6 +134,17 @@ namespace TacticalEleven.Scripts
         {
             Partido proximoPartido = PartidoData.ObtenerProximoPartido(miEquipo.IdEquipo, f.ToDateTime());
 
+            if (proximoPartido == null)
+            {
+                lblProximoPartido.text = "";
+                proximoPartidoEscudoLocal.style.display = DisplayStyle.None;
+                proximoPartidoEscudoVisitante.style.display = DisplayStyle.None;
+                lblProximoPartidoEquipos.text = "";
+                lblProximoPartidoEstadio.text = "";
+                fechaProximoPartido.text = "";
+                return;
+            }
+
             // Comprobar si soy local o visitante
             if (proximoPartido.IdEquipoLocal == miEquipo.IdEquipo)
             {
@@ -400,7 +411,7 @@ namespace TacticalEleven.Scripts
 
             if (miEquipo.IdCompeticion == 1)
             {
-                limites["Campeón"] = 4;
+                limites["Campeón"] = 2;
                 limites["Zona Tranquila"] = 14;
                 limites["Descenso"] = 16;
             }

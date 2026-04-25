@@ -776,6 +776,8 @@ namespace TacticalEleven.Scripts
             // Asignar goleadores y asistentes
             List<(Jugador, Jugador?)> goleadoresLocal = AsignarGolesYAsistencias(golesLocal, jugadoresLocal, random);
             List<(Jugador, Jugador?)> goleadoresVisitante = AsignarGolesYAsistencias(golesVisitante, jugadoresVisitante, random);
+
+
             List<(Jugador, Jugador?)> golesYAsistencias = goleadoresLocal.Concat(goleadoresVisitante).ToList();
 
             // Asignar tarjetas
@@ -2663,9 +2665,50 @@ namespace TacticalEleven.Scripts
             partido.GolesLocal = golesLocal;
             partido.GolesVisitante = golesVisitante;
 
-            // Asignar goleadores y asistentes
+            // Romper empate en finales (ronda 6 = final en copas)
+            bool sumarGolExtra = false;
+            if (partido.Ronda == 6 && (partido.IdCompeticion == 4 || partido.IdCompeticion == 5 || partido.IdCompeticion == 6))
+            {
+                if (golesLocal == golesVisitante)
+                {
+                    sumarGolExtra = true;
+                    if (random.Next(2) == 0)
+                    {
+                        partido.GolesLocal++;
+                    }
+                    else
+                    {
+                        partido.GolesVisitante++;
+                    }
+                }
+            }
+
+// Asignar goleadores y asistentes
             List<(Jugador, Jugador?)> goleadoresLocal = AsignarGolesYAsistencias(golesLocal, jugadoresLocal, random);
             List<(Jugador, Jugador?)> goleadoresVisitante = AsignarGolesYAsistencias(golesVisitante, jugadoresVisitante, random);
+
+            // Añadir goleacor extra si se rompió empate en final
+            if (sumarGolExtra)
+            {
+                if (partido.GolesLocal > golesLocal)
+                {
+                    List<Jugador> forwardsLocal = jugadoresLocal.Where(j => j.Rol == "DEL" || j.Rol == "MED").ToList();
+                    if (forwardsLocal.Count > 0)
+                    {
+                        Jugador goleacor = forwardsLocal[random.Next(forwardsLocal.Count)];
+                        goleadoresLocal.Add((goleacor, (Jugador?)null));
+                    }
+                }
+                else
+                {
+                    List<Jugador> forwardsVisit = jugadoresVisitante.Where(j => j.Rol == "DEL" || j.Rol == "MED").ToList();
+                    if (forwardsVisit.Count > 0)
+                    {
+                        Jugador goleacor = forwardsVisit[random.Next(forwardsVisit.Count)];
+                        goleadoresVisitante.Add((goleacor, (Jugador?)null));
+                    }
+                }
+            }
 
             // Asignar tarjetas
             var (tarjetasLocal, tarjetasVisitante) = AsignarTarjetas(jugadoresLocal, jugadoresVisitante, random);
@@ -2940,7 +2983,37 @@ namespace TacticalEleven.Scripts
 
                 if (ronda > 5)
                 {
-                    Debug.Log("[Copa] Copa Nacional finalizada");
+                    Partido finalCopa = PartidoData.ObtenerFinalCopa();
+                    if (finalCopa != null)
+                    {
+                        string nombreGanador;
+                        if (finalCopa.GolesLocal > finalCopa.GolesVisitante)
+                        {
+                            nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopa.IdEquipoLocal).Nombre;
+                        }
+                        else if (finalCopa.GolesVisitante > finalCopa.GolesLocal)
+                        {
+                            nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopa.IdEquipoVisitante).Nombre;
+                        }
+                        else
+                        {
+                            nombreGanador = "Empate - ¡Partido memorable!";
+                        }
+                        popupText.text = $"🏆 ¡LA COPA DEL REY HA TERMINADO! 🏆\n\nEl ganador es: {nombreGanador}";
+                        popupContainer.style.display = DisplayStyle.Flex;
+
+                        btnCerrar.clicked -= OnCerrarClick;
+
+                        void OnCerrarClick()
+                        {
+                            AudioManager.Instance.PlaySFX(clickSFX);
+
+                            btnCerrar.clicked -= OnCerrarClick;
+                            popupContainer.style.display = DisplayStyle.None;
+                        }
+
+                        btnCerrar.clicked += OnCerrarClick;
+                        }
                 }
             }
 
@@ -3008,7 +3081,37 @@ namespace TacticalEleven.Scripts
 
                 if (ronda > 5)
                 {
-                    Debug.Log("[Copa Europa 1] Competición finalizada");
+                    Partido finalCopaEuropa1 = PartidoData.ObtenerFinalCopaEuropa1();
+                    if (finalCopaEuropa1 != null)
+                    {
+                        string nombreGanador;
+                        if (finalCopaEuropa1.GolesLocal > finalCopaEuropa1.GolesVisitante)
+                        {
+                            nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa1.IdEquipoLocal).Nombre;
+                        }
+                        else if (finalCopaEuropa1.GolesVisitante > finalCopaEuropa1.GolesLocal)
+                        {
+                            nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa1.IdEquipoVisitante).Nombre;
+                        }
+                        else
+                        {
+                            nombreGanador = "Empate - ¡Partido memorable!";
+                        }
+                        popupText.text = $"🏆 ¡LA COPA EUROPA 1 HA TERMINADO! 🏆\n\nEl ganador es: {nombreGanador}";
+                        popupContainer.style.display = DisplayStyle.Flex;
+
+                        btnCerrar.clicked -= OnCerrarClick;
+
+                        void OnCerrarClick()
+                        {
+                            AudioManager.Instance.PlaySFX(clickSFX);
+
+                            btnCerrar.clicked -= OnCerrarClick;
+                            popupContainer.style.display = DisplayStyle.None;
+                        }
+
+                        btnCerrar.clicked += OnCerrarClick;
+                    }
                 }
             }
 
@@ -3076,7 +3179,37 @@ namespace TacticalEleven.Scripts
 
                 if (ronda > 5)
                 {
-                    Debug.Log("[Copa Europa 2] Competición finalizada");
+                    Partido finalCopaEuropa2 = PartidoData.ObtenerFinalCopaEuropa2();
+                    if (finalCopaEuropa2 != null)
+                    {
+                        string nombreGanador;
+                        if (finalCopaEuropa2.GolesLocal > finalCopaEuropa2.GolesVisitante)
+                        {
+                            nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa2.IdEquipoLocal).Nombre;
+                        }
+                        else if (finalCopaEuropa2.GolesVisitante > finalCopaEuropa2.GolesLocal)
+                        {
+                            nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa2.IdEquipoVisitante).Nombre;
+                        }
+                        else
+                        {
+                            nombreGanador = "Empate - ¡Partido memorable!";
+                        }
+                        popupText.text = $"🏆 ¡LA COPA EUROPA 2 HA TERMINADO! 🏆\n\nEl ganador es: {nombreGanador}";
+                        popupContainer.style.display = DisplayStyle.Flex;
+
+                        btnCerrar.clicked -= OnCerrarClick;
+
+                        void OnCerrarClick()
+                        {
+                            AudioManager.Instance.PlaySFX(clickSFX);
+
+                            btnCerrar.clicked -= OnCerrarClick;
+                            popupContainer.style.display = DisplayStyle.None;
+                        }
+
+                        btnCerrar.clicked += OnCerrarClick;
+                    }
                 }
             }
         }
