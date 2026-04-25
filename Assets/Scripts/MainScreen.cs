@@ -237,6 +237,7 @@ namespace TacticalEleven.Scripts
             resumenPartidoBtnContinuar.clicked += () =>
             {
                 AudioManager.Instance.PlaySFX(clickSFX);
+                resumenPartidoBtnContinuar.SetEnabled(false);
                 resumenPartido.style.display = DisplayStyle.None;
 
                 // Comprobamos si hay otros partidos hoy
@@ -254,6 +255,7 @@ namespace TacticalEleven.Scripts
                     // Pintar resumen jornada
                     listaPartidosActual = listaPartidos;
                     SimularJornada(listaPartidos);
+                    resumenPartidoBtnContinuar.SetEnabled(true);
                     resumenJornada.style.display = DisplayStyle.Flex;
 
                     // Actualizar confianzas en portada
@@ -275,6 +277,7 @@ namespace TacticalEleven.Scripts
             resumenJornadaBtnContinuar.clicked += () =>
             {
                 AudioManager.Instance.PlaySFX(clickSFX);
+                resumenJornadaBtnContinuar.SetEnabled(false);
                 resumenJornada.style.display = DisplayStyle.None;
 
                 // Comprobar si hay que generar siguiente ronda de Copa
@@ -580,6 +583,8 @@ namespace TacticalEleven.Scripts
         {
             Fecha f = FechaData.ObtenerFechaHoy();
             bool diaAvanzado = false;
+            resumenPartidoBtnContinuar.SetEnabled(true);
+            resumenJornadaBtnContinuar.SetEnabled(true);
 
             if (diaTipoActual == DiaTipo.Partido)
             {
@@ -617,6 +622,7 @@ namespace TacticalEleven.Scripts
                     portadaManager?.ActualizarConfianzas();
 
                     // Mostrar pantalla resumen de partido
+                    resumenPartidoBtnContinuar.SetEnabled(true);
                     resumenPartido.style.display = DisplayStyle.Flex;
                 }
             }
@@ -638,6 +644,7 @@ namespace TacticalEleven.Scripts
                     // Pintar resumen jornada
                     listaPartidosActual = listaPartidos;
                     SimularJornada(listaPartidos);
+                    resumenJornadaBtnContinuar.SetEnabled(true);
                     resumenJornada.style.display = DisplayStyle.Flex;
 
                     // Actualizar confianzas en portada
@@ -673,7 +680,7 @@ namespace TacticalEleven.Scripts
         {
             List<Jugador> alineacion = JugadorData.MostrarAlineacion(1, 16);
             int cont = 0;
-            if (miPartido.IdCompeticion >= 1 && miPartido.IdCompeticion >= 2)
+            if (miPartido.IdCompeticion >= 1 && miPartido.IdCompeticion <= 2)
             {
                 foreach (var jugador in alineacion)
                 {
@@ -1254,7 +1261,6 @@ namespace TacticalEleven.Scripts
             ComprobarJugadoresLesionados(jugadoresLocal, jugadoresVisitante);
 
             // Actualizar las confianzas
-            Debug.Log($"[MainScreen] miManager.IdManager = {miManager.IdManager}");
             ActualizarConfianzaManager(partido, golesLocal, golesVisitante);
 
             // Actualizar atributos de los jugadores
@@ -2630,6 +2636,17 @@ namespace TacticalEleven.Scripts
             List<Jugador> jugadoresLocal = JugadorData.JugadoresJueganPartido(partido.IdEquipoLocal);
             List<Jugador> jugadoresVisitante = JugadorData.JugadoresJueganPartido(partido.IdEquipoVisitante);
 
+            // Obtener TODOS los jugadores de ambos equipos para actualizar sanciones/lesiones
+            List<Jugador> todosLosJugadores = JugadorData.ListadoJugadoresCompleto(partido.IdEquipoLocal)
+                                                          .Concat(JugadorData.ListadoJugadoresCompleto(partido.IdEquipoVisitante))
+                                                          .ToList();
+
+            // Actualizar sanciones y lesiones
+            if (partido.IdCompeticion == 1 || partido.IdCompeticion == 2)
+            {
+                ActualizarSancionesYLesiones(todosLosJugadores);
+            }           
+
             // Penalizaciones si es mi equipo
             bool soyLocal = esMiEquipo && miEquipo != null && partido.IdEquipoLocal == miEquipo.IdEquipo;
             
@@ -2807,6 +2824,7 @@ namespace TacticalEleven.Scripts
             var tarjetas = tarjLocal.Concat(tarjVisit).ToList();
             var todosGoles = golLocal.Concat(golVisit).ToList();
             ActualizarEstadisticasPartido(jugLocal, jugVisit, todosGoles, tarjetas, mvp);
+            ComprobarJugadoresLesionados(jugLocal, jugVisit);
             ActualizarJugadoresSancionados(tarjLocal, tarjVisit);
         }
 
@@ -2819,6 +2837,7 @@ namespace TacticalEleven.Scripts
             var tarjetas = tarjLocal.Concat(tarjVisit).ToList();
             var todosGoles = golLocal.Concat(golVisit).ToList();
             ActualizarEstadisticasPartidoEuropa(jugLocal, jugVisit, todosGoles, tarjetas, mvp);
+            ComprobarJugadoresLesionados(jugLocal, jugVisit);
             ActualizarJugadoresSancionados(tarjLocal, tarjVisit);
         }
 
@@ -3154,6 +3173,36 @@ namespace TacticalEleven.Scripts
             }
 
             Debug.Log($"[Copa Europa 2] Ronda {nuevaRonda} generada");
+        }
+
+        private void ActualizarSancionesYLesiones(List<Jugador> jugadores)
+        {
+            foreach (var jugador in jugadores)
+            {
+                // Reducir el número de partidos sancionados si es mayor que 0
+                if (jugador.Sancionado > 0)
+                {
+                    JugadorData.PonerJugadorSancionado(jugador.IdJugador, jugador.Sancionado - 1);
+                }
+
+                // Reducir el número de semanas lesionado si es mayor que 0
+                if (jugador.Lesion > 0)
+                {
+                    JugadorData.PonerJugadorLesionado(jugador.IdJugador, jugador.Lesion - 1, jugador.TipoLesion);
+                }
+                else
+                {
+                    if (jugador.LesionTratada != 0)
+                    {
+                        JugadorData.ActivarTratamientoLesion(jugador.IdJugador, 0);
+                    }
+
+                    if (jugador.TipoLesion != "")
+                    {
+                        JugadorData.QuitarTipoLesion(jugador.IdJugador);
+                    }
+                }
+            }
         }
     }
 }
