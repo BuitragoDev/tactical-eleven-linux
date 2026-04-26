@@ -139,6 +139,9 @@
     </ui:VisualElement>
     <ui:VisualElement name="resumen-partido" class="background-resumen-partidos" style="display: none;">
         <ui:VisualElement name="resumen-partido-cabecera-area" class="resumen-partido-cabecera-area">
+            <ui:VisualElement style="flex-grow: 0; width: 10%; background-color: rgb(255, 250, 250); height: 100%; align-items: center; justify-content: center;">
+                <ui:VisualElement name="resumen-partido-logo-competicion" style="flex-grow: 0; width: 100px; height: 100px;"/>
+            </ui:VisualElement>
             <ui:VisualElement name="resumen-partido-titulo-area" class="resumen-partido-titulo-area">
                 <ui:Label name="resumen-partidos-titulo" text="RESUMEN DE PARTIDO" class="resumen-partidos-titulo"/>
             </ui:VisualElement>
@@ -225,6 +228,9 @@
     </ui:VisualElement>
     <ui:VisualElement name="resumen-jornada" class="background-resumen-jornada" style="display: none;">
         <ui:VisualElement name="resumen-jornada-cabecera-area" class="resumen-jornada-cabecera-area">
+            <ui:VisualElement style="flex-grow: 0; width: 10%; background-color: rgb(255, 250, 250); height: 100%; align-items: center; justify-content: center;">
+                <ui:VisualElement name="resumen-jornada-logo-competicion" style="flex-grow: 0; width: 100px; height: 100px;"/>
+            </ui:VisualElement>
             <ui:VisualElement name="resumen-jornada-titulo-area" class="resumen-jornada-titulo-area">
                 <ui:Label name="resumen-jornada-titulo" text="RESULTADOS DEL DÍA" class="resumen-jornada-titulo"/>
             </ui:VisualElement>
@@ -294,5 +300,16 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="final-temporada" class="background-final-temporada" style="display: flex;">
+        <ui:VisualElement name="final-temporada-cabecera-area" class="final-temporada-cabecera-area">
+            <ui:VisualElement name="final-temporada-titulo-area" class="final-temporada-titulo-area">
+                <ui:Label name="final-temporada-titulo" text="RESUMEN DE TEMPORADA" class="final-temporada-titulo"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="final-temporada-boton-area" class="final-temporada-boton-area">
+                <ui:Button name="btnFinalizarTemporada" text="EMPEZAR NUEVA TEMPORADA" icon-image="project://database/Assets/Resources/Icons/avanzar.png?fileID=2800000&amp;guid=a6028fb24b29fe443bb23067d1943788&amp;type=3#avanzar" class="btnSeguir"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="final-temporada-contenido-area" class="final-temporada-contenido-area" style="background-size: 100%; width: 100%; height: 100%;"/>
     </ui:VisualElement>
 </ui:UXML>

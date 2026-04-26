@@ -371,5 +371,233 @@ namespace TacticalEleven.Scripts
 
             return listadoHistorial;
         }
+
+        // ---------------------------------------------- MÉTODO QUE AGREGA AL CAMPEÓN Y SUBCAMPEON DE UNA COPA NACIONAL
+        public static void AnadirCampeonFinalistaCopa(int temporada, int campeon, int finalista)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string temporadaFormateada = $"{temporada}-{(temporada + 1) % 100:D2}";
+                    string query = @"INSERT INTO historial_finalesCopa (temporada, id_equipo_campeon, id_equipo_finalista)
+                                     VALUES (@Temporada, @Campeon, @Finalista)";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@Temporada", temporadaFormateada);
+                        comando.Parameters.AddWithValue("@Campeon", campeon);
+                        comando.Parameters.AddWithValue("@Finalista", finalista);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE AGREGA AL CAMPEON Y SUBCAMPEON DE COPA EUROPA 1
+        public static void AnadirCampeonFinalistaCopaEuropa1(int temporada, int campeon, int finalista)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string temporadaFormateada = $"{temporada}-{(temporada + 1) % 100:D2}";
+                    string query = @"INSERT INTO historial_finalesCopaEuropa1 (temporada, id_equipo_campeon, id_equipo_finalista)
+                                     VALUES (@Temporada, @Campeon, @Finalista)";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@Temporada", temporadaFormateada);
+                        comando.Parameters.AddWithValue("@Campeon", campeon);
+                        comando.Parameters.AddWithValue("@Finalista", finalista);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE AGREGA AL CAMPEON Y SUBCAMPEON DE COPA EUROPA 2
+        public static void AnadirCampeonFinalistaCopaEuropa2(int temporada, int campeon, int finalista)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string temporadaFormateada = $"{temporada}-{(temporada + 1) % 100:D2}";
+                    string query = @"INSERT INTO historial_finalesCopaEuropa2 (temporada, id_equipo_campeon, id_equipo_finalista)
+                                     VALUES (@Temporada, @Campeon, @Finalista)";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@Temporada", temporadaFormateada);
+                        comando.Parameters.AddWithValue("@Campeon", campeon);
+                        comando.Parameters.AddWithValue("@Finalista", finalista);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE SUMA UN TITULO AL CAMPEON DE COPA NACIONAL
+        public static void AnadirTituloCampeonCopa(int equipo)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE palmaresCopa SET titulos = titulos + 1 WHERE id_equipo = @IdEquipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdEquipo", equipo);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE SUMA UN TITULO AL CAMPEON DE COPA EUROPA 1
+        public static void AnadirTituloCampeonCopaEuropa1(int equipo)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE palmaresCopaEuropa1 SET titulos = titulos + 1 WHERE id_equipo = @IdEquipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdEquipo", equipo);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE SUMA UN TITULO AL CAMPEON DE COPA EUROPA 2
+        public static void AnadirTituloCampeonCopaEuropa2(int equipo)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE palmaresCopaEuropa2 SET titulos = titulos + 1 WHERE id_equipo = @IdEquipo";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdEquipo", equipo);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
     }
 }

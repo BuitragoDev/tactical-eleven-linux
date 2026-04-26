@@ -1731,5 +1731,111 @@ return listaJugadores;
                 Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
             }
         }
+
+        // ---------------------------------------------- MÉTODO QUE AGREGA UN JUGADOR A LA ALINEACIÓN
+        public static void AgregarJugadorAlineacion(int jugador)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    string query = @"INSERT INTO alineacion (id_jugador, posicion)
+                                    VALUES (@IdJugador,
+                                        COALESCE((SELECT MAX(posicion) FROM alineacion), 0) + 1)";
+
+                    using (var comando = new SQLiteCommand(query, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdJugador", jugador);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+        }
+
+        // ---------------------------------------------- MÉTODO QUE QUITA UN JUGADOR A LA ALINEACIÓN
+        public static void QuitarJugadorAlineacion(int idJugador)
+        {
+            try
+            {
+                // Usa la base activa (temporal si existe)
+                string dbPath = DatabaseManager.GetActiveDatabasePath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                    return;
+                }
+
+                string connString = $"Data Source={dbPath};Version=3;";
+
+                using (var connection = new SQLiteConnection(connString))
+                {
+                    connection.Open();
+
+                    int posicionJugador = -1;
+
+                    // Paso 1: Obtener la posición del jugador
+                    string queryPosicion = @"SELECT posicion FROM alineacion WHERE id_jugador = @IdJugador";
+
+                    using (var comando = new SQLiteCommand(queryPosicion, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdJugador", idJugador);
+
+                        object result = comando.ExecuteScalar();
+                        if (result != null)
+                        {
+                            posicionJugador = Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"Jugador {idJugador} no encontrado en la alineación.");
+                            return;
+                        }
+                    }
+
+                    // Paso 2: Eliminar el jugador
+                    string queryEliminar = @"DELETE FROM alineacion WHERE id_jugador = @IdJugador";
+
+                    using (var comando = new SQLiteCommand(queryEliminar, connection))
+                    {
+                        comando.Parameters.AddWithValue("@IdJugador", idJugador);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    // Paso 3: Reordenar posiciones
+                    string queryActualizar = @"UPDATE alineacion SET posicion = posicion - 1 WHERE posicion > @Posicion";
+
+                    using (var comando = new SQLiteCommand(queryActualizar, connection))
+                    {
+                        comando.Parameters.AddWithValue("@Posicion", posicionJugador);
+                        comando.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al actualizar la alineación en la base de datos: {ex.Message}");
+            }
+        }
     }
 }

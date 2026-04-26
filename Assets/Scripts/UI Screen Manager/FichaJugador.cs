@@ -219,6 +219,9 @@ namespace TacticalEleven.Scripts
                         // Eliminar el contrato del jugador.
                         JugadorData.EliminarContratoJugador(jugadorSeleccionado.IdJugador);
 
+                        // Quitar al jugador de la alineación
+                        JugadorData.QuitarJugadorAlineacion(jugadorSeleccionado.IdJugador);
+
                         // Restar indemnización del Presupuesto
                         EquipoData.RestarCantidadAPresupuesto(miEquipo.IdEquipo, indemizacion);
 
