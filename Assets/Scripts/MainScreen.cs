@@ -21,9 +21,11 @@ namespace TacticalEleven.Scripts
         public VisualElement clubMenu, alineacionMenu, competicionMenu, calendarioMenu, fichajesMenu, finanzasMenu,
                estadioMenu, managerMenu, mensajesMenu;
         private VisualElement mainContainer, popupContainer, resumenPartido, finalCopa, imgEscudoLocal, imgEscudoVisitante, fotoMvp,
-                goleadoresLocalContainer, goleadoresVisitanteContainer, tarjetasLocalContainer, tarjetasVisitanteContainer,
-                resumenJornada, listaPartidosLeft, listaPartidosRight, finalCopaTituloArea, marcadorLocalArea, marcadorVisitanteArea,
-                escudoFinalistaLocal, escudoFinalistaVisitante, imgTrofeoCampeon, escudoCampeon;
+                 goleadoresLocalContainer, goleadoresVisitanteContainer, tarjetasLocalContainer, tarjetasVisitanteContainer,
+                 resumenJornada, listaPartidosLeft, listaPartidosRight, finalCopaTituloArea, marcadorLocalArea, marcadorVisitanteArea,
+                 escudoFinalistaLocal, escudoFinalistaVisitante, imgTrofeoCampeon, escudoCampeon, resumenPartidoLogoCompeticion,
+                 resumenJornadaLogoCompeticion;
+        private List<VisualElement> menuList;
         private Button btnSeguir, btnCerrar, resumenPartidoBtnContinuar, resumenJornadaBtnContinuar, finalCopaBtnContinuar;
         private Label miEquipoNombre, managerNombre, fecha1, fecha2, popupText, resumenPartidoCabeceraTitulo,
                 lblTituloJornada, lblGolesLocal, lblGolesVisitante, lblNombreLocal, lblNombreVisitante, lblAsistenciaPartido,
@@ -141,6 +143,8 @@ namespace TacticalEleven.Scripts
             tarjetasLocalContainer = root.Q<VisualElement>("tarjetas-local-area");
             goleadoresVisitanteContainer = root.Q<VisualElement>("goleadores-visitante-area");
             tarjetasVisitanteContainer = root.Q<VisualElement>("tarjetas-visitante-area");
+            resumenPartidoLogoCompeticion = root.Q<VisualElement>("resumen-partido-logo-competicion");
+            
 
             // Resumen de la jornada
             resumenJornada = root.Q<VisualElement>("resumen-jornada");
@@ -148,6 +152,7 @@ namespace TacticalEleven.Scripts
             lblTituloJornada2 = root.Q<Label>("lblTituloJornada2");
             listaPartidosLeft = root.Q<VisualElement>("lista-partidos-left-area");
             listaPartidosRight = root.Q<VisualElement>("lista-partidos-right-area");
+            resumenJornadaLogoCompeticion = root.Q<VisualElement>("resumen-jornada-logo-competicion");
 
             // Pantalla final de Copa
             finalCopa = root.Q<VisualElement>("final-copa");
@@ -232,6 +237,10 @@ namespace TacticalEleven.Scripts
             // Valoración del manager
             MostrarEstrellas(miManager.Reputacion);
 
+            // Inicializar temporada actual
+            FechaData fechaData = new FechaData();
+            fechaData.InicializarTemporadaActual();
+
             // Fecha
             Fecha fechaObjeto = FechaData.ObtenerFechaHoy();
             DateTime hoy = DateTime.Parse(fechaObjeto.Hoy);
@@ -313,11 +322,11 @@ namespace TacticalEleven.Scripts
 
             ActualizarBotonSeguir();
 
-            // --- Eventos iconos menú lateral ---
-            List<VisualElement> menuList = new List<VisualElement> { clubMenu, alineacionMenu, competicionMenu,
-                                                                     calendarioMenu, fichajesMenu, finanzasMenu,
-                                                                     estadioMenu, managerMenu, mensajesMenu
-                                                                   };
+// --- Eventos iconos menú lateral ---
+            menuList = new List<VisualElement> { clubMenu, alineacionMenu, competicionMenu,
+                                               calendarioMenu, fichajesMenu, finanzasMenu,
+                                               estadioMenu, managerMenu, mensajesMenu
+                                             };
 
             // ---------------------------------------------------- Evento HOME ICON
             homeIcon.RegisterCallback<ClickEvent>(evt =>
@@ -601,77 +610,99 @@ namespace TacticalEleven.Scripts
         private void OnBtnSeguirClicked()
         {
             Fecha f = FechaData.ObtenerFechaHoy();
-            bool diaAvanzado = false;
-            resumenPartidoBtnContinuar.SetEnabled(true);
-            resumenJornadaBtnContinuar.SetEnabled(true);
+            DateTime fechaActual = f.ToDateTime();
 
-            if (diaTipoActual == DiaTipo.Partido)
+            MenuVisibility(menuList, null);
+
+            // Comprobar si es 31 de mayo (final de temporada)
+            if (fechaActual.Month == 5 && fechaActual.Day == 31)
             {
-                Partido proximoPartido = PartidoData.ObtenerProximoPartido(miEquipo.IdEquipo, f.ToDateTime());
-
-                // Comprobamos si hay jugadores lesionados o sancionados en la alineacion titular en partidos de Liga            
-                int cont = ComprobarLesionadosSancionados(proximoPartido);
-                if (cont > 0)
-                {
-                    // Mostrar ventana avisando de que la alineacion es incorrecta
-                    popupContainer.style.display = DisplayStyle.Flex;
-                    popupText.text = "Por favor revisa la alineación, has incluido jugadores que están lesionados o sancionados y no pueden jugar el partido.";
-       
-                    btnCerrar.clicked -= OnCerrarClick;
-
-                    void OnCerrarClick()
-                    {
-                        AudioManager.Instance.PlaySFX(clickSFX);
-
-                        btnCerrar.clicked -= OnCerrarClick;
-                        popupContainer.style.display = DisplayStyle.None;
-                    }
-
-                    btnCerrar.clicked += OnCerrarClick;
-                }
-                else
-                {
-                    // Simular Mi Partido y guardar en BD
-                    DatosSimulacion datosMiPartido = SimularPartidoYGuardar(proximoPartido, true);
-
-                    // Pintar resumen de mi partido
-                    PintarResumenMiPartido(proximoPartido, datosMiPartido);
-
-                    // Actualizar confianzas en portada
-                    portadaManager?.ActualizarConfianzas();
-
-                    // Mostrar pantalla resumen de partido
-                    resumenPartidoBtnContinuar.SetEnabled(true);
-                    resumenPartido.style.display = DisplayStyle.Flex;
-                }
+                Debug.Log("[FINAL DE TEMPORADA] Es 31 de mayo - Mostrar pantalla de final de temporada");
             }
-            else if (diaTipoActual == DiaTipo.Simular)
+            else 
             {
-                Debug.Log("Hay partidos hoy - Simular");
+                bool diaAvanzado = false;
+                resumenPartidoBtnContinuar.SetEnabled(true);
+                resumenJornadaBtnContinuar.SetEnabled(true);
 
-                // Obtener todos los partidos de hoy (sin mi equipo)
-                List<Partido> listaPartidos = PartidoData.PartidosHoy(miEquipo.IdEquipo);
-                
-                if (listaPartidos != null && listaPartidos.Count > 0)
+                if (diaTipoActual == DiaTipo.Partido)
                 {
-                    // Simular todos los partidos y guardar en BD
-                    foreach (var partido in listaPartidos)
+                    Partido proximoPartido = PartidoData.ObtenerProximoPartido(miEquipo.IdEquipo, f.ToDateTime());
+
+                    // Comprobamos si hay jugadores lesionados o sancionados en la alineacion titular en partidos de Liga            
+                    int cont = ComprobarLesionadosSancionados(proximoPartido);
+                    if (cont > 0)
                     {
-                        SimularPartidoYGuardar(partido, false);
+                        // Mostrar ventana avisando de que la alineacion es incorrecta
+                        popupContainer.style.display = DisplayStyle.Flex;
+                        popupText.text = "Por favor revisa la alineación, has incluido jugadores que están lesionados o sancionados y no pueden jugar el partido.";
+        
+                        btnCerrar.clicked -= OnCerrarClick;
+
+                        void OnCerrarClick()
+                        {
+                            AudioManager.Instance.PlaySFX(clickSFX);
+
+                            btnCerrar.clicked -= OnCerrarClick;
+                            popupContainer.style.display = DisplayStyle.None;
+                        }
+
+                        btnCerrar.clicked += OnCerrarClick;
                     }
+                    else
+                    {
+                        // Simular Mi Partido y guardar en BD
+                        DatosSimulacion datosMiPartido = SimularPartidoYGuardar(proximoPartido, true);
 
-                    // Pintar resumen jornada
-                    listaPartidosActual = listaPartidos;
-                    SimularJornada(listaPartidos);
-                    resumenJornadaBtnContinuar.SetEnabled(true);
-                    resumenJornada.style.display = DisplayStyle.Flex;
+                        // Pintar resumen de mi partido
+                        PintarResumenMiPartido(proximoPartido, datosMiPartido);
 
-                    // Actualizar confianzas en portada
-                    portadaManager?.ActualizarConfianzas();
+                        // Actualizar confianzas en portada
+                        portadaManager?.ActualizarConfianzas();
+
+                        // Mostrar pantalla resumen de partido
+                        resumenPartidoBtnContinuar.SetEnabled(true);
+                        resumenPartido.style.display = DisplayStyle.Flex;
+                    }
+                }
+                else if (diaTipoActual == DiaTipo.Simular)
+                {
+                    // Obtener todos los partidos de hoy (sin mi equipo)
+                    List<Partido> listaPartidos = PartidoData.PartidosHoy(miEquipo.IdEquipo);
+                    
+                    if (listaPartidos != null && listaPartidos.Count > 0)
+                    {
+                        // Simular todos los partidos y guardar en BD
+                        foreach (var partido in listaPartidos)
+                        {
+                            SimularPartidoYGuardar(partido, false);
+                        }
+
+                        // Pintar resumen jornada
+                        listaPartidosActual = listaPartidos;
+                        SimularJornada(listaPartidos);
+                        resumenJornadaBtnContinuar.SetEnabled(true);
+                        resumenJornada.style.display = DisplayStyle.Flex;
+
+                        // Actualizar confianzas en portada
+                        portadaManager?.ActualizarConfianzas();
+                    }
+                    else
+                    {
+                        // No hay partidos, avanzar el día
+                        if (FechaData.AvanzarUnDia())
+                        {
+                            ActualizarFecha();
+                            ActualizarBotonSeguir();
+                            CargarPortada();
+                            diaAvanzado = true;
+                        }
+                    }
                 }
                 else
                 {
-                    // No hay partidos, avanzar el día
+                    Debug.Log("Avanzar un día");
+
                     if (FechaData.AvanzarUnDia())
                     {
                         ActualizarFecha();
@@ -679,18 +710,6 @@ namespace TacticalEleven.Scripts
                         CargarPortada();
                         diaAvanzado = true;
                     }
-                }
-            }
-            else
-            {
-                Debug.Log("Avanzar un día");
-
-                if (FechaData.AvanzarUnDia())
-                {
-                    ActualizarFecha();
-                    ActualizarBotonSeguir();
-                    CargarPortada();
-                    diaAvanzado = true;
                 }
             }
         }
@@ -1297,6 +1316,20 @@ namespace TacticalEleven.Scripts
             listaPartidosRight.Clear();
 
             int comp = listaPartidos[0].IdCompeticion;
+
+            if (comp == 4)
+            {
+                var spriteLogoCompeticion = Resources.Load<Sprite>($"LogosCompeticiones/copa200");
+                if (spriteLogoCompeticion != null)
+                    resumenJornadaLogoCompeticion.style.backgroundImage = new StyleBackground(spriteLogoCompeticion);
+            } 
+            else
+            {
+                var spriteLogoCompeticion = Resources.Load<Sprite>($"LogosCompeticiones/{comp}");
+                if (spriteLogoCompeticion != null)
+                    resumenJornadaLogoCompeticion.style.backgroundImage = new StyleBackground(spriteLogoCompeticion);
+            }
+
             string nombreCompeticion = "";
             if(comp == 1 || comp == 2)
             {
@@ -1344,7 +1377,7 @@ namespace TacticalEleven.Scripts
                 {
                     var fila = CrearFilaPartido(partido);
 
-                    if (cont < 16)
+                    if (cont % 2 == 0)
                         listaPartidosLeft.Add(fila);
                     else
                         listaPartidosRight.Add(fila);
@@ -1353,7 +1386,7 @@ namespace TacticalEleven.Scripts
                 {
                     var fila = CrearFilaPartido(partido);
 
-                    if (cont < 11)
+                    if (cont % 2 == 0)
                         listaPartidosLeft.Add(fila);
                     else
                         listaPartidosRight.Add(fila);
@@ -1362,7 +1395,7 @@ namespace TacticalEleven.Scripts
                 {
                     var fila = CrearFilaPartido(partido);
 
-                    if (cont < 11)
+                    if (cont % 2 == 0)
                         listaPartidosLeft.Add(fila);
                     else
                         listaPartidosRight.Add(fila);
@@ -1371,7 +1404,7 @@ namespace TacticalEleven.Scripts
                 {
                     var fila = CrearFilaPartido(partido);
 
-                    if (cont < 16)
+                    if (cont % 2 == 0)
                         listaPartidosLeft.Add(fila);
                     else
                         listaPartidosRight.Add(fila);
@@ -2906,6 +2939,19 @@ namespace TacticalEleven.Scripts
         // -------------------------------------- PINTAR RESUMEN DE MI PARTIDO
         private void PintarResumenMiPartido(Partido partido, DatosSimulacion datos)
         {
+            if (partido.IdCompeticion == 4)
+            {
+                var spriteLogoCompeticion = Resources.Load<Sprite>($"LogosCompeticiones/copa200");
+                if (spriteLogoCompeticion != null)
+                    resumenPartidoLogoCompeticion.style.backgroundImage = new StyleBackground(spriteLogoCompeticion);
+            } 
+            else
+            {
+                var spriteLogoCompeticion = Resources.Load<Sprite>($"LogosCompeticiones/{partido.IdCompeticion}");
+                if (spriteLogoCompeticion != null)
+                    resumenPartidoLogoCompeticion.style.backgroundImage = new StyleBackground(spriteLogoCompeticion);
+            }
+
             MostrarCompeticionRonda(partido);
 
             // Nombre de los equipos
@@ -3031,16 +3077,18 @@ namespace TacticalEleven.Scripts
                     if (partidoFinalCopa != null)
                     {
                         string nombreGanador = "";
-                        int idGanador = 0;
+                        int idGanador = 0, idPerdedor = 0;
                         if (partidoFinalCopa.GolesLocal > partidoFinalCopa.GolesVisitante)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(partidoFinalCopa.IdEquipoLocal).Nombre;
                             idGanador = partidoFinalCopa.IdEquipoLocal;
+                            idPerdedor = partidoFinalCopa.IdEquipoVisitante;
                         }
                         else if (partidoFinalCopa.GolesVisitante > partidoFinalCopa.GolesLocal)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(partidoFinalCopa.IdEquipoVisitante).Nombre;
                             idGanador = partidoFinalCopa.IdEquipoVisitante;
+                            idPerdedor = partidoFinalCopa.IdEquipoLocal;
                         }
 
                         // Mostramos la pantalla de campeón
@@ -3070,6 +3118,10 @@ namespace TacticalEleven.Scripts
                         var spriteTrofeo = Resources.Load<Sprite>($"Trofeos/{partidoFinalCopa.IdCompeticion}");
                         if (spriteTrofeo != null)
                             imgTrofeoCampeon.style.backgroundImage = new StyleBackground(spriteTrofeo);
+
+                        // Guardar en la base de datos
+                        PalmaresData.AnadirCampeonFinalistaCopa(FechaData.temporadaActual, idGanador, idPerdedor);
+                        PalmaresData.AnadirTituloCampeonCopa(idGanador);
 
                         finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
 
@@ -3185,16 +3237,18 @@ namespace TacticalEleven.Scripts
                     if (finalCopaEuropa1 != null)
                     {
                         string nombreGanador = "";
-                        int idGanador = 0;
+                        int idGanador = 0, idPerdedor = 0;
                         if (finalCopaEuropa1.GolesLocal > finalCopaEuropa1.GolesVisitante)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa1.IdEquipoLocal).Nombre;
                             idGanador = finalCopaEuropa1.IdEquipoLocal;
+                            idPerdedor = finalCopaEuropa1.IdEquipoVisitante;
                         }
                         else if (finalCopaEuropa1.GolesVisitante > finalCopaEuropa1.GolesLocal)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa1.IdEquipoVisitante).Nombre;
                             idGanador = finalCopaEuropa1.IdEquipoVisitante;
+                            idPerdedor = finalCopaEuropa1.IdEquipoLocal;
                         }
 
                         // Mostramos la pantalla de campeón
@@ -3224,6 +3278,10 @@ namespace TacticalEleven.Scripts
                         var spriteTrofeo = Resources.Load<Sprite>($"Trofeos/{finalCopaEuropa1.IdCompeticion}");
                         if (spriteTrofeo != null)
                             imgTrofeoCampeon.style.backgroundImage = new StyleBackground(spriteTrofeo);
+                        
+                        // Guardar en la base de datos
+                        PalmaresData.AnadirCampeonFinalistaCopaEuropa1(FechaData.temporadaActual, idGanador, idPerdedor);
+                        PalmaresData.AnadirTituloCampeonCopaEuropa1(idGanador);
 
                         finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
 
@@ -3340,16 +3398,18 @@ namespace TacticalEleven.Scripts
                     if (finalCopaEuropa2 != null)
                     {
                         string nombreGanador = "";
-                        int idGanador = 0;
+                        int idGanador = 0, idPerdedor = 0;
                         if (finalCopaEuropa2.GolesLocal > finalCopaEuropa2.GolesVisitante)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa2.IdEquipoLocal).Nombre;
                             idGanador = finalCopaEuropa2.IdEquipoLocal;
+                            idPerdedor = finalCopaEuropa2.IdEquipoVisitante;
                         }
                         else if (finalCopaEuropa2.GolesVisitante > finalCopaEuropa2.GolesLocal)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa2.IdEquipoVisitante).Nombre;
                             idGanador = finalCopaEuropa2.IdEquipoVisitante;
+                            idPerdedor = finalCopaEuropa2.IdEquipoLocal;
                         }
 
                         // Mostramos la pantalla de campeón
@@ -3379,6 +3439,11 @@ namespace TacticalEleven.Scripts
                         var spriteTrofeo = Resources.Load<Sprite>($"Trofeos/{finalCopaEuropa2.IdCompeticion}");
                         if (spriteTrofeo != null)
                             imgTrofeoCampeon.style.backgroundImage = new StyleBackground(spriteTrofeo);
+                        
+
+                        // Guardar en la base de datos
+                        PalmaresData.AnadirCampeonFinalistaCopaEuropa2(FechaData.temporadaActual, idGanador, idPerdedor);
+                        PalmaresData.AnadirTituloCampeonCopaEuropa2(idGanador);
 
                         finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
 
