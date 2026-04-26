@@ -242,4 +242,57 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="final-copa" class="background-final-copa" style="display: none;">
+        <ui:VisualElement name="final-copa-cabecera-area" class="final-copa-cabecera-area">
+            <ui:VisualElement name="final-copa-titulo-area" class="final-copa-titulo-area">
+                <ui:Label name="final-copa-titulo" text="RESUMEN COPA NACIONAL" class="final-copa-titulo"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="final-copa-boton-area" class="final-copa-boton-area">
+                <ui:Button name="btnContinuarFinalCopa" text="CONTINUAR" icon-image="project://database/Assets/Resources/Icons/avanzar.png?fileID=2800000&amp;guid=a6028fb24b29fe443bb23067d1943788&amp;type=3#avanzar" class="btnSeguir"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="final-copa-contenido-area" class="final-copa-contenido-area" style="background-size: 100%; width: 100%; height: 100%;">
+            <ui:VisualElement class="resultado-final-copa-area">
+                <ui:Label name="lblFinalCopa" text="Resultado de la Final" class="lblFinalCopa"/>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; margin-top: 50px; margin-right: 50px; margin-bottom: 50px; margin-left: 50px; background-color: rgb(245, 245, 245); width: 1820px; height: 300px; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; width: 40%;">
+                    <ui:VisualElement style="flex-grow: 0; height: 85%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="escudo-local-final-copa" style="flex-grow: 0; width: 200px; height: 200px; background-image: none;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; height: 15%; align-items: center;">
+                        <ui:Label text="Nombre Finalista" name="lblNombreFinalistaLocal" class="lblNombreFinalista"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="area-marcador-local" style="flex-grow: 0; width: 10%; background-color: rgb(24, 58, 39); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; align-items: center; justify-content: center;">
+                    <ui:Label text="0" name="final-copa-marcador-local" class="final-copa-marcador"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="area-marcador-visitante" style="flex-grow: 0; width: 10%; background-color: rgb(24, 58, 39); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; align-items: center; justify-content: center;">
+                    <ui:Label text="0" name="final-copa-marcador-visitante" class="final-copa-marcador"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 40%;">
+                    <ui:VisualElement style="flex-grow: 0; height: 85%; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="escudo-visitante-final-copa" style="flex-grow: 0; width: 200px; height: 200px; background-image: none;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; height: 15%; align-items: center;">
+                        <ui:Label text="Nombre Finalista" name="lblNombreFinalistaVisitante" class="lblNombreFinalista"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="resultado-final-copa-area">
+                <ui:Label name="lblCampeonCopa" text="Campeón" class="lblFinalCopa"/>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; margin-top: 50px; margin-right: 50px; margin-bottom: 50px; margin-left: 50px; background-color: rgb(245, 245, 245); width: 1820px; height: 300px; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; width: 20%; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="imagen-trofeo" class="imgTrofeo"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 250px; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="escudo-campeon-copa" style="flex-grow: 0; width: 200px; height: 200px; background-image: none;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="nombre-campeon-copa" style="flex-grow: 1; width: auto; align-items: flex-start; justify-content: center; padding-left: 50px;">
+                    <ui:Label text="Nombre campeón" name="lblNombreCampeonCopa" class="lblCampeon" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

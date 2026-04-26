@@ -20,13 +20,15 @@ namespace TacticalEleven.Scripts
         private VisualElement goleadoresLocalArea, tarjetasLocalArea, goleadoresVisitanteArea, tarjetasVisitanteArea;
         public VisualElement clubMenu, alineacionMenu, competicionMenu, calendarioMenu, fichajesMenu, finanzasMenu,
                estadioMenu, managerMenu, mensajesMenu;
-        private VisualElement mainContainer, popupContainer, resumenPartido, imgEscudoLocal, imgEscudoVisitante, fotoMvp,
+        private VisualElement mainContainer, popupContainer, resumenPartido, finalCopa, imgEscudoLocal, imgEscudoVisitante, fotoMvp,
                 goleadoresLocalContainer, goleadoresVisitanteContainer, tarjetasLocalContainer, tarjetasVisitanteContainer,
-                resumenJornada, listaPartidosLeft, listaPartidosRight;
-        private Button btnSeguir, btnCerrar, resumenPartidoBtnContinuar, resumenJornadaBtnContinuar;
+                resumenJornada, listaPartidosLeft, listaPartidosRight, finalCopaTituloArea, marcadorLocalArea, marcadorVisitanteArea,
+                escudoFinalistaLocal, escudoFinalistaVisitante, imgTrofeoCampeon, escudoCampeon;
+        private Button btnSeguir, btnCerrar, resumenPartidoBtnContinuar, resumenJornadaBtnContinuar, finalCopaBtnContinuar;
         private Label miEquipoNombre, managerNombre, fecha1, fecha2, popupText, resumenPartidoCabeceraTitulo,
                 lblTituloJornada, lblGolesLocal, lblGolesVisitante, lblNombreLocal, lblNombreVisitante, lblAsistenciaPartido,
-                lblMvpDemarcacion, lblMvpNombre, lblMvpEstadisticas, lblTituloJornada2;
+                lblMvpDemarcacion, lblMvpNombre, lblMvpEstadisticas, lblTituloJornada2, lblFinalCopaTitulo, lblNombreFinalistaLocal,
+                lblNombreFinalistaVisitante, lblMarcadorFinalLocal, lblMarcadorFinalVisitante, lblNombreCampeon;
         private DiaTipo diaTipoActual = DiaTipo.Continuar;
         public Label miPresupuesto;
         private Manager miManager;
@@ -146,6 +148,23 @@ namespace TacticalEleven.Scripts
             lblTituloJornada2 = root.Q<Label>("lblTituloJornada2");
             listaPartidosLeft = root.Q<VisualElement>("lista-partidos-left-area");
             listaPartidosRight = root.Q<VisualElement>("lista-partidos-right-area");
+
+            // Pantalla final de Copa
+            finalCopa = root.Q<VisualElement>("final-copa");
+            lblFinalCopaTitulo = root.Q<Label>("final-copa-titulo");
+            lblNombreFinalistaLocal = root.Q<Label>("lblNombreFinalistaLocal");
+            lblNombreFinalistaVisitante = root.Q<Label>("lblNombreFinalistaVisitante");
+            lblMarcadorFinalLocal = root.Q<Label>("final-copa-marcador-local");
+            lblMarcadorFinalVisitante = root.Q<Label>("final-copa-marcador-visitante");
+            lblNombreCampeon = root.Q<Label>("lblNombreCampeonCopa");
+            finalCopaTituloArea = root.Q<VisualElement>("final-copa-titulo-area");
+            marcadorLocalArea = root.Q<VisualElement>("area-marcador-local");
+            marcadorVisitanteArea = root.Q<VisualElement>("area-marcador-visitante");
+            escudoFinalistaLocal = root.Q<VisualElement>("escudo-local-final-copa");
+            escudoFinalistaVisitante = root.Q<VisualElement>("escudo-visitante-final-copa");
+            imgTrofeoCampeon = root.Q<VisualElement>("imagen-trofeo");
+            escudoCampeon = root.Q<VisualElement>("escudo-campeon-copa");
+            finalCopaBtnContinuar = root.Q<Button>("btnContinuarFinalCopa");
 
             // Listas por sección
             List<Label> clubList = new List<Label> { lblInformacion, lblPlantilla, lblEmpleados, lblLesionados, lblClasificacion, lblResultados,
@@ -2683,7 +2702,7 @@ namespace TacticalEleven.Scripts
                 }
             }
 
-// Asignar goleadores y asistentes
+            // Asignar goleadores y asistentes
             List<(Jugador, Jugador?)> goleadoresLocal = AsignarGolesYAsistencias(golesLocal, jugadoresLocal, random);
             List<(Jugador, Jugador?)> goleadoresVisitante = AsignarGolesYAsistencias(golesVisitante, jugadoresVisitante, random);
 
@@ -2946,8 +2965,6 @@ namespace TacticalEleven.Scripts
             int jornada = listaPartidosActual[0].Jornada ?? 0;
             int partidoVuelta = listaPartidosActual[0].PartidoVuelta ?? 0;
 
-            Debug.Log($"[Copa] Competicion={comp}, Ronda={ronda}, Jornada={jornada}, PartidoVuelta={partidoVuelta}");
-
             // ======================== COPA NACIONAL (comp = 4) ========================
             if (comp == 4)
             {
@@ -2962,8 +2979,22 @@ namespace TacticalEleven.Scripts
                         bool miEquipoClasificado = clasificados.Any(e => e.IdEquipo == miEquipo.IdEquipo);
                         if (miEquipoClasificado)
                         {
-                            Debug.Log($"[Copa] {miEquipo.Nombre} ha pasado a la siguiente ronda");
+                            string mensaje = $"{miEquipo.Nombre} ha pasado a la siguiente ronda de la {CompeticionData.MostrarNombreCompeticion(comp)}";
                             ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
+                            popupText.text = $"{mensaje}";
+                            popupContainer.style.display = DisplayStyle.Flex;
+
+                            btnCerrar.clicked -= OnCerrarClick;
+
+                            void OnCerrarClick()
+                            {
+                                AudioManager.Instance.PlaySFX(clickSFX);
+
+                                btnCerrar.clicked -= OnCerrarClick;
+                                popupContainer.style.display = DisplayStyle.None;
+                            }
+
+                            btnCerrar.clicked += OnCerrarClick;
                         }
                         else
                         {
@@ -2971,11 +3002,24 @@ namespace TacticalEleven.Scripts
                             if (miUltimaRonda >= ronda)
                             {
                                 int reputacion = miEquipo.Reputacion;
-                                string mensaje = reputacion > 89 ? "El equipo ha quedado eliminado de la Copa, un resultado que est�� por debajo de las expectativas."
+                                string mensaje = reputacion > 89 ? "El equipo ha quedado eliminado de la Copa, un resultado que está por debajo de las expectativas."
                                             : reputacion > 74 ? "Tras una eliminatoria muy igualada, el equipo ha quedado eliminado de la Copa."
                                             : " Pese a la eliminación, queremos reconocer el esfuerzo del equipo en esta edición de la Copa.";
-                                Debug.Log($"[Copa] {miEquipo.Nombre} eliminado. Mensaje: {mensaje}");
                                 ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
+                                popupText.text = $"{mensaje}";
+                                popupContainer.style.display = DisplayStyle.Flex;
+
+                                btnCerrar.clicked -= OnCerrarClick;
+
+                                void OnCerrarClick()
+                                {
+                                    AudioManager.Instance.PlaySFX(clickSFX);
+
+                                    btnCerrar.clicked -= OnCerrarClick;
+                                    popupContainer.style.display = DisplayStyle.None;
+                                }
+
+                                btnCerrar.clicked += OnCerrarClick;
                             }
                         }
                     }
@@ -2983,37 +3027,62 @@ namespace TacticalEleven.Scripts
 
                 if (ronda > 5)
                 {
-                    Partido finalCopa = PartidoData.ObtenerFinalCopa();
-                    if (finalCopa != null)
+                    Partido partidoFinalCopa = PartidoData.ObtenerFinalCopa();
+                    if (partidoFinalCopa != null)
                     {
-                        string nombreGanador;
-                        if (finalCopa.GolesLocal > finalCopa.GolesVisitante)
+                        string nombreGanador = "";
+                        int idGanador = 0;
+                        if (partidoFinalCopa.GolesLocal > partidoFinalCopa.GolesVisitante)
                         {
-                            nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopa.IdEquipoLocal).Nombre;
+                            nombreGanador = EquipoData.ObtenerDetallesEquipo(partidoFinalCopa.IdEquipoLocal).Nombre;
+                            idGanador = partidoFinalCopa.IdEquipoLocal;
                         }
-                        else if (finalCopa.GolesVisitante > finalCopa.GolesLocal)
+                        else if (partidoFinalCopa.GolesVisitante > partidoFinalCopa.GolesLocal)
                         {
-                            nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopa.IdEquipoVisitante).Nombre;
+                            nombreGanador = EquipoData.ObtenerDetallesEquipo(partidoFinalCopa.IdEquipoVisitante).Nombre;
+                            idGanador = partidoFinalCopa.IdEquipoVisitante;
                         }
-                        else
-                        {
-                            nombreGanador = "Empate - ¡Partido memorable!";
-                        }
-                        popupText.text = $"🏆 ¡LA COPA DEL REY HA TERMINADO! 🏆\n\nEl ganador es: {nombreGanador}";
-                        popupContainer.style.display = DisplayStyle.Flex;
 
-                        btnCerrar.clicked -= OnCerrarClick;
+                        // Mostramos la pantalla de campeón
+                        finalCopa.style.display = DisplayStyle.Flex;
+                        lblFinalCopaTitulo.text = $"RESUMEN {CompeticionData.MostrarNombreCompeticion(partidoFinalCopa.IdCompeticion).ToUpper()}";
+                        lblNombreFinalistaLocal.text = $"{EquipoData.ObtenerDetallesEquipo(partidoFinalCopa.IdEquipoLocal).Nombre}";
+                        lblNombreFinalistaVisitante.text = $"{EquipoData.ObtenerDetallesEquipo(partidoFinalCopa.IdEquipoVisitante).Nombre}";
+                        lblMarcadorFinalLocal.text = $"{partidoFinalCopa.GolesLocal}";
+                        lblMarcadorFinalVisitante.text = $"{partidoFinalCopa.GolesVisitante}";
+                        lblNombreCampeon.text = $"{nombreGanador}";
+                        finalCopaTituloArea.style.backgroundColor = new StyleColor(new Color32(125, 30, 11, 255));
+                        marcadorLocalArea.style.backgroundColor = new StyleColor(new Color32(125, 30, 11, 255));
+                        marcadorVisitanteArea.style.backgroundColor = new StyleColor(new Color32(125, 30, 11, 255));
 
-                        void OnCerrarClick()
+                        var spriteEscudoFinalistaLocal = Resources.Load<Sprite>($"EscudosEquipos/{partidoFinalCopa.IdEquipoLocal}");
+                        if (spriteEscudoFinalistaLocal != null)
+                            escudoFinalistaLocal.style.backgroundImage = new StyleBackground(spriteEscudoFinalistaLocal);
+                        
+                        var spriteEscudoFinalistaVisitante = Resources.Load<Sprite>($"EscudosEquipos/{partidoFinalCopa.IdEquipoVisitante}");
+                        if (spriteEscudoFinalistaVisitante != null)
+                            escudoFinalistaVisitante.style.backgroundImage = new StyleBackground(spriteEscudoFinalistaVisitante);
+                        
+                        var spriteEscudoCampeon = Resources.Load<Sprite>($"EscudosEquipos/{idGanador}");
+                        if (spriteEscudoCampeon != null)
+                            escudoCampeon.style.backgroundImage = new StyleBackground(spriteEscudoCampeon);
+
+                        var spriteTrofeo = Resources.Load<Sprite>($"Trofeos/{partidoFinalCopa.IdCompeticion}");
+                        if (spriteTrofeo != null)
+                            imgTrofeoCampeon.style.backgroundImage = new StyleBackground(spriteTrofeo);
+
+                        finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
+
+                        void OnCopaBtnContinuarClick()
                         {
                             AudioManager.Instance.PlaySFX(clickSFX);
 
-                            btnCerrar.clicked -= OnCerrarClick;
-                            popupContainer.style.display = DisplayStyle.None;
+                            finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
+                            finalCopa.style.display = DisplayStyle.None;
                         }
 
-                        btnCerrar.clicked += OnCerrarClick;
-                        }
+                        finalCopaBtnContinuar.clicked += OnCopaBtnContinuarClick;
+                    }
                 }
             }
 
@@ -3030,20 +3099,35 @@ namespace TacticalEleven.Scripts
                     if (clasificadosEuropa1.Count >= 2)
                     {
                         GenerarCalendarioEuropa1(clasificadosEuropa1, jornada, ronda);
-
+                        string mensaje = "";
                         if (miCompeticionEuropea == 5)
                         {
                             bool miEquipoClasificado = clasificadosEuropa1.Contains(miEquipo.IdEquipo);
                             if (miEquipoClasificado)
                             {
-                                Debug.Log($"[Copa Europa 1] {miEquipo.Nombre} ha pasado a octavos");
+                                mensaje = $"{miEquipo.Nombre} ha pasado a octavos de {CompeticionData.MostrarNombreCompeticion(miCompeticionEuropea).ToUpper()}";
                                 ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
                             }
                             else
                             {
-                                Debug.Log($"[Copa Europa 1] {miEquipo.Nombre} no se clasificó para octavos");
+                                mensaje = $"{miEquipo.Nombre} no se clasificó para octavos de {CompeticionData.MostrarNombreCompeticion(miCompeticionEuropea).ToUpper()}";
                                 ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
                             }
+
+                            popupText.text = $"{mensaje}";
+                            popupContainer.style.display = DisplayStyle.Flex;
+
+                            btnCerrar.clicked -= OnCerrarClick;
+
+                            void OnCerrarClick()
+                            {
+                                AudioManager.Instance.PlaySFX(clickSFX);
+
+                                btnCerrar.clicked -= OnCerrarClick;
+                                popupContainer.style.display = DisplayStyle.None;
+                            }
+
+                            btnCerrar.clicked += OnCerrarClick;
                         }
                     }
                 }
@@ -3056,13 +3140,14 @@ namespace TacticalEleven.Scripts
                         if (clasificadosEuropa1.Count >= 2)
                         {
                             GenerarCalendarioEuropa1(clasificadosEuropa1, jornada, ronda);
+                            string mensaje = "";
 
                             if (miCompeticionEuropea == 5)
                             {
                                 bool miEquipoClasificado = clasificadosEuropa1.Contains(miEquipo.IdEquipo);
                                 if (miEquipoClasificado)
                                 {
-                                    Debug.Log($"[Copa Europa 1] {miEquipo.Nombre} ha pasado a la siguiente ronda");
+                                    mensaje = $"{miEquipo.Nombre} ha pasado a la siguiente ronda de {CompeticionData.MostrarNombreCompeticion(miCompeticionEuropea).ToUpper()}";
                                     ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
                                 }
                                 else
@@ -3070,10 +3155,25 @@ namespace TacticalEleven.Scripts
                                     int miUltimaRonda = PartidoData.ObtenerUltimaRondaJugadaMiEquipo(miEquipo.IdEquipo, 5);
                                     if (miUltimaRonda >= ronda)
                                     {
-                                        Debug.Log($"[Copa Europa 1] {miEquipo.Nombre} eliminado");
+                                        mensaje = $"{miEquipo.Nombre} ha quedado eliminado de {CompeticionData.MostrarNombreCompeticion(miCompeticionEuropea).ToUpper()}";
                                         ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
                                     }
                                 }
+
+                                popupText.text = $"{mensaje}";
+                                popupContainer.style.display = DisplayStyle.Flex;
+
+                                btnCerrar.clicked -= OnCerrarClick;
+
+                                void OnCerrarClick()
+                                {
+                                    AudioManager.Instance.PlaySFX(clickSFX);
+
+                                    btnCerrar.clicked -= OnCerrarClick;
+                                    popupContainer.style.display = DisplayStyle.None;
+                                }
+
+                                btnCerrar.clicked += OnCerrarClick;
                             }
                         }
                     }
@@ -3084,33 +3184,58 @@ namespace TacticalEleven.Scripts
                     Partido finalCopaEuropa1 = PartidoData.ObtenerFinalCopaEuropa1();
                     if (finalCopaEuropa1 != null)
                     {
-                        string nombreGanador;
+                        string nombreGanador = "";
+                        int idGanador = 0;
                         if (finalCopaEuropa1.GolesLocal > finalCopaEuropa1.GolesVisitante)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa1.IdEquipoLocal).Nombre;
+                            idGanador = finalCopaEuropa1.IdEquipoLocal;
                         }
                         else if (finalCopaEuropa1.GolesVisitante > finalCopaEuropa1.GolesLocal)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa1.IdEquipoVisitante).Nombre;
+                            idGanador = finalCopaEuropa1.IdEquipoVisitante;
                         }
-                        else
-                        {
-                            nombreGanador = "Empate - ¡Partido memorable!";
-                        }
-                        popupText.text = $"🏆 ¡LA COPA EUROPA 1 HA TERMINADO! 🏆\n\nEl ganador es: {nombreGanador}";
-                        popupContainer.style.display = DisplayStyle.Flex;
 
-                        btnCerrar.clicked -= OnCerrarClick;
+                        // Mostramos la pantalla de campeón
+                        finalCopa.style.display = DisplayStyle.Flex;
+                        lblFinalCopaTitulo.text = $"RESUMEN {CompeticionData.MostrarNombreCompeticion(finalCopaEuropa1.IdCompeticion).ToUpper()}";
+                        lblNombreFinalistaLocal.text = $"{EquipoData.ObtenerDetallesEquipo(finalCopaEuropa1.IdEquipoLocal).Nombre}";
+                        lblNombreFinalistaVisitante.text = $"{EquipoData.ObtenerDetallesEquipo(finalCopaEuropa1.IdEquipoVisitante).Nombre}";
+                        lblMarcadorFinalLocal.text = $"{finalCopaEuropa1.GolesLocal}";
+                        lblMarcadorFinalVisitante.text = $"{finalCopaEuropa1.GolesVisitante}";
+                        lblNombreCampeon.text = $"{nombreGanador}";
+                        finalCopaTituloArea.style.backgroundColor = new StyleColor(new Color32(25, 77, 128, 255));
+                        marcadorLocalArea.style.backgroundColor = new StyleColor(new Color32(25, 77, 128, 255));
+                        marcadorVisitanteArea.style.backgroundColor = new StyleColor(new Color32(25, 77, 128, 255));
 
-                        void OnCerrarClick()
+                        var spriteEscudoFinalistaLocal = Resources.Load<Sprite>($"EscudosEquipos/{finalCopaEuropa1.IdEquipoLocal}");
+                        if (spriteEscudoFinalistaLocal != null)
+                            escudoFinalistaLocal.style.backgroundImage = new StyleBackground(spriteEscudoFinalistaLocal);
+                        
+                        var spriteEscudoFinalistaVisitante = Resources.Load<Sprite>($"EscudosEquipos/{finalCopaEuropa1.IdEquipoVisitante}");
+                        if (spriteEscudoFinalistaVisitante != null)
+                            escudoFinalistaVisitante.style.backgroundImage = new StyleBackground(spriteEscudoFinalistaVisitante);
+                        
+                        var spriteEscudoCampeon = Resources.Load<Sprite>($"EscudosEquipos/{idGanador}");
+                        if (spriteEscudoCampeon != null)
+                            escudoCampeon.style.backgroundImage = new StyleBackground(spriteEscudoCampeon);
+
+                        var spriteTrofeo = Resources.Load<Sprite>($"Trofeos/{finalCopaEuropa1.IdCompeticion}");
+                        if (spriteTrofeo != null)
+                            imgTrofeoCampeon.style.backgroundImage = new StyleBackground(spriteTrofeo);
+
+                        finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
+
+                        void OnCopaBtnContinuarClick()
                         {
                             AudioManager.Instance.PlaySFX(clickSFX);
 
-                            btnCerrar.clicked -= OnCerrarClick;
-                            popupContainer.style.display = DisplayStyle.None;
+                            finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
+                            finalCopa.style.display = DisplayStyle.None;
                         }
 
-                        btnCerrar.clicked += OnCerrarClick;
+                        finalCopaBtnContinuar.clicked += OnCopaBtnContinuarClick;
                     }
                 }
             }
@@ -3128,20 +3253,36 @@ namespace TacticalEleven.Scripts
                     if (clasificadosEuropa2.Count >= 2)
                     {
                         GenerarCalendarioEuropa2(clasificadosEuropa2, jornada, ronda);
+                        string mensaje = "";
 
                         if (miCompeticionEuropea == 6)
                         {
                             bool miEquipoClasificado = clasificadosEuropa2.Contains(miEquipo.IdEquipo);
                             if (miEquipoClasificado)
                             {
-                                Debug.Log($"[Copa Europa 2] {miEquipo.Nombre} ha pasado a octavos");
+                                mensaje = $"{miEquipo.Nombre} ha pasado a octavos de {CompeticionData.MostrarNombreCompeticion(miCompeticionEuropea).ToUpper()}";
                                 ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
                             }
                             else
                             {
-                                Debug.Log($"[Copa Europa 2] {miEquipo.Nombre} no se clasificó para octavos");
+                                mensaje = $"{miEquipo.Nombre} no se clasificó para octavos de {CompeticionData.MostrarNombreCompeticion(miCompeticionEuropea).ToUpper()}";
                                 ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
                             }
+
+                            popupText.text = $"{mensaje}";
+                            popupContainer.style.display = DisplayStyle.Flex;
+
+                            btnCerrar.clicked -= OnCerrarClick;
+
+                            void OnCerrarClick()
+                            {
+                                AudioManager.Instance.PlaySFX(clickSFX);
+
+                                btnCerrar.clicked -= OnCerrarClick;
+                                popupContainer.style.display = DisplayStyle.None;
+                            }
+
+                            btnCerrar.clicked += OnCerrarClick;
                         }
                     }
                 }
@@ -3154,24 +3295,40 @@ namespace TacticalEleven.Scripts
                         if (clasificadosEuropa2.Count >= 2)
                         {
                             GenerarCalendarioEuropa2(clasificadosEuropa2, jornada, ronda);
+                            string mensaje = "";
 
                             if (miCompeticionEuropea == 6)
                             {
                                 bool miEquipoClasificado = clasificadosEuropa2.Contains(miEquipo.IdEquipo);
                                 if (miEquipoClasificado)
                                 {
-                                    Debug.Log($"[Copa Europa 2] {miEquipo.Nombre} ha pasado a la siguiente ronda");
+                                    mensaje = $"{miEquipo.Nombre} ha pasado a la siguiente ronda de {CompeticionData.MostrarNombreCompeticion(miCompeticionEuropea).ToUpper()}";
                                     ManagerData.ActualizarConfianza(miManager.IdManager, 10, 15, 10);
                                 }
                                 else
                                 {
-                                    int miUltimaRonda = PartidoData.ObtenerUltimaRondaJugadaMiEquipo(miEquipo.IdEquipo, 6);
+                                    int miUltimaRonda = PartidoData.ObtenerUltimaRondaJugadaMiEquipo(miEquipo.IdEquipo, 5);
                                     if (miUltimaRonda >= ronda)
                                     {
-                                        Debug.Log($"[Copa Europa 2] {miEquipo.Nombre} eliminado");
+                                        mensaje = $"{miEquipo.Nombre} ha quedado eliminado de {CompeticionData.MostrarNombreCompeticion(miCompeticionEuropea).ToUpper()}";
                                         ManagerData.ActualizarConfianza(miManager.IdManager, -10, -15, -5);
                                     }
                                 }
+
+                                popupText.text = $"{mensaje}";
+                                popupContainer.style.display = DisplayStyle.Flex;
+
+                                btnCerrar.clicked -= OnCerrarClick;
+
+                                void OnCerrarClick()
+                                {
+                                    AudioManager.Instance.PlaySFX(clickSFX);
+
+                                    btnCerrar.clicked -= OnCerrarClick;
+                                    popupContainer.style.display = DisplayStyle.None;
+                                }
+
+                                btnCerrar.clicked += OnCerrarClick;
                             }
                         }
                     }
@@ -3182,33 +3339,58 @@ namespace TacticalEleven.Scripts
                     Partido finalCopaEuropa2 = PartidoData.ObtenerFinalCopaEuropa2();
                     if (finalCopaEuropa2 != null)
                     {
-                        string nombreGanador;
+                        string nombreGanador = "";
+                        int idGanador = 0;
                         if (finalCopaEuropa2.GolesLocal > finalCopaEuropa2.GolesVisitante)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa2.IdEquipoLocal).Nombre;
+                            idGanador = finalCopaEuropa2.IdEquipoLocal;
                         }
                         else if (finalCopaEuropa2.GolesVisitante > finalCopaEuropa2.GolesLocal)
                         {
                             nombreGanador = EquipoData.ObtenerDetallesEquipo(finalCopaEuropa2.IdEquipoVisitante).Nombre;
+                            idGanador = finalCopaEuropa2.IdEquipoVisitante;
                         }
-                        else
-                        {
-                            nombreGanador = "Empate - ¡Partido memorable!";
-                        }
-                        popupText.text = $"🏆 ¡LA COPA EUROPA 2 HA TERMINADO! 🏆\n\nEl ganador es: {nombreGanador}";
-                        popupContainer.style.display = DisplayStyle.Flex;
 
-                        btnCerrar.clicked -= OnCerrarClick;
+                        // Mostramos la pantalla de campeón
+                        finalCopa.style.display = DisplayStyle.Flex;
+                        lblFinalCopaTitulo.text = $"RESUMEN {CompeticionData.MostrarNombreCompeticion(finalCopaEuropa2.IdCompeticion).ToUpper()}";
+                        lblNombreFinalistaLocal.text = $"{EquipoData.ObtenerDetallesEquipo(finalCopaEuropa2.IdEquipoLocal).Nombre}";
+                        lblNombreFinalistaVisitante.text = $"{EquipoData.ObtenerDetallesEquipo(finalCopaEuropa2.IdEquipoVisitante).Nombre}";
+                        lblMarcadorFinalLocal.text = $"{finalCopaEuropa2.GolesLocal}";
+                        lblMarcadorFinalVisitante.text = $"{finalCopaEuropa2.GolesVisitante}";
+                        lblNombreCampeon.text = $"{nombreGanador}";
+                        finalCopaTituloArea.style.backgroundColor = new StyleColor(new Color32(25, 77, 128, 255));
+                        marcadorLocalArea.style.backgroundColor = new StyleColor(new Color32(25, 77, 128, 255));
+                        marcadorVisitanteArea.style.backgroundColor = new StyleColor(new Color32(25, 77, 128, 255));
 
-                        void OnCerrarClick()
+                        var spriteEscudoFinalistaLocal = Resources.Load<Sprite>($"EscudosEquipos/{finalCopaEuropa2.IdEquipoLocal}");
+                        if (spriteEscudoFinalistaLocal != null)
+                            escudoFinalistaLocal.style.backgroundImage = new StyleBackground(spriteEscudoFinalistaLocal);
+                        
+                        var spriteEscudoFinalistaVisitante = Resources.Load<Sprite>($"EscudosEquipos/{finalCopaEuropa2.IdEquipoVisitante}");
+                        if (spriteEscudoFinalistaVisitante != null)
+                            escudoFinalistaVisitante.style.backgroundImage = new StyleBackground(spriteEscudoFinalistaVisitante);
+                        
+                        var spriteEscudoCampeon = Resources.Load<Sprite>($"EscudosEquipos/{idGanador}");
+                        if (spriteEscudoCampeon != null)
+                            escudoCampeon.style.backgroundImage = new StyleBackground(spriteEscudoCampeon);
+
+                        var spriteTrofeo = Resources.Load<Sprite>($"Trofeos/{finalCopaEuropa2.IdCompeticion}");
+                        if (spriteTrofeo != null)
+                            imgTrofeoCampeon.style.backgroundImage = new StyleBackground(spriteTrofeo);
+
+                        finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
+
+                        void OnCopaBtnContinuarClick()
                         {
                             AudioManager.Instance.PlaySFX(clickSFX);
 
-                            btnCerrar.clicked -= OnCerrarClick;
-                            popupContainer.style.display = DisplayStyle.None;
+                            finalCopaBtnContinuar.clicked -= OnCopaBtnContinuarClick;
+                            finalCopa.style.display = DisplayStyle.None;
                         }
 
-                        btnCerrar.clicked += OnCerrarClick;
+                        finalCopaBtnContinuar.clicked += OnCopaBtnContinuarClick;
                     }
                 }
             }

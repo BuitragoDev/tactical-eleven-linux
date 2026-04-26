@@ -540,3 +540,87 @@
     width: 50%;
     flex-grow: 0;
 }
+
+/* ------------------- PANTALLA FINAL DE COPA ------------------- */
+
+.background-final-copa {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(180, 180, 180);
+    position: absolute;
+}
+
+.final-copa-cabecera-area {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-copa-titulo-area {
+    height: 100%;
+    width: auto;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgb(24, 58, 39);
+    padding-left: 20px;
+}
+
+.final-copa-titulo {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(204, 201, 201);
+    font-size: 48px;
+}
+
+.final-copa-boton-area {
+    height: 100%;
+    width: 20%;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(180, 180, 180);
+}
+
+.resultado-final-copa-area {
+    height: 6%;
+    width: 100%;
+    flex-grow: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(30, 30, 30);
+}
+
+.lblFinalCopa {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(180, 180, 180);
+    font-size: 24px;
+}
+
+.lblCampeon {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(30, 30, 30);
+    font-size: 72px;
+}
+
+.final-copa-marcador {
+    -unity-font-definition: resource("Fonts/Poppins-Bold");
+    color: rgb(255, 255, 255);
+    font-size: 96px;
+}
+
+.lblNombreFinalista {
+    -unity-font-definition: resource("Fonts/Poppins-SemiBold");
+    color: rgb(30, 30, 30);
+    font-size: 24px;
+}
+
+.imgTrofeo {
+    flex-grow: 0; 
+    width: 280px; 
+    height: 280px;
+}
