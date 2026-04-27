@@ -21,16 +21,35 @@ namespace TacticalEleven.Scripts
         public VisualElement clubMenu, alineacionMenu, competicionMenu, calendarioMenu, fichajesMenu, finanzasMenu,
                estadioMenu, managerMenu, mensajesMenu;
         private VisualElement mainContainer, popupContainer, resumenPartido, finalCopa, imgEscudoLocal, imgEscudoVisitante, fotoMvp,
-                 goleadoresLocalContainer, goleadoresVisitanteContainer, tarjetasLocalContainer, tarjetasVisitanteContainer,
-                 resumenJornada, listaPartidosLeft, listaPartidosRight, finalCopaTituloArea, marcadorLocalArea, marcadorVisitanteArea,
-                 escudoFinalistaLocal, escudoFinalistaVisitante, imgTrofeoCampeon, escudoCampeon, resumenPartidoLogoCompeticion,
-                 resumenJornadaLogoCompeticion;
+                goleadoresLocalContainer, goleadoresVisitanteContainer, tarjetasLocalContainer, tarjetasVisitanteContainer,
+                resumenJornada, listaPartidosLeft, listaPartidosRight, finalCopaTituloArea, marcadorLocalArea, marcadorVisitanteArea,
+                escudoFinalistaLocal, escudoFinalistaVisitante, imgTrofeoCampeon, escudoCampeon, resumenPartidoLogoCompeticion,
+                resumenJornadaLogoCompeticion, resumenTemporada, premiosJugadores, resumenTemporadaEscudoCampeon, 
+                resumenTemporadaEscudoCampeonEuropa1, resumenTemporadaEscudoCampeonEuropa2, resumenTemporadaEscudoClasificadoEuropa1,
+                resumenTemporadaEscudoClasificadoEuropa2, resumenTemporadaEscudoClasificadoEuropa3, resumenTemporadaEscudoClasificadoEuropa4, resumenTemporadaEscudoClasificadoEuropa5, resumenTemporadaEscudoClasificadoEuropa6,
+                resumenTemporadaEscudoDescenso1, resumenTemporadaEscudoDescenso2, resumenTemporadaEscudoDescenso3,
+                resumenTemporadaEscudoAscenso1, resumenTemporadaEscudoAscenso2, resumenTemporadaEscudoAscenso3,
+                resumenTemporadaEscudoMaximoGoleador1, resumenTemporadaEscudoMaximoGoleador2, resumenTemporadaEscudoMaximoGoleador3, 
+                resumenTemporadaEscudoMejorJugador1, resumenTemporadaEscudoMejorJugador2, resumenTemporadaEscudoMejorJugador3,
+                imgBalonOroFoto1, imgBalonOroFoto2, imgBalonOroFoto3, imgMaximoGoleadorFoto1, imgMaximoGoleadorFoto2,
+                imgMaximoGoleadorFoto3, imgMejoresJugadoresFoto1, imgMejoresJugadoresFoto2, imgMejoresJugadoresFoto3;
         private List<VisualElement> menuList;
-        private Button btnSeguir, btnCerrar, resumenPartidoBtnContinuar, resumenJornadaBtnContinuar, finalCopaBtnContinuar;
+        private Button btnSeguir, btnCerrar, resumenPartidoBtnContinuar, resumenJornadaBtnContinuar, 
+                finalCopaBtnContinuar, btnPremiosJugadores, btnFinalizarTemporada;
         private Label miEquipoNombre, managerNombre, fecha1, fecha2, popupText, resumenPartidoCabeceraTitulo,
                 lblTituloJornada, lblGolesLocal, lblGolesVisitante, lblNombreLocal, lblNombreVisitante, lblAsistenciaPartido,
                 lblMvpDemarcacion, lblMvpNombre, lblMvpEstadisticas, lblTituloJornada2, lblFinalCopaTitulo, lblNombreFinalistaLocal,
-                lblNombreFinalistaVisitante, lblMarcadorFinalLocal, lblMarcadorFinalVisitante, lblNombreCampeon;
+                lblNombreFinalistaVisitante, lblMarcadorFinalLocal, lblMarcadorFinalVisitante, lblNombreCampeon, finalTemporadaTitulo,
+                lblResumenTemporadaCompeticionEuropea, lblResumenTemporadaDescensos, lblResumenTemporadaAscensos,
+                lblResumenTemporadaCampeonEuropa1, lblResumenTemporadaCampeonEuropa2,
+                lblClasificadoEuropa1, lblClasificadoEuropa2, lblClasificadoEuropa3, lblClasificadoEuropa4, lblClasificadoEuropa5, lblClasificadoEuropa6,
+                lblDescenso1, lblDescenso2, lblDescenso3, lblAscenso1, lblAscenso2, lblAscenso3,
+                lblMaximoGoleadorNombre1, lblMaximoGoleadorNombre2, lblMaximoGoleadorNombre3,
+                lblMejoresJugadoresNombre1, lblMejoresJugadoresNombre2, lblMejoresJugadoresNombre3,
+                lblMaximoGoleadorGoles1, lblMaximoGoleadorGoles2, lblMaximoGoleadorGoles3,
+                lblMejoresJugadoresPuntos1, lblMejoresJugadoresPuntos2, lblMejoresJugadoresPuntos3,
+                lblObjetivoTemporada, lblObjetivoTemporadaRespuesta, lblBalonOroNombre1, lblBalonOroNombre2, 
+                lblBalonOroNombre3, lblBalonOroEquipo1, lblBalonOroEquipo2, lblBalonOroEquipo3;
         private DiaTipo diaTipoActual = DiaTipo.Continuar;
         public Label miPresupuesto;
         private Manager miManager;
@@ -170,6 +189,82 @@ namespace TacticalEleven.Scripts
             imgTrofeoCampeon = root.Q<VisualElement>("imagen-trofeo");
             escudoCampeon = root.Q<VisualElement>("escudo-campeon-copa");
             finalCopaBtnContinuar = root.Q<Button>("btnContinuarFinalCopa");
+
+            // Pantalla Resumen de Temporada
+            resumenTemporada = root.Q<VisualElement>("final-temporada");
+            resumenTemporadaEscudoCampeon = root.Q<VisualElement>("resumenTemporadaLogoCampeon");
+            resumenTemporadaEscudoCampeonEuropa1 = root.Q<VisualElement>("resumenTemporadaLogoCampeonEuropa1");
+            resumenTemporadaEscudoCampeonEuropa2 = root.Q<VisualElement>("resumenTemporadaLogoCampeonEuropa2");
+            resumenTemporadaEscudoClasificadoEuropa1 = root.Q<VisualElement>("imgClasificadoEuropa1");
+            resumenTemporadaEscudoClasificadoEuropa2 = root.Q<VisualElement>("imgClasificadoEuropa2");
+            resumenTemporadaEscudoClasificadoEuropa3 = root.Q<VisualElement>("imgClasificadoEuropa3");
+            resumenTemporadaEscudoClasificadoEuropa4 = root.Q<VisualElement>("imgClasificadoEuropa4");
+            resumenTemporadaEscudoClasificadoEuropa5 = root.Q<VisualElement>("imgClasificadoEuropa5");
+            resumenTemporadaEscudoClasificadoEuropa6 = root.Q<VisualElement>("imgClasificadoEuropa6");
+            resumenTemporadaEscudoDescenso1 = root.Q<VisualElement>("imgDescenso1");
+            resumenTemporadaEscudoDescenso2 = root.Q<VisualElement>("imgDescenso2");
+            resumenTemporadaEscudoDescenso3 = root.Q<VisualElement>("imgDescenso3");
+            resumenTemporadaEscudoAscenso1 = root.Q<VisualElement>("imgAscenso1");
+            resumenTemporadaEscudoAscenso2 = root.Q<VisualElement>("imgAscenso2");
+            resumenTemporadaEscudoAscenso3 = root.Q<VisualElement>("imgAscenso3");
+            btnPremiosJugadores = root.Q<Button>("btnPremiosJugadores");
+            finalTemporadaTitulo = root.Q<Label>("final-temporada-titulo");
+            lblResumenTemporadaCompeticionEuropea = root.Q<Label>("lblResumenTemporadaCompeticionEuropea");
+            lblResumenTemporadaDescensos = root.Q<Label>("lblResumenTemporadaDescensos");
+            lblResumenTemporadaAscensos = root.Q<Label>("lblResumenTemporadaAscensos");
+            lblResumenTemporadaCampeonEuropa1 = root.Q<Label>("lblResumenTemporadaCampeonEuropa1");
+            lblResumenTemporadaCampeonEuropa2 = root.Q<Label>("lblResumenTemporadaCampeonEuropa2");
+            lblClasificadoEuropa1 = root.Q<Label>("lblClasificadoEuropa1");
+            lblClasificadoEuropa2 = root.Q<Label>("lblClasificadoEuropa2");
+            lblClasificadoEuropa3 = root.Q<Label>("lblClasificadoEuropa3");
+            lblClasificadoEuropa4 = root.Q<Label>("lblClasificadoEuropa4");
+            lblClasificadoEuropa5 = root.Q<Label>("lblClasificadoEuropa5");
+            lblClasificadoEuropa6 = root.Q<Label>("lblClasificadoEuropa6");
+            lblDescenso1 = root.Q<Label>("lblDescenso1");
+            lblDescenso2 = root.Q<Label>("lblDescenso2");
+            lblDescenso3 = root.Q<Label>("lblDescenso3");
+            lblAscenso1 = root.Q<Label>("lblAscenso1");
+            lblAscenso2 = root.Q<Label>("lblAscenso2");
+            lblAscenso3 = root.Q<Label>("lblAscenso3");
+            lblObjetivoTemporada = root.Q<Label>("lblObjetivoTemporada");
+            lblObjetivoTemporadaRespuesta = root.Q<Label>("lblObjetivoTemporadaRespuesta");
+
+            // Pantalla Premios Jugadores
+            premiosJugadores = root.Q<VisualElement>("premio-jugadores");
+            btnFinalizarTemporada = root.Q<Button>("btnFinalizarTemporada");
+            imgBalonOroFoto1 = root.Q<VisualElement>("imgBalonOroFoto1");
+            imgBalonOroFoto2 = root.Q<VisualElement>("imgBalonOroFoto2");
+            imgBalonOroFoto3 = root.Q<VisualElement>("imgBalonOroFoto3");
+            lblBalonOroNombre1 = root.Q<Label>("lblBalonOroNombre1");
+            lblBalonOroNombre2 = root.Q<Label>("lblBalonOroNombre2");
+            lblBalonOroNombre3 = root.Q<Label>("lblBalonOroNombre3");
+            lblMaximoGoleadorNombre1 = root.Q<Label>("lblMaximoGoleadorNombre1");
+            lblMaximoGoleadorNombre2 = root.Q<Label>("lblMaximoGoleadorNombre2");
+            lblMaximoGoleadorNombre3 = root.Q<Label>("lblMaximoGoleadorNombre3");
+            lblMejoresJugadoresNombre1 = root.Q<Label>("lblMejorJugadorNombre1");
+            lblMejoresJugadoresNombre2 = root.Q<Label>("lblMejorJugadorNombre2");
+            lblMejoresJugadoresNombre3 = root.Q<Label>("lblMejorJugadorNombre3");
+            lblMaximoGoleadorGoles1 = root.Q<Label>("lblMaximoGoleadorGoles1");
+            lblMaximoGoleadorGoles2 = root.Q<Label>("lblMaximoGoleadorGoles2");
+            lblMaximoGoleadorGoles3 = root.Q<Label>("lblMaximoGoleadorGoles3");
+            lblMejoresJugadoresPuntos1 = root.Q<Label>("lblMejorJugadorPuntos1");
+            lblMejoresJugadoresPuntos2 = root.Q<Label>("lblMejorJugadorPuntos2");
+            lblMejoresJugadoresPuntos3 = root.Q<Label>("lblMejorJugadorPuntos3");
+            resumenTemporadaEscudoMaximoGoleador1 = root.Q<VisualElement>("imgMaximoGoleadorEquipo1");
+            resumenTemporadaEscudoMaximoGoleador2 = root.Q<VisualElement>("imgMaximoGoleadorEquipo2");
+            resumenTemporadaEscudoMaximoGoleador3 = root.Q<VisualElement>("imgMaximoGoleadorEquipo3");
+            resumenTemporadaEscudoMejorJugador1 = root.Q<VisualElement>("imgMejorJugadorEquipo1");
+            resumenTemporadaEscudoMejorJugador2 = root.Q<VisualElement>("imgMejorJugadorEquipo2");
+            resumenTemporadaEscudoMejorJugador3 = root.Q<VisualElement>("imgMejorJugadorEquipo3");
+            lblBalonOroEquipo1 = root.Q<Label>("lblBalonOroEquipo1");
+            lblBalonOroEquipo2 = root.Q<Label>("lblBalonOroEquipo2");
+            lblBalonOroEquipo3 = root.Q<Label>("lblBalonOroEquipo3");
+            imgMaximoGoleadorFoto1 = root.Q<VisualElement>("imgMaximoGoleadorFoto1");
+            imgMaximoGoleadorFoto2 = root.Q<VisualElement>("imgMaximoGoleadorFoto2");
+            imgMaximoGoleadorFoto3 = root.Q<VisualElement>("imgMaximoGoleadorFoto3");
+            imgMejoresJugadoresFoto1 = root.Q<VisualElement>("imgMejoresJugadoresFoto1");
+            imgMejoresJugadoresFoto2 = root.Q<VisualElement>("imgMejoresJugadoresFoto2");
+            imgMejoresJugadoresFoto3 = root.Q<VisualElement>("imgMejoresJugadoresFoto3");
 
             // Listas por sección
             List<Label> clubList = new List<Label> { lblInformacion, lblPlantilla, lblEmpleados, lblLesionados, lblClasificacion, lblResultados,
@@ -322,11 +417,11 @@ namespace TacticalEleven.Scripts
 
             ActualizarBotonSeguir();
 
-// --- Eventos iconos menú lateral ---
+            // --- Eventos iconos menú lateral ---
             menuList = new List<VisualElement> { clubMenu, alineacionMenu, competicionMenu,
-                                               calendarioMenu, fichajesMenu, finanzasMenu,
-                                               estadioMenu, managerMenu, mensajesMenu
-                                             };
+                                                 calendarioMenu, fichajesMenu, finanzasMenu,
+                                                 estadioMenu, managerMenu, mensajesMenu
+                                               };
 
             // ---------------------------------------------------- Evento HOME ICON
             homeIcon.RegisterCallback<ClickEvent>(evt =>
@@ -617,9 +712,38 @@ namespace TacticalEleven.Scripts
             // Comprobar si es 31 de mayo (final de temporada)
             if (fechaActual.Month == 5 && fechaActual.Day == 31)
             {
-                Debug.Log("[FINAL DE TEMPORADA] Es 31 de mayo - Mostrar pantalla de final de temporada");
+                resumenTemporada.style.display = DisplayStyle.Flex;
+                PintarFinalDeTemporada();
+
+                btnPremiosJugadores.clicked -= OnBtnPremiosJugadoresClick;
+
+                void OnBtnPremiosJugadoresClick()
+                {
+                    AudioManager.Instance.PlaySFX(clickSFX);
+
+                    btnPremiosJugadores.clicked -= OnBtnPremiosJugadoresClick;
+                    resumenTemporada.style.display = DisplayStyle.None;
+                    premiosJugadores.style.display = DisplayStyle.Flex;
+
+                    PintarPremiosJugadores();
+
+                    btnFinalizarTemporada.clicked -= OnBtnFinalizarTemporadaClick;
+
+                    void OnBtnFinalizarTemporadaClick()
+                    {
+                        AudioManager.Instance.PlaySFX(clickSFX);
+
+                        btnFinalizarTemporada.clicked -= OnBtnFinalizarTemporadaClick;
+                        PrepararProximaTemporada();
+                        premiosJugadores.style.display = DisplayStyle.None;
+                    }
+
+                    btnFinalizarTemporada.clicked += OnBtnFinalizarTemporadaClick;
+                }
+
+                btnPremiosJugadores.clicked += OnBtnPremiosJugadoresClick;
             }
-            else 
+            else
             {
                 bool diaAvanzado = false;
                 resumenPartidoBtnContinuar.SetEnabled(true);
@@ -3583,6 +3707,372 @@ namespace TacticalEleven.Scripts
                     }
                 }
             }
+        }
+
+        private void PintarFinalDeTemporada()
+        {
+            int campeon = 0, campeonEuropa1 = 0, campeonEuropa2 = 0, europa1 = 0, europa2 = 0, europa3 = 0, europa4 = 0, europa5 = 0, europa6 = 0, descenso1 = 0, descenso2 = 0, descenso3 = 0, ascenso1 = 0, ascenso2 = 0, ascenso3 = 0;
+
+            // Obtener la clasificacion final primera division
+            List<Clasificacion> standings1 = ClasificacionData.MostrarClasificacion(1); 
+
+            // Obtener la clasificacion final segunda division
+            List<Clasificacion> standings2 = ClasificacionData.MostrarClasificacion(2); 
+
+            // Finales europeas
+            Partido finalCopaEuropa1 = PartidoData.ObtenerFinalCopaEuropa1();
+            Partido finalCopaEuropa2 = PartidoData.ObtenerFinalCopaEuropa2();
+
+            // Recorre clasificación primera división
+            foreach (var equipo in standings1)
+            {
+                if (equipo.Posicion == 1){
+                    campeon = equipo.IdEquipo;
+                    europa1 = equipo.IdEquipo;
+                }
+
+                if (equipo.Posicion == 2)
+                    europa2 = equipo.IdEquipo;
+                
+                if (equipo.Posicion == 3)
+                    europa3 = equipo.IdEquipo;
+
+                if (equipo.Posicion == 4)
+                    europa4 = equipo.IdEquipo;
+                
+                if (equipo.Posicion == 5)
+                    europa5 = equipo.IdEquipo;
+
+                if (equipo.Posicion == 6)
+                    europa6 = equipo.IdEquipo;
+                
+                if (equipo.Posicion == 18)
+                    descenso1 = equipo.IdEquipo;
+                
+                if (equipo.Posicion == 19)
+                    descenso2 = equipo.IdEquipo;
+                
+                if (equipo.Posicion == 20)
+                    descenso3 = equipo.IdEquipo;   
+            }
+
+            // Recorre clasificación segunda división
+            foreach (var equipo in standings2)
+            {
+                if (equipo.Posicion == 1)
+                    ascenso1 = equipo.IdEquipo;
+                
+                if (equipo.Posicion == 2)
+                    ascenso2 = equipo.IdEquipo;
+
+                if (equipo.Posicion == 3)
+                    ascenso3 = equipo.IdEquipo; 
+            }
+
+            // Campeones europeos
+            if (finalCopaEuropa1 != null)
+            {
+                if (finalCopaEuropa1.GolesLocal > finalCopaEuropa1.GolesVisitante){
+                    campeonEuropa1 = finalCopaEuropa1.IdEquipoLocal;
+                } else { 
+                    campeonEuropa1 = finalCopaEuropa1.IdEquipoVisitante;
+                }
+            }
+
+            if (finalCopaEuropa2 != null)
+            {
+                if (finalCopaEuropa2.GolesLocal > finalCopaEuropa2.GolesVisitante){
+                    campeonEuropa2 = finalCopaEuropa2.IdEquipoLocal;
+                } else { 
+                    campeonEuropa2 = finalCopaEuropa2.IdEquipoVisitante;
+                }
+            }
+
+            // Mostramos los datos de los títulos
+            finalTemporadaTitulo.text = $"RESUMEN TEMPORADA {FechaData.temporadaActual - 1}/{FechaData.temporadaActual}";
+            lblResumenTemporadaCampeonEuropa1.text = $"CAMPEÓN {CompeticionData.MostrarNombreCompeticion(5).ToUpper()}";
+            lblResumenTemporadaCampeonEuropa2.text = $"CAMPEÓN {CompeticionData.MostrarNombreCompeticion(6).ToUpper()}";
+            lblResumenTemporadaDescensos.text = $"DESCENDIDOS A {CompeticionData.MostrarNombreCompeticion(2).ToUpper()}";
+            lblResumenTemporadaAscensos.text = $"ASCENDIDOS A {CompeticionData.MostrarNombreCompeticion(1).ToUpper()}";
+            
+            // Escudos Campeones
+            var escudos200 = new (VisualElement elemento, string nombre)[]
+            {
+                (resumenTemporadaEscudoCampeon, campeon.ToString()),
+                (resumenTemporadaEscudoCampeonEuropa1, campeonEuropa1.ToString()),
+                (resumenTemporadaEscudoCampeonEuropa2, campeonEuropa2.ToString()),
+            };
+
+            foreach (var (elemento, nombre) in escudos200)
+            {
+                SetEscudo200(elemento, nombre);
+            }
+
+            // Escudos Clasificados Europa
+            var escudos32 = new (VisualElement elemento, string nombre)[]
+            {
+                (resumenTemporadaEscudoClasificadoEuropa1, europa1.ToString()),
+                (resumenTemporadaEscudoClasificadoEuropa2, europa2.ToString()),
+                (resumenTemporadaEscudoClasificadoEuropa3, europa3.ToString()),
+                (resumenTemporadaEscudoClasificadoEuropa4, europa4.ToString()),
+                (resumenTemporadaEscudoClasificadoEuropa5, europa5.ToString()),
+                (resumenTemporadaEscudoClasificadoEuropa6, europa6.ToString()),
+            };
+
+            foreach (var (elemento, nombre) in escudos32)
+            {
+                SetEscudo32(elemento, nombre);
+            }
+
+            // Escudos Ascensos y Descensos
+            var escudos64 = new (VisualElement elemento, string nombre)[]
+            {
+                (resumenTemporadaEscudoDescenso1, descenso1.ToString()),
+                (resumenTemporadaEscudoDescenso2, descenso2.ToString()),
+                (resumenTemporadaEscudoDescenso3, descenso3.ToString()),
+                (resumenTemporadaEscudoAscenso1, ascenso1.ToString()),
+                (resumenTemporadaEscudoAscenso2, ascenso2.ToString()),
+                (resumenTemporadaEscudoAscenso3, ascenso3.ToString()),
+            };
+
+            foreach (var (elemento, nombre) in escudos64)
+            {
+                SetEscudo64(elemento, nombre);
+            }
+
+            lblClasificadoEuropa1.text = $"{EquipoData.ObtenerDetallesEquipo(europa1).Nombre}";
+            lblClasificadoEuropa2.text = $"{EquipoData.ObtenerDetallesEquipo(europa2).Nombre}";
+            lblClasificadoEuropa3.text = $"{EquipoData.ObtenerDetallesEquipo(europa3).Nombre}";
+            lblClasificadoEuropa4.text = $"{EquipoData.ObtenerDetallesEquipo(europa4).Nombre}";
+            lblClasificadoEuropa5.text = $"{EquipoData.ObtenerDetallesEquipo(europa5).Nombre}";
+            lblClasificadoEuropa6.text = $"{EquipoData.ObtenerDetallesEquipo(europa6).Nombre}";
+            lblDescenso1.text = $"{EquipoData.ObtenerDetallesEquipo(descenso1).Nombre}";
+            lblDescenso2.text= $"{EquipoData.ObtenerDetallesEquipo(descenso2).Nombre}";
+            lblDescenso3.text = $"{EquipoData.ObtenerDetallesEquipo(descenso3).Nombre}";
+            lblAscenso1.text = $"{EquipoData.ObtenerDetallesEquipo(ascenso1).Nombre}";
+            lblAscenso2.text = $"{EquipoData.ObtenerDetallesEquipo(ascenso2).Nombre}";
+            lblAscenso3.text = $"{EquipoData.ObtenerDetallesEquipo(ascenso3).Nombre}";
+            lblObjetivoTemporada.text = $"{EquipoData.ObtenerDetallesEquipo(miEquipo.IdEquipo).Objetivo}";
+
+            // Objetivo de Temporada
+            int competicion = EquipoData.ObtenerDetallesEquipo(miEquipo.IdEquipo).IdCompeticion;
+            List<Clasificacion> clasificacion;
+            if (competicion == 1)
+            {
+                clasificacion = ClasificacionData.MostrarClasificacion(1);
+            } 
+            else
+            {
+                clasificacion = ClasificacionData.MostrarClasificacion(2);
+            }
+                
+            int posicion = 0;
+            for (int i = 0; i < clasificacion.Count; i++)
+            {
+                if (clasificacion[i].IdEquipo == miEquipo.IdEquipo)
+                {
+                    posicion = i + 1;
+                    break; 
+                }
+            }
+
+            string objetivo = EquipoData.ObtenerDetallesEquipo(miEquipo.IdEquipo).Objetivo;
+            string objetivoResultado = "";
+            var colorTextoVerde = new StyleColor(new Color32(20, 87, 42, 255));
+            var colorTextoRojo = new StyleColor(new Color32(135, 34, 30, 255));
+
+            if (objetivo.Equals("Campeón"))
+            {
+                if (posicion == 1)
+                {
+                    lblObjetivoTemporadaRespuesta.text = "CONSEGUIDO";
+                    lblObjetivoTemporadaRespuesta.style.color = colorTextoVerde;
+                }
+                else
+                {
+                    lblObjetivoTemporadaRespuesta.text = "NO CONSEGUIDO";
+                    lblObjetivoTemporadaRespuesta.style.color = colorTextoRojo;
+                }
+            }
+            else if (objetivo.Equals("Ascenso"))
+            {
+                if (posicion <= 4)
+                {
+                    lblObjetivoTemporadaRespuesta.text = "CONSEGUIDO";
+                    lblObjetivoTemporadaRespuesta.style.color = colorTextoVerde;
+                }
+                else
+                {
+                    lblObjetivoTemporadaRespuesta.text = "NO CONSEGUIDO";
+                    lblObjetivoTemporadaRespuesta.style.color = colorTextoRojo;
+                }
+            }
+            else if (objetivo.Equals("Zona Tranquila"))
+            {
+                if (posicion <= 14)
+                {
+                    lblObjetivoTemporadaRespuesta.text = "CONSEGUIDO";
+                    lblObjetivoTemporadaRespuesta.style.color = colorTextoVerde;
+                }
+                else
+                {
+                    lblObjetivoTemporadaRespuesta.text = "NO CONSEGUIDO";
+                    lblObjetivoTemporadaRespuesta.style.color = colorTextoRojo;
+                }
+            }
+            else if (objetivo.Equals("Descenso"))
+            {
+                if (posicion <= 16)
+                {
+                    lblObjetivoTemporadaRespuesta.text = "CONSEGUIDO";
+                    lblObjetivoTemporadaRespuesta.style.color = colorTextoVerde;
+                }
+                else
+                {
+                    lblObjetivoTemporadaRespuesta.text = "NO CONSEGUIDO";
+                    lblObjetivoTemporadaRespuesta.style.color = colorTextoRojo;
+                }
+            }
+        }
+
+        private void PintarPremiosJugadores()
+        {
+            // Premios
+            List<Jugador> mejoresJugadores = EstadisticaJugadorData.MejorJugadores();
+            List<Jugador> botaOro = EstadisticaJugadorData.Pichichi();
+            List<Jugador> balonOro = EstadisticaJugadorData.BalonOro();
+
+            var escudos80 = new (VisualElement elemento, string nombre)[]
+            {
+                (resumenTemporadaEscudoMaximoGoleador1, botaOro[0].IdEquipo.ToString()),
+                (resumenTemporadaEscudoMaximoGoleador2, botaOro[1].IdEquipo.ToString()),
+                (resumenTemporadaEscudoMaximoGoleador3, botaOro[2].IdEquipo.ToString()),
+                (resumenTemporadaEscudoMejorJugador1, mejoresJugadores[0].IdEquipo.ToString()),
+                (resumenTemporadaEscudoMejorJugador2, mejoresJugadores[1].IdEquipo.ToString()),
+                (resumenTemporadaEscudoMejorJugador3, mejoresJugadores[2].IdEquipo.ToString()),
+            };
+
+            var fotosBalonOro = new (VisualElement elemento, string nombre)[]
+            {
+                (imgMaximoGoleadorFoto1, botaOro[0].IdJugador.ToString()),
+                (imgMaximoGoleadorFoto2, botaOro[1].IdJugador.ToString()),
+                (imgMaximoGoleadorFoto3, botaOro[2].IdJugador.ToString()),
+                (imgMejoresJugadoresFoto1, mejoresJugadores[0].IdJugador.ToString()),
+                (imgMejoresJugadoresFoto2, mejoresJugadores[1].IdJugador.ToString()),
+                (imgMejoresJugadoresFoto3, mejoresJugadores[2].IdJugador.ToString()),
+                (imgBalonOroFoto1, balonOro[0].IdJugador.ToString()),
+                (imgBalonOroFoto2, balonOro[1].IdJugador.ToString()),
+                (imgBalonOroFoto3, balonOro[2].IdJugador.ToString()),
+            };
+
+            foreach (var (elemento, nombre) in escudos80)
+            {
+                SetEscudo80(elemento, nombre);
+            }
+
+            foreach (var (elemento, nombre) in fotosBalonOro)
+            {
+                SetFoto(elemento, nombre);
+            }
+
+            lblMaximoGoleadorNombre1.text = $"{JugadorData.MostrarDatosJugador(botaOro[0].IdJugador).NombreCompleto}";
+            lblMaximoGoleadorNombre2.text = $"{JugadorData.MostrarDatosJugador(botaOro[1].IdJugador).NombreCompleto}";
+            lblMaximoGoleadorNombre3.text = $"{JugadorData.MostrarDatosJugador(botaOro[2].IdJugador).NombreCompleto}";
+            lblMejoresJugadoresNombre1.text = $"{JugadorData.MostrarDatosJugador(mejoresJugadores[0].IdJugador).NombreCompleto}";
+            lblMejoresJugadoresNombre2.text = $"{JugadorData.MostrarDatosJugador(mejoresJugadores[1].IdJugador).NombreCompleto}";
+            lblMejoresJugadoresNombre3.text = $"{JugadorData.MostrarDatosJugador(mejoresJugadores[2].IdJugador).NombreCompleto}";
+            lblMaximoGoleadorGoles1.text = $"{botaOro[0].Valoracion}";
+            lblMaximoGoleadorGoles2.text = $"{botaOro[1].Valoracion}";
+            lblMaximoGoleadorGoles3.text = $"{botaOro[2].Valoracion}";
+            lblMejoresJugadoresPuntos1.text = $"{mejoresJugadores[0].Valoracion}";
+            lblMejoresJugadoresPuntos2.text = $"{mejoresJugadores[1].Valoracion}";
+            lblMejoresJugadoresPuntos3.text = $"{mejoresJugadores[2].Valoracion}";
+            lblBalonOroNombre1.text = $"{balonOro[0].NombreCompleto}";
+            lblBalonOroNombre2.text = $"{balonOro[1].NombreCompleto}";
+            lblBalonOroNombre3.text = $"{balonOro[2].NombreCompleto}";
+            lblBalonOroEquipo1.text = $"{EquipoData.ObtenerDetallesEquipo(balonOro[0].IdEquipo).Nombre}";
+            lblBalonOroEquipo2.text = $"{EquipoData.ObtenerDetallesEquipo(balonOro[1].IdEquipo).Nombre}";
+            lblBalonOroEquipo3.text = $"{EquipoData.ObtenerDetallesEquipo(balonOro[2].IdEquipo).Nombre}";
+        }
+
+        private void SetEscudo32(VisualElement target, string nombreEscudo)
+        {
+            var sprite = Resources.Load<Sprite>($"EscudosEquipos/32x32/{nombreEscudo}");
+            if (sprite != null)
+                target.style.backgroundImage = new StyleBackground(sprite);
+        }
+
+        private void SetEscudo64(VisualElement target, string nombreEscudo)
+        {
+            var sprite = Resources.Load<Sprite>($"EscudosEquipos/64x64/{nombreEscudo}");
+            if (sprite != null)
+                target.style.backgroundImage = new StyleBackground(sprite);
+        }
+
+        private void SetEscudo80(VisualElement target, string nombreEscudo)
+        {
+            var sprite = Resources.Load<Sprite>($"EscudosEquipos/80x80/{nombreEscudo}");
+            if (sprite != null)
+                target.style.backgroundImage = new StyleBackground(sprite);
+        }
+
+        private void SetEscudo200(VisualElement target, string nombreEscudo)
+        {
+            var sprite = Resources.Load<Sprite>($"EscudosEquipos/{nombreEscudo}");
+            if (sprite != null)
+                target.style.backgroundImage = new StyleBackground(sprite);
+        }
+
+        private void SetFoto(VisualElement target, string nombreFoto)
+        {
+            var sprite = Resources.Load<Sprite>($"Jugadores/{nombreFoto}");
+            if (sprite != null)
+                target.style.backgroundImage = new StyleBackground(sprite);
+        }
+
+        private void PrepararProximaTemporada()
+        {
+            // Resetear Moral y Estado de Forma a 50
+
+            // Crear Nueva temporada
+
+            // Descender a Division 2
+
+            // Ascender a Division 1
+
+            // Descender a Reservas
+
+            // Ascender a Division 2
+
+            // Descender a Copa de Europa 2
+
+            // Ascender a Copa de Europa 1
+
+            // Actualizar equipos que juegan Europa en la Liga local
+
+            // Resetear tablas clasificacion, estadisticas_jugadores, historial_manager_temp, partidos y ofertas
+
+            // Crear el calendario de las Ligas
+
+            // Generar el calendario de Copa nacional
+
+            // Generar el calendario de Copa Europa 1
+
+            // Generar el calendario de Copa Europa 2
+
+            // Generar las clasificaciones
+
+            // Generar el primer registro del historial
+
+            // Vaciar la tabla taquilla
+
+            // Restar un año al contrato del patrocinador y de la televisión.
+
+            // Crear el mensaje de inicio de nueva temporada
+
+            // Activar el boton de abonados
+
+            // Resetear y Generar la alineacion del equipo
         }
     }
 }

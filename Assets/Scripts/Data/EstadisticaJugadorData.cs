@@ -774,5 +774,220 @@ namespace TacticalEleven.Scripts
                 Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
             }
         }
+
+        // ------------------------------------------------ MÉTODO QUE MUESTRA LOS 3 MEJORES JUGADORES DE LA TEMPORADA
+        public static List<Jugador> MejorJugadores()
+        {
+            List<Jugador> lista = new List<Jugador>();
+
+            try
+            {
+                var dbPath = GetDBPath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                }
+
+                string conexionString = $"Data Source={dbPath};Version=3;";
+                using (var conexion = new SQLiteConnection(conexionString))
+                {
+                    conexion.Open();
+
+                    string query = @"SELECT 
+                                        ej.id_jugador,
+                                        j.nombre,
+                                        j.apellido,
+                                        j.ruta_imagen,
+                                        j.id_equipo,
+                                        CAST( 
+                                            (ej.goles * 2) +
+                                            (ej.asistencias * 2.5) +
+                                            (ej.partidosJugados) +
+                                            (ej.mvp * 3) -
+                                            (ej.tarjetasAmarillas * 0.5) -
+                                            (ej.tarjetasRojas * 2) 
+                                        AS INTEGER) AS puntos
+                                     FROM estadisticas_jugadores ej
+                                     JOIN jugadores j ON ej.id_jugador = j.id_jugador
+                                     JOIN equipos e ON j.id_equipo = e.id_equipo
+                                     WHERE e.id_competicion = 1
+                                     ORDER BY puntos DESC
+                                     LIMIT 3";
+
+                    using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
+                    {
+                        using (SQLiteDataReader reader = comando.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Crear un objeto Jugador y asignar los valores de la base de datos
+                                Jugador jugador = new Jugador
+                                {
+                                    IdJugador = reader.GetInt32(reader.GetOrdinal("id_jugador")),
+                                    Nombre = reader.GetString(reader.GetOrdinal("nombre")),
+                                    Apellido = reader.GetString(reader.GetOrdinal("apellido")),
+                                    RutaImagen = reader.GetString(reader.GetOrdinal("ruta_imagen")),
+                                    Valoracion = reader.GetInt32(reader.GetOrdinal("puntos")),
+                                    IdEquipo = reader.GetInt32(reader.GetOrdinal("id_equipo"))
+                                };
+
+                                // Agregar el jugador a la lista
+                                lista.Add(jugador);
+                            }
+                        }
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+
+            return lista;
+        }
+
+        // ------------------------------------------------ MÉTODO QUE MUESTRA LOS 3 MÁXIMOS GOLEADORES DE LA TEMPORADA
+        public static List<Jugador> Pichichi()
+        {
+            List<Jugador> lista = new List<Jugador>();
+
+            try
+            {
+                var dbPath = GetDBPath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                }
+
+                string conexionString = $"Data Source={dbPath};Version=3;";
+                using (var conexion = new SQLiteConnection(conexionString))
+                {
+                    conexion.Open();
+
+                    string query = @"SELECT 
+                                        ej.id_jugador,
+                                        j.nombre,
+                                        j.apellido,
+                                        j.ruta_imagen,
+                                        j.id_equipo,
+                                        ej.goles
+                                     FROM estadisticas_jugadores ej
+                                     JOIN jugadores j ON ej.id_jugador = j.id_jugador
+                                     JOIN equipos e ON j.id_equipo = e.id_equipo
+                                     WHERE e.id_competicion = 1
+                                     ORDER BY ej.goles DESC
+                                     LIMIT 3";
+
+                    using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
+                    {
+                        using (SQLiteDataReader reader = comando.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Crear un objeto Jugador y asignar los valores de la base de datos
+                                Jugador jugador = new Jugador
+                                {
+                                    IdJugador = reader.GetInt32(reader.GetOrdinal("id_jugador")),
+                                    Nombre = reader.GetString(reader.GetOrdinal("nombre")),
+                                    Apellido = reader.GetString(reader.GetOrdinal("apellido")),
+                                    RutaImagen = reader.GetString(reader.GetOrdinal("ruta_imagen")),
+                                    Valoracion = reader.GetInt32(reader.GetOrdinal("goles")),
+                                    IdEquipo = reader.GetInt32(reader.GetOrdinal("id_equipo"))
+                                };
+
+                                // Agregar el jugador a la lista
+                                lista.Add(jugador);
+                            }
+                        }
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+
+            return lista;
+        }
+
+        // ------------------------------------------- MÉTODO QUE MUESTRA LOS 3 MEJORES JUGADORES DEL BALON DE ORO
+        public static List<Jugador> BalonOro()
+        {
+            List<Jugador> lista = new List<Jugador>();
+
+            try
+            {
+                var dbPath = GetDBPath();
+
+                if (!File.Exists(dbPath))
+                {
+                    Debug.LogError($"No se encontró la base de datos en {dbPath}");
+                }
+
+                string conexionString = $"Data Source={dbPath};Version=3;";
+                using (var conexion = new SQLiteConnection(conexionString))
+                {
+                    conexion.Open();
+
+                    string query = @"SELECT 
+                                        ej.id_jugador,
+                                        j.nombre,
+                                        j.apellido,
+                                        j.ruta_imagen,
+                                        j.id_equipo,
+                                        CAST( 
+                                            (ej.goles * 2) +
+                                            (ej.asistencias * 2.5) +
+                                            (ej.partidosJugados) +
+                                            (ej.mvp * 3) -
+                                            (ej.tarjetasAmarillas * 0.5) -
+                                            (ej.tarjetasRojas * 2) 
+                                        AS INTEGER) AS puntos
+                                     FROM estadisticas_jugadores_europa ej
+                                     JOIN jugadores j ON ej.id_jugador = j.id_jugador
+                                     JOIN equipos e ON j.id_equipo = e.id_equipo
+                                     WHERE e.id_competicion = 5 OR e.competicion_europea = 5
+                                     ORDER BY puntos DESC
+                                     LIMIT 3";
+
+                    using (SQLiteCommand comando = new SQLiteCommand(query, conexion))
+                    {
+                        using (SQLiteDataReader reader = comando.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Crear un objeto Jugador y asignar los valores de la base de datos
+                                Jugador jugador = new Jugador
+                                {
+                                    IdJugador = reader.GetInt32(reader.GetOrdinal("id_jugador")),
+                                    Nombre = reader.GetString(reader.GetOrdinal("nombre")),
+                                    Apellido = reader.GetString(reader.GetOrdinal("apellido")),
+                                    RutaImagen = reader.GetString(reader.GetOrdinal("ruta_imagen")),
+                                    Valoracion = reader.GetInt32(reader.GetOrdinal("puntos")),
+                                    IdEquipo = reader.GetInt32(reader.GetOrdinal("id_equipo"))
+                                };
+
+                                // Agregar el jugador a la lista
+                                lista.Add(jugador);
+                            }
+                        }
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error al guardar en la base de datos: {ex.Message}");
+            }
+
+            return lista;
+        }
     }
 }

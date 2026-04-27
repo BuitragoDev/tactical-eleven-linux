@@ -301,15 +301,343 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="final-temporada" class="background-final-temporada" style="display: flex;">
+    <ui:VisualElement name="final-temporada" class="background-final-temporada" style="display: none; top: 0; left: 4px;">
         <ui:VisualElement name="final-temporada-cabecera-area" class="final-temporada-cabecera-area">
             <ui:VisualElement name="final-temporada-titulo-area" class="final-temporada-titulo-area">
                 <ui:Label name="final-temporada-titulo" text="RESUMEN DE TEMPORADA" class="final-temporada-titulo"/>
             </ui:VisualElement>
             <ui:VisualElement name="final-temporada-boton-area" class="final-temporada-boton-area">
+                <ui:Button name="btnPremiosJugadores" text="PREMIOS DE JUGADORES" icon-image="project://database/Assets/Resources/Icons/avanzar.png?fileID=2800000&amp;guid=a6028fb24b29fe443bb23067d1943788&amp;type=3#avanzar" class="btnSeguir"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="final-temporada-contenido-area" class="final-temporada-contenido-area" style="background-size: 100%; width: 100%; height: 100%; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 0; width: 50%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: auto; background-color: rgb(255, 255, 255); margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;">
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                    <ui:Label text="CAMPEÓN DE LIGA" name="" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 35%; flex-direction: column; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="resumenTemporadaLogoCampeon" style="flex-grow: 0; width: 200px; height: 200px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1; width: 50%; align-items: center; justify-content: center;">
+                        <ui:Label text="CHAMPIONS LEAGUE" name="lblResumenTemporadaCampeonEuropa1" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 22px; -unity-font-style: normal;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 50%; align-items: center; justify-content: center;">
+                        <ui:Label text="EUROPA LEAGUE" name="lblResumenTemporadaCampeonEuropa2" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 22px; -unity-font-style: normal;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 35%; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1; width: 50%; align-items: center; justify-content: center; background-color: rgb(197, 228, 253);">
+                        <ui:VisualElement name="resumenTemporadaLogoCampeonEuropa1" style="flex-grow: 0; width: 200px; height: 200px;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 50%; align-items: center; justify-content: center; background-color: rgb(203, 248, 219);">
+                        <ui:VisualElement name="resumenTemporadaLogoCampeonEuropa2" style="flex-grow: 0; width: 200px; height: 200px;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                    <ui:Label text="OBJETIVO DE TEMPORADA" name="" style="color: rgb(229, 229, 229); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 15%;">
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 50%; align-items: center; justify-content: center; background-color: rgb(47, 79, 79);">
+                        <ui:Label text="Nombre del objetivo" name="lblObjetivoTemporada" style="color: rgb(229, 229, 229); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Regular&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 100%; height: 50%; align-items: center; justify-content: center; background-color: rgb(255, 255, 255);">
+                        <ui:Label text="CONSEGUIDO" name="lblObjetivoTemporadaRespuesta" style="color: rgb(26, 26, 26); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 32px; -unity-font-style: normal;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 50%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: auto; background-color: rgb(255, 255, 255); margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;">
+                <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(19, 72, 111); align-items: center; justify-content: center;">
+                    <ui:Label text="CLASIFICADOS COMPETICIONES EUROPEAS" name="lblResumenTemporadaCompeticionEuropea" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; height: 40%;">
+                    <ui:VisualElement name="" style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; background-color: rgb(197, 228, 253);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgClasificadoEuropa1" style="flex-grow: 0; width: 32px; height: 32px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Clasificado Europa 1" name="lblClasificadoEuropa1" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; background-color: rgb(158, 209, 248);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgClasificadoEuropa2" style="flex-grow: 0; width: 32px; height: 32px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Clasificado Europa 2" name="lblClasificadoEuropa2" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; background-color: rgb(197, 229, 253);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgClasificadoEuropa3" style="flex-grow: 0; width: 32px; height: 32px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Clasificado Europa 3" name="lblClasificadoEuropa3" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; background-color: rgb(158, 210, 248);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgClasificadoEuropa4" style="flex-grow: 0; width: 32px; height: 32px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Clasificado Europa 4" name="lblClasificadoEuropa4" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; background-color: rgb(202, 248, 219);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgClasificadoEuropa5" style="flex-grow: 0; width: 32px; height: 32px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Clasificado Europa 5" name="lblClasificadoEuropa5" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; background-color: rgb(172, 238, 195);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgClasificadoEuropa6" style="flex-grow: 0; width: 32px; height: 32px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Clasificado Europa 6" name="lblClasificadoEuropa6" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(75, 8, 22); align-items: center; justify-content: center;">
+                    <ui:Label text="DESCENSOS" name="lblResumenTemporadaDescensos" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; height: 30%;">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgDescenso1" style="flex-grow: 0; width: 64px; height: 64px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Descenso 1" name="lblDescenso1" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; background-color: rgb(229, 229, 229);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgDescenso2" style="flex-grow: 0; width: 64px; height: 64px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Descenso 2" name="lblDescenso2" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgDescenso3" style="flex-grow: 0; width: 64px; height: 64px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Descenso 3" name="lblDescenso3" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(12, 60, 2); align-items: center; justify-content: center;">
+                    <ui:Label text="ASCENSOS" name="lblResumenTemporadaAscensos" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; height: 30%;">
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgAscenso1" style="flex-grow: 0; width: 64px; height: 64px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Ascenso 1" name="lblAscenso1" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row; background-color: rgb(229, 229, 229);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgAscenso2" style="flex-grow: 0; width: 64px; height: 64px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Ascenso 2" name="lblAscenso2" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 100%; height: 25%; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="imgAscenso3" style="flex-grow: 0; width: 64px; height: 64px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 80%; height: 100%; align-items: flex-start; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
+                            <ui:Label text="Ascenso 3" name="lblAscenso3" class="clasificados-europa"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="premio-jugadores" class="background-final-temporada" style="display: none; top: 0; left: 2px;">
+        <ui:VisualElement name="final-temporada-cabecera-area" class="final-temporada-cabecera-area">
+            <ui:VisualElement name="final-temporada-titulo-area" class="final-temporada-titulo-area">
+                <ui:Label name="" text="PREMIOS JUGADORES" class="final-temporada-titulo"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="final-temporada-boton-area" class="final-temporada-boton-area">
                 <ui:Button name="btnFinalizarTemporada" text="EMPEZAR NUEVA TEMPORADA" icon-image="project://database/Assets/Resources/Icons/avanzar.png?fileID=2800000&amp;guid=a6028fb24b29fe443bb23067d1943788&amp;type=3#avanzar" class="btnSeguir"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="final-temporada-contenido-area" class="final-temporada-contenido-area" style="background-size: 100%; width: 100%; height: 100%;"/>
+        <ui:VisualElement name="final-temporada-contenido-area" class="final-temporada-contenido-area" style="background-size: 100%; width: 100%; height: 100%; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 0; width: 50%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: auto; background-color: rgb(255, 255, 255); margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;">
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                    <ui:Label text="MÁXIMOS GOLEADORES DE LIGA" name="lblResumenTemporadaCampeonlblResumenTemporadaMaximosGoleadores" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 45%; flex-direction: column;">
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 13%; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgb(102, 102, 102); align-items: center; justify-content: center;">
+                            <ui:Label text="FOTO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-SemiBold&quot;); color: rgb(211, 211, 211); font-size: 18px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 50%; height: 100%; background-color: rgb(102, 102, 102); align-items: flex-start; justify-content: center; padding-left: 25px;">
+                            <ui:Label text="JUGADOR" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-SemiBold&quot;); color: rgb(211, 211, 211); font-size: 18px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgb(102, 102, 102); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:Label text="EQUIPO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-SemiBold&quot;); color: rgb(211, 211, 211); font-size: 18px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="" style="flex-grow: 0; width: 20%; height: 100%; background-color: rgb(77, 77, 77); align-items: center; justify-content: center;">
+                            <ui:Label text="GOLES" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-SemiBold&quot;); color: rgb(211, 211, 211); font-size: 18px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 29%; flex-direction: row; background-color: rgb(218, 165, 32);">
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgMaximoGoleadorFoto1" style="flex-grow: 0; width: 100px; height: 100px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 50%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: flex-start; justify-content: center; padding-left: 25px;">
+                            <ui:Label text="Nombre Jugador" name="lblMaximoGoleadorNombre1" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgMaximoGoleadorEquipo1" style="flex-grow: 0; width: 80px; height: 80px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="" style="flex-grow: 1; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); justify-content: center; align-items: center;">
+                            <ui:Label text="99" name="lblMaximoGoleadorGoles1" class="clasificados-europa" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; font-size: 32px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 29%; flex-direction: row; background-color: rgb(153, 153, 153);">
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgMaximoGoleadorFoto2" style="flex-grow: 0; width: 100px; height: 100px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 50%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: flex-start; justify-content: center; padding-left: 25px;">
+                            <ui:Label text="Nombre Jugador" name="lblMaximoGoleadorNombre2" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgMaximoGoleadorEquipo2" style="flex-grow: 0; width: 80px; height: 80px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="" style="flex-grow: 1; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center;">
+                            <ui:Label text="99" name="lblMaximoGoleadorGoles2" class="clasificados-europa" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; font-size: 32px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 29%; flex-direction: row; background-color: rgb(192, 133, 72);">
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); padding-left: 0; justify-content: center; align-items: center;">
+                            <ui:VisualElement name="imgMaximoGoleadorFoto3" style="flex-grow: 0; width: 100px; height: 100px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 50%; height: 100%; background-color: rgba(229, 229, 229, 0); padding-left: 25px; justify-content: center; align-items: flex-start;">
+                            <ui:Label text="Nombre Jugador" name="lblMaximoGoleadorNombre3" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); padding-left: 0; justify-content: center; align-items: center;">
+                            <ui:VisualElement name="imgMaximoGoleadorEquipo3" style="flex-grow: 0; width: 80px; height: 80px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="" style="flex-grow: 1; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center;">
+                            <ui:Label text="99" name="lblMaximoGoleadorGoles3" class="clasificados-europa" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; font-size: 32px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 5%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                    <ui:Label text="MEJORES JUGADORES DE LIGA" name="lblResumenTemporadaMejoresJugadores" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 45%;">
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 13%; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgb(102, 102, 102); align-items: center; justify-content: center;">
+                            <ui:Label text="FOTO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-SemiBold&quot;); color: rgb(211, 211, 211); font-size: 18px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 50%; height: 100%; background-color: rgb(102, 102, 102); align-items: flex-start; justify-content: center; padding-left: 25px;">
+                            <ui:Label text="JUGADOR" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-SemiBold&quot;); color: rgb(211, 211, 211); font-size: 18px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgb(102, 102, 102); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:Label text="EQUIPO" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-SemiBold&quot;); color: rgb(211, 211, 211); font-size: 18px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="" style="flex-grow: 0; width: 20%; height: 100%; background-color: rgb(77, 77, 77); align-items: center; justify-content: center;">
+                            <ui:Label text="PUNTOS" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-SemiBold&quot;); color: rgb(211, 211, 211); font-size: 18px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 29%; flex-direction: row; background-color: rgb(218, 165, 32);">
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgMejoresJugadoresFoto1" style="flex-grow: 0; width: 100px; height: 100px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 50%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: flex-start; justify-content: center; padding-left: 25px;">
+                            <ui:Label text="Nombre Jugador" name="lblMejorJugadorNombre1" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgMejorJugadorEquipo1" style="flex-grow: 0; width: 80px; height: 80px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="" style="flex-grow: 1; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); justify-content: center; align-items: center;">
+                            <ui:Label text="99" name="lblMejorJugadorPuntos1" class="clasificados-europa" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; font-size: 32px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 29%; flex-direction: row; background-color: rgb(153, 153, 153);">
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgMejoresJugadoresFoto2" style="flex-grow: 0; width: 100px; height: 100px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 50%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: flex-start; justify-content: center; padding-left: 25px;">
+                            <ui:Label text="Nombre Jugador" name="lblMejorJugadorNombre2" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgMejorJugadorEquipo2" style="flex-grow: 0; width: 80px; height: 80px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="" style="flex-grow: 1; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center;">
+                            <ui:Label text="99" name="lblMejorJugadorPuntos2" class="clasificados-europa" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; font-size: 32px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 29%; flex-direction: row; background-color: rgb(192, 133, 72);">
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); padding-left: 0; justify-content: center; align-items: center;">
+                            <ui:VisualElement name="imgMejoresJugadoresFoto3" style="flex-grow: 0; width: 100px; height: 100px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 50%; height: 100%; background-color: rgba(229, 229, 229, 0); padding-left: 25px; justify-content: center; align-items: flex-start;">
+                            <ui:Label text="Nombre Jugador" name="lblMejorJugadorNombre3" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 15%; height: 100%; background-color: rgba(229, 229, 229, 0); padding-left: 0; justify-content: center; align-items: center;">
+                            <ui:VisualElement name="imgMejorJugadorEquipo3" style="flex-grow: 0; width: 80px; height: 80px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="" style="flex-grow: 1; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center;">
+                            <ui:Label text="99" name="lblMejorJugadorPuntos3" class="clasificados-europa" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; font-size: 32px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 50%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 50%; background-color: rgb(255, 255, 255); margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;">
+                <ui:VisualElement style="flex-grow: 0; width: 100%; height: 10%; background-color: rgb(30, 30, 30); align-items: center; justify-content: center;">
+                    <ui:Label text="BALÓN DE ORO" name="" style="color: rgb(220, 220, 220); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Bold&quot;); font-size: 24px; -unity-font-style: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="" style="flex-grow: 1; width: 100%; height: 90%; flex-direction: column;">
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 34%; flex-direction: row; background-color: rgb(218, 165, 32);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgBalonOroFoto1" style="flex-grow: 0; width: 100px; height: 100px; display: flex;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 60%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: flex-start; justify-content: center; padding-left: 25px;">
+                            <ui:Label text="Nombre Jugador" name="lblBalonOroNombre1" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 24px;"/>
+                            <ui:Label text="Nombre Jugador" name="lblBalonOroEquipo1" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Regular&quot;);"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; background-color: rgb(229, 229, 229); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="" style="flex-grow: 0; width: 128px; height: 128px; display: flex; background-image: resource(&quot;Icons/balon-de-oro&quot;); -unity-background-scale-mode: scale-to-fit;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 33%; flex-direction: row; background-color: rgb(153, 153, 153);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgBalonOroFoto2" style="flex-grow: 0; width: 100px; height: 100px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 60%; height: 100%; background-color: rgba(229, 229, 229, 0); align-items: flex-start; justify-content: center; padding-left: 25px;">
+                            <ui:Label text="Nombre Jugador" name="lblBalonOroNombre2" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 24px;"/>
+                            <ui:Label text="Nombre Jugador" name="lblBalonOroEquipo2" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Regular&quot;);"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; background-color: rgb(229, 229, 229); align-items: center; justify-content: center; padding-left: 0;">
+                            <ui:VisualElement name="imgBalonOroFoto2" style="flex-grow: 0; width: 100px; height: 100px; background-image: resource(&quot;Icons/balon-de-plata&quot;); -unity-background-scale-mode: scale-to-fit;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; width: 100%; height: 33%; flex-direction: row; background-color: rgb(192, 133, 72);">
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; background-color: rgba(229, 229, 229, 0); padding-left: 0; justify-content: center; align-items: center;">
+                            <ui:VisualElement name="imgBalonOroFoto3" style="flex-grow: 0; width: 100px; height: 100px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 60%; height: 100%; background-color: rgba(229, 229, 229, 0); padding-left: 25px; justify-content: center; align-items: flex-start;">
+                            <ui:Label text="Nombre Jugador" name="lblBalonOroNombre3" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 24px;"/>
+                            <ui:Label text="Nombre Jugador" name="lblBalonOroEquipo3" class="clasificados-europa" style="padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-font-definition: resource(&quot;Fonts/Poppins-Regular&quot;);"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; width: 20%; height: 100%; background-color: rgb(229, 229, 229); padding-left: 0; justify-content: center; align-items: center;">
+                            <ui:VisualElement name="imgBalonOroFoto3" style="flex-grow: 0; width: 100px; height: 100px; -unity-background-scale-mode: scale-to-fit; background-image: resource(&quot;Icons/balon-de-bronce&quot;);"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
